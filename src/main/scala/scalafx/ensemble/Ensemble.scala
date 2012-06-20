@@ -56,7 +56,7 @@ object Ensemble extends JFXApp {
       text = "text"
     }
   })
-
+   
   stage = new Stage {
     scene = new Scene(1200, 768) {
       content = new BorderPane {
