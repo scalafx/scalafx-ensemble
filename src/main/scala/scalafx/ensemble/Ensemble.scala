@@ -89,6 +89,12 @@ object Ensemble extends JFXApp {
             maxWidth = Double.MaxValue
             content = List(new Label {
               text = "toolbar"
+            },new Label {
+              text = "toolbar"
+            },new Label {
+              text = "toolbar"
+            },new Label {
+              text = "toolbar"
             })
           })
         }
