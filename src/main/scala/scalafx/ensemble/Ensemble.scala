@@ -14,6 +14,7 @@ import scalafx.scene.image.ImageView
 import scalafx.scene.layout.Pane._
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.HBox
+import scalafx.scene.layout.VBox
 import scalafx.scene.shape.Circle._
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
@@ -33,6 +34,7 @@ import scalafx.scene.shape.Arc
 import javafx.scene.paint.Color
 import scalafx.scene.control.Accordion
 import scalafx.scene.control.ListView
+import scalafx.scene.control.ToolBar
 
 object Ensemble extends JFXApp {
 
@@ -58,29 +60,38 @@ object Ensemble extends JFXApp {
   stage = new Stage {
     scene = new Scene(1200, 768) {
       content = new BorderPane {
-        hgrow = javafx.scene.layout.Priority.ALWAYS
-        vgrow = javafx.scene.layout.Priority.ALWAYS
-        top = new HBox {
-          content = List(
-            new ImageView {
-              image = new Image(this.getClass.getResourceAsStream("images/logo1.png"))
-              margin = Insets(0, 0, 0, 16)
-            },
-            new Region {
-              maxWidth = 900
-              margin = Insets(0, 0, 0, 160)
-            },
-            new Button {
-              minWidth = 120
-              minHeight = 66
-              id = "newButton"
-            })
+        top = new VBox {
+          vgrow = javafx.scene.layout.Priority.ALWAYS
+          hgrow = javafx.scene.layout.Priority.ALWAYS
           minWidth = 1200
-          id = "mainToolBar"
+          content = List(new ToolBar {
+            content = List(
+              new ImageView {
+                image = new Image(this.getClass.getResourceAsStream("images/logo1.png"))
+                margin = Insets(0, 0, 0, 10)
+              },
+              new Region {
+                minWidth = 250
+              },
+              new Button {
+                minWidth = 120
+                minHeight = 66
+                id = "newButton"
+              })
+            minWidth = 1200
+            id = "mainToolBar"
+          }, new ToolBar {
+            id = "page-toolbar"
+            minHeight = 29
+            maxWidth = Double.MaxValue
+            content = List(new Label {
+              text = "toolbar"
+            })
+          })
         }
         left = new HBox {
           title = "sidebar"
-          content =  List(new Accordion {
+          content = List(new Accordion {
             hgrow = javafx.scene.layout.Priority.ALWAYS
             minWidth = 300
             panes = List(
