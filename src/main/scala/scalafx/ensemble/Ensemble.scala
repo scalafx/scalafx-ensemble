@@ -65,13 +65,16 @@ object Ensemble extends JFXApp {
           hgrow = javafx.scene.layout.Priority.ALWAYS
           minWidth = 1200
           content = List(new ToolBar {
+            minHeight = 76
+            prefHeight = 76
+            maxHeight = 76
             content = List(
               new ImageView {
-                image = new Image(this.getClass.getResourceAsStream("images/logo1.png"))
+                image = new Image(this.getClass.getResourceAsStream("images/logo.png"))
                 margin = Insets(0, 0, 0, 10)
               },
               new Region {
-                minWidth = 250
+                minWidth = 200
               },
               new Button {
                 minWidth = 120
