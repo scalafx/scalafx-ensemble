@@ -35,6 +35,7 @@ import javafx.scene.paint.Color
 import scalafx.scene.control.Accordion
 import scalafx.scene.control.ListView
 import scalafx.scene.control.ToolBar
+import scalafx.scene.layout.GridPane
 
 object Ensemble extends JFXApp {
 
@@ -56,7 +57,7 @@ object Ensemble extends JFXApp {
       text = "text"
     }
   })
-   
+
   stage = new Stage {
     scene = new Scene(1200, 768) {
       content = new BorderPane {
@@ -89,29 +90,36 @@ object Ensemble extends JFXApp {
             maxWidth = Double.MaxValue
             content = List(new Label {
               text = "toolbar"
-            },new Label {
-              text = "toolbar"
-            },new Label {
-              text = "toolbar"
-            },new Label {
-              text = "toolbar"
-            })
-          })
-        }
-        left = new HBox {
-          title = "sidebar"
-          content = List(new Accordion {
-            hgrow = javafx.scene.layout.Priority.ALWAYS
-            minWidth = 300
-            panes = List(
-              new TitledPane {
-                content = new ListView {
-                }
+            },
+              new Button {
+                text = "toolbar"
+                styleClass = List("button")
+              }, new Button {
+                text = "toolbar"
+                styleClass = List("button")
+              }, new Button {
+                text = "toolbar"
+                styleClass = List("button")
               })
           })
         }
         center = new BorderPane {
-          center = tabs
+          minHeight = 768
+          center = new SplitPane {
+            maxWidth = java.lang.Double.MAX_VALUE
+            maxHeight = java.lang.Double.MAX_VALUE
+            dividerPositions = 0
+            id = "page-splitpane"
+            items.addAll(new Accordion {
+              hgrow = javafx.scene.layout.Priority.ALWAYS
+              minWidth = 200
+              panes = List(
+                new TitledPane {
+                  content = new ListView {
+                  }
+                })
+            }, tabs)
+          }
         }
         styleClass.add("application")
       }

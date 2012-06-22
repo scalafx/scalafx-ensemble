@@ -200,7 +200,7 @@
     -fx-border-image-slice: 1 0 1 0 fill;
     -fx-border-image-width: 1 0 1 0;
     -fx-border-image-repeat: stretch;
-    -fx-padding: -1px 0px 0px 0px;
+    -fx-padding: 0px 10px 5px 10px;
     -fx-spacing: 0;
 }
 #page-toolbar HBox {
