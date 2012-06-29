@@ -66,6 +66,7 @@ import scalafx.scene.control.TreeView
 import scalafx.scene.control.TreeItem
 import scalafx.event.EventType
 import scalafx.scene.input.MouseEvent
+import scalafx.ensemble.stage.CustomStage
 
 object Ensemble extends JFXApp {
 
@@ -88,12 +89,11 @@ object Ensemble extends JFXApp {
 		}
 	})
 
-	
 	val cflCrls = new TreeItem[String]("Colorful Circles")
 	// TODO should respond to a mouse clicked event and show up
 	// something.
 	/// cflCrls.addEventHandler(MouseEvent.MouseClicked, null)
-	
+
 	val rootTreeItem = new TreeItem[String]("ScalaFX Ensemble") {
 		expanded = true
 	}
@@ -105,7 +105,11 @@ object Ensemble extends JFXApp {
 		hgrow = javafx.scene.layout.Priority.ALWAYS
 		minWidth = 200
 		root = rootTreeItem
+		id = "page-tree"
 	}
+
+	val centerStage = new CustomStage().getStage
+
 	stage = new Stage {
 		scene = new Scene(1200, 768) {
 			content = new BorderPane {
@@ -132,23 +136,6 @@ object Ensemble extends JFXApp {
 							})
 						minWidth = 1200
 						id = "mainToolBar"
-					}, new ToolBar {
-						id = "page-toolbar"
-						minHeight = 29
-						maxWidth = Double.MaxValue
-						content = List(new Label {
-							text = "toolbar"
-						},
-							new Button {
-								text = "toolbar"
-								styleClass = List("button")
-							}, new Button {
-								text = "toolbar"
-								styleClass = List("button")
-							}, new Button {
-								text = "toolbar"
-								styleClass = List("button")
-							})
 					})
 				}
 				center = new BorderPane {
@@ -158,7 +145,7 @@ object Ensemble extends JFXApp {
 						maxHeight = java.lang.Double.MAX_VALUE
 						dividerPositions = 0
 						id = "page-splitpane"
-						items.addAll(controlsView, tabs)
+						items.addAll(controlsView, centerStage)
 					}
 				}
 				styleClass.add("application")
