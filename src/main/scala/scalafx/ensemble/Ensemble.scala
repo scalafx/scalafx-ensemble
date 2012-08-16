@@ -26,47 +26,36 @@
  */
 package scalafx.ensemble
 
-import javafx.geometry.Pos
-import javafx.geometry.VPos
-import javafx.stage.StageStyle
+import javafx.event.ActionEvent
+import javafx.event.EventHandler
+import javafx.scene.layout.Priority
 import scalafx.application.JFXApp
+import scalafx.ensemble.stage.Page
+import scalafx.geometry.Insets
 import scalafx.scene.Scene._
+import scalafx.scene.Scene
 import scalafx.scene.control.Accordion._
+import scalafx.scene.control.Button
 import scalafx.scene.control.Labeled._
+import scalafx.scene.control.SplitPane
+import scalafx.scene.control.Tab
+import scalafx.scene.control.TabPane
+import scalafx.scene.control.TextField
 import scalafx.scene.control.TitledPane._
-import scalafx.scene.control.Label
+import scalafx.scene.control.ToolBar
+import scalafx.scene.control.TreeItem
+import scalafx.scene.control.TreeView
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
-import scalafx.scene.layout.Pane._
 import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.HBox
+import scalafx.scene.layout.Pane._
+import scalafx.scene.layout.Region
 import scalafx.scene.layout.VBox
 import scalafx.scene.shape.Circle._
-import scalafx.scene.text.Font
-import scalafx.scene.text.Text
-import scalafx.scene.Scene
 import scalafx.stage.Stage._
 import scalafx.stage.Stage
-import scalafx.geometry.Insets
-import javafx.scene.layout.Priority
-import scalafx.scene.layout.Region
-import scalafx.scene.control.Button
-import scalafx.scene.control.SplitPane
-import scalafx.scene.control.TabPane
-import scalafx.scene.control.Tab
-import scalafx.scene.control.TextField
-import scalafx.scene.control.TitledPane
-import scalafx.scene.shape.Arc
-import javafx.scene.paint.Color
-import scalafx.scene.control.Accordion
-import scalafx.scene.control.ListView
-import scalafx.scene.control.ToolBar
-import scalafx.scene.layout.GridPane
-import scalafx.scene.control.TreeView
-import scalafx.scene.control.TreeItem
+import javafx.scene.input.MouseEvent
 import scalafx.event.EventType
-import scalafx.scene.input.MouseEvent
-import scalafx.ensemble.stage.CustomStage
 
 object Ensemble extends JFXApp {
 
@@ -97,8 +86,19 @@ object Ensemble extends JFXApp {
 	val rootTreeItem = new TreeItem[String]("ScalaFX Ensemble") {
 		expanded = true
 	}
-	val sfxControl = new TreeItem[String]("ScalaFX")
-	sfxControl.getChildren.addAll(new TreeItem[String]("Colorful Circles"), new TreeItem[String]("Hello ScalaFX"))
+
+	val sfxControl = new TreeItem[String]("Controls")
+
+	val controls = List(new TreeItem[String]("TextField"), new TreeItem[String]("Password"))
+	controls.foreach((control) => {
+		sfxControl.getChildren.add(control)
+		control.addEventHandler(new EventType[MouseEvent](), new EventHandler[MouseEvent] {
+			def handle(event: MouseEvent) {
+				println("mouse clicked -> " + event.getSource.toString)
+			}
+		})
+	})
+
 	rootTreeItem.getChildren.addAll(sfxControl)
 
 	val controlsView = new TreeView[String] {
@@ -108,7 +108,13 @@ object Ensemble extends JFXApp {
 		id = "page-tree"
 	}
 
-	val centerStage = new CustomStage().getStage
+//	controlsView.onMouseClicked = new EventHandler[MouseEvent] {
+//		def handle(event: MouseEvent) {
+//			println("mouse clicked --> " + event.getSource)
+//		}
+//	}
+
+	val centerStage = new Page().getPage
 
 	stage = new Stage {
 		scene = new Scene(1200, 768) {
@@ -153,5 +159,5 @@ object Ensemble extends JFXApp {
 		}
 		scene.get.getStylesheets.add(this.getClass.getResource("ensemble.css").toExternalForm)
 	}
-	stage.initStyle(StageStyle.UNDECORATED)
+	// stage.initStyle(StageStyle.UNDECORATED)
 }
