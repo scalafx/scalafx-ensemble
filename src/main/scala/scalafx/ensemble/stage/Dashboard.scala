@@ -24,50 +24,109 @@ import javafx.geometry.Orientation
 import javafx.geometry.Pos
 import scalafx.scene.layout.FlowPane
 import javafx.scene.text.TextAlignment
+import scalafx.scene.Node
 
-class Dashboard {
-	def getPage = {
-		new VBox {
-			vgrow = javafx.scene.layout.Priority.ALWAYS
-			hgrow = javafx.scene.layout.Priority.ALWAYS
-			style = "-fx-padding: 8px"
-			content = List(
-				new Text {
-					text = "Samples"
-					font = new Font("Sans-serif", 30)
-					style = "-fx-font-weight: bold;"
-				},
-				new Text {
-					text = "Controls"
-					font = new Font("Sans-serif", 20)
-				}, new FlowPane {
-					hgap = 4
-					vgap = 4
-					padding = Insets(5, 0, 5, 0)
-					prefWrapLength = 400
-					content = List(
-						new VBox {
-							content = List(new ImageView {
-								image = new Image(this.getClass.getResourceAsStream("../images/CalendarTextFieldSample.png"))
-							}, new Label {
-								text = "TextField"
-							})
-						}, new VBox {
-							content = List(new ImageView {
-								image = new Image(this.getClass.getResourceAsStream("../images/CalendarTextFieldSample.png"))
-							}, new Label {
-								text = "Password"
-							})
-						},
-						new VBox {
-							alignment = Pos.CENTER
-							content = List(new ImageView {
-								image = new Image(this.getClass.getResourceAsStream("../images/CalendarTextFieldSample.png"))
-							}, new Label {
-								text = "TextField"
-							})
-						})
-				})
-		}
-	}
+/**
+ * the page that displays content
+ * based on the TreeItem selected from left pane
+ */
+object PageDisplayer {
+
+  def choosePage(value: String = "dashBoard"):DisplayablePage= {
+    val nodeToAdd = value match {
+      case "dashBoard" => {
+        println("scalaFX")
+        new Dashboard()
+      }
+      case "TextField" =>  {
+        new EnsembleTextField()
+      }
+    }
+    nodeToAdd
+  }
+
+  def displayPage(nodeToAdd: DisplayablePage):Node= {
+    val pageContent = new VBox {
+      vgrow = javafx.scene.layout.Priority.ALWAYS
+      hgrow = javafx.scene.layout.Priority.ALWAYS
+    }
+    pageContent.content.removeAll()
+    pageContent.content.add(nodeToAdd.getPage)
+    pageContent
+  }
+
+}
+
+trait DisplayablePage {
+  def getPage: Node
+}
+
+class Dashboard extends DisplayablePage {
+  def getPage = {
+    new VBox {
+      vgrow = javafx.scene.layout.Priority.ALWAYS
+      hgrow = javafx.scene.layout.Priority.ALWAYS
+      style = "-fx-padding: 8px"
+      content = List(
+        new Text {
+          text = "Samples"
+          font = new Font("Sans-serif", 30)
+          style = "-fx-font-weight: bold;"
+        },
+        new Text {
+          text = "Controls"
+          font = new Font("Sans-serif", 20)
+        }, new FlowPane {
+          hgap = 4
+          vgap = 4
+          padding = Insets(5, 0, 5, 0)
+          prefWrapLength = 400
+          content = List(
+            new VBox {
+              content = List(new ImageView {
+                image = new Image(this.getClass.getResourceAsStream("../images/CalendarTextFieldSample.png"))
+              }, new Label {
+                text = "TextField"
+              })
+            }, new VBox {
+              content = List(new ImageView {
+                image = new Image(this.getClass.getResourceAsStream("../images/CalendarTextFieldSample.png"))
+              }, new Label {
+                text = "Password"
+              })
+            },
+            new VBox {
+              alignment = Pos.CENTER
+              content = List(new ImageView {
+                image = new Image(this.getClass.getResourceAsStream("../images/CalendarTextFieldSample.png"))
+              }, new Label {
+                text = "TextField"
+              })
+            })
+        })
+    }
+
+  }
+}
+
+
+class EnsembleTextField extends DisplayablePage {
+  def getPage = {
+    new VBox {
+      vgrow = javafx.scene.layout.Priority.ALWAYS
+      hgrow = javafx.scene.layout.Priority.ALWAYS
+      style = "-fx-padding: 8px"
+      content = List(
+        new Text {
+          text = "Samples"
+          font = new Font("Sans-serif", 30)
+          style = "-fx-font-weight: bold;"
+        },
+        new Text {
+          text = "Controls"
+          font = new Font("Sans-serif", 20)
+        })
+    }
+
+  }
 }
