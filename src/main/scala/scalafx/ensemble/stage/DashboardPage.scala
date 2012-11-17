@@ -28,7 +28,7 @@ import scalafx.scene.Node
 import scalafx.scene.control.TextField
 
 /**
- * the page that displays content
+ * the class that displays content
  * based on the TreeItem selected from left pane
  */
 object PageDisplayer {

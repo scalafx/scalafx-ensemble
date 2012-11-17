@@ -58,25 +58,6 @@ import javafx.scene.control.{ TreeItem => jxti }
 
 object Ensemble extends JFXApp {
   var centerStage = PageDisplayer.choosePage("dashBoard")
-  val tabs = new TabPane {
-    hgrow = javafx.scene.layout.Priority.ALWAYS
-  } += (new Tab {
-    text = "tab"
-    content = new TextField {
-      text = "text"
-    }
-  }) += (new Tab {
-    text = "tab"
-    content = new TextField {
-      text = "text"
-    }
-  }) += (new Tab {
-    text = "tab"
-    content = new TextField {
-      text = "text"
-    }
-  })
-
   val cflCrls = new TreeItem[String]("Colorful Circles")
   val rootTreeItem = new TreeItem[String]("ScalaFX Ensemble") {
     expanded = true
