@@ -25,6 +25,7 @@ import javafx.geometry.Pos
 import scalafx.scene.layout.FlowPane
 import javafx.scene.text.TextAlignment
 import scalafx.scene.Node
+import scalafx.scene.control.TextField
 
 /**
  * the page that displays content
@@ -32,20 +33,19 @@ import scalafx.scene.Node
  */
 object PageDisplayer {
 
-  def choosePage(value: String = "dashBoard"):DisplayablePage= {
-    val nodeToAdd = value match {
+  def choosePage(value: String = "dashBoard"):Node= {
+    value match {
       case "dashBoard" => {
         println("scalaFX")
-        new Dashboard()
+        displayPage(new DashboardPage())
       }
       case "TextField" =>  {
-        new EnsembleTextField()
+        displayPage(new TextFieldPage())
       }
     }
-    nodeToAdd
   }
 
-  def displayPage(nodeToAdd: DisplayablePage):Node= {
+  private def displayPage(nodeToAdd: DisplayablePage):Node= {
     val pageContent = new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
       hgrow = javafx.scene.layout.Priority.ALWAYS
@@ -61,7 +61,8 @@ trait DisplayablePage {
   def getPage: Node
 }
 
-class Dashboard extends DisplayablePage {
+// Dashboard 
+class DashboardPage extends DisplayablePage {
   def getPage = {
     new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
@@ -105,12 +106,11 @@ class Dashboard extends DisplayablePage {
             })
         })
     }
-
   }
 }
 
-
-class EnsembleTextField extends DisplayablePage {
+// class that show cases the textField control
+class TextFieldPage extends DisplayablePage {
   def getPage = {
     new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
@@ -121,12 +121,10 @@ class EnsembleTextField extends DisplayablePage {
           text = "Samples"
           font = new Font("Sans-serif", 30)
           style = "-fx-font-weight: bold;"
-        },
-        new Text {
-          text = "Controls"
-          font = new Font("Sans-serif", 20)
-        })
+        }, new TextField 
+        )
     }
-
   }
 }
+
+

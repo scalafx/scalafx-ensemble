@@ -33,7 +33,7 @@ import javafx.scene.control.{ TreeView => jxtv }
 import javafx.scene.layout.Priority
 import javafx.stage.StageStyle
 import scalafx.application.JFXApp
-import scalafx.ensemble.stage.Dashboard
+import scalafx.ensemble.stage.DashboardPage
 import scalafx.geometry.Insets
 import scalafx.scene.Node
 import scalafx.scene.Scene._
@@ -53,9 +53,11 @@ import scalafx.scene.input.MouseEvent
 import javafx.scene.control.MultipleSelectionModelBuilder
 import javafx.scene.control.SelectionMode
 import scalafx.ensemble.stage.PageDisplayer
+import scalafx.scene.control.TreeItem
+import javafx.scene.control.{ TreeItem => jxti }
 
 object Ensemble extends JFXApp {
-
+  var centerStage = PageDisplayer.choosePage("dashBoard")
   val tabs = new TabPane {
     hgrow = javafx.scene.layout.Priority.ALWAYS
   } += (new Tab {
@@ -99,21 +101,30 @@ object Ensemble extends JFXApp {
   controlsView.getSelectionModel.setSelectionMode(SelectionMode.SINGLE)
   controlsView.getSelectionModel.selectedItemProperty.addListener(new ChangeListener[Any] {
     def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
-      val selItem =  newValue.asInstanceOf[javafx.scene.control.TreeItem[String]]
-      
-      centerStage = PageDisplayer.displayPage(PageDisplayer.choosePage("TextField"))
+      val selItem = newValue.asInstanceOf[javafx.scene.control.TreeItem[String]]
+      centerStage = PageDisplayer.choosePage("TextField")
+      val ti = (newValue).asInstanceOf[jxti[String]]
+      if (ti.isLeaf()) {
+        pageViewHolder.items.remove(1)
+        pageViewHolder.items.add(1, centerStage)
+      }
     }
   })
 
-  var centerStage = PageDisplayer.displayPage(PageDisplayer.choosePage("dashBoard"))
-  
+  val pageViewHolder = new SplitPane {
+    maxWidth = java.lang.Double.MAX_VALUE
+    maxHeight = java.lang.Double.MAX_VALUE
+    dividerPositions = 0
+    id = "page-splitpane"
+    items.addAll(controlsView, centerStage)
+  }
+
   stage = new Stage {
     scene = new Scene(1200, 768) {
       content = new BorderPane {
         top = new VBox {
           vgrow = javafx.scene.layout.Priority.ALWAYS
           hgrow = javafx.scene.layout.Priority.ALWAYS
-          minWidth = 1200
           content = List(new ToolBar {
             minHeight = 76
             prefHeight = 76
@@ -131,24 +142,17 @@ object Ensemble extends JFXApp {
                 minHeight = 66
                 id = "newButton"
               })
-            minWidth = 1200
             id = "mainToolBar"
           })
         }
         center = new BorderPane {
           minHeight = 768
-          center = new SplitPane {
-            maxWidth = java.lang.Double.MAX_VALUE
-            maxHeight = java.lang.Double.MAX_VALUE
-            dividerPositions = 0
-            id = "page-splitpane"
-            items.addAll(controlsView, centerStage)
-          }
+          center = pageViewHolder
         }
         styleClass.add("application")
       }
     }
     scene.get.getStylesheets.add(this.getClass.getResource("ensemble.css").toExternalForm)
   }
-  stage.initStyle(StageStyle.UNDECORATED)
+  stage.initStyle(StageStyle.DECORATED)
 }
