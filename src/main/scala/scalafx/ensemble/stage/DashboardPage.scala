@@ -112,19 +112,9 @@ class DashboardPage extends DisplayablePage {
 // class that show cases the textField control
 class TextFieldPage extends DisplayablePage {
   def getPage = {
-    new VBox {
-      vgrow = javafx.scene.layout.Priority.ALWAYS
-      hgrow = javafx.scene.layout.Priority.ALWAYS
-      style = "-fx-padding: 8px"
-      content = List(
-        new Text {
-          text = "Samples"
-          font = new Font("Sans-serif", 30)
-          style = "-fx-font-weight: bold;"
-        }, new TextField 
-        )
-    }
+    EnsembleTabbedPage.buildTab().drawPage
   }
 }
+
 
 

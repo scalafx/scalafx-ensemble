@@ -55,6 +55,7 @@ import javafx.scene.control.SelectionMode
 import scalafx.ensemble.stage.PageDisplayer
 import scalafx.scene.control.TreeItem
 import javafx.scene.control.{ TreeItem => jxti }
+import scalafx.stage.Screen
 
 object Ensemble extends JFXApp {
   var centerStage = PageDisplayer.choosePage("dashBoard")
@@ -62,8 +63,6 @@ object Ensemble extends JFXApp {
   val rootTreeItem = new TreeItem[String]("ScalaFX Ensemble") {
     expanded = true
   }
-  val entType = new EventType("clickc")
-  entType.getSuperType()
 
   val sfxControl = new TreeItem[String]("Controls")
   val controls = List(new TreeItem[String]("TextField"), new TreeItem[String]("Password"))
@@ -83,15 +82,13 @@ object Ensemble extends JFXApp {
   controlsView.getSelectionModel.selectedItemProperty.addListener(new ChangeListener[Any] {
     def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
       val selItem = newValue.asInstanceOf[javafx.scene.control.TreeItem[String]]
-      centerStage = PageDisplayer.choosePage("TextField")
-      val ti = (newValue).asInstanceOf[jxti[String]]
-      if (ti.isLeaf()) {
+      centerStage = PageDisplayer.choosePage(selItem.getValue())
+      if (selItem.isLeaf()) {
         pageViewHolder.items.remove(1)
         pageViewHolder.items.add(1, centerStage)
       }
     }
   })
-
   val pageViewHolder = new SplitPane {
     maxWidth = java.lang.Double.MAX_VALUE
     maxHeight = java.lang.Double.MAX_VALUE
@@ -99,9 +96,10 @@ object Ensemble extends JFXApp {
     id = "page-splitpane"
     items.addAll(controlsView, centerStage)
   }
-
+  
+  val screen = Screen.primary
   stage = new Stage {
-    scene = new Scene(1200, 768) {
+    scene = new Scene() {
       content = new BorderPane {
         top = new VBox {
           vgrow = javafx.scene.layout.Priority.ALWAYS
@@ -135,5 +133,7 @@ object Ensemble extends JFXApp {
     }
     scene.get.getStylesheets.add(this.getClass.getResource("ensemble.css").toExternalForm)
   }
+  stage.width = screen.getVisualBounds().getWidth()
+  stage.height = screen.getVisualBounds().getHeight()
   stage.initStyle(StageStyle.DECORATED)
 }
