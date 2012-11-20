@@ -18,6 +18,10 @@ object EnsembleTabbedPage {
     demoTab.text = "Demo"
     val srcTab = new Tab()
     srcTab.text = "Source"
+    
+    demoTab.closable_=(false)
+    srcTab.closable_=(false)
+      
     tabbedPage.getTabs().add(demoTab)
     tabbedPage.getTabs().add(srcTab)
     tabbedPage
