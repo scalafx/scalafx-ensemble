@@ -115,6 +115,3 @@ class TextFieldPage extends DisplayablePage {
     EnsembleTabbedPage.buildTab().drawPage
   }
 }
-
-
-

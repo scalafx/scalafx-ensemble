@@ -9,6 +9,7 @@ import scalafx.scene.layout.VBox
 import scalafx.scene.text.Text
 import scalafx.scene.text.Font
 import scalafx.scene.Node
+import scalafx.ensemble.example.EnsembleExample
 
 object EnsembleTabbedPage {
   
@@ -33,26 +34,17 @@ object EnsembleTabbedPage {
   }
 }
 
-object MockContent {
-  def giveMockContent() = {
-    new VBox {
-      vgrow = javafx.scene.layout.Priority.ALWAYS
-      hgrow = javafx.scene.layout.Priority.ALWAYS
-      style = "-fx-padding: 8px"
-      content = List(
-        new Text {
-          text = "Samples"
-          font = new Font("Sans-serif", 30)
-          style = "-fx-font-weight: bold;"
-        }, new TextField)
-    }
+object ContentFactory {
+  def createContent(ctrlName:String) = {
+    val example = Class.forName("scalafx.ensemble.example.Ensemble"+ctrlName)
+    example.newInstance().asInstanceOf[EnsembleExample].getContent
   }
 }
 
 class EnsembleTabbedPage(tabPane: TabPane) {
   def drawPage() = {
     tabPane.getTabs().get(0).setContent(
-        EnsembleTabbedPage.buildTabContent(MockContent.giveMockContent))
+        EnsembleTabbedPage.buildTabContent(ContentFactory.createContent("TextField")))
     tabPane    
   }
 }
