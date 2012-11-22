@@ -40,7 +40,7 @@ object PageDisplayer {
         displayPage(new DashboardPage())
       }
       case _ =>  {
-        displayPage(EnsembleTabbedPage.buildTab)
+        displayPage(EnsembleTabbedPage.buildTab(value))
       }
     }
   }
