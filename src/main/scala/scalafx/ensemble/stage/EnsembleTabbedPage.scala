@@ -12,7 +12,7 @@ import scalafx.scene.Node
 import scalafx.ensemble.example.EnsembleExample
 
 object EnsembleTabbedPage {
-  
+
   def buildTab() = {
     val tabbedPage = new TabPane()
     val demoTab = new Tab()
@@ -34,18 +34,17 @@ object EnsembleTabbedPage {
   }
 }
 
+class EnsembleTabbedPage(tabPane: TabPane) extends DisplayablePage {
+  def getPage() = {
+    tabPane.getTabs().get(0).setContent(
+      EnsembleTabbedPage.buildTabContent(ContentFactory.createContent("TextField")))
+    tabPane
+  }
+}
+
 object ContentFactory {
-  def createContent(ctrlName:String) = {
-    val example = Class.forName("scalafx.ensemble.example.Ensemble"+ctrlName)
+  def createContent(ctrlName: String) = {
+    val example = Class.forName("scalafx.ensemble.example.Ensemble" + ctrlName)
     example.newInstance().asInstanceOf[EnsembleExample].getContent
   }
 }
-
-class EnsembleTabbedPage(tabPane: TabPane) {
-  def drawPage() = {
-    tabPane.getTabs().get(0).setContent(
-        EnsembleTabbedPage.buildTabContent(ContentFactory.createContent("TextField")))
-    tabPane    
-  }
-}
-

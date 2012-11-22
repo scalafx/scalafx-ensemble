@@ -39,8 +39,8 @@ object PageDisplayer {
         println("scalaFX")
         displayPage(new DashboardPage())
       }
-      case "TextField" =>  {
-        displayPage(new TextFieldPage())
+      case _ =>  {
+        displayPage(EnsembleTabbedPage.buildTab)
       }
     }
   }
@@ -109,9 +109,3 @@ class DashboardPage extends DisplayablePage {
   }
 }
 
-// class that show cases the textField control
-class TextFieldPage extends DisplayablePage {
-  def getPage = {
-    EnsembleTabbedPage.buildTab().drawPage
-  }
-}
