@@ -19,10 +19,10 @@ object EnsembleTabbedPage {
     demoTab.text = "Demo"
     val srcTab = new Tab()
     srcTab.text = "Source"
-    
-    demoTab.closable_=(false)
-    srcTab.closable_=(false)
-      
+
+    demoTab.closable = false
+    srcTab.closable = false
+
     tabbedPage.getTabs().add(demoTab)
     tabbedPage.getTabs().add(srcTab)
     tabbedPage
@@ -55,7 +55,8 @@ object ContentFactory {
     } else {
       val inst = Class.forName(qualCtrl).newInstance().asInstanceOf[EnsembleExample]
       cache = cache.+((qualCtrl, inst))
-      inst.getContent 
+      println(cache)
+      inst.getContent
     }
   }
 }

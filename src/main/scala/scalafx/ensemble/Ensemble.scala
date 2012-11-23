@@ -59,11 +59,10 @@ import scalafx.stage.Screen
 
 object Ensemble extends JFXApp {
   var centerStage = PageDisplayer.choosePage("dashBoard")
-  val cflCrls = new TreeItem[String]("Colorful Circles")
+
   val rootTreeItem = new TreeItem[String]("ScalaFX Ensemble") {
     expanded = true
   }
-
   val sfxControl = new TreeItem[String]("Controls")
   val controls = List(new TreeItem[String]("TextField"), new TreeItem[String]("Password"))
   controls.foreach((control) => {
@@ -73,7 +72,8 @@ object Ensemble extends JFXApp {
 
   val controlsView = new TreeView[String]() {
     hgrow = javafx.scene.layout.Priority.ALWAYS
-    minWidth = 200
+    minWidth = 250
+    maxWidth = 250
     editable = true
     root = rootTreeItem
     id = "page-tree"
@@ -90,13 +90,11 @@ object Ensemble extends JFXApp {
     }
   })
   val pageViewHolder = new SplitPane {
-    maxWidth = java.lang.Double.MAX_VALUE
-    maxHeight = java.lang.Double.MAX_VALUE
     dividerPositions = 0
     id = "page-splitpane"
     items.addAll(controlsView, centerStage)
   }
-  
+
   val screen = Screen.primary
   stage = new Stage {
     scene = new Scene() {
@@ -105,7 +103,7 @@ object Ensemble extends JFXApp {
           vgrow = javafx.scene.layout.Priority.ALWAYS
           hgrow = javafx.scene.layout.Priority.ALWAYS
           content = List(new ToolBar {
-            minHeight = 76
+            minWidth = screen.getBounds().getWidth()
             prefHeight = 76
             maxHeight = 76
             content = List(
@@ -125,7 +123,7 @@ object Ensemble extends JFXApp {
           })
         }
         center = new BorderPane {
-          minHeight = 768
+          minHeight = screen.getBounds().getHeight()
           center = pageViewHolder
         }
         styleClass.add("application")
@@ -135,5 +133,5 @@ object Ensemble extends JFXApp {
   }
   stage.width = screen.getVisualBounds().getWidth()
   stage.height = screen.getVisualBounds().getHeight()
-  stage.initStyle(StageStyle.DECORATED)
+  stage.initStyle(StageStyle.UNDECORATED)
 }
