@@ -63,8 +63,10 @@ object Ensemble extends JFXApp {
   val rootTreeItem = new TreeItem[String]("ScalaFX Ensemble") {
     expanded = true
   }
-  val sfxControl = new TreeItem[String]("Controls")
-  val controls = List(new TreeItem[String]("TextField"), new TreeItem[String]("Password"))
+  val sfxControl = new TreeItem[String]("Controls"){
+    expanded = true
+  }
+  val controls = List(new TreeItem[String]("TextField"), new TreeItem[String]("Password"),new TreeItem[String]("Label"))
   controls.foreach((control) => {
     sfxControl.getChildren.add(control)
   })
