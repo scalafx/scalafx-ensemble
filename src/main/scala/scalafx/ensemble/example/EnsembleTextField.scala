@@ -1,14 +1,10 @@
 package scalafx.ensemble.example
 
-import scalafx.scene.layout.VBox
-import scalafx.scene.text.Text
-import scalafx.scene.text.Font
 import scalafx.scene.control.TextField
-import scalafx.scene.Node
-
-trait EnsembleExample {
-  def getContent:Node
-}
+import scalafx.scene.layout.VBox
+import scalafx.scene.text.Font
+import scalafx.scene.text.Text
+import scalafx.ensemble.commons.EnsembleExample
 
 class EnsembleTextField extends EnsembleExample{
 	def getContent = {

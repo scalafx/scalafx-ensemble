@@ -9,7 +9,8 @@ import scalafx.scene.layout.VBox
 import scalafx.scene.text.Text
 import scalafx.scene.text.Font
 import scalafx.scene.Node
-import scalafx.ensemble.example.EnsembleExample
+import scalafx.ensemble.commons.EnsembleExample
+import scalafx.ensemble.commons.ContentFactory
 
 object EnsembleTabbedPage {
 
@@ -25,7 +26,6 @@ object EnsembleTabbedPage {
 
     tabbedPage.getTabs().add(demoTab)
     tabbedPage.getTabs().add(srcTab)
-    tabbedPage
     new EnsembleTabbedPage(tabbedPage, ctrlName)
   }
 
@@ -46,17 +46,3 @@ class EnsembleTabbedPage(tabPane: TabPane, ctrlName: String) extends Displayable
   }
 }
 
-object ContentFactory {
-  def createContent(ctrlName: String) = {
-    val qualCtrl = "scalafx.ensemble.example.Ensemble" + ctrlName
-    var cache = Map[String, EnsembleExample]()
-    if (cache.get(qualCtrl).isDefined) {
-      cache.get(qualCtrl).get.getContent
-    } else {
-      val inst = Class.forName(qualCtrl).newInstance().asInstanceOf[EnsembleExample]
-      cache = cache.+((qualCtrl, inst))
-      println(cache)
-      inst.getContent
-    }
-  }
-}
