@@ -11,6 +11,7 @@ import scalafx.scene.text.Font
 import scalafx.scene.Node
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.ensemble.commons.ContentFactory
+import scalafx.ensemble.commons.DisplayablePage
 
 object EnsembleTabbedPage {
 

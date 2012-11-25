@@ -52,10 +52,10 @@ import scalafx.stage.Stage
 import scalafx.scene.input.MouseEvent
 import javafx.scene.control.MultipleSelectionModelBuilder
 import javafx.scene.control.SelectionMode
-import scalafx.ensemble.stage.PageDisplayer
 import scalafx.scene.control.TreeItem
 import javafx.scene.control.{ TreeItem => jxti }
 import scalafx.stage.Screen
+import scalafx.ensemble.commons.PageDisplayer
 
 object Ensemble extends JFXApp {
   var centerStage = PageDisplayer.choosePage("dashBoard")

@@ -1,9 +1,12 @@
 package scalafx.ensemble.commons
 
 import scalafx.scene.Node
+import scalafx.scene.layout.VBox
+import scalafx.ensemble.stage.DashboardPage
+import scalafx.ensemble.stage.EnsembleTabbedPage
 
 trait EnsembleExample {
-  def getContent:Node
+  def getContent: Node
 }
 
 object ContentFactory {
@@ -19,4 +22,38 @@ object ContentFactory {
       inst.getContent
     }
   }
+}
+
+/**
+ * the class that displays content
+ * based on the TreeItem selected from left pane
+ */
+object PageDisplayer {
+
+  def choosePage(value: String = "dashBoard"): Node = {
+    value match {
+      case "dashBoard" => {
+        println("scalaFX")
+        displayPage(new DashboardPage())
+      }
+      case _ => {
+        displayPage(EnsembleTabbedPage.buildTab(value))
+      }
+    }
+  }
+
+  private def displayPage(nodeToAdd: DisplayablePage): Node = {
+    val pageContent = new VBox {
+      vgrow = javafx.scene.layout.Priority.ALWAYS
+      hgrow = javafx.scene.layout.Priority.ALWAYS
+    }
+    pageContent.content.removeAll()
+    pageContent.content.add(nodeToAdd.getPage)
+    pageContent
+  }
+
+}
+
+trait DisplayablePage {
+  def getPage: Node
 }

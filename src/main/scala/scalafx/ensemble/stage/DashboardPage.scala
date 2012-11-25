@@ -26,40 +26,8 @@ import scalafx.scene.layout.FlowPane
 import javafx.scene.text.TextAlignment
 import scalafx.scene.Node
 import scalafx.scene.control.TextField
+import scalafx.ensemble.commons.DisplayablePage
 
-/**
- * the class that displays content
- * based on the TreeItem selected from left pane
- */
-object PageDisplayer {
-
-  def choosePage(value: String = "dashBoard"):Node= {
-    value match {
-      case "dashBoard" => {
-        println("scalaFX")
-        displayPage(new DashboardPage())
-      }
-      case _ =>  {
-        displayPage(EnsembleTabbedPage.buildTab(value))
-      }
-    }
-  }
-
-  private def displayPage(nodeToAdd: DisplayablePage):Node= {
-    val pageContent = new VBox {
-      vgrow = javafx.scene.layout.Priority.ALWAYS
-      hgrow = javafx.scene.layout.Priority.ALWAYS
-    }
-    pageContent.content.removeAll()
-    pageContent.content.add(nodeToAdd.getPage)
-    pageContent
-  }
-
-}
-
-trait DisplayablePage {
-  def getPage: Node
-}
 
 // Dashboard 
 class DashboardPage extends DisplayablePage {
