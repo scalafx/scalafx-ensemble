@@ -46,4 +46,3 @@ class EnsembleTabbedPage(tabPane: TabPane, ctrlName: String) extends Displayable
     tabPane
   }
 }
-
