@@ -2,6 +2,8 @@ project/project/target/
 project/project/
 target/
 classes
+.settings/
+bin/
 
 .cache
 .history

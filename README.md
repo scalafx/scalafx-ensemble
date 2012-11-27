@@ -10,17 +10,29 @@ of ScalaFX to get inspired to start building apps. This project is inspired from
 
 Setup
 =====
+* Download the [Typesafe Scala IDE](http://typesafe.com/stack/scala_ide_download)
+* Clone the ensemble project
+* Download the latest [SBT](http://www.scala-sbt.org/) 
+* Open commandprompt/terminal, navigate to the clonde folder, run `eclipse` command
+* Open the ScalaIDE and import the cloned folder and you are all done!
 
-
-How to run from source
-======================
-Once you clone the project you can run using SBT!
+For the impatient
+=================
+* Clone the ensemble project
+* Download the latest [SBT](http://www.scala-sbt.org/)
+* Open commandprompt/terminal, navigate to the clonde folder, run `run` command
 
 Project Status
 ==============
 This project is under construction.
 
 > This project is currently maintained by JUGChennai, once it get shape will be moved to ScalaFX repo.
+
+Mailing list
+============
+We have two group to job
+[Dev](https://groups.google.com/forum/?fromgroups#!forum/scalafx-dev) - For ScalaFX contributors/committers
+[User](https://groups.google.com/forum/?fromgroups#!forum/scalafx-users) - For users of ScalaFX
 
 License
 =======
