@@ -20,7 +20,7 @@ Project Status
 ==============
 This project is under construction.
 
-> This project is currently maintained by JUGChennai, once it get shape will be moved to ScalaFX repo.
+> This project is currently maintained by [JUGChennai](https://groups.google.com/forum/?fromgroups=#!forum/jugchennai), once it get shape will be moved to ScalaFX repo.
 
 License
 =======
