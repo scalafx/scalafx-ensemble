@@ -1,17 +1,51 @@
-Scalafx Ensemble
+ScalaFX Ensemble
 ================
 
 ScalaFX Ensemble show cases various controls that have been implemented in scalaFX. Each control
-displays a running example and code. We believe ScalaFX ensemble could help beginners or adopters 
-of scalaFX to get inspired to start building apps. This project itself is inspired from 
-JavaFX-ensemble. 
+displays a running example and code. We believe ScalaFX Ensemble could help beginners or adopters 
+of ScalaFX to get inspired to start building apps. This project is inspired from JavaFX Ensemble. 
 
-If you are also a Scala enthusiast you are most welcome to contribute to this project by 
+[Home Page](http://jugchennai.github.com/scalafx-ensemble/)
 
-Identifying the controls which are in ScalaFX and not showcased in ScalaFX Ensemble
 
-Create a working example of the said control which in turn could be added here
+Setup
+=====
 
-For more info <trello project page>
 
-This project is maintained and incubated under JUGChennai...  
+How to run from source
+======================
+Once you clone the project you can run using SBT!
+
+Project Status
+==============
+This project is under construction.
+
+> This project is currently maintained by JUGChennai, once it get shape will be moved to ScalaFX repo.
+
+License
+=======
+ Copyright (c) 2012, ScalaFX Project
+ All rights reserved.
+
+ Redistribution and use in source and binary forms, with or without
+ modification, are permitted provided that the following conditions are met:
+ * Redistributions of source code must retain the above copyright
+ notice, this list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright
+ notice, this list of conditions and the following disclaimer in the
+ documentation and/or other materials provided with the distribution.
+ * Neither the name of the ScalaFX Project nor the
+ names of its contributors may be used to endorse or promote products
+ derived from this software without specific prior written permission.
+
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE SCALAFX PROJECT OR ITS CONTRIBUTORS BE LIABLE
+ FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED
+ AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
