@@ -10,8 +10,8 @@ trait EnsembleExample {
 }
 
 object ContentFactory {
-  def createContent(ctrlName: String) = {
-    val qualCtrl = "scalafx.ensemble.example.Ensemble" + ctrlName
+  def createContent(ctrlName: String, ctrlgroupName: String = "") = {
+    val qualCtrl = "scalafx.ensemble.example." + ctrlgroupName + ".Ensemble" + ctrlName
     var cache = Map[String, EnsembleExample]()
     if (cache.get(qualCtrl).isDefined) {
       cache.get(qualCtrl).get.getContent
@@ -33,11 +33,10 @@ object PageDisplayer {
   def choosePage(value: String = "dashBoard"): Node = {
     value match {
       case "dashBoard" => {
-        println("scalaFX")
         displayPage(new DashboardPage())
       }
       case _ => {
-        displayPage(EnsembleTabbedPage.buildTab(value))
+        displayPage(EnsembleTabbedPage.buildTab(value,"controls"))
       }
     }
   }

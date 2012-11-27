@@ -15,7 +15,7 @@ import scalafx.ensemble.commons.DisplayablePage
 
 object EnsembleTabbedPage {
 
-  def buildTab(ctrlName: String) = {
+  def buildTab(ctrlName: String, ctrlgrop: String) = {
     val tabbedPage = new TabPane()
     val demoTab = new Tab()
     demoTab.text = "Demo"
@@ -27,7 +27,7 @@ object EnsembleTabbedPage {
 
     tabbedPage.getTabs().add(demoTab)
     tabbedPage.getTabs().add(srcTab)
-    new EnsembleTabbedPage(tabbedPage, ctrlName)
+    new EnsembleTabbedPage(tabbedPage, ctrlName, ctrlgrop)
   }
 
   def buildTabContent(node: Node) = {
@@ -39,10 +39,11 @@ object EnsembleTabbedPage {
   }
 }
 
-class EnsembleTabbedPage(tabPane: TabPane, ctrlName: String) extends DisplayablePage {
+class EnsembleTabbedPage(tabPane: TabPane, ctrlName: String, ctrlGroup: String)
+	extends DisplayablePage {
   def getPage() = {
     tabPane.getTabs().get(0).setContent(
-      EnsembleTabbedPage.buildTabContent(ContentFactory.createContent(ctrlName)))
+      EnsembleTabbedPage.buildTabContent(ContentFactory.createContent(ctrlName,ctrlGroup)))
     tabPane
   }
 }

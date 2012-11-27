@@ -53,13 +53,13 @@ class DashboardPage extends DisplayablePage {
           content = List(
             new VBox {
               content = List(new ImageView {
-                image = new Image(this.getClass.getResourceAsStream("../images/CalendarTextFieldSample.png"))
+                image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/CalendarTextFieldSample.png"))
               }, new Label {
                 text = "TextField"
               })
             }, new VBox {
               content = List(new ImageView {
-                image = new Image(this.getClass.getResourceAsStream("../images/CalendarTextFieldSample.png"))
+                image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/CalendarTextFieldSample.png"))
               }, new Label {
                 text = "Password"
               })
@@ -67,7 +67,7 @@ class DashboardPage extends DisplayablePage {
             new VBox {
               alignment = Pos.CENTER
               content = List(new ImageView {
-                image = new Image(this.getClass.getResourceAsStream("../images/CalendarTextFieldSample.png"))
+                image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/CalendarTextFieldSample.png"))
               }, new Label {
                 text = "TextField"
               })
