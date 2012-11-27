@@ -1,4 +1,11 @@
 project/project/target/
 project/project/
 target/
+classes
+
 .cache
+.history
+
+
+.classpath
+.project
