@@ -33,8 +33,10 @@ This project is under construction.
 
 Mailing list
 ============
-We have two group to job
+You have two group to join
+
 [Dev](https://groups.google.com/forum/?fromgroups#!forum/scalafx-dev) - For ScalaFX contributors/committers
+
 [User](https://groups.google.com/forum/?fromgroups#!forum/scalafx-users) - For users of ScalaFX
 
 License
