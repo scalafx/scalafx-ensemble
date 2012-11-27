@@ -1,9 +1,9 @@
 ScalaFX Ensemble
 ================
 
-ScalaFX Ensemble show cases various controls that have been implemented in [scalaFX](http://code.google.com/p/scalafx/). Each control
+ScalaFX Ensemble show cases various controls that have been implemented in scalaFX. Each control
 displays a running example and code. We believe ScalaFX Ensemble could help beginners or adopters 
-of ScalaFX to get inspired to start building apps. This project is inspired from [JavaFX Ensemble](http://www.oracle.com/technetwork/java/javafx/samples/index.html). 
+of ScalaFX to get inspired to start building apps. This project is inspired from JavaFX Ensemble. 
 
 [Home Page](http://jugchennai.github.com/scalafx-ensemble/)
 
@@ -26,7 +26,7 @@ Project Status
 ==============
 This project is under construction.
 
-> This project is currently maintained by [JUGChennai](https://groups.google.com/forum/?fromgroups=#!forum/jugchennai), once it get shape will be moved to ScalaFX repo.
+> This project is currently maintained by JUGChennai, once it get shape will be moved to ScalaFX repo.
 
 Mailing list
 ============
