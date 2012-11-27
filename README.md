@@ -13,14 +13,17 @@ Setup
 * Download the [Typesafe Scala IDE](http://typesafe.com/stack/scala_ide_download)
 * Clone the ensemble project
 * Download the latest [SBT](http://www.scala-sbt.org/) 
-* Open commandprompt/terminal, navigate to the clonde folder, run `eclipse` command
+* Open a commandprompt/terminal, navigate to the clonde folder
+* Type `sbt` and the sbt will downlaod all dependencies
+* Now run `eclipse` command
 * Open the ScalaIDE and import the cloned folder and you are all done!
 
 For the impatient
 =================
 * Clone the ensemble project
 * Download the latest [SBT](http://www.scala-sbt.org/)
-* Open commandprompt/terminal, navigate to the clonde folder, run `run` command
+* Type `sbt` and the sbt will downlaod all dependencies
+* Now run `eclipse` command. You will see a running ScalaFX Ensemble!
 
 Project Status
 ==============
