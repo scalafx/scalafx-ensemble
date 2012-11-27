@@ -17,15 +17,9 @@ scalaVersion := "2.9.2"
 
 resolvers += "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository"
 
-unmanagedSourceDirectories in Compile <++= baseDirectory { base =>
-Seq(
-base / "src",
-base / "demo"
-)
-}
 
 // set the Scala test source directory to be <base>/test
-scalaSource in Test <<= baseDirectory(_ / "test")
+//scalaSource in Test <<= baseDirectory(_ / "test")
 
 // testListeners <<= target.map(t => Seq(new eu.henkelmann.sbt.JUnitXmlTestsListener(t.getAbsolutePath)))
 
@@ -105,7 +99,7 @@ parallelExecution in Test := false
 // For Java 7 update 06 the JFXRT JAR is part of the Java Runtime Environment
 unmanagedJars in Compile += Attributed.blank(file(System.getenv("JAVA_HOME") + "/jre/lib/jfxrt.jar"))
 
-unmanagedJars in Compile += Attributed.blank(file("./lib/scalafx-1.0-SNAPSHOT.jar"))
+//unmanagedJars in Compile += Attributed.blank(file("./lib/scalafx-1.0-SNAPSHOT.jar"))
 
 // publish test jar, sources, and docs
 publishArtifact in Test := false
