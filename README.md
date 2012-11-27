@@ -1,9 +1,9 @@
 ScalaFX Ensemble
 ================
 
-ScalaFX Ensemble show cases various controls that have been implemented in scalaFX. Each control
+ScalaFX Ensemble show cases various controls that have been implemented in [scalaFX](http://code.google.com/p/scalafx/). Each control
 displays a running example and code. We believe ScalaFX Ensemble could help beginners or adopters 
-of ScalaFX to get inspired to start building apps. This project is inspired from JavaFX Ensemble. 
+of ScalaFX to get inspired to start building apps. This project is inspired from [JavaFX Ensemble](http://www.oracle.com/technetwork/java/javafx/samples/index.html). 
 
 [Home Page](http://jugchennai.github.com/scalafx-ensemble/)
 
