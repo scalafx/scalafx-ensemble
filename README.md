@@ -15,7 +15,7 @@ Setup
 * Download the latest [SBT](http://www.scala-sbt.org/) 
 * Open a commandprompt/terminal, navigate to the clonde folder
 * Type `sbt` and the sbt will downlaod all dependencies 
-  (Note : before using `sbt` ensure that JAVA_HOME environment variable,JDK 1.7 would be better)
+  (Note : before using `sbt` ensure that JAVA_HOME environment variable is set, JDK 1.7 would be better)
 * Now run `eclipse` command
 * Open the ScalaIDE and import the cloned folder and you are all done!
 
