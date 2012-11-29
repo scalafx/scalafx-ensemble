@@ -59,18 +59,14 @@ import scalafx.ensemble.commons.PageDisplayer
 
 object Ensemble extends JFXApp {
   var centerStage = PageDisplayer.choosePage("dashBoard")
-
   val rootTreeItem = new TreeItem[String]("ScalaFX Ensemble") {
     expanded = true
   }
-  val sfxControl = new TreeItem[String]("Controls"){
-    expanded = true
-  }
-  val controls = List(new TreeItem[String]("TextField"), new TreeItem[String]("Password"),new TreeItem[String]("Label"))
-  controls.foreach((control) => {
-    sfxControl.getChildren.add(control)
+ 
+  val sfxControl = EnsembleControlsTree.createTree.getTree
+  sfxControl.foreach(x => {
+	  rootTreeItem.getChildren.add(x)
   })
-  rootTreeItem.getChildren.addAll(sfxControl)
 
   val controlsView = new TreeView[String]() {
     hgrow = javafx.scene.layout.Priority.ALWAYS
@@ -135,5 +131,5 @@ object Ensemble extends JFXApp {
   }
   stage.width = screen.getVisualBounds().getWidth()
   stage.height = screen.getVisualBounds().getHeight()
-  stage.initStyle(StageStyle.UNDECORATED)
+  stage.initStyle(StageStyle.DECORATED)
 }
