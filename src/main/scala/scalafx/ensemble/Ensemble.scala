@@ -70,8 +70,8 @@ object Ensemble extends JFXApp {
 
   val controlsView = new TreeView[String]() {
     hgrow = javafx.scene.layout.Priority.ALWAYS
-    minWidth = 250
-    maxWidth = 250
+    minWidth = 200
+    maxWidth = 200
     editable = true
     root = rootTreeItem
     id = "page-tree"
