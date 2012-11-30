@@ -72,7 +72,7 @@
 #highlightsButton {
 	-fx-background-color: null;
 	-fx-padding: -10 0 -10 0;
-	-fx-background-image: url("images/ribbon-highlights.png");
+	-fx-background-image: url("/scalafx/ensemble/images/ribbon-highlights.png");
 	-fx-background-position: left top;
 	-fx-background-repeat: no-repeat;
 }
