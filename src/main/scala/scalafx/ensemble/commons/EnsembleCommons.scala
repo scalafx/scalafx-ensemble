@@ -31,11 +31,11 @@ object PageDisplayer {
       case "dashBoard" => {
         displayPage(new DashboardPage())
       }
-//      case "dashBoard - " => {
-//        
-//      }
+  //   		case "dashBoard - " => {
+  //        
+  //      }
       case _ => {
-        displayPage(EnsembleTabbedPage.buildTab(value,"controls"))
+        displayPage(EnsembleTabbedPage.buildTab(value, "controls"))
       }
     }
   }
@@ -44,6 +44,7 @@ object PageDisplayer {
     val pageContent = new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
       hgrow = javafx.scene.layout.Priority.ALWAYS
+      styleClass.add("category-page")
     }
     pageContent.content.removeAll()
     pageContent.content.add(nodeToAdd.getPage)

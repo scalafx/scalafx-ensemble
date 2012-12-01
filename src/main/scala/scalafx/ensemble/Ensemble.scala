@@ -98,6 +98,7 @@ object Ensemble extends JFXApp {
   }
 
   val screen = Screen.primary
+
   stage = new Stage {
     scene = new Scene() {
       content = new BorderPane {
@@ -108,6 +109,7 @@ object Ensemble extends JFXApp {
             minWidth = screen.getBounds().getWidth()
             prefHeight = 76
             maxHeight = 76
+            id = "mainToolBar"
             content = List(
               new ImageView {
                 image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/logo.png"))
@@ -121,7 +123,6 @@ object Ensemble extends JFXApp {
                 minHeight = 66
                 id = "newButton"
               })
-            id = "mainToolBar"
           })
         }
         center = new BorderPane {

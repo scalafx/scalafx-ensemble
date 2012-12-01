@@ -425,8 +425,8 @@
 }
 
 #page-tree {
-	-fx-background-color: #d1dee3;
-	-fx-border-image-source: url("images/tree-background.png");
+	-fx-background-color: #c9c9c9;
+	-fx-border-image-source: url("./images/tree-background.png");
 	-fx-border-image-slice: 30 30 30 30 fill;
 	-fx-border-image-width: 30 30 30 30;
 	-fx-border-image-repeat: stretch;

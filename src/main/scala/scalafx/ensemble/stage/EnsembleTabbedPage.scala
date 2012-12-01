@@ -40,10 +40,10 @@ object EnsembleTabbedPage {
 }
 
 class EnsembleTabbedPage(tabPane: TabPane, ctrlName: String, ctrlGroup: String)
-	extends DisplayablePage {
+  extends DisplayablePage {
   def getPage() = {
     tabPane.getTabs().get(0).setContent(
-      EnsembleTabbedPage.buildTabContent(ContentFactory.createContent(ctrlName,ctrlGroup)))
+      EnsembleTabbedPage.buildTabContent(ContentFactory.createContent(ctrlName, ctrlGroup)))
     tabPane
   }
 }
