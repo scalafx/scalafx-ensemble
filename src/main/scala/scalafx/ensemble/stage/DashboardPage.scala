@@ -28,7 +28,6 @@ import scalafx.scene.Node
 import scalafx.scene.control.TextField
 import scalafx.ensemble.commons.DisplayablePage
 
-
 // Dashboard 
 class DashboardPage extends DisplayablePage {
   def getPage = {

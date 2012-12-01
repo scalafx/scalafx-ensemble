@@ -24,22 +24,27 @@ object EnsembleTree {
         egPlesTree = egPlesTree.+((x.getName(), leaves))
       }
     })
-    new EnsembleTree(egPlesTree)
+    egPlesTree
   }
 
-  def createTrees[T,D]() {
-    
+  def create() = {
+    new EnsembleTree(createTree, createThumbnails)
   }
-  
+
+  def createThumbnails() = {
+    var egPlesTree = Map[String, List[EnsembleThumbNail]]()
+    egPlesTree
+  }
+
 }
 
-case class DashBoardElement(imgView:ImageView,caption:Label)
+case class EnsembleThumbNail(imgView: ImageView, caption: Label)
 
 /**
  * The class provide accessibility methods to access the
  * underlying map
  */
-class EnsembleTree(map: Map[String, List[TreeItem[String]]]) {
+class EnsembleTree(map: Map[String, List[TreeItem[String]]], thumbnails: Map[String, List[EnsembleThumbNail]]) {
 
   def getLeaves(keyName: String) = {
     map.get(keyName).get

@@ -63,7 +63,7 @@ object Ensemble extends JFXApp {
     expanded = true
   }
 
-  val sfxControl = EnsembleTree.createTree.getTree
+  val sfxControl = EnsembleTree.create().getTree
   sfxControl.foreach(x => {
     rootTreeItem.getChildren.add(x)
   })
@@ -83,7 +83,7 @@ object Ensemble extends JFXApp {
       if (selItem.isLeaf()) {
         centerStage = PageDisplayer.choosePage(selItem.getValue())
       } else if (!selItem.isLeaf() && selItem.getParent() != null) {
-        println(selItem.getValue())
+        centerStage = PageDisplayer.choosePage("dashBoard - " + selItem.getValue())
       } else if (selItem.getParent() == null) {
         centerStage = PageDisplayer.choosePage("dashBoard")
       }
