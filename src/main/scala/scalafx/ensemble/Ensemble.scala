@@ -62,10 +62,10 @@ object Ensemble extends JFXApp {
   val rootTreeItem = new TreeItem[String]("ScalaFX Ensemble") {
     expanded = true
   }
- 
-  val sfxControl = EnsembleControlsTree.createTree.getTree
+
+  val sfxControl = EnsembleTree.createTree.getTree
   sfxControl.foreach(x => {
-	  rootTreeItem.getChildren.add(x)
+    rootTreeItem.getChildren.add(x)
   })
 
   val controlsView = new TreeView[String]() {
@@ -80,11 +80,15 @@ object Ensemble extends JFXApp {
   controlsView.getSelectionModel.selectedItemProperty.addListener(new ChangeListener[Any] {
     def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
       val selItem = newValue.asInstanceOf[javafx.scene.control.TreeItem[String]]
-      centerStage = PageDisplayer.choosePage(selItem.getValue())
       if (selItem.isLeaf()) {
-        pageViewHolder.items.remove(1)
-        pageViewHolder.items.add(1, centerStage)
+        centerStage = PageDisplayer.choosePage(selItem.getValue())
+      } else if (!selItem.isLeaf() && selItem.getParent() != null) {
+        println(selItem.getValue())
+      } else if (selItem.getParent() == null) {
+        centerStage = PageDisplayer.choosePage("dashBoard")
       }
+      pageViewHolder.items.remove(1)
+      pageViewHolder.items.add(1, centerStage)
     }
   })
   val pageViewHolder = new SplitPane {

@@ -2,12 +2,14 @@ package scalafx.ensemble
 
 import java.io.File
 import scalafx.scene.control.TreeItem
+import scalafx.scene.image.ImageView
+import scalafx.scene.control.Label
 
 /**
- * Object to load examples as Map which in turn is used 
+ * Object to load examples as Map which in turn is used
  * to create TreeItem in the UI
  */
-object EnsembleControlsTree {
+object EnsembleTree {
 
   def createTree() = {
     val fil = new File(getClass().getResource("/ensemble/examples").getPath())
@@ -22,23 +24,29 @@ object EnsembleControlsTree {
         egPlesTree = egPlesTree.+((x.getName(), leaves))
       }
     })
-    new EnsembleControlsTree(egPlesTree)
+    new EnsembleTree(egPlesTree)
   }
 
+  def createTrees[T,D]() {
+    
+  }
+  
 }
 
+case class DashBoardElement(imgView:ImageView,caption:Label)
+
 /**
- * The class provide accessibility methods to access the 
+ * The class provide accessibility methods to access the
  * underlying map
  */
-class EnsembleControlsTree(map: Map[String, List[TreeItem[String]]]) {
+class EnsembleTree(map: Map[String, List[TreeItem[String]]]) {
 
   def getLeaves(keyName: String) = {
     map.get(keyName).get
   }
 
   /**
-   *returns the entire tree  
+   * returns the entire tree
    */
   def getTree() = {
     var treeSibls = List[TreeItem[String]]()
