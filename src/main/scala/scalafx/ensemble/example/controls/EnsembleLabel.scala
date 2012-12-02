@@ -4,6 +4,8 @@ import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Label
 import scalafx.scene.layout.VBox
+import scalafx.scene.paint.Color
+import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.text.Font
 import scalafx.scene.text.Font.sfxFont2jfx
 
@@ -23,7 +25,13 @@ class EnsembleLabel extends EnsembleExample {
         new Label {
           text = "Ensemble Label with styles"
           font = new Font("Verdana", 20)
+          textFill = Color.BLUE
+        },
+        new Label {
+          text = "Ensemble Label with styles"
+          font = new Font("Verdana", 20)
           style = "-fx-font-weight: bold"
+          textFill = Color.RED
         })
     }
   }
