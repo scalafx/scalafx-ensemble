@@ -28,7 +28,6 @@ import scalafx.scene.Node
 import scalafx.scene.control.TextField
 import scalafx.ensemble.commons.DisplayablePage
 
-
 // Dashboard 
 class DashboardPage extends DisplayablePage {
   def getPage = {
@@ -36,15 +35,11 @@ class DashboardPage extends DisplayablePage {
       vgrow = javafx.scene.layout.Priority.ALWAYS
       hgrow = javafx.scene.layout.Priority.ALWAYS
       style = "-fx-padding: 8px"
+      styleClass.add("category-header")  
       content = List(
         new Text {
-          text = "Samples"
-          font = new Font("Sans-serif", 30)
-          style = "-fx-font-weight: bold;"
-        },
-        new Text {
           text = "Controls"
-          font = new Font("Sans-serif", 20)
+          font = new Font("Sans-serif", 30)
         }, new FlowPane {
           hgap = 4
           vgap = 4

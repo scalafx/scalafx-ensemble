@@ -62,16 +62,16 @@ object Ensemble extends JFXApp {
   val rootTreeItem = new TreeItem[String]("ScalaFX Ensemble") {
     expanded = true
   }
- 
-  val sfxControl = EnsembleControlsTree.createTree.getTree
+
+  val sfxControl = EnsembleTree.create().getTree
   sfxControl.foreach(x => {
-	  rootTreeItem.getChildren.add(x)
+    rootTreeItem.getChildren.add(x)
   })
 
   val controlsView = new TreeView[String]() {
     hgrow = javafx.scene.layout.Priority.ALWAYS
-    minWidth = 250
-    maxWidth = 250
+    minWidth = 200
+    maxWidth = 200
     editable = true
     root = rootTreeItem
     id = "page-tree"
@@ -80,11 +80,15 @@ object Ensemble extends JFXApp {
   controlsView.getSelectionModel.selectedItemProperty.addListener(new ChangeListener[Any] {
     def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
       val selItem = newValue.asInstanceOf[javafx.scene.control.TreeItem[String]]
-      centerStage = PageDisplayer.choosePage(selItem.getValue())
       if (selItem.isLeaf()) {
-        pageViewHolder.items.remove(1)
-        pageViewHolder.items.add(1, centerStage)
+        centerStage = PageDisplayer.choosePage(selItem.getValue())
+      } else if (!selItem.isLeaf() && selItem.getParent() != null) {
+        centerStage = PageDisplayer.choosePage("dashBoard - " + selItem.getValue())
+      } else if (selItem.getParent() == null) {
+        centerStage = PageDisplayer.choosePage("dashBoard")
       }
+      pageViewHolder.items.remove(1)
+      pageViewHolder.items.add(1, centerStage)
     }
   })
   val pageViewHolder = new SplitPane {
@@ -94,6 +98,7 @@ object Ensemble extends JFXApp {
   }
 
   val screen = Screen.primary
+
   stage = new Stage {
     scene = new Scene() {
       content = new BorderPane {
@@ -104,6 +109,7 @@ object Ensemble extends JFXApp {
             minWidth = screen.getBounds().getWidth()
             prefHeight = 76
             maxHeight = 76
+            id = "mainToolBar"
             content = List(
               new ImageView {
                 image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/logo.png"))
@@ -117,7 +123,6 @@ object Ensemble extends JFXApp {
                 minHeight = 66
                 id = "newButton"
               })
-            id = "mainToolBar"
           })
         }
         center = new BorderPane {

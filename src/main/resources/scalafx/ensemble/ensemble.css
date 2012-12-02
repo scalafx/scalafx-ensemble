@@ -55,7 +55,7 @@
 
 #mainToolBar {
 	-fx-padding: 10px;
-	-fx-background-image: url("/scalafx/ensemble/images/top-bar.png");
+	-fx-background-image: url("images/top-bar.png");
 	-fx-background-size: cover;
 	-fx-background-position: left top;
 	-fx-background-repeat: no-repeat;
@@ -64,7 +64,7 @@
 #newButton {
 	-fx-background-color: null;
 	-fx-padding: -10 0 -10 0;
-	-fx-background-image: url("/scalafx/ensemble/images/ribbon-new.png");
+	-fx-background-image: url("images/ribbon-new.png");
 	-fx-background-position: left top;
 	-fx-background-repeat: no-repeat;
 }
@@ -72,7 +72,7 @@
 #highlightsButton {
 	-fx-background-color: null;
 	-fx-padding: -10 0 -10 0;
-	-fx-background-image: url("images/ribbon-highlights.png");
+	-fx-background-image: url("./images/ribbon-highlights.png");
 	-fx-background-position: left top;
 	-fx-background-repeat: no-repeat;
 }
@@ -114,11 +114,11 @@
 
 #SearchBox .button {
 	-fx-background-color: null;
-	-fx-background-image: url("/scalafx/ensemble/images/search-clear.png");
+	-fx-background-image: url("./images/search-clear.png");
 }
 
 #SearchBox .button:hover {
-	-fx-background-image: url("/scalafx/ensemble/images/search-clear-over.png");
+	-fx-background-image: url("./images/search-clear-over.png");
 }
 
 .search-menu-item {
@@ -144,7 +144,7 @@
 
 #search-info-box {
 	-fx-padding: -30 -6 -8 -2;
-	-fx-border-image-source: url("/scalafx/ensemble/images/info-tooltip.png");
+	-fx-border-image-source: url("./images/info-tooltip.png");
 	-fx-border-image-slice: 34 20 12 12 fill;
 	-fx-border-image-width: 34 20 12 12;
 	-fx-border-image-repeat: stretch;
@@ -171,7 +171,7 @@
 }
 
 #window-resize-button {
-	-fx-background-image: url("/scalafx/ensemble/images/window-corner.png");
+	-fx-background-image: url("./images/window-corner.png");
 	-fx-background-position: right 1px bottom 1px;
 	-fx-background-repeat: no-repeat;
 }
@@ -179,26 +179,26 @@
 #window-close {
 	-fx-font-size: 1px;
 	-fx-background-color: null;
-	-fx-background-image: url("/scalafx/ensemble/images/window-close.png");
+	-fx-background-image: url("./images/window-close.png");
 	-fx-padding: 6 6 4 6;
 }
 
 #window-min {
 	-fx-font-size: 1px;
 	-fx-background-color: null;
-	-fx-background-image: url("/scalafx/ensemble/images/window-min.png");
+	-fx-background-image: url("./images/window-min.png");
 	-fx-padding: 6 6 4 6;
 }
 
 #window-max {
 	-fx-font-size: 1px;
 	-fx-background-color: null;
-	-fx-background-image: url("images/window-expand.png");
+	-fx-background-image: url("./images/window-expand.png");
 	-fx-padding: 6 6 4 6;
 }
 
 #window-close:hover {
-	-fx-background-image: url("images/window-close-over.png");
+	-fx-background-image: url("./images/window-close-over.png");
 }
 
 #window-min:hover {
@@ -425,8 +425,8 @@
 }
 
 #page-tree {
-	-fx-background-color: #d1dee3;
-	-fx-border-image-source: url("images/tree-background.png");
+	-fx-background-color: #c9c9c9;
+	-fx-border-image-source: url("./images/tree-background.png");
 	-fx-border-image-slice: 30 30 30 30 fill;
 	-fx-border-image-width: 30 30 30 30;
 	-fx-border-image-repeat: stretch;
