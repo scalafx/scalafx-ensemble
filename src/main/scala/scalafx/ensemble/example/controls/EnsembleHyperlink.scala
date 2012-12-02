@@ -10,7 +10,7 @@ import scalafx.scene.image.Image.sfxImage2jfx
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.VBox
 
-class EnsembleHyperlinkButton extends EnsembleExample {
+class EnsembleHyperlink extends EnsembleExample {
   def getContent = {
     new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS

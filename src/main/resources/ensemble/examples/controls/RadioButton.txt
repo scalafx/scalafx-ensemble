@@ -9,15 +9,16 @@ import scalafx.scene.text.Font
 import scalafx.scene.text.Text
 
 class EnsembleRadioButton extends EnsembleExample {
-  //Radio Button Toggle Group 
-  val tog = new ToggleGroup
-
   def getContent = {
     new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
       hgrow = javafx.scene.layout.Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
+      
+      //Radio Button Toggle Group 
+      val tog = new ToggleGroup
+      
       content = List(
         new Text {
           text = "Ensemble Radio Buttons"

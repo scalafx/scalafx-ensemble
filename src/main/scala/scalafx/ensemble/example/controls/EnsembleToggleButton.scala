@@ -30,7 +30,7 @@ class EnsembleToggleButton extends EnsembleExample {
 
       val toggleLabel = new Label {
         text = ""
-        style = "-fx-base:red"
+        style = "-fx-font-weight: bold"
       }
 
       content = List(

@@ -24,14 +24,13 @@ class EnsembleToggleButton extends EnsembleExample {
       val tog = new ToggleGroup
       tog.selectedToggle.addListener(new ChangeListener[Any] {
         def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
-          println("You selected : " + newValue.asInstanceOf[JfxToggleBtn].getText())
           toggleLabel.text = "You selected : " + newValue.asInstanceOf[JfxToggleBtn].getText()
         }
       })
 
       val toggleLabel = new Label {
         text = ""
-        style = "-fx-base:red"
+        style = "-fx-font-weight: bold"
       }
 
       content = List(
