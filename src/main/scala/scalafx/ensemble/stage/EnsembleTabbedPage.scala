@@ -12,11 +12,14 @@ import scalafx.scene.Node
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.ensemble.commons.ContentFactory
 import scalafx.ensemble.commons.DisplayablePage
+import scalafx.stage.Screen
 
 object EnsembleTabbedPage {
 
   def buildTab(ctrlName: String, ctrlgrop: String) = {
+    val screen = Screen.primary
     val tabbedPage = new TabPane()
+    tabbedPage.minHeight = screen.getBounds().getHeight()
     val demoTab = new Tab()
     demoTab.text = "Demo"
     val srcTab = new Tab()

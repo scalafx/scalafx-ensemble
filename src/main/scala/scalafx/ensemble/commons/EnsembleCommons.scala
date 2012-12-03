@@ -4,6 +4,7 @@ import scalafx.scene.Node
 import scalafx.scene.layout.VBox
 import scalafx.ensemble.stage.DashboardPage
 import scalafx.ensemble.stage.EnsembleTabbedPage
+import scalafx.stage.Screen
 
 object ContentFactory {
   def createContent(ctrlName: String, ctrlgroupName: String = "") = {
