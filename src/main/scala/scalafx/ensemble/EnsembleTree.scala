@@ -26,6 +26,12 @@ object EnsembleTree {
           val leafname = a.getName().split(".txt")
           leaves = leaves.::(new TreeItem(leafname(0)))
         })
+        //Sort the Children in the TreeView
+        leaves = leaves sortWith {
+          //compareLeaves
+          _.getValue.toLowerCase < _.getValue.toLowerCase
+        }
+        //TreeNodes are capitalized
         egPlesTree = egPlesTree.+((x.getName().capitalize, leaves))
       }
     })
@@ -54,6 +60,8 @@ object EnsembleTree {
   def create() = {
     new EnsembleTree(createTree, createThumbnails)
   }
+
+  //def compareLeaves(e1: TreeItem[String], e2: TreeItem[String]) = (e1.getValue().toLowerCase() < e2.getValue().toLowerCase())
 
 }
 
