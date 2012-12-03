@@ -480,7 +480,7 @@
 	-fx-padding: 0 0 2px 0;
 	-fx-border-color: transparent transparent #AAAAAA transparent;
 	-fx-border-insets: 0 0 8px 0;
-	-fx-text-fill: #0072aa;
+	-fx-text-fill: #b3daff;
 	/*  -fx-effect: dropshadow( three-pass-box , white , 0, 0.0 , 10 , 1 ); */
 }
 
@@ -511,13 +511,8 @@
 	-fx-padding: 8px 0 10px 0;
 	-fx-font-size: 1.2em;
 	-fx-font-weight: bold;
+	-fx-text-color: #c9c9c9;
 	-fx-text-fill: linear-gradient(white, #acacac);
-}
-
-.category-header Text {
-	-fx-effect: dropshadow(three-pass-box, black, 0, 0.0, 0, 1);
-	-fx-effect: innershadow(three-pass-box, rgba(255, 255, 255, 0.7), 0, 0.0,
-		0, -1 );
 }
 
 .category-page-flow {
@@ -526,7 +521,7 @@
 
 .sample-tile {
 	-fx-skin: "com.sun.javafx.scene.control.skin.ButtonSkin";
-	-fx-text-fill: black;
+	-fx-text-fill: white;
 	-fx-graphic-hpos: center;
 	-fx-graphic-vpos: top;
 	-fx-alignment: center;
@@ -534,6 +529,7 @@
 }
 
 .sample-tile Text {
+	-fx-text-fill: #0072aa;
 	-fx-font-smoothing-type: lcd;
 }
 
