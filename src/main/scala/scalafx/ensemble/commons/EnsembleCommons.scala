@@ -42,12 +42,9 @@ object PageDisplayer {
   }
 
   private def displayPage(nodeToAdd: DisplayablePage): Node = {
-val screen = Screen.primary
     val pageContent = new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
       hgrow = javafx.scene.layout.Priority.ALWAYS
-      minWidth = screen.getBounds().getWidth()
-      minHeight = screen.getBounds().getHeight()
       styleClass.add("category-page")
     }
     pageContent.content.removeAll()
