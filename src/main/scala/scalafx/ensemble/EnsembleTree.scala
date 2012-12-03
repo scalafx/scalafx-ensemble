@@ -1,10 +1,13 @@
 package scalafx.ensemble
 
 import java.io.File
-import scalafx.scene.control.TreeItem
-import scalafx.scene.image.ImageView
+
 import scalafx.scene.control.Label
+import scalafx.scene.control.TreeItem
+import scalafx.scene.control.TreeItem.sfxTreeItemTojfx
 import scalafx.scene.image.Image
+import scalafx.scene.image.Image.sfxImage2jfx
+import scalafx.scene.image.ImageView
 
 /**
  * Object to load examples as Map which in turn is used
@@ -23,7 +26,7 @@ object EnsembleTree {
           val leafname = a.getName().split(".txt")
           leaves = leaves.::(new TreeItem(leafname(0)))
         })
-        egPlesTree = egPlesTree.+((x.getName(), leaves))
+        egPlesTree = egPlesTree.+((x.getName().capitalize, leaves))
       }
     })
     egPlesTree
@@ -51,7 +54,7 @@ object EnsembleTree {
   def create() = {
     new EnsembleTree(createTree, createThumbnails)
   }
-  
+
 }
 
 case class EnsembleThumbNail(imgView: ImageView, caption: Label)
@@ -60,8 +63,8 @@ case class EnsembleThumbNail(imgView: ImageView, caption: Label)
  * The class provide accessibility methods to access the
  * underlying map
  */
-class EnsembleTree(map: Map[String, List[TreeItem[String]]], 
-    thumbnails: Map[String, List[EnsembleThumbNail]]) {
+class EnsembleTree(map: Map[String, List[TreeItem[String]]],
+  thumbnails: Map[String, List[EnsembleThumbNail]]) {
 
   def getLeaves(keyName: String) = {
     map.get(keyName).get
