@@ -38,7 +38,7 @@ object EnsembleTree {
           leaves.sortWith(SortUtils.treeItemSort(_, _))))
       }
     })
-    egPlesTree
+    egPlesTree.toSeq.sortWith(_._1 > _._1).toMap
   }
 
   private def createThumbnails() = {
@@ -58,7 +58,7 @@ object EnsembleTree {
             thumbs.sortWith(SortUtils.thumbNailsSort(_,_))))
       }
     })
-    thumbnails
+    thumbnails.toSeq.sortWith(_._1 > _._1).toMap
   }
 
 }
