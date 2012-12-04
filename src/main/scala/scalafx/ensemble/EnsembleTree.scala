@@ -17,6 +17,10 @@ object EnsembleTree {
 
   val fil = new File(getClass().getResource("/ensemble/examples").getPath())
 
+  def create() = {
+    new EnsembleTree(createTree, createThumbnails)
+  }
+  
   /**
    * build a map by iterating through the examples folder.
    * This is used in UI
@@ -57,10 +61,6 @@ object EnsembleTree {
     thumbnails
   }
 
-  def create() = {
-    new EnsembleTree(createTree, createThumbnails)
-  }
-
 }
 
 case class EnsembleThumbNail(imgView: ImageView, caption: Label)
@@ -79,7 +79,7 @@ class EnsembleTree(map: Map[String, List[TreeItem[String]]],
   /**
    * returns the entire tree
    */
-  def getTree() = {
+  def getTree = {
     var treeSibls = List[TreeItem[String]]()
     map.foreach(x => {
       val sibl = new TreeItem[String](x._1)

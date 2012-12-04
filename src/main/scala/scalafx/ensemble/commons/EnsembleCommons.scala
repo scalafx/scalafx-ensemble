@@ -8,6 +8,10 @@ import scalafx.stage.Screen
 import scalafx.ensemble.EnsembleThumbNail
 import scalafx.scene.control.TreeItem
 
+/**
+ * populates the tabbed content by loading
+ * EnsembleExample instance
+ */
 object ContentFactory {
   def createContent(ctrlName: String, ctrlgroupName: String = "") = {
     val qualCtrl = "scalafx.ensemble.example." + ctrlgroupName + ".Ensemble" + ctrlName
@@ -64,16 +68,17 @@ trait DisplayablePage {
   def getPage: Node
 }
 
+/**
+ * utility to sort the items
+ */
 object SortUtils {
-  def treeItemSort = (ti: TreeItem[String], t2: TreeItem[String]) => {
+
+  def treeItemSort = (ti: TreeItem[String], t2: TreeItem[String]) => 
     compare(ti.getValue(), t2.getValue())
-  }
 
-  def thumbNailsSort = (t1: EnsembleThumbNail, t2: EnsembleThumbNail) => {
+  def thumbNailsSort = (t1: EnsembleThumbNail, t2: EnsembleThumbNail) => 
     compare(t1.caption.getText(), t2.caption.getText())
-  }
 
-  private def compare = (x: String, y: String) => {
+  private def compare = (x: String, y: String) => 
     x.toLowerCase() < y.toLowerCase()
-  }
 }
