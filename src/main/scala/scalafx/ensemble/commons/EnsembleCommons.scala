@@ -5,6 +5,8 @@ import scalafx.scene.layout.VBox
 import scalafx.ensemble.stage.DashboardPage
 import scalafx.ensemble.stage.EnsembleTabbedPage
 import scalafx.stage.Screen
+import scalafx.ensemble.EnsembleThumbNail
+import scalafx.scene.control.TreeItem
 
 object ContentFactory {
   def createContent(ctrlName: String, ctrlgroupName: String = "") = {
@@ -32,9 +34,9 @@ object PageDisplayer {
       case "dashBoard" => {
         displayPage(new DashboardPage())
       }
-  //   		case "dashBoard - " => {
-  //        
-  //      }
+      //   		case "dashBoard - " => {
+      //        
+      //      }
       case _ => {
         displayPage(EnsembleTabbedPage.buildTab(value, "controls"))
       }
@@ -60,4 +62,18 @@ trait EnsembleExample {
 
 trait DisplayablePage {
   def getPage: Node
+}
+
+object SortUtils {
+  def treeItemSort = (ti: TreeItem[String], t2: TreeItem[String]) => {
+    compare(ti.getValue(), t2.getValue())
+  }
+
+  def thumbNailsSort = (t1: EnsembleThumbNail, t2: EnsembleThumbNail) => {
+    compare(t1.caption.getText(), t2.caption.getText())
+  }
+
+  private def compare = (x: String, y: String) => {
+    x.toLowerCase() < y.toLowerCase()
+  }
 }

@@ -1,13 +1,13 @@
 package scalafx.ensemble
 
 import java.io.File
-
 import scalafx.scene.control.Label
 import scalafx.scene.control.TreeItem
 import scalafx.scene.control.TreeItem.sfxTreeItemTojfx
 import scalafx.scene.image.Image
 import scalafx.scene.image.Image.sfxImage2jfx
 import scalafx.scene.image.ImageView
+import scalafx.ensemble.commons.SortUtils
 
 /**
  * Object to load examples as Map which in turn is used
@@ -17,6 +17,10 @@ object EnsembleTree {
 
   val fil = new File(getClass().getResource("/ensemble/examples").getPath())
 
+  /**
+   * build a map by iterating through the examples folder.
+   * This is used in UI
+   */
   private def createTree() = {
     var egPlesTree = Map[String, List[TreeItem[String]]]()
     fil.listFiles().foreach(x => {
@@ -26,13 +30,8 @@ object EnsembleTree {
           val leafname = a.getName().split(".txt")
           leaves = leaves.::(new TreeItem(leafname(0)))
         })
-        //Sort the Children in the TreeView
-        leaves = leaves sortWith {
-          //compareLeaves
-          _.getValue.toLowerCase < _.getValue.toLowerCase
-        }
-        //TreeNodes are capitalized
-        egPlesTree = egPlesTree.+((x.getName().capitalize, leaves))
+        egPlesTree = egPlesTree.+((x.getName().capitalize,
+          leaves.sortWith(SortUtils.treeItemSort(_, _))))
       }
     })
     egPlesTree
@@ -51,7 +50,8 @@ object EnsembleTree {
           lbl.text = leafname(0)
           thumbs = thumbs.::(EnsembleThumbNail(img, lbl))
         })
-        thumbnails = thumbnails.+((x.getName(), thumbs))
+        thumbnails = thumbnails.+((x.getName().capitalize,
+            thumbs.sortWith(SortUtils.thumbNailsSort(_,_))))
       }
     })
     thumbnails
@@ -60,8 +60,6 @@ object EnsembleTree {
   def create() = {
     new EnsembleTree(createTree, createThumbnails)
   }
-
-  //def compareLeaves(e1: TreeItem[String], e2: TreeItem[String]) = (e1.getValue().toLowerCase() < e2.getValue().toLowerCase())
 
 }
 
