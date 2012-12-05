@@ -100,15 +100,23 @@ class EnsembleTree(map: Map[String, List[TreeItem[String]]],
 
   def getThumbs(keyName: String) = thumbnails get keyName get
 
+  import scalafx.ensemble.Converter._
+  
   def getDashThumbsCtrl() = {
     var thums = List[Node]()
-    import scalafx.ensemble.Converter._
     thumbnails.foreach(x => {
       // could be thums = thums.::(x._1).::(x._2) but cant use it 
       // due to implicits 
       thums = thums.::(x._2)
       thums = thums.::(x._1)
     })
+    thums
+  }
+  
+  def getDashThumb(ctrlGrpName:String) = {
+    var thums = List[Node]()
+    thums = thums.::(thumbnails.get(ctrlGrpName).get)
+    thums = thums.::(ctrlGrpName)
     thums
   }
 }

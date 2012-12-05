@@ -40,7 +40,7 @@ object PageDisplayer {
       }
       case _ => {
         if (value.startsWith("dashBoard - ")) {
-          displayPage(new DashboardPage())
+          displayPage(new DashboardPage((value.split("-")(1)).trim()))
         } else {
           displayPage(EnsembleTabbedPage.buildTab(value, "controls"))
         }

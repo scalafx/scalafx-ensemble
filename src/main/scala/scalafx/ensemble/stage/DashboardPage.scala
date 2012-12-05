@@ -30,16 +30,28 @@ import scalafx.ensemble.commons.DisplayablePage
 import scalafx.ensemble.EnsembleTree
 
 // Dashboard 
-class DashboardPage extends DisplayablePage {
+class DashboardPage(dashPart: String = "dashboard") extends DisplayablePage {
+  val tree = EnsembleTree.create
   def getPage = {
     val boxes = new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
       hgrow = javafx.scene.layout.Priority.ALWAYS
       styleClass.add("category-header")
     }
-    EnsembleTree.create.getDashThumbsCtrl.foreach(box => {
-      boxes.content.add(box)
-    })
+
+    dashPart match {
+      case "dashboard" => {
+        tree.getDashThumbsCtrl.foreach(box => {
+          boxes.content.add(box)
+        })
+      }
+      case _ => {
+        tree.getDashThumb(dashPart).foreach(box => {
+          boxes.content.add(box)
+        })
+      }
+    }
+
     boxes
   }
 }
