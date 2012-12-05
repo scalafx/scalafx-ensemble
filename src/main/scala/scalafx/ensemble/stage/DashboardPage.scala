@@ -32,52 +32,15 @@ import scalafx.ensemble.EnsembleTree
 // Dashboard 
 class DashboardPage extends DisplayablePage {
   def getPage = {
-    var thumbs = EnsembleTree.create.getDashThumbs
-    
-    new VBox {
+    val boxes = new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
       hgrow = javafx.scene.layout.Priority.ALWAYS
-      styleClass.add("category-header")  
-      content = List(
-        new Text {
-          text = "Controls"
-          font = new Font("Sans-serif", 30)
-          styleClass.add("page-header")
-        }, new FlowPane {
-          hgap = 4
-          vgap = 4
-          padding = Insets(5, 5, 5, 5)
-          prefWrapLength = 400
-          content = List(
-            new VBox {
-              styleClass.add("sample-tile")
-              content = List(new ImageView {
-                image = new Image(this.getClass.getResourceAsStream(
-                    "/scalafx/ensemble/images/CalendarTextFieldSample.png"))
-              }, new Label {
-                text = "TextField"
-              })
-            }, new VBox {
-              styleClass.add("sample-tile")
-              content = List(new ImageView {
-                image = new Image(this.getClass.getResourceAsStream(
-                    "/scalafx/ensemble/images/CalendarTextFieldSample.png"))
-              }, new Label {
-                text = "Password"
-              })
-            },
-            new VBox {
-              styleClass.add("sample-tile")
-              alignment = Pos.CENTER
-              content = List(new ImageView {
-                image = new Image(this.getClass.getResourceAsStream(
-                    "/scalafx/ensemble/images/CalendarTextFieldSample.png"))
-              }, new Label {
-                text = "TextField"
-              })
-            })
-        })
+      styleClass.add("category-header")
     }
+    EnsembleTree.create.getDashThumbsCtrl.foreach(box => {
+      boxes.content.add(box)
+    })
+    boxes
   }
 }
 

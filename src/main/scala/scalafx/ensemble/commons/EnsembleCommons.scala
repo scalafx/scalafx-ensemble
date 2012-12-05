@@ -38,11 +38,12 @@ object PageDisplayer {
       case "dashBoard" => {
         displayPage(new DashboardPage())
       }
-      //   		case "dashBoard - " => {
-      //        
-      //      }
       case _ => {
-        displayPage(EnsembleTabbedPage.buildTab(value, "controls"))
+        if (value.startsWith("dashBoard - ")) {
+          displayPage(new DashboardPage())
+        } else {
+          displayPage(EnsembleTabbedPage.buildTab(value, "controls"))
+        }
       }
     }
   }
@@ -73,12 +74,12 @@ trait DisplayablePage {
  */
 object SortUtils {
 
-  def treeItemSort = (ti: TreeItem[String], t2: TreeItem[String]) => 
+  def treeItemSort = (ti: TreeItem[String], t2: TreeItem[String]) =>
     compare(ti.getValue(), t2.getValue())
 
-  def thumbNailsSort = (t1: EnsembleThumbNail, t2: EnsembleThumbNail) => 
+  def thumbNailsSort = (t1: EnsembleThumbNail, t2: EnsembleThumbNail) =>
     compare(t1.caption.getText(), t2.caption.getText())
 
-  private def compare = (x: String, y: String) => 
+  private def compare = (x: String, y: String) =>
     x.toLowerCase() < y.toLowerCase()
 }

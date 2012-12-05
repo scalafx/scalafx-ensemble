@@ -132,7 +132,8 @@ object Ensemble extends JFXApp {
         styleClass.add("application")
       }
     }
-    scene.get.getStylesheets.add(this.getClass.getResource("/scalafx/ensemble/ensemble.css").toExternalForm)
+    scene.get.getStylesheets.add(
+        this.getClass.getResource("/scalafx/ensemble/ensemble.css").toExternalForm)
   }
   stage.width = screen.getVisualBounds().getWidth()
   stage.height = screen.getVisualBounds().getHeight()
