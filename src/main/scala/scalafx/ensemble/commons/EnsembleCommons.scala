@@ -9,25 +9,6 @@ import scalafx.ensemble.EnsembleThumbNail
 import scalafx.scene.control.TreeItem
 
 /**
- * populates the tabbed content by loading
- * EnsembleExample instance
- */
-object ContentFactory {
-  def createContent(ctrlName: String, ctrlgroupName: String = "") = {
-    val qualCtrl = "scalafx.ensemble.example." + ctrlgroupName + ".Ensemble" + ctrlName
-    var cache = Map[String, EnsembleExample]()
-    if (cache.get(qualCtrl).isDefined) {
-      cache.get(qualCtrl).get.getContent
-    } else {
-      val inst = Class.forName(qualCtrl).newInstance().asInstanceOf[EnsembleExample]
-      cache = cache.+((qualCtrl, inst))
-      println(cache)
-      inst.getContent
-    }
-  }
-}
-
-/**
  * the class that updates tabbed view or dashboard view
  * based on the TreeItem selected from left pane
  */
@@ -61,14 +42,6 @@ object PageDisplayer {
 
 }
 
-trait EnsembleExample {
-  def getContent: Node
-}
-
-trait DisplayablePage {
-  def getPage: Node
-}
-
 /**
  * utility to sort the items
  */
@@ -82,4 +55,32 @@ object SortUtils {
 
   private def compare = (x: String, y: String) =>
     x.toLowerCase() < y.toLowerCase()
+}
+
+/**
+ * populates the tabbed content by loading
+ * EnsembleExample instance
+ */
+object ContentFactory {
+  def createContent(ctrlName: String, ctrlgroupName: String = "") = {
+    val qualCtrl = "scalafx.ensemble.example." + ctrlgroupName + ".Ensemble" + ctrlName
+    var cache = Map[String, EnsembleExample]()
+    if (cache.get(qualCtrl).isDefined) {
+      cache.get(qualCtrl).get.getContent
+    } else {
+      val inst = Class.forName(qualCtrl).newInstance().asInstanceOf[EnsembleExample]
+      cache = cache.+((qualCtrl, inst))
+      println(cache)
+      inst.getContent
+    }
+  }
+}
+
+
+trait EnsembleExample {
+  def getContent: Node
+}
+
+trait DisplayablePage {
+  def getPage: Node
 }
