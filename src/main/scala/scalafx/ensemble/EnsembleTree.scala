@@ -105,7 +105,8 @@ class EnsembleTree(map: Map[String, List[TreeItem[String]]],
     var thums = List[Node]()
     import scalafx.ensemble.Converter._
     thumbnails.foreach(x => {
-      thums = thums.::(x._1)
+      thums = thums.::(x._1) // could be thums = thums.::(x._1).::(x._2) but cant use it 
+      // due to implicits 
       thums = thums.::(x._2)
     })
     thums
