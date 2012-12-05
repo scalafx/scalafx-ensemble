@@ -112,7 +112,9 @@ object Ensemble extends JFXApp {
             id = "mainToolBar"
             content = List(
               new ImageView {
-                image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/logo.png"))
+                image = new Image(
+                    this.getClass.getResourceAsStream(
+                        "/scalafx/ensemble/images/logo.png"))
                 margin = Insets(0, 0, 0, 10)
               },
               new Region {
@@ -132,7 +134,8 @@ object Ensemble extends JFXApp {
         styleClass.add("application")
       }
     }
-    scene.get.getStylesheets.add(this.getClass.getResource("/scalafx/ensemble/ensemble.css").toExternalForm)
+    scene.get.getStylesheets.add(
+        this.getClass.getResource("/scalafx/ensemble/ensemble.css").toExternalForm)
   }
   stage.width = screen.getVisualBounds().getWidth()
   stage.height = screen.getVisualBounds().getHeight()

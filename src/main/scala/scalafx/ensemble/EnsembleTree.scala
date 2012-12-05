@@ -8,6 +8,13 @@ import scalafx.scene.image.Image
 import scalafx.scene.image.Image.sfxImage2jfx
 import scalafx.scene.image.ImageView
 import scalafx.ensemble.commons.SortUtils
+import scalafx.scene.Node
+import scalafx.scene.text.Text
+import scalafx.scene.text.Font
+import scalafx.scene.layout.FlowPane
+import scalafx.scene.layout.VBox
+import scalafx.geometry.Insets
+import javafx.geometry.Pos
 
 /**
  * Object to load examples as Map which in turn is used
@@ -20,7 +27,7 @@ object EnsembleTree {
   def create() = {
     new EnsembleTree(createTree, createThumbnails)
   }
-  
+
   /**
    * build a map by iterating through the examples folder.
    * This is used in UI
@@ -49,13 +56,14 @@ object EnsembleTree {
         x.listFiles().foreach(a => {
           val leafname = a.getName().split(".txt")
           val img = new ImageView()
-          img.image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/CalendarTextFieldSample.png"))
+          img.image = new Image(this.getClass.getResourceAsStream(
+            "/scalafx/ensemble/images/CalendarTextFieldSample.png"))
           val lbl = new Label()
           lbl.text = leafname(0)
           thumbs = thumbs.::(EnsembleThumbNail(img, lbl))
         })
         thumbnails = thumbnails.+((x.getName().capitalize,
-            thumbs.sortWith(SortUtils.thumbNailsSort(_,_))))
+          thumbs.sortWith(SortUtils.thumbNailsSort(_, _))))
       }
     })
     thumbnails.toSeq.sortWith(_._1 > _._1).toMap
@@ -72,9 +80,7 @@ case class EnsembleThumbNail(imgView: ImageView, caption: Label)
 class EnsembleTree(map: Map[String, List[TreeItem[String]]],
   thumbnails: Map[String, List[EnsembleThumbNail]]) {
 
-  def getLeaves(keyName: String) = {
-    map get keyName get
-  }
+  def getLeaves(keyName: String) = map get keyName get
 
   /**
    * returns the entire tree
@@ -91,10 +97,45 @@ class EnsembleTree(map: Map[String, List[TreeItem[String]]],
     })
     treeSibls
   }
-  
-  def getThumbs(keyName:String) = {
-    thumbnails get keyName get
+
+  def getThumbs(keyName: String) = thumbnails get keyName get
+  def getDashThumbs() = thumbnails
+
+  def getDashThumbsCtrl() = {
+    var thums = List[Node]()
+    import scalafx.ensemble.Converter._
+    thumbnails.foreach(x => {
+      thums = thums.::(x._1)
+      thums = thums.::(x._2)
+    })
+    thums
   }
-  
 }
 
+object Converter {
+  implicit def convertToText(value: String): Node = {
+    new Text {
+      text = value
+      font = new Font("Sans-serif", 30)
+      styleClass.add("page-header")
+    }
+  }
+
+  implicit def convertToThumbBoxes(value: List[EnsembleThumbNail]): Node = {
+    val fp = new FlowPane {
+      hgap = 4
+      vgap = 4
+      padding = Insets(5, 5, 5, 5)
+      prefWrapLength = 400
+    }
+    value.foreach(y => {
+      val x = new VBox {
+        styleClass.add("sample-tile")
+        alignment = Pos.CENTER
+        content = List(y.imgView, y.caption)
+      }
+      fp.content.add(x)
+    })
+    fp
+  }
+}

@@ -27,10 +27,13 @@ import javafx.scene.text.TextAlignment
 import scalafx.scene.Node
 import scalafx.scene.control.TextField
 import scalafx.ensemble.commons.DisplayablePage
+import scalafx.ensemble.EnsembleTree
 
 // Dashboard 
 class DashboardPage extends DisplayablePage {
   def getPage = {
+    var thumbs = EnsembleTree.create.getDashThumbs
+    
     new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
       hgrow = javafx.scene.layout.Priority.ALWAYS
@@ -49,14 +52,16 @@ class DashboardPage extends DisplayablePage {
             new VBox {
               styleClass.add("sample-tile")
               content = List(new ImageView {
-                image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/CalendarTextFieldSample.png"))
+                image = new Image(this.getClass.getResourceAsStream(
+                    "/scalafx/ensemble/images/CalendarTextFieldSample.png"))
               }, new Label {
                 text = "TextField"
               })
             }, new VBox {
               styleClass.add("sample-tile")
               content = List(new ImageView {
-                image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/CalendarTextFieldSample.png"))
+                image = new Image(this.getClass.getResourceAsStream(
+                    "/scalafx/ensemble/images/CalendarTextFieldSample.png"))
               }, new Label {
                 text = "Password"
               })
@@ -65,7 +70,8 @@ class DashboardPage extends DisplayablePage {
               styleClass.add("sample-tile")
               alignment = Pos.CENTER
               content = List(new ImageView {
-                image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/CalendarTextFieldSample.png"))
+                image = new Image(this.getClass.getResourceAsStream(
+                    "/scalafx/ensemble/images/CalendarTextFieldSample.png"))
               }, new Label {
                 text = "TextField"
               })
