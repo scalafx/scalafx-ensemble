@@ -73,7 +73,7 @@ class EnsembleTree(map: Map[String, List[TreeItem[String]]],
   thumbnails: Map[String, List[EnsembleThumbNail]]) {
 
   def getLeaves(keyName: String) = {
-    map.get(keyName).get
+    map get keyName get
   }
 
   /**
@@ -85,12 +85,16 @@ class EnsembleTree(map: Map[String, List[TreeItem[String]]],
       val sibl = new TreeItem[String](x._1)
       sibl.expanded = true
       x._2.foreach(y => {
-        println(y)
         sibl.getChildren().add(y)
       })
       treeSibls = treeSibls.::(sibl)
     })
     treeSibls
   }
+  
+  def getThumbs(keyName:String) = {
+    thumbnails get keyName get
+  }
+  
 }
 
