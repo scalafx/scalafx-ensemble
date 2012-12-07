@@ -56,6 +56,7 @@ import scalafx.scene.control.TreeItem
 import javafx.scene.control.{ TreeItem => jxti }
 import scalafx.stage.Screen
 import scalafx.ensemble.commons.PageDisplayer
+import javafx.scene.control.ScrollPane.ScrollBarPolicy
 
 object Ensemble extends JFXApp {
   var centerStage = PageDisplayer.choosePage("dashBoard")
@@ -69,7 +70,6 @@ object Ensemble extends JFXApp {
   })
 
   val controlsView = new TreeView[String]() {
-    hgrow = javafx.scene.layout.Priority.ALWAYS
     minWidth = 200
     maxWidth = 200
     editable = true
@@ -82,7 +82,7 @@ object Ensemble extends JFXApp {
       val selItem = newValue.asInstanceOf[javafx.scene.control.TreeItem[String]]
 
       val str = if (selItem.isLeaf()) {
-        selItem.getParent().getValue().toLowerCase() +" > " + selItem.getValue()
+        selItem.getParent().getValue().toLowerCase() + " > " + selItem.getValue()
       } else if (!selItem.isLeaf() && selItem.getParent() != null) {
         "dashBoard - " + selItem.getValue()
       } else if (selItem.getParent() == null) {
@@ -94,13 +94,20 @@ object Ensemble extends JFXApp {
       pageViewHolder.items.add(1, centerStage)
     }
   })
+
+  val screen = Screen.primary
+  val scrollPane = new ScrollPane {
+    minWidth = 200
+    maxWidth = 200
+    prefHeight = screen.getBounds().getHeight()
+    id = "page-tree"
+    content = controlsView
+  }
   val pageViewHolder = new SplitPane {
     dividerPositions = 0
     id = "page-splitpane"
-    items.addAll(controlsView, centerStage)
+    items.addAll(scrollPane, centerStage)
   }
-
-  val screen = Screen.primary
 
   stage = new Stage {
     scene = new Scene() {
@@ -119,7 +126,7 @@ object Ensemble extends JFXApp {
                 margin = Insets(0, 0, 0, 10)
               },
               new Region {
-                minWidth = 200
+                minWidth = 300
               },
               new Button {
                 minWidth = 120

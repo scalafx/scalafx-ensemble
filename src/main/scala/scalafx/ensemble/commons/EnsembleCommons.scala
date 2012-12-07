@@ -7,6 +7,7 @@ import scalafx.ensemble.stage.EnsembleTabbedPage
 import scalafx.stage.Screen
 import scalafx.ensemble.EnsembleThumbNail
 import scalafx.scene.control.TreeItem
+import scalafx.scene.control.ScrollPane
 
 /**
  * the class that updates tabbed view or dashboard view
@@ -24,13 +25,14 @@ object PageDisplayer {
           displayPage(new DashboardPage((value.split("-")(1)).trim()))
         } else {
           displayPage(EnsembleTabbedPage.buildTab(value.split(">")(1).trim(),
-              value.split(">")(0).trim()))
+            value.split(">")(0).trim()))
         }
       }
     }
   }
 
   private def displayPage(nodeToAdd: DisplayablePage): Node = {
+
     val pageContent = new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
       hgrow = javafx.scene.layout.Priority.ALWAYS
@@ -75,7 +77,6 @@ object ContentFactory {
     }
   }
 }
-
 
 trait EnsembleExample {
   def getContent: Node
