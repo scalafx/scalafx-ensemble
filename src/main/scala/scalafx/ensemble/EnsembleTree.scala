@@ -125,8 +125,7 @@ object Converter {
   implicit def convertToText(value: String): Node = {
     new Text {
       text = value
-      font = new Font("Sans-serif", 30)
-      styleClass.add("page-header")
+      styleClass.add("category-header")
     }
   }
 
@@ -136,6 +135,7 @@ object Converter {
       vgap = 4
       padding = Insets(5, 5, 5, 5)
       prefWrapLength = 400
+      styleClass.add("category-page-flow")
     }
     value.foreach(y => {
       val x = new VBox {

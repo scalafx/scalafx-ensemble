@@ -80,13 +80,16 @@ object Ensemble extends JFXApp {
   controlsView.getSelectionModel.selectedItemProperty.addListener(new ChangeListener[Any] {
     def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
       val selItem = newValue.asInstanceOf[javafx.scene.control.TreeItem[String]]
-      if (selItem.isLeaf()) {
-        centerStage = PageDisplayer.choosePage(selItem.getValue())
+
+      val str = if (selItem.isLeaf()) {
+        selItem.getParent().getValue().toLowerCase() +" > " + selItem.getValue()
       } else if (!selItem.isLeaf() && selItem.getParent() != null) {
-        centerStage = PageDisplayer.choosePage("dashBoard - " + selItem.getValue())
+        "dashBoard - " + selItem.getValue()
       } else if (selItem.getParent() == null) {
-        centerStage = PageDisplayer.choosePage("dashBoard")
-      }
+        "dashBoard"
+      } else "dashBoard"
+
+      centerStage = PageDisplayer.choosePage(str)
       pageViewHolder.items.remove(1)
       pageViewHolder.items.add(1, centerStage)
     }
@@ -133,7 +136,7 @@ object Ensemble extends JFXApp {
       }
     }
     scene.get.getStylesheets.add(
-        this.getClass.getResource("/scalafx/ensemble/ensemble.css").toExternalForm)
+      this.getClass.getResource("/scalafx/ensemble/ensemble.css").toExternalForm)
   }
   stage.width = screen.getVisualBounds().getWidth()
   stage.height = screen.getVisualBounds().getHeight()

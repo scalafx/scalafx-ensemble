@@ -23,7 +23,8 @@ object PageDisplayer {
         if (value.startsWith("dashBoard - ")) {
           displayPage(new DashboardPage((value.split("-")(1)).trim()))
         } else {
-          displayPage(EnsembleTabbedPage.buildTab(value, "controls"))
+          displayPage(EnsembleTabbedPage.buildTab(value.split(">")(1).trim(),
+              value.split(">")(0).trim()))
         }
       }
     }
@@ -70,7 +71,6 @@ object ContentFactory {
     } else {
       val inst = Class.forName(qualCtrl).newInstance().asInstanceOf[EnsembleExample]
       cache = cache.+((qualCtrl, inst))
-      println(cache)
       inst.getContent
     }
   }
