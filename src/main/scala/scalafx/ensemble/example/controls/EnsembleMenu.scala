@@ -14,7 +14,7 @@ import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
 
-class EnsembleMenuBar extends EnsembleExample {
+class EnsembleMenu extends EnsembleExample {
   def getContent = {
     new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
@@ -30,6 +30,7 @@ class EnsembleMenuBar extends EnsembleExample {
           maxHeight = 70
           maxWidth = 400
           useSystemMenuBar = true
+          //TODO CheckMenuItem is missing in scalafx.. create it later
           menus = List(
             new Menu("Scala") {
               items = List(

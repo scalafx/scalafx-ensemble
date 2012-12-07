@@ -14,7 +14,7 @@ import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
 
-class EnsembleMenuBar extends EnsembleExample {
+class EnsembleMenu extends EnsembleExample {
   def getContent = {
     new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
