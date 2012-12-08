@@ -7,7 +7,7 @@ bin
 
 .cache
 .history
-
+.log
 
 .classpath
 .project
