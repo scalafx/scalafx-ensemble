@@ -1,8 +1,7 @@
-package scalafx.ensemble.example.layout
+package scalafx.ensemble.example.web
 
 import javafx.event.ActionEvent
 import javafx.event.EventHandler
-import javafx.geometry.Pos
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Button

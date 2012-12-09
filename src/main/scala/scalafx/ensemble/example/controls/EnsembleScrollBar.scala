@@ -7,6 +7,7 @@ import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
 
+//TODO incomplete
 class EnsembleScrollBar extends EnsembleExample {
   def getContent = {
     new VBox {

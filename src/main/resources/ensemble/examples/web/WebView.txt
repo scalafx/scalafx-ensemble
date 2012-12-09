@@ -1,4 +1,4 @@
-package scalafx.ensemble.example.layout
+package scalafx.ensemble.example.web
 
 import javafx.beans.value.ChangeListener
 import javafx.beans.value.ObservableValue
@@ -24,7 +24,8 @@ class EnsembleWebView extends EnsembleExample {
     val DEFAULT_URL = "http://www.scala-lang.org/";
     //Webview control
     val webView = new WebView {
-      maxWidth = 900
+      maxWidth = 1000
+      maxHeight = 500
     }
     val webEngine = webView.getEngine()
     webEngine.load(DEFAULT_URL)
