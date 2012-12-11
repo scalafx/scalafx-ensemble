@@ -18,7 +18,7 @@ object PageDisplayer {
   def choosePage(value: String = "dashBoard"): Node = {
     value match {
       case "dashBoard" => {
-        displayPage(new DashboardPage())
+        displayPage(new DashboardPage)
       }
       case _ => {
         if (value.startsWith("dashBoard - ")) {
@@ -55,9 +55,11 @@ object SortUtils {
 
   def thumbNailsSort = (t1: EnsembleThumbNail, t2: EnsembleThumbNail) =>
     compare(t1.caption.getText(), t2.caption.getText())
+    
+  def sortKeys = (x:String, y:String) => compare(x,y)  
 
   private def compare = (x: String, y: String) =>
-    x.toLowerCase() < y.toLowerCase()
+    x.compareToIgnoreCase(y) < 0
 }
 
 /**

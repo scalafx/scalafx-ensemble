@@ -64,7 +64,7 @@ object Ensemble extends JFXApp {
     expanded = true
   }
 
-  val sfxControl = EnsembleTree.create().getTree
+  val sfxControl = EnsembleTree.create().getTree.reverse
   sfxControl.foreach(x => {
     rootTreeItem.getChildren.add(x)
   })
@@ -80,7 +80,6 @@ object Ensemble extends JFXApp {
   controlsView.getSelectionModel.selectedItemProperty.addListener(new ChangeListener[Any] {
     def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
       val selItem = newValue.asInstanceOf[javafx.scene.control.TreeItem[String]]
-
       val str = if (selItem.isLeaf()) {
         selItem.getParent().getValue().toLowerCase() + " > " + selItem.getValue()
       } else if (!selItem.isLeaf() && selItem.getParent() != null) {
@@ -88,7 +87,6 @@ object Ensemble extends JFXApp {
       } else if (selItem.getParent() == null) {
         "dashBoard"
       } else "dashBoard"
-
       centerStage = PageDisplayer.choosePage(str)
       pageViewHolder.items.remove(1)
       pageViewHolder.items.add(1, centerStage)
@@ -99,7 +97,7 @@ object Ensemble extends JFXApp {
   val scrollPane = new ScrollPane {
     minWidth = 200
     maxWidth = 200
-    prefHeight = screen.getBounds().getHeight()
+    // fitToHeight = true
     id = "page-tree"
     content = controlsView
   }
