@@ -125,7 +125,8 @@ object Ensemble extends JFXApp {
             id = "mainToolBar"
             content = List(
               new ImageView {
-                image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/logo.png"))
+                image = new Image(
+                    this.getClass.getResourceAsStream("/scalafx/ensemble/images/logo.png"))
                 margin = Insets(0, 0, 0, 10)
               },
               new Region {
