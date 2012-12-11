@@ -4,29 +4,28 @@ import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Button
 import scalafx.scene.control.Label
-import scalafx.scene.image.Image
-import scalafx.scene.image.Image.sfxImage2jfx
-import scalafx.scene.image.ImageView
-import scalafx.scene.layout.AnchorPane
+import scalafx.scene.control.TextField
+import scalafx.scene.layout.HBox
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 import scalafx.scene.text.Font.sfxFont2jfx
+import javafx.geometry.Pos
 
-class EnsembleAnchorPane extends EnsembleExample {
+class EnsembleHBox extends EnsembleExample {
   def getContent = {
+
+    val label = new Label {
+      text = "Text:"
+      style = "-fx-font-weight:bold"
+    }
+    val textField = new TextField {
+      promptText = "Type something..."
+    }
     val button = new Button {
       maxWidth = 110
       maxHeight = 70
-      text = "Submit"
+      text = "Search..."
     }
-    val imageButton = new ImageView {
-      image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
-    }
-
-    AnchorPane.setTopAnchor(button, 2.0)
-    AnchorPane.setTopAnchor(imageButton, 40.0)
-    AnchorPane.setLeftAnchor(button, 20.0)
-    AnchorPane.setLeftAnchor(imageButton, 20.0)
 
     new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
@@ -35,11 +34,15 @@ class EnsembleAnchorPane extends EnsembleExample {
       margin = Insets(50, 0, 0, 50)
       content = List(
         new Label {
-          text = "Ensemble Anchor Pane"
+          text = "Ensemble HBox"
           font = new Font("Verdana", 20)
         },
-        new AnchorPane {
-          content = List(button, imageButton)
+        new HBox {
+          maxWidth = 300
+          maxHeight = 300
+          spacing = 5
+          innerAlignment = Pos.BOTTOM_LEFT
+          content = List(label, textField, button)
         })
     }
   }
