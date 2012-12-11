@@ -57,6 +57,8 @@ import javafx.scene.control.{ TreeItem => jxti }
 import scalafx.stage.Screen
 import scalafx.ensemble.commons.PageDisplayer
 import javafx.scene.control.ScrollPane.ScrollBarPolicy
+import scalafx.scene.Group
+import javafx.geometry.Orientation
 
 object Ensemble extends JFXApp {
   var centerStage = PageDisplayer.choosePage("dashBoard")
@@ -64,23 +66,25 @@ object Ensemble extends JFXApp {
     expanded = true
   }
 
-  val sfxControl = EnsembleTree.create().getTree
+  val sfxControl = EnsembleTree.create().getTree.reverse
   sfxControl.foreach(x => {
     rootTreeItem.getChildren.add(x)
   })
 
+  val screen = Screen.primary
   val controlsView = new TreeView[String]() {
     minWidth = 200
     maxWidth = 200
+    minHeight = screen.getBounds().getHeight()
     editable = true
     root = rootTreeItem
     id = "page-tree"
   }
+  controlsView.resize(0, screen.getBounds().getHeight())
   controlsView.getSelectionModel.setSelectionMode(SelectionMode.SINGLE)
   controlsView.getSelectionModel.selectedItemProperty.addListener(new ChangeListener[Any] {
     def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
       val selItem = newValue.asInstanceOf[javafx.scene.control.TreeItem[String]]
-
       val str = if (selItem.isLeaf()) {
         selItem.getParent().getValue().toLowerCase() + " > " + selItem.getValue()
       } else if (!selItem.isLeaf() && selItem.getParent() != null) {
@@ -88,18 +92,17 @@ object Ensemble extends JFXApp {
       } else if (selItem.getParent() == null) {
         "dashBoard"
       } else "dashBoard"
-
       centerStage = PageDisplayer.choosePage(str)
       pageViewHolder.items.remove(1)
       pageViewHolder.items.add(1, centerStage)
     }
   })
 
-  val screen = Screen.primary
+  
   val scrollPane = new ScrollPane {
     minWidth = 200
     maxWidth = 200
-    prefHeight = screen.getBounds().getHeight()
+    fitToHeight = false
     id = "page-tree"
     content = controlsView
   }
@@ -122,7 +125,8 @@ object Ensemble extends JFXApp {
             id = "mainToolBar"
             content = List(
               new ImageView {
-                image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/logo.png"))
+                image = new Image(
+                    this.getClass.getResourceAsStream("/scalafx/ensemble/images/logo.png"))
                 margin = Insets(0, 0, 0, 10)
               },
               new Region {
@@ -148,5 +152,5 @@ object Ensemble extends JFXApp {
   stage.width = screen.getVisualBounds().getWidth()
   stage.height = screen.getVisualBounds().getHeight()
   stage.title = "ScalaFX Ensemble"
-  stage.initStyle(StageStyle.DECORATED)
+  stage.initStyle(StageStyle.UNDECORATED)
 }

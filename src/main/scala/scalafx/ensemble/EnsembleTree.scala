@@ -15,6 +15,8 @@ import scalafx.scene.layout.FlowPane
 import scalafx.scene.layout.VBox
 import scalafx.geometry.Insets
 import javafx.geometry.Pos
+import scala.collection.SortedMap
+import scala.collection.immutable.TreeMap
 
 /**
  * Object to load examples as Map which in turn is used
@@ -33,7 +35,7 @@ object EnsembleTree {
    * This is used in UI
    */
   private def createTree() = {
-    var egPlesTree = Map[String, List[TreeItem[String]]]()
+    var egPlesTree = TreeMap[String, List[TreeItem[String]]]()
     fil.listFiles().foreach(x => {
       if (x.isDirectory()) {
         var leaves = List[TreeItem[String]]()
@@ -45,11 +47,11 @@ object EnsembleTree {
           leaves.sortWith(SortUtils.treeItemSort(_, _))))
       }
     })
-    egPlesTree.toSeq.sortWith(_._1 > _._1).toMap
+    egPlesTree
   }
 
   private def createThumbnails() = {
-    var thumbnails = Map[String, List[EnsembleThumbNail]]()
+    var thumbnails = TreeMap[String, List[EnsembleThumbNail]]()
     fil.listFiles().foreach(x => {
       if (x.isDirectory()) {
         var thumbs = List[EnsembleThumbNail]()
@@ -66,9 +68,8 @@ object EnsembleTree {
           thumbs.sortWith(SortUtils.thumbNailsSort(_, _))))
       }
     })
-    thumbnails.toSeq.sortWith(_._1 > _._1).toMap
+    thumbnails
   }
-
 }
 
 case class EnsembleThumbNail(imgView: ImageView, caption: Label)
@@ -101,19 +102,17 @@ class EnsembleTree(map: Map[String, List[TreeItem[String]]],
   def getThumbs(keyName: String) = thumbnails get keyName get
 
   import scalafx.ensemble.Converter._
-  
+
   def getDashThumbsCtrl() = {
     var thums = List[Node]()
     thumbnails.foreach(x => {
-      // could be thums = thums.::(x._1).::(x._2) but cant use it 
-      // due to implicits 
-      thums = thums.::(x._2)
       thums = thums.::(x._1)
+      thums = thums.::(x._2)
     })
-    thums
+    thums.reverse
   }
-  
-  def getDashThumb(ctrlGrpName:String) = {
+
+  def getDashThumb(ctrlGrpName: String) = {
     var thums = List[Node]()
     thums = thums.::(thumbnails.get(ctrlGrpName).get)
     thums = thums.::(ctrlGrpName)
