@@ -57,6 +57,8 @@ import javafx.scene.control.{ TreeItem => jxti }
 import scalafx.stage.Screen
 import scalafx.ensemble.commons.PageDisplayer
 import javafx.scene.control.ScrollPane.ScrollBarPolicy
+import scalafx.scene.Group
+import javafx.geometry.Orientation
 
 object Ensemble extends JFXApp {
   var centerStage = PageDisplayer.choosePage("dashBoard")
@@ -69,13 +71,16 @@ object Ensemble extends JFXApp {
     rootTreeItem.getChildren.add(x)
   })
 
+  val screen = Screen.primary
   val controlsView = new TreeView[String]() {
     minWidth = 200
     maxWidth = 200
+    minHeight = screen.getBounds().getHeight()
     editable = true
     root = rootTreeItem
     id = "page-tree"
   }
+  controlsView.resize(0, screen.getBounds().getHeight())
   controlsView.getSelectionModel.setSelectionMode(SelectionMode.SINGLE)
   controlsView.getSelectionModel.selectedItemProperty.addListener(new ChangeListener[Any] {
     def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
@@ -93,11 +98,11 @@ object Ensemble extends JFXApp {
     }
   })
 
-  val screen = Screen.primary
+  
   val scrollPane = new ScrollPane {
     minWidth = 200
     maxWidth = 200
-    // fitToHeight = true
+    fitToHeight = false
     id = "page-tree"
     content = controlsView
   }
@@ -146,5 +151,5 @@ object Ensemble extends JFXApp {
   stage.width = screen.getVisualBounds().getWidth()
   stage.height = screen.getVisualBounds().getHeight()
   stage.title = "ScalaFX Ensemble"
-  stage.initStyle(StageStyle.DECORATED)
+  stage.initStyle(StageStyle.UNDECORATED)
 }
