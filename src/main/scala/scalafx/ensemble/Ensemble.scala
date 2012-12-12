@@ -76,6 +76,7 @@ object Ensemble extends JFXApp {
     minWidth = 200
     maxWidth = 200
     minHeight = screen.getBounds().getHeight()
+    maxHeight = screen.getBounds().getHeight()
     editable = true
     root = rootTreeItem
     id = "page-tree"
@@ -97,12 +98,12 @@ object Ensemble extends JFXApp {
       pageViewHolder.items.add(1, centerStage)
     }
   })
-
   
   val scrollPane = new ScrollPane {
     minWidth = 200
     maxWidth = 200
-    fitToHeight = false
+    fitToWidth = true
+    fitToHeight = true
     id = "page-tree"
     content = controlsView
   }
@@ -152,5 +153,5 @@ object Ensemble extends JFXApp {
   stage.width = screen.getVisualBounds().getWidth()
   stage.height = screen.getVisualBounds().getHeight()
   stage.title = "ScalaFX Ensemble"
-  stage.initStyle(StageStyle.UNDECORATED)
+  stage.initStyle(StageStyle.DECORATED)
 }

@@ -32,7 +32,6 @@ object PageDisplayer {
   }
 
   private def displayPage(nodeToAdd: DisplayablePage): Node = {
-
     val pageContent = new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
       hgrow = javafx.scene.layout.Priority.ALWAYS
@@ -42,7 +41,6 @@ object PageDisplayer {
     pageContent.content.add(nodeToAdd.getPage)
     pageContent
   }
-
 }
 
 /**

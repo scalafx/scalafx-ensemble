@@ -28,14 +28,18 @@ import scalafx.scene.Node
 import scalafx.scene.control.TextField
 import scalafx.ensemble.commons.DisplayablePage
 import scalafx.ensemble.EnsembleTree
+import scalafx.stage.Screen
 
 // Dashboard 
 class DashboardPage(dashPart: String = "dashboard") extends DisplayablePage {
   val tree = EnsembleTree.create
+  val adjustFactor = 140
+  val screen = Screen.primary
   def getPage = {
     val boxes = new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
       hgrow = javafx.scene.layout.Priority.ALWAYS
+      minWidth = screen.getVisualBounds().getWidth()-130
       styleClass.add("category-header")
     }
 
@@ -52,7 +56,16 @@ class DashboardPage(dashPart: String = "dashboard") extends DisplayablePage {
       }
     }
 
-    boxes
+    val scrollPane = new ScrollPane {
+      vgrow = javafx.scene.layout.Priority.ALWAYS
+      hgrow = javafx.scene.layout.Priority.ALWAYS
+      fitToHeight = true
+      fitToWidth = true
+      content = boxes
+      styleClass.add("category-header")
+    }
+
+    scrollPane
   }
 }
 
