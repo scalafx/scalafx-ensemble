@@ -35,7 +35,7 @@ object EnsembleTabbedPage {
 
   def buildTabContent(node: Node) = {
     val demoTabStack = new StackPane {
-      alignment = Pos.CENTER
+      alignment = Pos.TOP_LEFT
       content = List(node)
     }
     demoTabStack
@@ -46,7 +46,11 @@ class EnsembleTabbedPage(tabPane: TabPane, ctrlName: String, ctrlGroup: String)
   extends DisplayablePage {
   def getPage() = {
     tabPane.getTabs().get(0).setContent(
-      EnsembleTabbedPage.buildTabContent(ContentFactory.createContent(ctrlName, ctrlGroup)))
+      EnsembleTabbedPage.buildTabContent(
+        ContentFactory.createContent(ctrlName, ctrlGroup)))
+    tabPane.getTabs().get(1).setContent(
+      EnsembleTabbedPage.buildTabContent(
+        ContentFactory.createSrcContent(ctrlName, ctrlGroup)))
     tabPane
   }
 }

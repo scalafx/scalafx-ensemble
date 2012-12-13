@@ -1,12 +1,16 @@
 package scalafx.ensemble.commons
 
-import scalafx.scene.Node
-import scalafx.scene.layout.VBox
+import java.io.BufferedReader
+import java.io.FileReader
+import scalafx.ensemble.EnsembleThumbNail
 import scalafx.ensemble.stage.DashboardPage
 import scalafx.ensemble.stage.EnsembleTabbedPage
-import scalafx.stage.Screen
-import scalafx.ensemble.EnsembleThumbNail
+import scalafx.scene.Node
 import scalafx.scene.control.TreeItem
+import scalafx.scene.layout.VBox
+import scala.io.Source
+import scalafx.scene.text.Text
+import scalafx.scene.control.Label
 import scalafx.scene.control.ScrollPane
 
 /**
@@ -53,8 +57,8 @@ object SortUtils {
 
   def thumbNailsSort = (t1: EnsembleThumbNail, t2: EnsembleThumbNail) =>
     compare(t1.caption.getText(), t2.caption.getText())
-    
-  def sortKeys = (x:String, y:String) => compare(x,y)  
+
+  def sortKeys = (x: String, y: String) => compare(x, y)
 
   private def compare = (x: String, y: String) =>
     x.compareToIgnoreCase(y) < 0
@@ -66,7 +70,8 @@ object SortUtils {
  */
 object ContentFactory {
   def createContent(ctrlName: String, ctrlgroupName: String = "") = {
-    val qualCtrl = "scalafx.ensemble.example." + ctrlgroupName + ".Ensemble" + ctrlName
+    val qualCtrl = "scalafx.ensemble.example." +
+      ctrlgroupName + ".Ensemble" + ctrlName
     var cache = Map[String, EnsembleExample]()
     if (cache.get(qualCtrl).isDefined) {
       cache.get(qualCtrl).get.getContent
@@ -75,6 +80,20 @@ object ContentFactory {
       cache = cache.+((qualCtrl, inst))
       inst.getContent
     }
+  }
+
+  def createSrcContent(ctrlName: String, ctrlgroupName: String = "") = {
+    val file = this.getClass().getResource(
+      "/ensemble/examples/" + ctrlgroupName + "/" + ctrlName + ".txt")
+    val src = scala.io.Source.fromFile(file.getFile())
+    val srcSp = new ScrollPane
+    val srcCode = new Label
+    srcCode.text = src.mkString
+    src.close
+    srcSp.fitToHeight = true
+    srcSp.fitToWidth = true
+    srcSp.content = srcCode
+    srcSp
   }
 }
 
