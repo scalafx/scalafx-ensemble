@@ -10,13 +10,14 @@ import scalafx.scene.image.ImageView
 import scalafx.ensemble.commons.SortUtils
 import scalafx.scene.Node
 import scalafx.scene.text.Text
-import scalafx.scene.text.Font
 import scalafx.scene.layout.FlowPane
 import scalafx.scene.layout.VBox
 import scalafx.geometry.Insets
 import javafx.geometry.Pos
-import scala.collection.SortedMap
 import scala.collection.immutable.TreeMap
+import javafx.event.EventHandler
+import javafx.scene.input.MouseEvent
+import scalafx.ensemble.commons.PageDisplayer
 
 /**
  * Object to load examples as Map which in turn is used
@@ -54,10 +55,21 @@ object EnsembleTree {
     var thumbnails = TreeMap[String, List[EnsembleThumbNail]]()
     fil.listFiles().foreach(x => {
       if (x.isDirectory()) {
+        val ctrlgpName = x.getName()
         var thumbs = List[EnsembleThumbNail]()
         x.listFiles().foreach(a => {
           val leafname = a.getName().split(".txt")
-          val img = new ImageView()
+          val img = new ImageView {
+            onMouseClicked = {
+              new EventHandler[MouseEvent]() {
+                def handle(p1: MouseEvent) {
+                  Ensemble.pageViewHolder.items.remove(1)
+                  Ensemble.pageViewHolder.items.add(1, 
+                      PageDisplayer.choosePage(ctrlgpName + " > " + leafname(0)))
+                }
+              }
+            }
+          }
           img.image = new Image(this.getClass.getResourceAsStream(
             "/scalafx/ensemble/images/CalendarTextFieldSample.png"))
           val lbl = new Label()
