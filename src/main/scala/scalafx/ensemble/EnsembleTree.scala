@@ -41,8 +41,10 @@ object EnsembleTree {
       if (x.isDirectory()) {
         var leaves = List[TreeItem[String]]()
         x.listFiles().foreach(a => {
-          val leafname = a.getName().split(".txt")
-          leaves = leaves.::(new TreeItem(leafname(0)))
+          if (a.getName().contains(".txt")) {
+            val leafname = a.getName().split(".txt")
+            leaves = leaves.::(new TreeItem(leafname(0)))
+          }
         })
         egPlesTree = egPlesTree.+((x.getName().capitalize,
           leaves.sortWith(SortUtils.treeItemSort(_, _))))
@@ -58,24 +60,25 @@ object EnsembleTree {
         val ctrlgpName = x.getName()
         var thumbs = List[EnsembleThumbNail]()
         x.listFiles().foreach(a => {
-          val leafname = a.getName().split(".txt")
-          val img = new ImageView {
-            onMouseClicked = {
-              new EventHandler[MouseEvent]() {
-                def handle(p1: MouseEvent) {
-                  Ensemble.pageViewHolder.items.remove(1)
-                  Ensemble.pageViewHolder.items.add(1, 
+          if (a.getName().contains(".txt")) {
+            val leafname = a.getName().split(".txt")
+            val img = new ImageView {
+              onMouseClicked = {
+                new EventHandler[MouseEvent]() {
+                  def handle(p1: MouseEvent) {
+                    Ensemble.pageViewHolder.items.remove(1)
+                    Ensemble.pageViewHolder.items.add(1,
                       PageDisplayer.choosePage(ctrlgpName + " > " + leafname(0)))
+                  }
                 }
               }
+              val filepath = "/ensemble/examples/" + ctrlgpName + "/" + leafname(0) + "Sample.png"
+              image = new Image(this.getClass.getResourceAsStream(filepath))
             }
+            val lbl = new Label()
+            lbl.text = leafname(0)
+            thumbs = thumbs.::(EnsembleThumbNail(img, lbl))
           }
-          println(" grp " + ctrlgpName + " ctrl name " + leafname(0))
-          img.image = new Image(this.getClass.getResourceAsStream(
-            "/ensemble/examples/"+ctrlgpName+"/"+leafname(0)+"Sample.png"))
-          val lbl = new Label()
-          lbl.text = leafname(0)
-          thumbs = thumbs.::(EnsembleThumbNail(img, lbl))
         })
         thumbnails = thumbnails.+((x.getName().capitalize,
           thumbs.sortWith(SortUtils.thumbNailsSort(_, _))))
