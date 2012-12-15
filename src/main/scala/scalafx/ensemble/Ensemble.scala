@@ -28,37 +28,24 @@ package scalafx.ensemble
 
 import javafx.beans.value.ChangeListener
 import javafx.beans.value.ObservableValue
-import javafx.event.EventType
-import javafx.scene.control.{ TreeView => jxtv }
-import javafx.scene.layout.Priority
+import javafx.scene.control.{TreeView => jxtv}
 import javafx.stage.StageStyle
 import scalafx.application.JFXApp
-import scalafx.ensemble.stage.DashboardPage
 import scalafx.geometry.Insets
-import scalafx.scene.Node
-import scalafx.scene.Scene._
 import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.control.TreeView
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.Pane._
 import scalafx.scene.layout.Region
 import scalafx.scene.layout.VBox
-import scalafx.scene.shape.Circle._
-import scalafx.stage.Stage._
 import scalafx.stage.Stage
-import scalafx.scene.input.MouseEvent
-import javafx.scene.control.MultipleSelectionModelBuilder
 import javafx.scene.control.SelectionMode
 import scalafx.scene.control.TreeItem
-import javafx.scene.control.{ TreeItem => jxti }
+import javafx.scene.control.{TreeItem => jxti}
 import scalafx.stage.Screen
 import scalafx.ensemble.commons.PageDisplayer
-import javafx.scene.control.ScrollPane.ScrollBarPolicy
-import scalafx.scene.Group
-import javafx.geometry.Orientation
 
 object Ensemble extends JFXApp {
   var centerStage = PageDisplayer.choosePage("dashBoard")
@@ -98,7 +85,7 @@ object Ensemble extends JFXApp {
       pageViewHolder.items.add(1, centerStage)
     }
   })
-  
+
   val scrollPane = new ScrollPane {
     minWidth = 200
     maxWidth = 200
@@ -127,7 +114,7 @@ object Ensemble extends JFXApp {
             content = List(
               new ImageView {
                 image = new Image(
-                    this.getClass.getResourceAsStream("/scalafx/ensemble/images/logo.png"))
+                  this.getClass.getResourceAsStream("/scalafx/ensemble/images/logo.png"))
                 margin = Insets(0, 0, 0, 10)
               },
               new Region {
