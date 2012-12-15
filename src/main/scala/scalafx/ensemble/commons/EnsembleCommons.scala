@@ -1,15 +1,11 @@
 package scalafx.ensemble.commons
 
-import java.io.BufferedReader
-import java.io.FileReader
 import scalafx.ensemble.EnsembleThumbNail
 import scalafx.ensemble.stage.DashboardPage
 import scalafx.ensemble.stage.EnsembleTabbedPage
 import scalafx.scene.Node
 import scalafx.scene.control.TreeItem
 import scalafx.scene.layout.VBox
-import scala.io.Source
-import scalafx.scene.text.Text
 import scalafx.scene.control.Label
 import scalafx.scene.control.ScrollPane
 

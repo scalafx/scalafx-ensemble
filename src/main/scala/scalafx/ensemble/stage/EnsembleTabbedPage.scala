@@ -2,14 +2,9 @@ package scalafx.ensemble.stage
 
 import scalafx.scene.control.TabPane
 import scalafx.scene.control.Tab
-import scalafx.scene.control.TextField
 import scalafx.scene.layout.StackPane
 import javafx.geometry.Pos
-import scalafx.scene.layout.VBox
-import scalafx.scene.text.Text
-import scalafx.scene.text.Font
 import scalafx.scene.Node
-import scalafx.ensemble.commons.EnsembleExample
 import scalafx.ensemble.commons.ContentFactory
 import scalafx.ensemble.commons.DisplayablePage
 import scalafx.stage.Screen
