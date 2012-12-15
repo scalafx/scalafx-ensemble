@@ -70,8 +70,9 @@ object EnsembleTree {
               }
             }
           }
+          println(" grp " + ctrlgpName + " ctrl name " + leafname(0))
           img.image = new Image(this.getClass.getResourceAsStream(
-            "/scalafx/ensemble/images/CalendarTextFieldSample.png"))
+            "/ensemble/examples/"+ctrlgpName+"/"+leafname(0)+"Sample.png"))
           val lbl = new Label()
           lbl.text = leafname(0)
           thumbs = thumbs.::(EnsembleThumbNail(img, lbl))

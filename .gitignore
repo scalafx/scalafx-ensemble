@@ -11,3 +11,7 @@ bin
 
 .classpath
 .project
+/lib_managed
+/.idea
+/.idea_modules
+/.worksheet
