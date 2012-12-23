@@ -66,15 +66,23 @@ class EnsembleAdvancedBarChart extends EnsembleExample {
     series3.getData().add(XYChart.Data[String, Number](years(0), 800))
     series3.getData().add(XYChart.Data[String, Number](years(1), 1000))
     series3.getData().add(XYChart.Data[String, Number](years(2), 2800))
+    
+    val series4 = new XYChart.Series[String, Number]()
+    series4.setName("Data Series 4")
+    // create sample data
+    series4.getData().add(XYChart.Data[String, Number](years(0), 786))
+    series4.getData().add(XYChart.Data[String, Number](years(1), 2100))
+    series4.getData().add(XYChart.Data[String, Number](years(2), 450))
 
     // setup chart
     val bc = BarChart[String, Number](xAxis, yAxis)
     bc.barGap = 5
-    bc.categoryGap = 10
+    bc.categoryGap = 12
     bc.setTitle("Advanced Bar Chart")
     bc.getData().add(series1)
     bc.getData().add(series2)
     bc.getData().add(series3)
+    bc.getData().add(series4)
     bc
   }
 }

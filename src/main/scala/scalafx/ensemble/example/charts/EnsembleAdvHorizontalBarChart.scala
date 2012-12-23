@@ -15,7 +15,7 @@ import scalafx.scene.control.Label
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 
-class EnsembleAdvancedBarChart extends EnsembleExample {
+class EnsembleAdvHorizontalBarChart extends EnsembleExample {
   def getContent = {
     new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS
@@ -24,7 +24,7 @@ class EnsembleAdvancedBarChart extends EnsembleExample {
       margin = Insets(50, 0, 0, 50)
       content = List(
         new Label {
-          text = "Ensemble Advanced Bar Chart"
+          text = "Ensemble Horizontal Bar Chart"
           font = new Font("Verdana", 20)
         },
         createBarChart)
@@ -37,48 +37,48 @@ class EnsembleAdvancedBarChart extends EnsembleExample {
     years(1) = "2008"
     years(2) = "2009"
 
-    val xAxis = new CategoryAxis()
-    xAxis.setLabel("Year")
-    xAxis.setCategories(ObservableBuffer[String](years.toSeq))
+    val xAxis = new NumberAxis()
+    xAxis.setTickLabelFormatter(NumberAxis.DefaultFormatter(xAxis, "$", null))
+    xAxis.setLabel("Price")
 
-    val yAxis = new NumberAxis()
-    yAxis.setTickLabelFormatter(NumberAxis.DefaultFormatter(yAxis, "$", null))
-    yAxis.setLabel("Price")
+    val yAxis = new CategoryAxis()
+    yAxis.setLabel("Year")
+    yAxis.setCategories(ObservableBuffer[String](years.toSeq))
 
     // add starting data
-    val series1 = new XYChart.Series[String, Number]()
+    val series1 = new XYChart.Series[Number, String]()
     series1.setName("Data Series 1")
     // create sample data
-    series1.getData().add(XYChart.Data[String, Number](years(0), 567))
-    series1.getData().add(XYChart.Data[String, Number](years(1), 1292))
-    series1.getData().add(XYChart.Data[String, Number](years(2), 2180))
+    series1.getData().add(XYChart.Data[Number, String](567, years(0)))
+    series1.getData().add(XYChart.Data[Number, String](1292, years(1)))
+    series1.getData().add(XYChart.Data[Number, String](2180, years(2)))
 
-    val series2 = new XYChart.Series[String, Number]()
+    val series2 = new XYChart.Series[Number, String]()
     series2.setName("Data Series 2")
     // create sample data
-    series2.getData().add(XYChart.Data[String, Number](years(0), 956))
-    series2.getData().add(XYChart.Data[String, Number](years(1), 1665))
-    series2.getData().add(XYChart.Data[String, Number](years(2), 2450))
+    series2.getData().add(XYChart.Data[Number, String](956, years(0)))
+    series2.getData().add(XYChart.Data[Number, String](1665, years(1)))
+    series2.getData().add(XYChart.Data[Number, String](2450, years(2)))
 
-    val series3 = new XYChart.Series[String, Number]()
+    val series3 = new XYChart.Series[Number, String]()
     series3.setName("Data Series 3")
     // create sample data
-    series3.getData().add(XYChart.Data[String, Number](years(0), 800))
-    series3.getData().add(XYChart.Data[String, Number](years(1), 1000))
-    series3.getData().add(XYChart.Data[String, Number](years(2), 2800))
-    
-    val series4 = new XYChart.Series[String, Number]()
+    series3.getData().add(XYChart.Data[Number, String](800, years(0)))
+    series3.getData().add(XYChart.Data[Number, String](1000, years(1)))
+    series3.getData().add(XYChart.Data[Number, String](2500, years(2)))
+
+    val series4 = new XYChart.Series[Number, String]()
     series4.setName("Data Series 4")
     // create sample data
-    series4.getData().add(XYChart.Data[String, Number](years(0), 786))
-    series4.getData().add(XYChart.Data[String, Number](years(1), 2100))
-    series4.getData().add(XYChart.Data[String, Number](years(2), 450))
+    series4.getData().add(XYChart.Data[Number, String](786, years(0)))
+    series4.getData().add(XYChart.Data[Number, String](2100, years(1)))
+    series4.getData().add(XYChart.Data[Number, String](450, years(2)))
 
     // setup chart
-    val bc = BarChart[String, Number](xAxis, yAxis)
+    val bc = BarChart[Number, String](xAxis, yAxis)
     bc.barGap = 5
     bc.categoryGap = 12
-    bc.setTitle("Advanced Bar Chart")
+    bc.setTitle("Horizontal Bar Chart Example")
     bc.getData().add(series1)
     bc.getData().add(series2)
     bc.getData().add(series3)
