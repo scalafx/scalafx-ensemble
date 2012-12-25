@@ -95,7 +95,7 @@ case class EnsembleThumbNail(imgView: ImageView, caption: Label)
  * underlying map
  */
 class EnsembleTree(map: Map[String, List[TreeItem[String]]],
-  thumbnails: Map[String, List[EnsembleThumbNail]]) {
+                   thumbnails: Map[String, List[EnsembleThumbNail]]) {
 
   def getLeaves(keyName: String) = map get keyName get
 
@@ -148,8 +148,8 @@ object Converter {
     val fp = new FlowPane {
       hgap = 4
       vgap = 4
-      padding = Insets(5, 5, 5, 5)
-      prefWrapLength = 400
+      padding = Insets(10, 10, 10, 10)
+      prefWrapLength = 600
       styleClass.add("category-page-flow")
     }
     value.foreach(y => {
