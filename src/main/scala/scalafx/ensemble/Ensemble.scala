@@ -140,5 +140,5 @@ object Ensemble extends JFXApp {
   stage.width = screen.getVisualBounds().getWidth()
   stage.height = screen.getVisualBounds().getHeight()
   stage.title = "ScalaFX Ensemble"
-  stage.initStyle(StageStyle.DECORATED)
+  stage.initStyle(StageStyle.UNDECORATED)
 }
