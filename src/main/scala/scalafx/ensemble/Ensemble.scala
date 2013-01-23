@@ -26,10 +26,10 @@
  */
 package scalafx.ensemble
 
-import javafx.beans.value.ChangeListener
 import javafx.beans.value.ObservableValue
 import javafx.scene.control.{TreeView => jxtv}
-import javafx.stage.StageStyle
+import scalafx.Includes._
+import scalafx.stage.StageStyle
 import scalafx.application.JFXApp
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
@@ -41,9 +41,9 @@ import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.Region
 import scalafx.scene.layout.VBox
 import scalafx.stage.Stage
-import javafx.scene.control.SelectionMode
+import scalafx.scene.control.SelectionMode
 import scalafx.scene.control.TreeItem
-import javafx.scene.control.{TreeItem => jxti}
+import scalafx.scene.control.{TreeItem => jxti}
 import scalafx.stage.Screen
 import scalafx.ensemble.commons.PageDisplayer
 
@@ -69,9 +69,9 @@ object Ensemble extends JFXApp {
     id = "page-tree"
   }
   controlsView.resize(0, screen.getBounds().getHeight())
-  controlsView.getSelectionModel.setSelectionMode(SelectionMode.SINGLE)
-  controlsView.getSelectionModel.selectedItemProperty.addListener(new ChangeListener[Any] {
-    def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
+  controlsView.selectionModel().selectionMode = SelectionMode.SINGLE
+  controlsView.selectionModel().selectedItemProperty.addListener(
+	(observable: ObservableValue[_], oldValue: Any, newValue: Any) => {
       val selItem = newValue.asInstanceOf[javafx.scene.control.TreeItem[String]]
       val str = if (selItem.isLeaf()) {
         selItem.getParent().getValue().toLowerCase() + " > " + selItem.getValue()
@@ -84,7 +84,7 @@ object Ensemble extends JFXApp {
       pageViewHolder.items.remove(1)
       pageViewHolder.items.add(1, centerStage)
     }
-  })
+  )
 
   val scrollPane = new ScrollPane {
     minWidth = 200
@@ -100,7 +100,7 @@ object Ensemble extends JFXApp {
     items.addAll(scrollPane, centerStage)
   }
 
-  stage = new Stage {
+  stage = new Stage(JFXApp.STAGE) {
     scene = new Scene() {
       content = new BorderPane {
         top = new VBox {

@@ -5,19 +5,20 @@ import java.io.IOException
 import java.io.InputStreamReader
 import java.net.URISyntaxException
 
+import scalafx.Includes._
 import scalafx.ensemble.EnsembleThumbNail
 import scalafx.ensemble.stage.DashboardPage
 import scalafx.ensemble.stage.EnsembleTabbedPage
 import scalafx.scene.Node
-import scalafx.scene.Node.sfxNode2jfx
-import scalafx.scene.control.Label.sfxLabel2jfx
+//import scalafx.scene.Node.sfxNode2jfx
+//import scalafx.scene.control.Label.sfxLabel2jfx
 import scalafx.scene.control.ScrollPane
 import scalafx.scene.control.TreeItem
 import scalafx.scene.control.TreeItem.sfxTreeItemTojfx
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.VBox
 import scalafx.scene.web.WebView
-import scalafx.scene.web.WebView.sfxWebView2jfx
+//import scalafx.scene.web.WebView.sfxWebView2jfx
 
 /**
  * the class that updates tabbed view or dashboard view
@@ -138,7 +139,7 @@ object ContentFactory {
       center = new WebView() {
         contextMenuEnabled = false
         prefWidth = 300
-        this.getEngine().loadContent(builder.mkString)
+        this.engine.loadContent(builder.mkString)
       }
     }
     /*

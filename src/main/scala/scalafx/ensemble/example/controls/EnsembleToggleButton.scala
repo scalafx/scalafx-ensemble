@@ -1,8 +1,8 @@
 package scalafx.ensemble.example.controls
 
-import javafx.beans.value.ChangeListener
 import javafx.beans.value.ObservableValue
 import javafx.scene.control.{ ToggleButton => JfxToggleBtn }
+import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Label
@@ -22,11 +22,11 @@ class EnsembleToggleButton extends EnsembleExample {
       margin = Insets(50, 0, 0, 50)
       //Radio Button Toggle Group 
       val tog = new ToggleGroup
-      tog.selectedToggle.addListener(new ChangeListener[Any] {
-        def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
+      tog.selectedToggle.addListener(
+        (observable: ObservableValue[_], oldValue: Any, newValue: Any) => {
           toggleLabel.text = "You selected : " + newValue.asInstanceOf[JfxToggleBtn].getText()
         }
-      })
+      )
 
       val toggleLabel = new Label {
         text = ""

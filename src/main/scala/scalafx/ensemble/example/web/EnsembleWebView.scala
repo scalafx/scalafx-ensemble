@@ -1,22 +1,22 @@
 package scalafx.ensemble.example.web
 
-import javafx.beans.value.ChangeListener
 import javafx.beans.value.ObservableValue
-import javafx.event.ActionEvent
-import javafx.event.EventHandler
+import scalafx.Includes._
+import scalafx.event.ActionEvent
+import scalafx.event.EventHandler
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Button
-import scalafx.scene.control.Button.sfxButton2jfx
+//import scalafx.scene.control.Button.sfxButton2jfx
 import scalafx.scene.control.Label
 import scalafx.scene.control.TextField
-import scalafx.scene.control.TextField.sfxTextField2jfx
+//import scalafx.scene.control.TextField.sfxTextField2jfx
 import scalafx.scene.layout.HBox
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
-import scalafx.scene.text.Font.sfxFont2jfx
+//import scalafx.scene.text.Font.sfxFont2jfx
 import scalafx.scene.web.WebView
-import scalafx.scene.web.WebView.sfxWebView2jfx
+//import scalafx.scene.web.WebView.sfxWebView2jfx
 
 class EnsembleWebView extends EnsembleExample {
   def getContent = {
@@ -47,25 +47,23 @@ class EnsembleWebView extends EnsembleExample {
       }
     }
 
-    val loadAction = new EventHandler[ActionEvent] {
-      def handle(ae: ActionEvent) {
+    val loadAction = (ae: ActionEvent) => {
         webEngine.load(validUrl(textUrl.getText()))
-      }
     }
     //On action is set for textfield if Enter key is pressed
-    textUrl.setOnAction(loadAction)
-    goButton.setOnAction(loadAction)
+    textUrl onAction = loadAction
+    goButton onAction = loadAction
 
     /*//TextField is given horizontal priority
     HBox.setHgrow(textUrl, Priority.ALWAYS)*/
 
     //WebEngine Location Property is added with changeListener for textfield value changes
-    webEngine.locationProperty.addListener(new ChangeListener[Any] {
-      def changed(observable: ObservableValue[_], oldValue: Any, newValue: Any) {
+    webEngine.locationProperty.addListener(
+      (observable: ObservableValue[_], oldValue: Any, newValue: Any) => {
         val newTextVal = newValue.asInstanceOf[String]
         textUrl.setText(newTextVal)
       }
-    })
+    )
 
     new VBox {
       vgrow = javafx.scene.layout.Priority.ALWAYS

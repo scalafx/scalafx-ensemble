@@ -7,7 +7,7 @@ import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
 import scalafx.geometry.Insets
-import javafx.geometry.Orientation
+import scalafx.geometry.Orientation
 
 class EnsembleHorizontalListView extends EnsembleExample {
   def getContent = {

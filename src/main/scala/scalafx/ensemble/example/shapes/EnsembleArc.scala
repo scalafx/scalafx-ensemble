@@ -1,17 +1,18 @@
 package scalafx.ensemble.example.shapes
 
+import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Label
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
-import scalafx.scene.paint.Color.sfxColor2jfx
+//import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.shape.Arc
-import scalafx.scene.shape.Arc.sfxArc2jfx
+//import scalafx.scene.shape.Arc.sfxArc2jfx
 import scalafx.scene.shape.ArcType
-import scalafx.scene.shape.ArcType.sfxArcType2jfx
+//import scalafx.scene.shape.ArcType.sfxArcType2jfx
 import scalafx.scene.text.Font
-import scalafx.scene.text.Font.sfxFont2jfx
+//import scalafx.scene.text.Font.sfxFont2jfx
 
 class EnsembleArc extends EnsembleExample {
   def getContent = {

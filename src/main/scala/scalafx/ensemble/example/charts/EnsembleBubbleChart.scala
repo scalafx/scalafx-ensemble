@@ -1,9 +1,10 @@
 package scalafx.ensemble.example.charts
 
+import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.chart.BubbleChart
-import scalafx.scene.chart.BubbleChart.sfxBubbleChart2jfx
+//import scalafx.scene.chart.BubbleChart.sfxBubbleChart2jfx
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.XYChart
 import scalafx.scene.control.Label

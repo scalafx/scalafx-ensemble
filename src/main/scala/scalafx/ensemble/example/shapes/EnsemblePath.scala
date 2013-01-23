@@ -1,27 +1,28 @@
 package scalafx.ensemble.example.shapes
 
+import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Label
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.ArcTo
-import scalafx.scene.shape.ArcTo.sfxArcTo2jfx
+//import scalafx.scene.shape.ArcTo.sfxArcTo2jfx
 import scalafx.scene.shape.ClosePath
-import scalafx.scene.shape.ClosePath.sfxClosePath2jfx
+//import scalafx.scene.shape.ClosePath.sfxClosePath2jfx
 import scalafx.scene.shape.CubicCurveTo
-import scalafx.scene.shape.CubicCurveTo.sfxCubicCurveTo2jfx
+//import scalafx.scene.shape.CubicCurveTo.sfxCubicCurveTo2jfx
 import scalafx.scene.shape.HLineTo
-import scalafx.scene.shape.HLineTo.sfxHLineTo2jfx
+//import scalafx.scene.shape.HLineTo.sfxHLineTo2jfx
 import scalafx.scene.shape.LineTo
-import scalafx.scene.shape.LineTo.sfxLineTo2jfx
+//import scalafx.scene.shape.LineTo.sfxLineTo2jfx
 import scalafx.scene.shape.MoveTo
-import scalafx.scene.shape.MoveTo.sfxMoveTo2jfx
+//import scalafx.scene.shape.MoveTo.sfxMoveTo2jfx
 import scalafx.scene.shape.Path
 import scalafx.scene.shape.QuadCurveTo
-import scalafx.scene.shape.QuadCurveTo.sfxQuadCurveTo2jfx
+//import scalafx.scene.shape.QuadCurveTo.sfxQuadCurveTo2jfx
 import scalafx.scene.shape.VLineTo
-import scalafx.scene.shape.VLineTo.sfxVLineTo2jfx
+//import scalafx.scene.shape.VLineTo.sfxVLineTo2jfx
 import scalafx.scene.text.Font
 
 class EnsemblePath extends EnsembleExample {

@@ -5,13 +5,13 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.Label
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
-import scalafx.scene.paint.Color.sfxColor2jfx
+//import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.paint.Paint
-import scalafx.scene.paint.Paint.sfxPaint2jfx
+//import scalafx.scene.paint.Paint.sfxPaint2jfx
 import scalafx.scene.shape.Circle
-import scalafx.scene.shape.Circle.sfxCircle2jfx
+//import scalafx.scene.shape.Circle.sfxCircle2jfx
 import scalafx.scene.text.Font
-import scalafx.scene.text.Font.sfxFont2jfx
+//import scalafx.scene.text.Font.sfxFont2jfx
 
 class EnsembleCircle extends EnsembleExample {
   def getContent = {
