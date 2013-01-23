@@ -1,11 +1,12 @@
 package scalafx.ensemble.example.charts
 
+import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.chart.LineChart
-import scalafx.scene.chart.LineChart.sfxLineChart2jfx
+//import scalafx.scene.chart.LineChart.sfxLineChart2jfx
 import scalafx.scene.chart.NumberAxis
-import scalafx.scene.chart.NumberAxis.sfxNumberAxis2jfx
+//import scalafx.scene.chart.NumberAxis.sfxNumberAxis2jfx
 import scalafx.scene.chart.XYChart
 import scalafx.scene.control.Label
 import scalafx.scene.layout.VBox

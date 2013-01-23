@@ -1,11 +1,12 @@
 package scalafx.ensemble
 
 import java.io.File
+import scalafx.Includes._
 import scalafx.scene.control.Label
 import scalafx.scene.control.TreeItem
-import scalafx.scene.control.TreeItem.sfxTreeItemTojfx
+//import scalafx.scene.control.TreeItem.sfxTreeItemTojfx
 import scalafx.scene.image.Image
-import scalafx.scene.image.Image.sfxImage2jfx
+//import scalafx.scene.image.Image.sfxImage2jfx
 import scalafx.scene.image.ImageView
 import scalafx.ensemble.commons.SortUtils
 import scalafx.scene.Node
@@ -13,10 +14,10 @@ import scalafx.scene.text.Text
 import scalafx.scene.layout.FlowPane
 import scalafx.scene.layout.VBox
 import scalafx.geometry.Insets
-import javafx.geometry.Pos
+import scalafx.geometry.Pos
 import scala.collection.immutable.TreeMap
-import javafx.event.EventHandler
-import javafx.scene.input.MouseEvent
+import scalafx.event.EventHandler
+import scalafx.scene.input.MouseEvent
 import scalafx.ensemble.commons.PageDisplayer
 
 /**
@@ -63,14 +64,10 @@ object EnsembleTree {
           if (a.getName().contains(".txt")) {
             val leafname = a.getName().split(".txt")
             val img = new ImageView {
-              onMouseClicked = {
-                new EventHandler[MouseEvent]() {
-                  def handle(p1: MouseEvent) {
+              onMouseClicked = (p1: MouseEvent) => {
                     Ensemble.pageViewHolder.items.remove(1)
                     Ensemble.pageViewHolder.items.add(1,
                       PageDisplayer.choosePage(ctrlgpName + " > " + leafname(0)))
-                  }
-                }
               }
               val filepath = "/ensemble/examples/" + ctrlgpName + "/" + leafname(0) + "Sample.png"
               image = new Image(this.getClass.getResourceAsStream(filepath))
