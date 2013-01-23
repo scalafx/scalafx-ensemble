@@ -1,18 +1,19 @@
 package scalafx.ensemble.example.web
 
-import javafx.event.ActionEvent
-import javafx.event.EventHandler
+import scalafx.Includes._
+import scalafx.event.ActionEvent
+import scalafx.event.EventHandler
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Button
 import scalafx.scene.control.Label
-import scalafx.scene.control.Label.sfxLabel2jfx
+//import scalafx.scene.control.Label.sfxLabel2jfx
 import scalafx.scene.control.ScrollPane
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
-import scalafx.scene.text.Font.sfxFont2jfx
+//import scalafx.scene.text.Font.sfxFont2jfx
 import scalafx.scene.web.HTMLEditor
-import scalafx.scene.web.HTMLEditor.sfxHTMLEditor2jfx
+//import scalafx.scene.web.HTMLEditor.sfxHTMLEditor2jfx
 
 class EnsembleHtmlEditor extends EnsembleExample {
   def getContent = {
@@ -59,10 +60,8 @@ class EnsembleHtmlEditor extends EnsembleExample {
         htmlEditor,
         new Button {
           text = "Display Html below"
-          onAction = new EventHandler[ActionEvent] {
-            def handle(ae: ActionEvent) {
+          onAction = (ae: ActionEvent) => {
               htmlLabel.setText(htmlEditor.getHtmlText())
-            }
           }
         },
         scrollPane)

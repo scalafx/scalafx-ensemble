@@ -1,10 +1,11 @@
 package scalafx.ensemble.example.controls
 
+import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.Node.sfxNode2jfx
+//import scalafx.scene.Node.sfxNode2jfx
 import scalafx.scene.control.SplitPane
-import scalafx.scene.control.SplitPane.sfxSplitPane2jfx
+//import scalafx.scene.control.SplitPane.sfxSplitPane2jfx
 import scalafx.scene.layout.Region
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font

@@ -1,13 +1,14 @@
 package scalafx.ensemble.example.layout
 
-import javafx.geometry.Pos
+import scalafx.Includes._
+import scalafx.geometry.Pos
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.CheckBox
 import scalafx.scene.control.Label
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
-import scalafx.scene.text.Font.sfxFont2jfx
+//import scalafx.scene.text.Font.sfxFont2jfx
 
 class EnsembleVBox extends EnsembleExample {
   def getContent = {

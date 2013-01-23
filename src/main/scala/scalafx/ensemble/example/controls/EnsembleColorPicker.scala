@@ -1,20 +1,21 @@
 package scalafx.ensemble.example.controls
 
-import javafx.event.ActionEvent
-import javafx.event.EventHandler
+import scalafx.Includes._
+import scalafx.event.ActionEvent
+import scalafx.event.EventHandler
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Button
-import scalafx.scene.control.Button.sfxButton2jfx
+//import scalafx.scene.control.Button.sfxButton2jfx
 import scalafx.scene.control.ColorPicker
-import scalafx.scene.control.ColorPicker.sfxColorPicker2jfx
+//import scalafx.scene.control.ColorPicker.sfxColorPicker2jfx
 import scalafx.scene.control.Label
-import scalafx.scene.control.Label.sfxLabel2jfx
+//import scalafx.scene.control.Label.sfxLabel2jfx
 import scalafx.scene.control.ToolBar
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
-import scalafx.scene.paint.Color.jfxColor2sfx
-import scalafx.scene.paint.Color.sfxColor2jfx
+//import scalafx.scene.paint.Color.jfxColor2sfx
+//import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
 
@@ -35,11 +36,9 @@ class EnsembleColorPicker extends EnsembleExample {
     }
     //Color Picker
     val colorPicker = new ColorPicker(Color.BLUE)
-    colorPicker.onAction = new EventHandler[ActionEvent] {
-      override def handle(ae: ActionEvent) {
+    colorPicker.onAction = (ae: ActionEvent) => {
         labelColor.setTextFill(colorPicker.getValue)
         buttonColor.setStyle(rgbVal(colorPicker.getValue))
-      }
     }
 
     new VBox {

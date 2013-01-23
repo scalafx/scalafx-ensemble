@@ -1,12 +1,13 @@
 package scalafx.ensemble.example.controls
 
+import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.Node
-import scalafx.scene.Node.sfxNode2jfx
+//import scalafx.scene.Node.sfxNode2jfx
 import scalafx.scene.control.Button
 import scalafx.scene.image.Image
-import scalafx.scene.image.Image.sfxImage2jfx
+//import scalafx.scene.image.Image.sfxImage2jfx
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.VBox
 

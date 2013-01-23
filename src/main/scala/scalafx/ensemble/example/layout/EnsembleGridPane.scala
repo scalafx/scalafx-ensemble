@@ -1,24 +1,25 @@
 package scalafx.ensemble.example.layout
 
-import javafx.geometry.HPos
-import javafx.geometry.VPos
+import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
+import scalafx.geometry.HPos
 import scalafx.geometry.Insets
+import scalafx.geometry.VPos
 import scalafx.scene.control.Label
-import scalafx.scene.control.Label.sfxLabel2jfx
+//import scalafx.scene.control.Label.sfxLabel2jfx
 import scalafx.scene.control.Separator
 import scalafx.scene.image.Image
-import scalafx.scene.image.Image.sfxImage2jfx
+//import scalafx.scene.image.Image.sfxImage2jfx
 import scalafx.scene.image.ImageView
-import scalafx.scene.image.ImageView.sfxImageView2jfx
+//import scalafx.scene.image.ImageView.sfxImageView2jfx
 import scalafx.scene.layout.ColumnConstraints
-import scalafx.scene.layout.ColumnConstraints.sfxColumnConstraints2jfx
+//import scalafx.scene.layout.ColumnConstraints.sfxColumnConstraints2jfx
 import scalafx.scene.layout.GridPane
 import scalafx.scene.layout.RowConstraints
-import scalafx.scene.layout.RowConstraints.sfxRowConstraints2jfx
+//import scalafx.scene.layout.RowConstraints.sfxRowConstraints2jfx
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
-import scalafx.scene.text.Font.sfxFont2jfx
+//import scalafx.scene.text.Font.sfxFont2jfx
 
 class EnsembleGridPane extends EnsembleExample {
   def getContent = {

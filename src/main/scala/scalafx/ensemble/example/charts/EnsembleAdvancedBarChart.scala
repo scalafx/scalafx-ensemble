@@ -1,15 +1,16 @@
 package scalafx.ensemble.example.charts
 
+import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.collections.ObservableBuffer.observableBuffer2ObservableList
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.chart.BarChart
-import scalafx.scene.chart.BarChart.sfxBarChart2jfx
+//import scalafx.scene.chart.BarChart.sfxBarChart2jfx
 import scalafx.scene.chart.CategoryAxis
-import scalafx.scene.chart.CategoryAxis.sfxCategoryAxis2jfx
+//import scalafx.scene.chart.CategoryAxis.sfxCategoryAxis2jfx
 import scalafx.scene.chart.NumberAxis
-import scalafx.scene.chart.NumberAxis.sfxNumberAxis2jfx
+//import scalafx.scene.chart.NumberAxis.sfxNumberAxis2jfx
 import scalafx.scene.chart.XYChart
 import scalafx.scene.control.Label
 import scalafx.scene.layout.VBox

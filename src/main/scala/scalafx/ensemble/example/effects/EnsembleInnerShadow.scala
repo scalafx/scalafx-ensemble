@@ -1,12 +1,13 @@
 package scalafx.ensemble.example.effects
 
+import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Label
 import scalafx.scene.effect.InnerShadow
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
-import scalafx.scene.paint.Color.sfxColor2jfx
+//import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.text.Font
 
 class EnsembleInnerShadow extends EnsembleExample {
