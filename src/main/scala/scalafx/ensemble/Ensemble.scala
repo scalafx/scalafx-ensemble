@@ -100,7 +100,7 @@ object Ensemble extends JFXApp {
     items.addAll(scrollPane, centerStage)
   }
 
-  stage = new Stage(JFXApp.STAGE) {
+  stage = new JFXApp.PrimaryStage {
     scene = new Scene() {
       content = new BorderPane {
         top = new VBox {
