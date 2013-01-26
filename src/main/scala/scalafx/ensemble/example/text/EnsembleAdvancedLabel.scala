@@ -1,15 +1,16 @@
 package scalafx.ensemble.example.text
 
-import javafx.scene.control.ContentDisplay
+import scalafx.Includes._
+import scalafx.scene.control.ContentDisplay
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Label
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.VBox
-import scalafx.scene.paint.Color.sfxColor2jfx
+//import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.text.Font
-import scalafx.scene.text.Font.sfxFont2jfx
+//import scalafx.scene.text.Font.sfxFont2jfx
 
 class EnsembleAdvancedLabel extends EnsembleExample {
   def getContent = {

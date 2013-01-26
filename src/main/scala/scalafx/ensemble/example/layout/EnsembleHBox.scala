@@ -1,5 +1,6 @@
 package scalafx.ensemble.example.layout
 
+import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Button
@@ -8,8 +9,8 @@ import scalafx.scene.control.TextField
 import scalafx.scene.layout.HBox
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
-import scalafx.scene.text.Font.sfxFont2jfx
-import javafx.geometry.Pos
+//import scalafx.scene.text.Font.sfxFont2jfx
+import scalafx.geometry.Pos
 
 class EnsembleHBox extends EnsembleExample {
   def getContent = {

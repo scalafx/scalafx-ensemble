@@ -3,7 +3,7 @@ package scalafx.ensemble.stage
 import scalafx.scene.control.TabPane
 import scalafx.scene.control.Tab
 import scalafx.scene.layout.StackPane
-import javafx.geometry.Pos
+import scalafx.geometry.Pos
 import scalafx.scene.Node
 import scalafx.ensemble.commons.ContentFactory
 import scalafx.ensemble.commons.DisplayablePage

@@ -1,5 +1,6 @@
 package scalafx.ensemble.example.controls
 
+import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Accordion
@@ -10,7 +11,7 @@ import scalafx.scene.control.TextField
 import scalafx.scene.control.TitledPane
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
-import scalafx.scene.text.Font.sfxFont2jfx
+//import scalafx.scene.text.Font.sfxFont2jfx
 
 class EnsembleAccordion extends EnsembleExample {
   def getContent = {

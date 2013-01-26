@@ -1,10 +1,11 @@
 package scalafx.ensemble.example.controls
 
+import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.ProgressIndicator
 import scalafx.scene.layout.GridPane
-import scalafx.scene.layout.GridPane.sfxGridPane2jfx
+//import scalafx.scene.layout.GridPane.sfxGridPane2jfx
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
