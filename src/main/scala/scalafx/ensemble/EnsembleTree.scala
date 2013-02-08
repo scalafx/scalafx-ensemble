@@ -26,7 +26,7 @@ import scalafx.ensemble.commons.PageDisplayer
  */
 object EnsembleTree {
 
-  val fil = new File(getClass().getResource("/ensemble/examples").getPath())
+  val fil = new File(getClass.getResource("/ensemble/examples").getPath)
 
   def create() = {
     new EnsembleTree(createTree, createThumbnails)
@@ -152,7 +152,7 @@ object Converter {
     value.foreach(y => {
       val x = new VBox {
         styleClass.add("sample-tile")
-        alignment = Pos.CENTER
+        alignmentInParent = Pos.CENTER
         content = List(y.imgView, y.caption)
       }
       fp.content.add(x)

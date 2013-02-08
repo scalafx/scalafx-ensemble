@@ -41,7 +41,7 @@ class EnsembleVBox extends EnsembleExample {
           maxWidth = 300
           maxHeight = 300
           spacing = 5
-          innerAlignment = Pos.TOP_LEFT
+          alignment = Pos.TOP_LEFT
           content = List(label, checkBox1, checkBox2, checkBox3)
         })
     }

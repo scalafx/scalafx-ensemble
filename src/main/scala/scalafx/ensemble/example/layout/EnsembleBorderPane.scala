@@ -59,7 +59,7 @@ class EnsembleBorderPane extends EnsembleExample {
 
     // Right Stage using VBox
     val bHbox = new HBox {
-      innerAlignment = Pos.BASELINE_CENTER
+      alignment = Pos.BASELINE_CENTER
       content = List(new Label { text = "I am a status message. I am at the bottom" })
     }
 

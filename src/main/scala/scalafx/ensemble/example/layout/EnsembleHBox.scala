@@ -42,7 +42,7 @@ class EnsembleHBox extends EnsembleExample {
           maxWidth = 300
           maxHeight = 300
           spacing = 5
-          innerAlignment = Pos.BOTTOM_LEFT
+          alignment = Pos.BOTTOM_LEFT
           content = List(label, textField, button)
         })
     }
