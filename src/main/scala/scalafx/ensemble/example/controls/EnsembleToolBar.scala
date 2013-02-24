@@ -9,12 +9,13 @@ import scalafx.scene.control.ToolBar
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 //import scalafx.scene.text.Font.sfxFont2jfx
+import scalafx.scene.layout.Priority
 
 class EnsembleToolBar extends EnsembleExample {
   def getContent = {
     new VBox {
-      vgrow = javafx.scene.layout.Priority.ALWAYS
-      hgrow = javafx.scene.layout.Priority.ALWAYS
+      vgrow = Priority.ALWAYS
+      hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
       content = List(

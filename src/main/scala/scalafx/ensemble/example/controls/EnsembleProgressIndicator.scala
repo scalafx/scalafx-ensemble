@@ -9,6 +9,7 @@ import scalafx.scene.layout.GridPane
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
+import scalafx.scene.layout.Priority
 
 class EnsembleProgressIndicator extends EnsembleExample {
   def getContent = {
@@ -43,8 +44,8 @@ class EnsembleProgressIndicator extends EnsembleExample {
     gridPane.setVgap(20)
 
     new VBox {
-      vgrow = javafx.scene.layout.Priority.ALWAYS
-      hgrow = javafx.scene.layout.Priority.ALWAYS
+      vgrow = Priority.ALWAYS
+      hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
       content = List(

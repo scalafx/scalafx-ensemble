@@ -9,6 +9,7 @@ import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
+import scalafx.scene.layout.Priority
 
 class EnsembleTreeView extends EnsembleExample {
   def getContent = {

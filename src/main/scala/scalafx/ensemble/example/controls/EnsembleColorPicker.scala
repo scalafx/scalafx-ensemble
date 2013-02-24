@@ -18,6 +18,8 @@ import scalafx.scene.paint.Color
 //import scalafx.scene.paint.Color.sfxColor2jfx
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
+import scalafx.scene.layout.Priority
+
 
 class EnsembleColorPicker extends EnsembleExample {
   def getContent = {
@@ -42,8 +44,8 @@ class EnsembleColorPicker extends EnsembleExample {
     }
 
     new VBox {
-      vgrow = javafx.scene.layout.Priority.ALWAYS
-      hgrow = javafx.scene.layout.Priority.ALWAYS
+      vgrow = Priority.ALWAYS
+      hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
       content = List(
