@@ -6,7 +6,6 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.Label
 import scalafx.scene.effect.SepiaTone
 import scalafx.scene.image.Image
-//import scalafx.scene.image.Image.sfxImage2jfx
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
