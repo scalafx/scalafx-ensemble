@@ -4,6 +4,7 @@ import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.ChoiceBox
+import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
@@ -11,8 +12,8 @@ import scalafx.scene.text.Text
 class EnsembleChoiceBox extends EnsembleExample {
   def getContent = {
     new VBox {
-      vgrow = javafx.scene.layout.Priority.ALWAYS
-      hgrow = javafx.scene.layout.Priority.ALWAYS
+      vgrow = Priority.ALWAYS
+      hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
       content = List(
