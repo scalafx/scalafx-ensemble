@@ -1,7 +1,7 @@
 package scalafx.ensemble.example.charts
 
 import javafx.event.EventHandler
-import javafx.scene.chart.{ PieChart => jfxPC }
+import javafx.scene.chart.{PieChart => jfxPC}
 import javafx.scene.input.MouseEvent
 import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
@@ -16,8 +16,8 @@ import scalafx.scene.text.Font
 class EnsembleDrilldownPieChart extends EnsembleExample {
   def getContent = {
     new VBox {
-      vgrow = javafx.scene.layout.Priority.ALWAYS
-      hgrow = javafx.scene.layout.Priority.ALWAYS
+      vgrow = scalafx.scene.layout.Priority.ALWAYS
+      hgrow = scalafx.scene.layout.Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
       content = List(
