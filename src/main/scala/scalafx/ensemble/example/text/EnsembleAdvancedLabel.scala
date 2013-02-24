@@ -17,8 +17,8 @@ class EnsembleAdvancedLabel extends EnsembleExample {
     //Image for Advanced labels
     val ICON_48 = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
     new VBox {
-      vgrow = javafx.scene.layout.Priority.ALWAYS
-      hgrow = javafx.scene.layout.Priority.ALWAYS
+      vgrow = scalafx.scene.layout.Priority.ALWAYS
+      hgrow = scalafx.scene.layout.Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
       style = "-fx-padding: 8px"
