@@ -39,6 +39,7 @@ import scalafx.scene.image.ImageView
 import scalafx.scene.layout.TilePane
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
+import scalafx.scene.layout.Priority
 
 class EnsembleTilePane extends EnsembleExample {
   def getContent = {
@@ -67,8 +68,8 @@ class EnsembleTilePane extends EnsembleExample {
     }
 
     new VBox {
-      vgrow = javafx.scene.layout.Priority.ALWAYS
-      hgrow = javafx.scene.layout.Priority.ALWAYS
+      vgrow = Priority.ALWAYS
+      hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
       content = List(
