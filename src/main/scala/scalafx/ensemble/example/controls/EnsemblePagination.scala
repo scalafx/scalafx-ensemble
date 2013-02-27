@@ -27,10 +27,9 @@
 
 package scalafx.ensemble.example.controls
 
-import javafx.util.Callback
+import javafx.scene.{Node => jfxNode}
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.Node
 import scalafx.scene.control.Button
 import scalafx.scene.control.Control
 import scalafx.scene.control.Label
@@ -47,30 +46,30 @@ class EnsemblePagination extends EnsembleExample {
   def getContent = {
     //Images to load pages
     val images = new Array[Image](7)
+    
     for (i <- 0 until 7) {
-      images(i) = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/animals-200x200/animal" + (i + 1) + ".jpg"))
+      val ipStream=this.getClass.getResourceAsStream("/scalafx/ensemble/images/animals-200x200/animal" + (i + 1) + ".jpg")
+      images(i) = new Image(ipStream)
     }
-    //Pagination with 7 pages and index starts at zero
-    val pagination = new Pagination(7, 0)
+
     val indexToNode = (index: Int) => {
-      val vbox = new VBox() {
+      new VBox() {
         content = List(new ImageView(images(index)), new Label("PAGE " + (index + 1)))
-      }.asInstanceOf[Node]
-      vbox
+      }
     }
 
-    /*pagination.pageFactory = indexToNode
+    //Pagination with 7 pages and index starts at zero
+    val pagination = new Pagination(7, 0) {
+      pageFactory = indexToNode
+    }
+/*
+    //pagination.pageFactory = indexToNode
     pagination.setPageFactory(new Callback[java.lang.Integer, javafx.scene.Node]() {
-      override def call(index: Int) {
-        new VBox() {
-          content = List(
-            new ImageView(images(index)),
-            new Label("PAGE " + (index + 1)))
-          println("Inside Pagination " + index)
-        }.asInstanceOf[javafx.scene.Node]
+        def call(index: java.lang.Integer) {
+        new VBox().asInstanceOf[jfxNode]
       }
-    })*/
-
+    })
+*/
     //TODO pagination incomplete
     new VBox {
       vgrow = Priority.ALWAYS

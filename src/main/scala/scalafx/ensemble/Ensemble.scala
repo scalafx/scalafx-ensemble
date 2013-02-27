@@ -46,6 +46,7 @@ import scalafx.scene.control.TreeItem
 import scalafx.scene.control.{TreeItem => jxti}
 import scalafx.stage.Screen
 import scalafx.ensemble.commons.PageDisplayer
+import scalafx.scene.layout.Priority
 
 object Ensemble extends JFXApp {
   var centerStage = PageDisplayer.choosePage("dashBoard")
@@ -104,8 +105,8 @@ object Ensemble extends JFXApp {
     scene = new Scene() {
       content = new BorderPane {
         top = new VBox {
-          vgrow = javafx.scene.layout.Priority.ALWAYS
-          hgrow = javafx.scene.layout.Priority.ALWAYS
+          vgrow = Priority.ALWAYS
+          hgrow = Priority.ALWAYS
           content = List(new ToolBar {
             minWidth = screen.getBounds().getWidth()
             prefHeight = 76
