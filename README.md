@@ -5,13 +5,13 @@ ScalaFX Ensemble show cases various controls that have been implemented in scala
 displays a running example and code. We believe ScalaFX Ensemble could help beginners or adopters 
 of ScalaFX to get inspired to start building apps. This project is inspired from JavaFX Ensemble. 
 
+[scalaFX](http://code.google.com/p/scalafx/)
 [Home Page](http://jugchennai.github.com/scalafx-ensemble/)
-
 
 Setup
 =====
 * Download the [Typesafe Scala IDE](http://typesafe.com/stack/scala_ide_download)
-* Clone the ensemble project
+* Fork and Clone the [ensemble](http://jugchennai.github.com/scalafx-ensemble/) project
 * Download the latest [SBT](http://www.scala-sbt.org/) 
 * Open a commandprompt/terminal, navigate to the clonde folder
 * Type `sbt` and the sbt will downlaod all dependencies 
@@ -30,7 +30,7 @@ Project Status
 ==============
 This project is under construction.
 
-> This project is currently maintained by JUGChennai, once it get shape will be moved to ScalaFX repo.
+> This project is currently maintained by JUGChennai, once it get shape, will be moved to ScalaFX repo.
 
 Mailing list
 ============
@@ -42,7 +42,7 @@ You have two group to join
 
 License
 =======
- Copyright (c) 2012, ScalaFX Project
+ Copyright (c) 2013, ScalaFX Project
  All rights reserved.
 
  Redistribution and use in source and binary forms, with or without
