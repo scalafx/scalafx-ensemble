@@ -13,10 +13,9 @@ version := "1.0-SNAPSHOT"
 
 organization := "org.scalafx"
 
-scalaVersion := "2.9.2"
+scalaVersion := "2.9.3"
 
 resolvers += "Local Maven Repository" at "file://"+Path.userHome.absolutePath+"/.m2/repository"
-
 
 // set the Scala test source directory to be <base>/test
 //scalaSource in Test <<= baseDirectory(_ / "test")
@@ -38,7 +37,7 @@ try { f } finally { println("Elapsed: " + (now - start)/1000.0 + " s") }
 }
 """
 
-// libraryDependencies += "com.oracle" % "javafx-runtime" % "2.2"
+libraryDependencies += "org.scalafx" % "scalafx_2.9.3" % "1.0.0-M2"
 
 // set the main class for the main 'run' task
 // change Compile to Test to set it for 'test:run'
