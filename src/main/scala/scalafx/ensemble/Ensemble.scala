@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,11 @@
 package scalafx.ensemble
 
 import javafx.beans.value.ObservableValue
-import javafx.scene.control.{TreeView => jxtv}
+import javafx.scene.control.{ TreeView => jxtv }
 import scalafx.Includes._
 import scalafx.stage.StageStyle
 import scalafx.application.JFXApp
+import scalafx.application.JFXApp.PrimaryStage
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control._
@@ -43,7 +44,7 @@ import scalafx.scene.layout.VBox
 import scalafx.stage.Stage
 import scalafx.scene.control.SelectionMode
 import scalafx.scene.control.TreeItem
-import scalafx.scene.control.{TreeItem => jxti}
+import scalafx.scene.control.{ TreeItem => jxti }
 import scalafx.stage.Screen
 import scalafx.ensemble.commons.PageDisplayer
 import scalafx.scene.layout.Priority
@@ -72,7 +73,7 @@ object Ensemble extends JFXApp {
   controlsView.resize(0, screen.getBounds().getHeight())
   controlsView.selectionModel().selectionMode = SelectionMode.SINGLE
   controlsView.selectionModel().selectedItemProperty.addListener(
-	(observable: ObservableValue[_], oldValue: Any, newValue: Any) => {
+    (observable: ObservableValue[_], oldValue: Any, newValue: Any) => {
       val selItem = newValue.asInstanceOf[javafx.scene.control.TreeItem[String]]
       val str = if (selItem.isLeaf()) {
         selItem.getParent().getValue().toLowerCase() + " > " + selItem.getValue()
@@ -84,8 +85,7 @@ object Ensemble extends JFXApp {
       centerStage = PageDisplayer.choosePage(str)
       pageViewHolder.items.remove(1)
       pageViewHolder.items.add(1, centerStage)
-    }
-  )
+    })
 
   val scrollPane = new ScrollPane {
     minWidth = 200
@@ -101,7 +101,7 @@ object Ensemble extends JFXApp {
     items.addAll(scrollPane, centerStage)
   }
 
-  stage = new JFXApp.PrimaryStage {
+  stage = new PrimaryStage {
     scene = new Scene() {
       content = new BorderPane {
         top = new VBox {
