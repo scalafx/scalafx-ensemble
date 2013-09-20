@@ -36,12 +36,9 @@ import scalafx.scene.image.ImageView
 import scalafx.ensemble.commons.SortUtils
 import scalafx.scene.Node
 import scalafx.scene.text.Text
-import scalafx.scene.layout.FlowPane
-import scalafx.scene.layout.VBox
-import scalafx.geometry.Insets
-import scalafx.geometry.Pos
+import scalafx.scene.layout.{TilePane, VBox}
+import scalafx.geometry.{Orientation, Insets, Pos}
 import scala.collection.immutable.TreeMap
-import scalafx.event.EventHandler
 import scalafx.scene.input.MouseEvent
 import scalafx.ensemble.commons.PageDisplayer
 
@@ -167,11 +164,12 @@ object Converter {
   }
 
   implicit def convertToThumbBoxes(value: List[EnsembleThumbNail]): Node = {
-    val fp = new FlowPane {
+    val fp = new TilePane {
+      prefColumns = 1
       hgap = 4
       vgap = 4
       padding = Insets(10, 10, 10, 10)
-      prefWrapLength = 600
+      orientation = Orientation.HORIZONTAL
       styleClass.add("category-page-flow")
     }
     value.foreach(y => {

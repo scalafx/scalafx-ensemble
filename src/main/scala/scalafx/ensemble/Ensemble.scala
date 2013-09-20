@@ -64,13 +64,10 @@ object Ensemble extends JFXApp {
   val controlsView = new TreeView[String]() {
     minWidth = 200
     maxWidth = 200
-    minHeight = screen.getBounds().getHeight()
-    maxHeight = screen.getBounds().getHeight()
     editable = true
     root = rootTreeItem
     id = "page-tree"
   }
-  controlsView.resize(0, screen.getBounds().getHeight())
   controlsView.selectionModel().selectionMode = SelectionMode.SINGLE
   controlsView.selectionModel().selectedItemProperty.addListener(
     (observable: ObservableValue[_], oldValue: Any, newValue: Any) => {
@@ -102,13 +99,12 @@ object Ensemble extends JFXApp {
   }
 
   stage = new PrimaryStage {
-    scene = new Scene() {
-      content = new BorderPane {
+    scene = new Scene(1020, 700) {
+      root = new BorderPane {
         top = new VBox {
           vgrow = Priority.ALWAYS
           hgrow = Priority.ALWAYS
           content = List(new ToolBar {
-            minWidth = screen.getBounds().getWidth()
             prefHeight = 76
             maxHeight = 76
             id = "mainToolBar"
@@ -129,7 +125,6 @@ object Ensemble extends JFXApp {
           })
         }
         center = new BorderPane {
-          minHeight = screen.getBounds().getHeight()
           center = pageViewHolder
         }
         styleClass.add("application")
@@ -138,7 +133,5 @@ object Ensemble extends JFXApp {
     scene.get.getStylesheets.add(
       this.getClass.getResource("/scalafx/ensemble/css/ensemble.css").toExternalForm)
   }
-  stage.width = screen.getVisualBounds().getWidth()
-  stage.height = screen.getVisualBounds().getHeight()
   stage.title = "ScalaFX Ensemble"
 }
