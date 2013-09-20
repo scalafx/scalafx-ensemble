@@ -131,7 +131,7 @@ object ContentFactory {
   
   def createSrcContent(ctrlName: String, ctrlgroupName: String = "") = {
     val htmlpage = """<html><head></head><body><div style="font-size: 13px; font-family: sans-serif; white-space:pre;">"""
-      
+
     val createDiv = (src:String) => {
       """<div style="font-size: 13px; font-family: sans-serif; color: green; white-space:pre;">""" + src + """</div>"""
     }
@@ -160,8 +160,8 @@ object ContentFactory {
       }
     }
     // File to read src file
-    val file = this.getClass().getResource(
-      "/ensemble/examples/" + ctrlgroupName + "/" + ctrlName + ".txt")
+    val file = this.getClass.getResource(
+      "/scalafx/ensemble/example/" + ctrlgroupName + "/Ensemble" + ctrlName + ".scala")
     // Stringbuilder to store src code lines
     val builder = new StringBuilder().append(htmlpage)
 
