@@ -5,13 +5,13 @@ version := "1.0-SNAPSHOT"
 
 organization := "org.scalafx"
 
-scalaVersion := "2.10.1"
+scalaVersion := "2.10.2"
 
 assemblySettings
 
 libraryDependencies ++= Seq(
   "org.scalafx" %% "scalafx" % "1.0.0-M5",
-  "org.scalatest" %% "scalatest" % "1.9.1" % "test"
+  "org.scalatest" %% "scalatest" % "1.9.2" % "test"
 )
 
 shellPrompt := { state => System.getProperty("user.name") + "> " }
