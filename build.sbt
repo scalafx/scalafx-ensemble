@@ -10,7 +10,7 @@ scalaVersion := "2.10.1"
 assemblySettings
 
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "1.0.0-M3",
+  "org.scalafx" %% "scalafx" % "1.0.0-M5",
   "org.scalatest" %% "scalatest" % "1.9.1" % "test"
 )
 

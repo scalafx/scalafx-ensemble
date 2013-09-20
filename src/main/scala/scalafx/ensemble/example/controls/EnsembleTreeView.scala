@@ -30,7 +30,7 @@ package scalafx.ensemble.example.controls
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.TreeItem
-import scalafx.scene.control.TreeItem.sfxTreeItemTojfx
+import scalafx.scene.control.TreeItem.sfxTreeItemToJfx
 import scalafx.scene.control.TreeView
 import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox

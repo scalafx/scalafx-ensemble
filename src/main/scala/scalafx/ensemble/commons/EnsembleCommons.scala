@@ -41,7 +41,7 @@ import scalafx.scene.control.Label.sfxLabel2jfx
 import scalafx.scene.control.ScrollPane
 import scalafx.scene.control.ScrollPane.sfxScrollPane2jfx
 import scalafx.scene.control.TreeItem
-import scalafx.scene.control.TreeItem.sfxTreeItemTojfx
+import scalafx.scene.control.TreeItem.sfxTreeItemToJfx
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.BorderPane.sfxBorderPane2jfx
 import scalafx.scene.layout.Priority
