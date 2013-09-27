@@ -129,10 +129,7 @@ object ContentFactory {
     val shCoreDefaultCss = loadResource("/scalafx/ensemble/syntaxhighlighter/shCoreDefault.css")
 
     // Load source code text
-    val sourceRaw = loadResource("/scalafx/ensemble/example/" + ctrlgroupName + "/Ensemble" + ctrlName + ".scala")
-
-    // Remove initial comment
-    val source = sourceRaw.replaceFirst( """(?s)/\*(.*?)\*/""", "")
+    val source = loadAndConvertSourceCode("/scalafx/ensemble/example/" + ctrlgroupName + "/Ensemble" + ctrlName + ".scala")
 
     // Create HTML, for now do not embed SyntaxHighlighter scripts to avoid issues with auto-escaping,
     // just put placeholders @@...@@
@@ -182,6 +179,81 @@ object ContentFactory {
     }
 
     borderPane
+  }
+
+  def loadAndConvertSourceCode(path: String): String = {
+
+    // Load source code text
+    val sourceRaw = loadResource(path)
+
+    // Remove initial comment
+    var source = sourceRaw.replaceFirst( """(?s)/\*(.*?)\*/""", "")
+
+    // Remove package statement
+    source = source.replaceFirst( """package\s*\S*""", "")
+
+    // Remove empty lines at the beginning
+    source = source.replaceFirst( """(?s)\s*""", "")
+
+    // Append required imports
+    source = "" +
+      "import scalafx.application.JFXApp\n" +
+      "import scalafx.scene.Scene\n" +
+      source
+
+    // Remove local imports
+    source = source.replaceAll( """import scalafx.ensemble.\S*\s*""", "")
+
+    // Change `class ExambleSomething extends EnsembleExample {`
+    // to     `object SomethingSample extends JFXApp
+    source = source.replaceFirst(
+      """class\s*Ensemble(\S*)\s*extends\s*EnsembleExample\s*\{""",
+      """object $1Sample extends JFXApp {""")
+
+    // Replace `getContent` method with stage and scene creation
+    val stageHeader = "" +
+      "\n" +
+      "  stage = new JFXApp.PrimaryStage {\n" +
+      "    scene = new Scene {\n" +
+      "      root ="
+    source = source.replaceFirst( """\s*def\s*getContent\s*=""", stageHeader)
+
+    // Locate code that needs additional braces since two were introduced in `stageHeader`
+    val openingBraceIndex = {
+      val start = source.indexOf(stageHeader)
+      require(start >= 0, "Internal error, failed to find `stageHeader`.")
+      source.indexOf("{", start + stageHeader.length)
+    }
+    require(openingBraceIndex >= 0, "Internal error, failed to find `stageHeader`.")
+    // Get index of closing brace
+    val closingBraceIndex = {
+      var braceCount = 1
+      var index = openingBraceIndex
+      while (braceCount > 0) {
+        index += 1
+        source(index) match {
+          case '{' => braceCount += 1
+          case '}' => braceCount -= 1
+          case _ => {}
+        }
+      }
+      index
+    }
+
+    // Ident body of the code that used to be `getContent` but now is assigned to scene.root.
+    val prefix = source.substring(0, openingBraceIndex + 1)
+    val bodyIndented = {
+      val body = source.substring(openingBraceIndex + 1, closingBraceIndex + 1)
+      body.lines.mkString("\n    ")
+    }
+    val postfix = source.substring(closingBraceIndex + 1)
+
+    // Combine final code
+    prefix +
+      bodyIndented + "\n" +
+      "    }\n" +
+      "  }" +
+      postfix
   }
 
 
