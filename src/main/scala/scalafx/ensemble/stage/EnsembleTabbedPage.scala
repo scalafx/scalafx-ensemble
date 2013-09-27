@@ -29,19 +29,19 @@ package scalafx.ensemble.stage
 
 import scalafx.scene.control.TabPane
 import scalafx.scene.control.Tab
-import scalafx.scene.layout.StackPane
+import scalafx.scene.layout.{Priority, StackPane}
 import scalafx.geometry.Pos
 import scalafx.scene.Node
 import scalafx.ensemble.commons.ContentFactory
 import scalafx.ensemble.commons.DisplayablePage
-import scalafx.stage.Screen
 
 object EnsembleTabbedPage {
 
   def buildTab(ctrlName: String, ctrlgrop: String) = {
-    val screen = Screen.primary
-    val tabbedPage = new TabPane()
-    tabbedPage.minHeight = screen.getBounds().getHeight()
+    val tabbedPage = new TabPane() {
+      hgrow = Priority.ALWAYS
+      vgrow = Priority.ALWAYS
+    }
     val demoTab = new Tab()
     demoTab.text = "Demo"
     val srcTab = new Tab()
