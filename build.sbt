@@ -5,14 +5,18 @@ version := "1.0-SNAPSHOT"
 
 organization := "org.scalafx"
 
-scalaVersion := "2.10.1"
+scalaVersion := "2.10.2"
 
 assemblySettings
 
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "1.0.0-M3",
-  "org.scalatest" %% "scalatest" % "1.9.1" % "test"
+  "org.scalafx" %% "scalafx" % "1.0.0-M5",
+  "org.scalatest" %% "scalatest" % "1.9.2" % "test"
 )
+
+// Sources should also be copied to output, so the sample code, for the viewer,
+// can be loaded from the same file that is used to execute the example
+unmanagedResourceDirectories in Compile <+= baseDirectory { _/"src/main/scala"}
 
 shellPrompt := { state => System.getProperty("user.name") + "> " }
 

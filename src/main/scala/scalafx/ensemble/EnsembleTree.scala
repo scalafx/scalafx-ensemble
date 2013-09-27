@@ -36,12 +36,9 @@ import scalafx.scene.image.ImageView
 import scalafx.ensemble.commons.SortUtils
 import scalafx.scene.Node
 import scalafx.scene.text.Text
-import scalafx.scene.layout.FlowPane
-import scalafx.scene.layout.VBox
-import scalafx.geometry.Insets
-import scalafx.geometry.Pos
+import scalafx.scene.layout.{TilePane, VBox}
+import scalafx.geometry.{Orientation, Insets, Pos}
 import scala.collection.immutable.TreeMap
-import scalafx.event.EventHandler
 import scalafx.scene.input.MouseEvent
 import scalafx.ensemble.commons.PageDisplayer
 
@@ -51,10 +48,10 @@ import scalafx.ensemble.commons.PageDisplayer
  */
 object EnsembleTree {
 
-  val fil = new File(getClass.getResource("/ensemble/examples").getPath)
+  val fil = new File(getClass.getResource("/scalafx/ensemble/example/").getPath)
 
   def create() = {
-    new EnsembleTree(createTree, createThumbnails)
+    new EnsembleTree(createTree(), createThumbnails())
   }
 
   /**
@@ -64,16 +61,16 @@ object EnsembleTree {
   private def createTree() = {
     var egPlesTree = TreeMap[String, List[TreeItem[String]]]()
     fil.listFiles().foreach(x => {
-      if (x.isDirectory()) {
+      if (x.isDirectory) {
         var leaves = List[TreeItem[String]]()
         x.listFiles().foreach(a => {
-          if (a.getName().contains(".txt")) {
-            val leafname = a.getName().split(".txt")
-            leaves = leaves.::(new TreeItem(leafname(0)))
+          if (a.getName.contains(".scala")) {
+            val leafName = a.getName.stripSuffix(".scala").stripPrefix("Ensemble")
+            leaves = leaves.::(new TreeItem(leafName))
           }
         })
-        egPlesTree = egPlesTree.+((x.getName().capitalize,
-          leaves.sortWith(SortUtils.treeItemSort(_, _))))
+        egPlesTree = egPlesTree.+((x.getName.capitalize,
+          leaves.sortWith(SortUtils.treeItemSort)))
       }
     })
     egPlesTree
@@ -82,28 +79,27 @@ object EnsembleTree {
   private def createThumbnails() = {
     var thumbnails = TreeMap[String, List[EnsembleThumbNail]]()
     fil.listFiles().foreach(x => {
-      if (x.isDirectory()) {
-        val ctrlgpName = x.getName()
+      if (x.isDirectory) {
+        val ctrlgpName = x.getName
         var thumbs = List[EnsembleThumbNail]()
         x.listFiles().foreach(a => {
-          if (a.getName().contains(".txt")) {
-            val leafname = a.getName().split(".txt")
+          if (a.getName.contains(".scala")) {
+            val leafName = a.getName.stripSuffix(".scala").stripPrefix("Ensemble")
             val img = new ImageView {
               onMouseClicked = (p1: MouseEvent) => {
                     Ensemble.pageViewHolder.items.remove(1)
                     Ensemble.pageViewHolder.items.add(1,
-                      PageDisplayer.choosePage(ctrlgpName + " > " + leafname(0)))
+                      PageDisplayer.choosePage(ctrlgpName + " > " + leafName))
               }
-              val filepath = "/ensemble/examples/" + ctrlgpName + "/" + leafname(0) + "Sample.png"
-              image = new Image(this.getClass.getResourceAsStream(filepath))
+              val filePath = "/scalafx/ensemble/example/" + ctrlgpName + "/" + leafName + "Sample.png"
+              image = new Image(this.getClass.getResourceAsStream(filePath))
             }
-            val lbl = new Label()
-            lbl.text = leafname(0)
+            val lbl = new Label(leafName)
             thumbs = thumbs.::(EnsembleThumbNail(img, lbl))
           }
         })
-        thumbnails = thumbnails.+((x.getName().capitalize,
-          thumbs.sortWith(SortUtils.thumbNailsSort(_, _))))
+        thumbnails = thumbnails.+((x.getName.capitalize,
+          thumbs.sortWith(SortUtils.thumbNailsSort)))
       }
     })
     thumbnails
@@ -167,11 +163,12 @@ object Converter {
   }
 
   implicit def convertToThumbBoxes(value: List[EnsembleThumbNail]): Node = {
-    val fp = new FlowPane {
+    val fp = new TilePane {
+      prefColumns = 1
       hgap = 4
       vgap = 4
       padding = Insets(10, 10, 10, 10)
-      prefWrapLength = 600
+      orientation = Orientation.HORIZONTAL
       styleClass.add("category-page-flow")
     }
     value.foreach(y => {
