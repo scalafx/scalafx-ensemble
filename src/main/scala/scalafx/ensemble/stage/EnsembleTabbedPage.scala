@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,6 +27,7 @@
 
 package scalafx.ensemble.stage
 
+import scalafx.Includes._
 import scalafx.scene.control.TabPane
 import scalafx.scene.control.Tab
 import scalafx.scene.layout.{Priority, StackPane}
@@ -38,20 +39,22 @@ import scalafx.ensemble.commons.DisplayablePage
 object EnsembleTabbedPage {
 
   def buildTab(ctrlName: String, ctrlgrop: String) = {
+
     val tabbedPage = new TabPane() {
       hgrow = Priority.ALWAYS
       vgrow = Priority.ALWAYS
+      tabs = Seq(
+        new Tab() {
+          text = "Demo"
+          closable = false
+        },
+        new Tab() {
+          text = "Source"
+          closable = false
+        }
+      )
     }
-    val demoTab = new Tab()
-    demoTab.text = "Demo"
-    val srcTab = new Tab()
-    srcTab.text = "Source"
 
-    demoTab.closable = false
-    srcTab.closable = false
-
-    tabbedPage.getTabs().add(demoTab)
-    tabbedPage.getTabs().add(srcTab)
     new EnsembleTabbedPage(tabbedPage, ctrlName, ctrlgrop)
   }
 
@@ -66,13 +69,11 @@ object EnsembleTabbedPage {
 
 class EnsembleTabbedPage(tabPane: TabPane, ctrlName: String, ctrlGroup: String)
   extends DisplayablePage {
+
   def getPage() = {
-    tabPane.getTabs().get(0).setContent(
-      EnsembleTabbedPage.buildTabContent(
-        ContentFactory.createContent(ctrlName, ctrlGroup)))
-    tabPane.getTabs().get(1).setContent(
-      EnsembleTabbedPage.buildTabContent(
-        ContentFactory.createSrcContent(ctrlName, ctrlGroup)))
+    import EnsembleTabbedPage._
+    tabPane.tabs(0).content = buildTabContent(ContentFactory.createContent(ctrlName, ctrlGroup))
+    tabPane.tabs(1).content = buildTabContent(ContentFactory.createSrcContent(ctrlName, ctrlGroup))
     tabPane
   }
 }

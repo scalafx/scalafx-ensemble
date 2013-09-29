@@ -32,12 +32,13 @@ import scalafx.ensemble.EnsembleThumbNail
 import scalafx.ensemble.stage.DashboardPage
 import scalafx.ensemble.stage.EnsembleTabbedPage
 import scalafx.scene.Node
-import scalafx.scene.control.ScrollPane
-import scalafx.scene.control.TreeItem
+import scalafx.scene.control.{Button, ToolBar, ScrollPane, TreeItem}
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 import scalafx.scene.web.WebView
+import scalafx.scene.input.{ClipboardContent, Clipboard, DataFormat}
+import java.util
 
 
 /**
@@ -121,7 +122,7 @@ object ContentFactory {
   }
 
 
-  def createSrcContent(ctrlName: String, ctrlgroupName: String = "") = {
+  def createSrcContent(ctrlName: String, ctrlgroupName: String = "") : Node = {
 
     // Load syntax highlighter
     val shCoreJs = loadResource("/scalafx/ensemble/syntaxhighlighter/shCore.js") + ";"
@@ -129,7 +130,7 @@ object ContentFactory {
     val shCoreDefaultCss = loadResource("/scalafx/ensemble/syntaxhighlighter/shCoreDefault.css")
 
     // Load source code text
-    val source = loadAndConvertSourceCode("/scalafx/ensemble/example/" + ctrlgroupName + "/Ensemble" + ctrlName + ".scala")
+    val rawSource = loadAndConvertSourceCode("/scalafx/ensemble/example/" + ctrlgroupName + "/Ensemble" + ctrlName + ".scala")
 
     // Create HTML, for now do not embed SyntaxHighlighter scripts to avoid issues with auto-escaping,
     // just put placeholders @@...@@
@@ -156,25 +157,35 @@ object ContentFactory {
         </head>
         <body>
           <pre class="brush: scala;gutter: false;toolbar: false;">
-            {"\n" + source}
+            {"\n" + rawSource}
           </pre>
           <script type="text/javascript">SyntaxHighlighter.all();</script>
         </body>
       </html>
 
     // Inject SyntaxHighlighter scripts
-    val htmlString = html.mkString.
+    val htmlSource = html.mkString.
       replace("@@shCoreJs@@", shCoreJs).
       replace("@@shBrushScala@@", shBrushScala).
       replace("@@shCoreDefaultCss@@", shCoreDefaultCss)
 
     //Border pane is sufficient to handle the content
     val borderPane = new BorderPane() {
+      top = new ToolBar {
+         items = new Button {
+           text = "Copy Source"
+           tooltip = "Copy sample source code to clipboard"
+           val content = new ClipboardContent()
+           content.putString(rawSource)
+           content.putHtml(htmlSource)
+           Clipboard.systemClipboard.setContent(content)
+         }
+      }
       // Load source through webview
       center = new WebView() {
         contextMenuEnabled = false
         prefWidth = 300
-        this.engine.loadContent(htmlString)
+        this.engine.loadContent(htmlSource)
       }
     }
 
@@ -217,6 +228,9 @@ object ContentFactory {
       "    scene = new Scene {\n" +
       "      root ="
     source = source.replaceFirst( """\s*def\s*getContent\s*=""", stageHeader)
+
+    // Cleanup extra carriage-return characters
+    source = source.replaceAll( """\r\n""", "\n")
 
     // Locate code that needs additional braces since two were introduced in `stageHeader`
     val openingBraceIndex = {
