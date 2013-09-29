@@ -24,3 +24,8 @@ shellPrompt := { state => System.getProperty("user.name") + "> " }
 // unmanagedJars in Compile += Attributed.blank(file(System.getenv("JAVAFX_HOME") + "/rt/lib/jfxrt.jar"))
 // For Java 7 update 06 the JFXRT JAR is part of the Java Runtime Environment
 unmanagedJars in Compile += Attributed.blank(file(System.getenv("JAVA_HOME") + "/jre/lib/jfxrt.jar"))
+
+// Run in separate VM, so there are no issues with double initialization of JavaFX
+fork := true
+
+fork in Test := true
