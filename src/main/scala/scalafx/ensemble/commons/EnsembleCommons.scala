@@ -28,17 +28,20 @@ package scalafx.ensemble.commons
 
 import java.util.Locale
 
+import scalafx.Includes._
 import scalafx.ensemble.EnsembleThumbNail
+import scalafx.ensemble.sbt.SBTProjectBuilder
 import scalafx.ensemble.stage.DashboardPage
 import scalafx.ensemble.stage.EnsembleTabbedPage
+import scalafx.event.ActionEvent
 import scalafx.scene.Node
 import scalafx.scene.control.{Button, ToolBar, ScrollPane, TreeItem}
+import scalafx.scene.input.{ClipboardContent, Clipboard}
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 import scalafx.scene.web.WebView
-import scalafx.scene.input.{ClipboardContent, Clipboard, DataFormat}
-import java.util
+import scalafx.stage.DirectoryChooser
 
 
 /**
@@ -122,7 +125,7 @@ object ContentFactory {
   }
 
 
-  def createSrcContent(ctrlName: String, ctrlgroupName: String = "") : Node = {
+  def createSrcContent(exampleName: String, exampleGroupName: String = ""): Node = {
 
     // Load syntax highlighter
     val shCoreJs = loadResource("/scalafx/ensemble/syntaxhighlighter/shCore.js") + ";"
@@ -130,7 +133,8 @@ object ContentFactory {
     val shCoreDefaultCss = loadResource("/scalafx/ensemble/syntaxhighlighter/shCoreDefault.css")
 
     // Load source code text
-    val rawSource = loadAndConvertSourceCode("/scalafx/ensemble/example/" + ctrlgroupName + "/Ensemble" + ctrlName + ".scala")
+    val rawSource = loadAndConvertSourceCode("/scalafx/ensemble/example/" + exampleGroupName +
+      "/Ensemble" + exampleName + ".scala")
 
     // Create HTML, for now do not embed SyntaxHighlighter scripts to avoid issues with auto-escaping,
     // just put placeholders @@...@@
@@ -171,15 +175,45 @@ object ContentFactory {
 
     //Border pane is sufficient to handle the content
     val borderPane = new BorderPane() {
+
       top = new ToolBar {
-         items = new Button {
-           text = "Copy Source"
-           tooltip = "Copy sample source code to clipboard"
-           val content = new ClipboardContent()
-           content.putString(rawSource)
-           content.putHtml(htmlSource)
-           Clipboard.systemClipboard.setContent(content)
-         }
+        items = Seq(
+          new Button {
+            // Name a reference to itself
+            thisButton =>
+            text = "Save SBT Project..."
+            tooltip = "Save sample code in a new project that can be build and run with SBT"
+            onAction = (ae: ActionEvent) => {
+              // TODO: add error handling
+              // TODO: check for overwrites and ask user to confirm
+              val initialDir = SBTProjectBuilder.parentDir
+              val fileChooser = new DirectoryChooser() {
+                title = "Save SBT Project As:"
+                initialDirectory = initialDir
+              }
+              val result = Some(fileChooser.showDialog(thisButton.scene.window()))
+              result match {
+                case Some(dir) => {
+                  SBTProjectBuilder.createSampleProject(dir, rawSource)
+                  SBTProjectBuilder.parentDir = dir.getCanonicalFile.getParentFile
+                  // TODO: show instructions how to use the SBT project
+                }
+                case _ => {}
+              }
+            }
+          },
+          new Button {
+            text = "Copy Source"
+            tooltip = "Copy sample source code to clipboard"
+            onAction = (ae: ActionEvent) => {
+              // TODO: add error handling
+              val content = new ClipboardContent()
+              content.putString(rawSource)
+              content.putHtml(htmlSource)
+              Clipboard.systemClipboard.setContent(content)
+            }
+          }
+        )
       }
       // Load source through webview
       center = new WebView() {
@@ -206,8 +240,14 @@ object ContentFactory {
     // Remove empty lines at the beginning
     source = source.replaceFirst( """(?s)\s*""", "")
 
-    // Append required imports
+    // Append copyright, package, and required imports
     source = "" +
+      "/*\n" +
+      " * Copyright 2013 ScalaFX Project\n" +
+      " * All right reserved.\n" +
+      " */\n" +
+      "package org.scalafx.ensamble.sample\n" +
+      "\n" +
       "import scalafx.application.JFXApp\n" +
       "import scalafx.scene.Scene\n" +
       source
