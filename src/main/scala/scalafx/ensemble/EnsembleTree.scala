@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,7 @@
 
 package scalafx.ensemble
 
-import java.io.File
+import java.io.{IOException, File}
 import scalafx.Includes._
 import scalafx.scene.control.Label
 import scalafx.scene.control.TreeItem
@@ -59,8 +59,13 @@ object EnsembleTree {
    * This is used in UI
    */
   private def createTree() = {
-    var egPlesTree = TreeMap[String, List[TreeItem[String]]]()
-    fil.listFiles().foreach(x => {
+    // Sanity check, the listing mey not work when ScalaFX Ensemble is packaged into a jar.
+    val exampleRootFiles = fil.listFiles()
+    if (exampleRootFiles == null)
+      throw new IOException("Cannot list files in the example directory. May be caused by Issue #10.")
+
+    var exampleTree = TreeMap[String, List[TreeItem[String]]]()
+    exampleRootFiles.foreach(x => {
       if (x.isDirectory) {
         var leaves = List[TreeItem[String]]()
         x.listFiles().foreach(a => {
@@ -69,11 +74,11 @@ object EnsembleTree {
             leaves = leaves.::(new TreeItem(leafName))
           }
         })
-        egPlesTree = egPlesTree.+((x.getName.capitalize,
+        exampleTree = exampleTree.+((x.getName.capitalize,
           leaves.sortWith(SortUtils.treeItemSort)))
       }
     })
-    egPlesTree
+    exampleTree
   }
 
   private def createThumbnails() = {
@@ -87,9 +92,9 @@ object EnsembleTree {
             val leafName = a.getName.stripSuffix(".scala").stripPrefix("Ensemble")
             val img = new ImageView {
               onMouseClicked = (p1: MouseEvent) => {
-                    Ensemble.pageViewHolder.items.remove(1)
-                    Ensemble.pageViewHolder.items.add(1,
-                      PageDisplayer.choosePage(ctrlgpName + " > " + leafName))
+                Ensemble.pageViewHolder.items.remove(1)
+                Ensemble.pageViewHolder.items.add(1,
+                  PageDisplayer.choosePage(ctrlgpName + " > " + leafName))
               }
               val filePath = "/scalafx/ensemble/example/" + ctrlgpName + "/" + leafName + "Sample.png"
               image = new Image(this.getClass.getResourceAsStream(filePath))
