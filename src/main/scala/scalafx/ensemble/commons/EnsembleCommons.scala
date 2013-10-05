@@ -246,7 +246,7 @@ object ContentFactory {
       " * Copyright 2013 ScalaFX Project\n" +
       " * All right reserved.\n" +
       " */\n" +
-      "package org.scalafx.ensamble.sample\n" +
+      "package scalafx.ensemble.sample\n" +
       "\n" +
       "import scalafx.application.JFXApp\n" +
       "import scalafx.scene.Scene\n" +
