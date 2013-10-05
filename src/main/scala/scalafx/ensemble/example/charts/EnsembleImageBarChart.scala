@@ -54,7 +54,7 @@ class EnsembleImageBarChart extends EnsembleExample {
     }
   }
 
-  val createBarChart = {
+  lazy val createBarChart = {
     //Style to Image Bar
     val imageBarChartCss = this.getClass.getResource("ImageBarChart.css").toExternalForm()
 

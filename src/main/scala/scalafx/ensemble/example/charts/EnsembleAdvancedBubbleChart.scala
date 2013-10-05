@@ -57,7 +57,7 @@ class EnsembleAdvancedBubbleChart extends EnsembleExample {
     }
   }
 
-  val createBubbleChart = {
+  lazy val createBubbleChart = {
     val xAxis = new NumberAxis()
     xAxis.setLabel("X Axis")
     val yAxis = new NumberAxis()

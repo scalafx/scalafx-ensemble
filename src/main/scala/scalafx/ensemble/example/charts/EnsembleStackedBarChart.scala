@@ -57,7 +57,7 @@ class EnsembleStackedBarChart extends EnsembleExample {
     }
   }
 
-  val createBarChart = {
+  lazy val createBarChart = {
     val years = new Array[String](3)
     years(0) = "2007"
     years(1) = "2008"

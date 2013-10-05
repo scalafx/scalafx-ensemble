@@ -56,7 +56,7 @@ class EnsembleDrilldownPieChart extends EnsembleExample {
     }
   }
 
-  val createPieChart = {
+  lazy val createPieChart = {
     //Drilldown Pie Chart sytle css
     val drilldownPieChartCss = this.getClass.getResource("DrilldownChart.css").toExternalForm()
 

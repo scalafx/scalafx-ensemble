@@ -52,7 +52,7 @@ class EnsemblePieChart extends EnsembleExample {
     }
   }
 
-  val createPieChart = {
+  lazy val createPieChart = {
 
     val data1 = new jfxPC.Data("Sun", 20)
     val data2 = new jfxPC.Data("IBM", 12)

@@ -54,7 +54,7 @@ class EnsembleAdvLineCategoryChart extends EnsembleExample {
     }
   }
 
-  val createLineChart = {
+  lazy val createLineChart = {
     val xAxis = new CategoryAxis()
     xAxis.setLabel("X Axis")
     val yAxis = new NumberAxis()

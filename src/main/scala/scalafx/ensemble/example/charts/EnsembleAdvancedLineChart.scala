@@ -53,7 +53,7 @@ class EnsembleAdvancedLineChart extends EnsembleExample {
     }
   }
 
-  val createLineChart = {
+  lazy val createLineChart = {
     val xAxis = new NumberAxis()
     xAxis.setLabel("X Axis")
 

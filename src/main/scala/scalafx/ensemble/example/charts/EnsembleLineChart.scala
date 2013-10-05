@@ -53,7 +53,7 @@ class EnsembleLineChart extends EnsembleExample {
     }
   }
 
-  val createLineChart = {
+  lazy val createLineChart = {
 
     val xAxis = NumberAxis("Values for X-Axis", 0, 3, 1)
     val yAxis = NumberAxis("Values for Y-Axis", 0, 3, 1)
