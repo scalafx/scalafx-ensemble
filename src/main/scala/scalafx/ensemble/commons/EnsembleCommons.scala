@@ -26,8 +26,10 @@
  */
 package scalafx.ensemble.commons
 
-import java.util.Locale
 
+import java.util.Locale
+import javafx.scene.control.Dialogs
+import javafx.stage.Stage
 import scalafx.Includes._
 import scalafx.ensemble.EnsembleThumbNail
 import scalafx.ensemble.sbt.SBTProjectBuilder
@@ -179,13 +181,10 @@ object ContentFactory {
       top = new ToolBar {
         items = Seq(
           new Button {
-            // Name a reference to itself
             thisButton =>
             text = "Save SBT Project..."
             tooltip = "Save sample code in a new project that can be build and run with SBT"
-            onAction = (ae: ActionEvent) => {
-              // TODO: add error handling
-              // TODO: check for overwrites and ask user to confirm
+            onAction = (ae: ActionEvent) => try {
               val initialDir = SBTProjectBuilder.parentDir
               val fileChooser = new DirectoryChooser() {
                 title = "Save SBT Project As:"
@@ -196,21 +195,32 @@ object ContentFactory {
                 case Some(dir) => {
                   SBTProjectBuilder.createSampleProject(dir, rawSource)
                   SBTProjectBuilder.parentDir = dir.getCanonicalFile.getParentFile
-                  // TODO: show instructions how to use the SBT project
                 }
                 case _ => {}
+              }
+            } catch {
+              case t: Throwable => {
+                val stage = thisButton.scene().window().asInstanceOf[Stage]
+                Dialogs.showErrorDialog(stage, t.getClass.getName + ": " + t.getMessage,
+                  "Error saving sample SBT project", thisButton.text(), t)
               }
             }
           },
           new Button {
+            thisButton =>
             text = "Copy Source"
             tooltip = "Copy sample source code to clipboard"
-            onAction = (ae: ActionEvent) => {
-              // TODO: add error handling
+            onAction = (ae: ActionEvent) => try {
               val content = new ClipboardContent()
               content.putString(rawSource)
               content.putHtml(htmlSource)
               Clipboard.systemClipboard.setContent(content)
+            } catch {
+              case t: Throwable => {
+                val stage = thisButton.scene().window().asInstanceOf[Stage]
+                Dialogs.showErrorDialog(stage, t.getClass.getName + ": " + t.getMessage,
+                  "Error copying source to clipboard", thisButton.text(), t)
+              }
             }
           }
         )
@@ -288,7 +298,8 @@ object ContentFactory {
         source(index) match {
           case '{' => braceCount += 1
           case '}' => braceCount -= 1
-          case _ => {}
+          case _ => {
+          }
         }
       }
       index
