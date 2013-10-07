@@ -26,28 +26,20 @@
  */
 package scalafx.ensemble
 
-import javafx.beans.value.ObservableValue
-import javafx.scene.control.{ TreeView => jxtv }
 import scalafx.Includes._
-import scalafx.stage.StageStyle
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
+import scalafx.ensemble.commons.PageDisplayer
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control._
-import scalafx.scene.control.TreeView
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.BorderPane
+import scalafx.scene.layout.Priority
 import scalafx.scene.layout.Region
 import scalafx.scene.layout.VBox
-import scalafx.stage.Stage
-import scalafx.scene.control.SelectionMode
-import scalafx.scene.control.TreeItem
-import scalafx.scene.control.{ TreeItem => jxti }
 import scalafx.stage.Screen
-import scalafx.ensemble.commons.PageDisplayer
-import scalafx.scene.layout.Priority
 
 object Ensemble extends JFXApp {
   var centerStage = PageDisplayer.choosePage("dashBoard")
@@ -69,20 +61,18 @@ object Ensemble extends JFXApp {
     id = "page-tree"
   }
   controlsView.selectionModel().selectionMode = SelectionMode.SINGLE
-  controlsView.selectionModel().selectedItemProperty.addListener(
-    (observable: ObservableValue[_], oldValue: Any, newValue: Any) => {
-      val selItem = newValue.asInstanceOf[javafx.scene.control.TreeItem[String]]
-      val str = if (selItem.isLeaf()) {
-        selItem.getParent().getValue().toLowerCase() + " > " + selItem.getValue()
-      } else if (!selItem.isLeaf() && selItem.getParent() != null) {
-        "dashBoard - " + selItem.getValue()
-      } else if (selItem.getParent() == null) {
-        "dashBoard"
-      } else "dashBoard"
+  controlsView.selectionModel().selectedItem.onChange {
+    (_, _, selItem) => {
+      val str = (selItem.isLeaf, Option(selItem.getParent)) match {
+        case (true, Some(parent)) => parent.getValue.toLowerCase + " > " + selItem.getValue
+        case (false, Some(_))     => "dashBoard - " + selItem.getValue
+        case (_, _)               => "dashBoard"
+      }
       centerStage = PageDisplayer.choosePage(str)
       pageViewHolder.items.remove(1)
       pageViewHolder.items.add(1, centerStage)
-    })
+    }
+  }
 
   val scrollPane = new ScrollPane {
     minWidth = 200
