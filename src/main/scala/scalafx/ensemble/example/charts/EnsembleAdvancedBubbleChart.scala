@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,25 +27,24 @@
 
 package scalafx.ensemble.example.charts
 
-import java.lang.{ Math => JMath }
-
+import scala.math.random
 import scalafx.Includes._
+import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.chart.BubbleChart
-//import scalafx.scene.chart.BubbleChart.sfxBubbleChart2jfx
 import scalafx.scene.chart.NumberAxis
-//import scalafx.scene.chart.NumberAxis.sfxNumberAxis2jfx
 import scalafx.scene.chart.XYChart
 import scalafx.scene.control.Label
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.text.Font
+
 
 class EnsembleAdvancedBubbleChart extends EnsembleExample {
   def getContent = {
     new VBox {
-      vgrow = scalafx.scene.layout.Priority.ALWAYS
-      hgrow = scalafx.scene.layout.Priority.ALWAYS
+      vgrow = Priority.ALWAYS
+      hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
       content = List(
@@ -53,35 +52,21 @@ class EnsembleAdvancedBubbleChart extends EnsembleExample {
           text = "Ensemble Advanced Bubble Chart"
           font = new Font("Verdana", 20)
         },
-        createBubbleChart)
+        createBubbleChart())
     }
   }
 
-  lazy val createBubbleChart = {
-    val xAxis = new NumberAxis()
-    xAxis.setLabel("X Axis")
-    val yAxis = new NumberAxis()
-    yAxis.setLabel("Y Axis")
+  def createBubbleChart() = {
+    // Generate some random data
+    def randomData = (1 to 20).map(_ => XYChart.Data[Number, Number](random * 100, random * 100))
 
-    val bcSeries1 = new XYChart.Series[Number, Number]()
-    bcSeries1.setName("Data Series 1")
-    // create sample data
-    for (i <- 1 to 20) {
-      bcSeries1.getData().add(XYChart.Data[Number, Number]((JMath.random() * 100).asInstanceOf[Number], (JMath.random() * 100).asInstanceOf[Number]))
+    val bcSeries1 = XYChart.Series("Data Series 1", ObservableBuffer(randomData))
+    val bcSeries2 = XYChart.Series("Data Series 2", ObservableBuffer(randomData))
+
+    // Create Bubble Chart
+    new BubbleChart(NumberAxis("X Axis"), NumberAxis("Y Axis")) {
+      title = "Advanced BubbleChart"
+      data() ++= Seq(bcSeries1, bcSeries2)
     }
-
-    val bcSeries2 = new XYChart.Series[Number, Number]()
-    bcSeries2.setName("Data Series 2")
-    for (i <- 1 to 20) {
-      bcSeries2.getData().add(XYChart.Data[Number, Number]((JMath.random() * 100).asInstanceOf[Number], (JMath.random() * 100).asInstanceOf[Number]))
-    }
-
-    //Bubble Chart
-    val bubbleChart = BubbleChart[Number, Number](xAxis, yAxis)
-    bubbleChart.setTitle("Advanced BubbleChart")
-    bubbleChart.getData.add(bcSeries1)
-    bubbleChart.getData.add(bcSeries2)
-    bubbleChart
-
   }
 }
