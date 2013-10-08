@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,14 +34,14 @@ import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.XYChart
 import scalafx.scene.control.Label
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.text.Font
 
 class EnsembleAdvancedLineChart extends EnsembleExample {
   def getContent = {
     new VBox {
-      vgrow = scalafx.scene.layout.Priority.ALWAYS
-      hgrow = scalafx.scene.layout.Priority.ALWAYS
+      vgrow = Priority.ALWAYS
+      hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
       content = List(
@@ -49,30 +49,33 @@ class EnsembleAdvancedLineChart extends EnsembleExample {
           text = "Ensemble Advanced Line Chart"
           font = new Font("Verdana", 20)
         },
-        createLineChart)
+        createLineChart())
     }
   }
 
-  lazy val createLineChart = {
-    val xAxis = new NumberAxis()
-    xAxis.setLabel("X Axis")
+  def createLineChart() = {
 
-    val yAxis = new NumberAxis()
-    yAxis.setLabel("Y Axis")
+    // Create sample data. Here we use a collection of (x,y) pairs
+    val xyData = Seq(
+      20d -> 50d,
+      40d -> 80d,
+      50d -> 90d,
+      70d -> 30d,
+      170d -> 122d
+    )
 
-    val bcSeries1 = new XYChart.Series[Number, Number]()
-    bcSeries1.setName("Data Series 1")
-    // create sample data
-    bcSeries1.getData().add(XYChart.Data[Number, Number](20d, 50d))
-    bcSeries1.getData().add(XYChart.Data[Number, Number](40d, 80d))
-    bcSeries1.getData().add(XYChart.Data[Number, Number](50d, 90d))
-    bcSeries1.getData().add(XYChart.Data[Number, Number](70d, 30d))
-    bcSeries1.getData().add(XYChart.Data[Number, Number](170d, 122d))
+    // Prepare series
+    val series = new XYChart.Series[Number, Number] {
+      name = "Data Series 1"
+      data() ++= xyData.map {
+        case (x, y) => XYChart.Data[Number, Number](x, y)
+      }
+    }
 
     // setup Line chart
-    val lineChart = LineChart[Number, Number](xAxis, yAxis)
-    lineChart.setTitle("Basic LineChart")
-    lineChart.getData.add(bcSeries1)
-    lineChart
+    new LineChart(NumberAxis("X Axis"), NumberAxis("Y Axis")) {
+      title = "Basic LineChart"
+      data() += series
+    }
   }
 }
