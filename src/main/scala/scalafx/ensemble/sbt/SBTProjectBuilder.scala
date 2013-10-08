@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,6 +29,7 @@ package scalafx.ensemble.sbt
 import java.io.File
 import java.nio.file.Files
 import scala.io.Source
+import scalafx.ensemble.commons.ExampleInfo
 
 /** Creates SBT project for a sample code. */
 object SBTProjectBuilder {
@@ -36,6 +37,7 @@ object SBTProjectBuilder {
   private var _parentDir = new File(System.getProperty("user.home", ".")).getCanonicalFile
 
   private val sourceSubDir = "src/main/scala"
+  private val resourceSubDir = "src/main/resources"
 
   /** Last used parent directory of a saved project or users home directory */
   def parentDir: File = synchronized {
@@ -50,12 +52,11 @@ object SBTProjectBuilder {
   /** Create and save SBT project for a sample.
     *
     * @param projectDir directory where to save the project
-    * @param source source of the sample
+    * @param sampleInfo information about the sample code
     * @throws FileAlreadyExistsException - if `projectDir` exists but is not a directory
     * @throws IOException - if an I/O error occurs
     */
-  def createSampleProject(projectDir: File, source: String) {
-    val sampleClassName = extractClassName(source)
+  def createSampleProject(projectDir: File, sampleInfo: ExampleInfo) {
 
     // extract project name
     val projectName = {
@@ -69,37 +70,23 @@ object SBTProjectBuilder {
     // Create project directory
     Files.createDirectories(projectDir.toPath)
 
-    val samplePackage = extractPackageName(source)
-    val sampleSubDir = sourceSubDir + "/" + samplePackage.replaceAll("\\.", "/")
+    val sampleSubDir = sourceSubDir + "/" + sampleInfo.packageName.replaceAll("\\.", "/")
 
     // Write sample Scala code
-    val samplePath = new File(projectDir, sampleSubDir + "/" + sampleClassName + ".scala").toPath
+    val samplePath = new File(projectDir, sampleSubDir + "/" + sampleInfo.className + ".scala").toPath
     Files.createDirectories(samplePath.getParent)
-    Files.write(samplePath, source.getBytes)
+    Files.write(samplePath, sampleInfo.sourceCode.getBytes)
+
+    // TODO Copy resources, if used by the sample.
+    //    sampleInfo.resources.foreach(p => copy(projectDir, resourceSubDir + "/" + p))
 
     // Copy project files
     copy(projectDir, "build.sbt",
-      filters = List("@name@" -> projectName, "@mainClass@" -> (samplePackage + "." + sampleClassName)))
+      filters = List("@name@" -> projectName, "@mainClass@" -> (sampleInfo.packageName + "." + sampleInfo.className)))
     copy(projectDir, "project/build.properties")
     copy(projectDir, "project/plugins.sbt")
-  }
-
-  /** Determine samples package stated in sample source code. */
-  private def extractPackageName(source: String): String = {
-    val packageNamePattern = ".*package\\s(\\S*)".r
-    packageNamePattern findFirstIn source match {
-      case Some(packageNamePattern(packageName)) => packageName
-      case None => ""
-    }
-  }
-
-  /** Determine name of the main sample's class. */
-  private def extractClassName(source: String): String = {
-    val classNamePattern = "object\\s*(\\S*)\\s*extends\\s*JFXApp".r
-    classNamePattern findFirstIn source match {
-      case Some(classNamePattern(className)) => className
-      case None => throw new IllegalArgumentException("Cannot extract sample class name.")
-    }
+    // TODO Add a readme file describing how to run the example
+    //    copy(projectDir, "README.txt")
   }
 
   /** Copy resource from the classpath relative to this object to a `projectDir`. */

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,6 +32,7 @@ import javafx.scene.control.Dialogs
 import javafx.stage.Stage
 import scalafx.Includes._
 import scalafx.ensemble.EnsembleThumbNail
+import scalafx.ensemble.commons.IOUtils.loadResourceAsString
 import scalafx.ensemble.sbt.SBTProjectBuilder
 import scalafx.ensemble.stage.DashboardPage
 import scalafx.ensemble.stage.EnsembleTabbedPage
@@ -130,13 +131,11 @@ object ContentFactory {
   def createSrcContent(exampleName: String, exampleGroupName: String = ""): Node = {
 
     // Load syntax highlighter
-    val shCoreJs = loadResource("/scalafx/ensemble/syntaxhighlighter/shCore.js") + ";"
-    val shBrushScala = loadResource("/scalafx/ensemble/syntaxhighlighter/shBrushScala.js")
-    val shCoreDefaultCss = loadResource("/scalafx/ensemble/syntaxhighlighter/shCoreDefault.css")
+    val shCoreJs = loadResourceAsString(this, "/scalafx/ensemble/syntaxhighlighter/shCore.js") + ";"
+    val shBrushScala = loadResourceAsString(this, "/scalafx/ensemble/syntaxhighlighter/shBrushScala.js")
+    val shCoreDefaultCss = loadResourceAsString(this, "/scalafx/ensemble/syntaxhighlighter/shCoreDefault.css")
 
-    // Load source code text
-    val rawSource = loadAndConvertSourceCode("/scalafx/ensemble/example/" + exampleGroupName +
-      "/Ensemble" + exampleName + ".scala")
+    val exampleInfo = new ExampleInfo(exampleName, exampleGroupName)
 
     // Create HTML, for now do not embed SyntaxHighlighter scripts to avoid issues with auto-escaping,
     // just put placeholders @@...@@
@@ -163,7 +162,7 @@ object ContentFactory {
         </head>
         <body>
           <pre class="brush: scala;gutter: false;toolbar: false;">
-            {"\n" + rawSource}
+            {"\n" + exampleInfo.sourceCode}
           </pre>
           <script type="text/javascript">SyntaxHighlighter.all();</script>
         </body>
@@ -190,13 +189,13 @@ object ContentFactory {
                 title = "Save SBT Project As:"
                 initialDirectory = initialDir
               }
-              val result = Some(fileChooser.showDialog(thisButton.scene.window()))
+              val result = Option(fileChooser.showDialog(thisButton.scene.window()))
               result match {
-                case Some(dir) => {
-                  SBTProjectBuilder.createSampleProject(dir, rawSource)
-                  SBTProjectBuilder.parentDir = dir.getCanonicalFile.getParentFile
+                case Some(projectDir) => {
+                  SBTProjectBuilder.createSampleProject(projectDir, exampleInfo)
+                  SBTProjectBuilder.parentDir = projectDir.getCanonicalFile.getParentFile
                 }
-                case _ => {}
+                case _                => {}
               }
             } catch {
               case t: Throwable => {
@@ -212,7 +211,7 @@ object ContentFactory {
             tooltip = "Copy sample source code to clipboard"
             onAction = (ae: ActionEvent) => try {
               val content = new ClipboardContent()
-              content.putString(rawSource)
+              content.putString(exampleInfo.sourceCode)
               content.putHtml(htmlSource)
               Clipboard.systemClipboard.setContent(content)
             } catch {
@@ -234,97 +233,6 @@ object ContentFactory {
     }
 
     borderPane
-  }
-
-  def loadAndConvertSourceCode(path: String): String = {
-
-    // Load source code text
-    val sourceRaw = loadResource(path)
-
-    // Remove initial comment
-    var source = sourceRaw.replaceFirst( """(?s)/\*(.*?)\*/""", "")
-
-    // Remove package statement
-    source = source.replaceFirst( """package\s*\S*""", "")
-
-    // Remove empty lines at the beginning
-    source = source.replaceFirst( """(?s)\s*""", "")
-
-    // Append copyright, package, and required imports
-    source = "" +
-      "/*\n" +
-      " * Copyright 2013 ScalaFX Project\n" +
-      " * All right reserved.\n" +
-      " */\n" +
-      "package scalafx.ensemble.sample\n" +
-      "\n" +
-      "import scalafx.application.JFXApp\n" +
-      "import scalafx.scene.Scene\n" +
-      source
-
-    // Remove local imports
-    source = source.replaceAll( """import scalafx.ensemble.\S*\s*""", "")
-
-    // Change `class ExambleSomething extends EnsembleExample {`
-    // to     `object SomethingSample extends JFXApp
-    source = source.replaceFirst(
-      """class\s*Ensemble(\S*)\s*extends\s*EnsembleExample\s*\{""",
-      """object $1Sample extends JFXApp {""")
-
-    // Replace `getContent` method with stage and scene creation
-    val stageHeader = "" +
-      "\n" +
-      "  stage = new JFXApp.PrimaryStage {\n" +
-      "    scene = new Scene {\n" +
-      "      root ="
-    source = source.replaceFirst( """\s*def\s*getContent\s*=""", stageHeader)
-
-    // Cleanup extra carriage-return characters
-    source = source.replaceAll( """\r\n""", "\n")
-
-    // Locate code that needs additional braces since two were introduced in `stageHeader`
-    val openingBraceIndex = {
-      val start = source.indexOf(stageHeader)
-      require(start >= 0, "Internal error, failed to find `stageHeader`.")
-      source.indexOf("{", start + stageHeader.length)
-    }
-    require(openingBraceIndex >= 0, "Internal error, failed to find `stageHeader`.")
-    // Get index of closing brace
-    val closingBraceIndex = {
-      var braceCount = 1
-      var index = openingBraceIndex
-      while (braceCount > 0) {
-        index += 1
-        source(index) match {
-          case '{' => braceCount += 1
-          case '}' => braceCount -= 1
-          case _ => {
-          }
-        }
-      }
-      index
-    }
-
-    // Ident body of the code that used to be `getContent` but now is assigned to scene.root.
-    val prefix = source.substring(0, openingBraceIndex + 1)
-    val bodyIndented = {
-      val body = source.substring(openingBraceIndex + 1, closingBraceIndex + 1)
-      body.lines.mkString("\n    ")
-    }
-    val postfix = source.substring(closingBraceIndex + 1)
-
-    // Combine final code
-    prefix +
-      bodyIndented + "\n" +
-      "    }\n" +
-      "  }" +
-      postfix
-  }
-
-
-  def loadResource(path: String): String = {
-    val in = this.getClass.getResourceAsStream(path)
-    scala.io.Source.fromInputStream(in).mkString
   }
 
   def isMac: Boolean = {
