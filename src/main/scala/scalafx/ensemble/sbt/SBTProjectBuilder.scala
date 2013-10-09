@@ -85,8 +85,7 @@ object SBTProjectBuilder {
       filters = List("@name@" -> projectName, "@mainClass@" -> (sampleInfo.packageName + "." + sampleInfo.className)))
     copyText(projectDir, "project/build.properties")
     copyText(projectDir, "project/plugins.sbt")
-    // TODO Add a readme file describing how to use the example project
-    //    copy(projectDir, "README.txt")
+    copyText(projectDir, "README.md")
   }
 
   /** Copy text resource from the classpath relative to this object to a `projectDir`.
