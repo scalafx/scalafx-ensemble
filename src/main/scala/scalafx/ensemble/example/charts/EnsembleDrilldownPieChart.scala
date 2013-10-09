@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,6 +40,17 @@ import scalafx.scene.control.Label
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 
+/**
+ * A pie chart that provides the ability to drill down through data. Selecting a
+ * segment in the initial pie chart causes the pie chart to display detailed data
+ * for the selected segment.
+ *
+ * @see scalafx.event.EventHandler
+ * @see scalafx.scene.chart.PieChart
+ * @see scalafx.scene.chart.Chart
+ * @see scalafx.scene.input.MouseEvent
+ * @resource DrilldownChart.css
+ */
 class EnsembleDrilldownPieChart extends EnsembleExample {
   def getContent = {
     new VBox {

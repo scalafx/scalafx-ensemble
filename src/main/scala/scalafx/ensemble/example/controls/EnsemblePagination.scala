@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,6 @@ import scalafx.scene.control.Button
 import scalafx.scene.control.Control
 import scalafx.scene.control.Label
 import scalafx.scene.control.Pagination
-import scalafx.scene.control.Pagination.sfxPagination2jfx
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.Priority
@@ -42,13 +41,25 @@ import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
 
+/** A sample that demonstrates pagination
+  *
+  * @see scalafx.scene.control.Pagination
+  * @resource /scalafx/ensemble/images/animals-200x200/animal1.jpg
+  * @resource /scalafx/ensemble/images/animals-200x200/animal2.jpg
+  * @resource /scalafx/ensemble/images/animals-200x200/animal3.jpg
+  * @resource /scalafx/ensemble/images/animals-200x200/animal4.jpg
+  * @resource /scalafx/ensemble/images/animals-200x200/animal5.jpg
+  * @resource /scalafx/ensemble/images/animals-200x200/animal6.jpg
+  * @resource /scalafx/ensemble/images/animals-200x200/animal7.jpg
+  * @resource /scalafx/ensemble/images/animals-200x200/animal8.jpg
+  */
 class EnsemblePagination extends EnsembleExample {
   def getContent = {
     //Images to load pages
     val images = new Array[Image](7)
-    
+
     for (i <- 0 until 7) {
-      val ipStream=this.getClass.getResourceAsStream("/scalafx/ensemble/images/animals-200x200/animal" + (i + 1) + ".jpg")
+      val ipStream = this.getClass.getResourceAsStream("/scalafx/ensemble/images/animals-200x200/animal" + (i + 1) + ".jpg")
       images(i) = new Image(ipStream)
     }
 
@@ -62,14 +73,14 @@ class EnsemblePagination extends EnsembleExample {
     val pagination = new Pagination(7, 0) {
       pageFactory = indexToNode
     }
-/*
-    //pagination.pageFactory = indexToNode
-    pagination.setPageFactory(new Callback[java.lang.Integer, javafx.scene.Node]() {
-        def call(index: java.lang.Integer) {
-        new VBox().asInstanceOf[jfxNode]
-      }
-    })
-*/
+    /*
+        //pagination.pageFactory = indexToNode
+        pagination.setPageFactory(new Callback[java.lang.Integer, javafx.scene.Node]() {
+            def call(index: java.lang.Integer) {
+            new VBox().asInstanceOf[jfxNode]
+          }
+        })
+    */
     //TODO pagination incomplete
     new VBox {
       vgrow = Priority.ALWAYS

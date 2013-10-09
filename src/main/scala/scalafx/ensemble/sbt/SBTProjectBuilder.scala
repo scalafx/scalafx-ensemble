@@ -24,9 +24,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.ensemble.sbt
 
-import java.io.File
+import java.io.{IOException, File}
 import java.nio.file.Files
 import scala.io.Source
 import scalafx.ensemble.commons.ExampleInfo
@@ -36,8 +37,8 @@ object SBTProjectBuilder {
 
   private var _parentDir = new File(System.getProperty("user.home", ".")).getCanonicalFile
 
-  private val sourceSubDir = "src/main/scala"
-  private val resourceSubDir = "src/main/resources"
+  private val sourceSubDir = "src/main/scala/"
+  private val resourceSubDir = "src/main/resources/"
 
   /** Last used parent directory of a saved project or users home directory */
   def parentDir: File = synchronized {
@@ -47,7 +48,6 @@ object SBTProjectBuilder {
   def parentDir_=(dir: File) = synchronized {
     _parentDir = dir
   }
-
 
   /** Create and save SBT project for a sample.
     *
@@ -70,27 +70,29 @@ object SBTProjectBuilder {
     // Create project directory
     Files.createDirectories(projectDir.toPath)
 
-    val sampleSubDir = sourceSubDir + "/" + sampleInfo.packageName.replaceAll("\\.", "/")
+    val sampleSubDir = sourceSubDir + sampleInfo.packagePath
 
     // Write sample Scala code
     val samplePath = new File(projectDir, sampleSubDir + "/" + sampleInfo.className + ".scala").toPath
     Files.createDirectories(samplePath.getParent)
     Files.write(samplePath, sampleInfo.sourceCode.getBytes)
 
-    // TODO Copy resources, if used by the sample.
-    //    sampleInfo.resources.foreach(p => copy(projectDir, resourceSubDir + "/" + p))
+    // Copy resources, if used by the sample.
+    sampleInfo.resources.foreach(resource => copyResource(new File(projectDir, resourceSubDir), resource))
 
     // Copy project files
-    copy(projectDir, "build.sbt",
+    copyText(projectDir, "build.sbt",
       filters = List("@name@" -> projectName, "@mainClass@" -> (sampleInfo.packageName + "." + sampleInfo.className)))
-    copy(projectDir, "project/build.properties")
-    copy(projectDir, "project/plugins.sbt")
-    // TODO Add a readme file describing how to run the example
+    copyText(projectDir, "project/build.properties")
+    copyText(projectDir, "project/plugins.sbt")
+    // TODO Add a readme file describing how to use the example project
     //    copy(projectDir, "README.txt")
   }
 
-  /** Copy resource from the classpath relative to this object to a `projectDir`. */
-  private def copy(projectDir: File, fileName: String, filters: List[(String, String)] = Nil) {
+  /** Copy text resource from the classpath relative to this object to a `projectDir`.
+    * Line ending will be changed to platform specific.
+    */
+  private def copyText(projectDir: File, fileName: String, filters: List[(String, String)] = Nil) {
     /** Apply all filters in turn. */
     def filter(string: String, filters: List[(String, String)]): String = {
       filters match {
@@ -99,11 +101,31 @@ object SBTProjectBuilder {
       }
     }
 
-    val uri = this.getClass.getResource(fileName).toURI
-    val contentRaw = Source.fromFile(uri).getLines().mkString("\n")
-    val content = filter(contentRaw, filters)
-    val path = new File(projectDir, fileName).toPath
-    Files.createDirectories(path.getParent)
-    Files.write(path, content.getBytes)
+    try {
+      val uri = this.getClass.getResource(fileName).toURI
+      val contentRaw = Source.fromFile(uri).getLines().mkString("\n")
+      val content = filter(contentRaw, filters)
+      val path = new File(projectDir, fileName).toPath
+      Files.createDirectories(path.getParent)
+      Files.write(path, content.getBytes)
+    } catch {
+      case t: Throwable =>
+        throw new IOException("Error while creating SBT project. Failed to copy text file: " + fileName, t)
+    }
   }
+
+  /** Copy a resource that may be an image or other binary file. */
+  private def copyResource(projectDir: File, fileName: String) {
+    try {
+      val uri = this.getClass.getResource(fileName).toURI
+      val src = new File(uri).toPath
+      val dest = new File(projectDir, fileName).toPath
+      Files.createDirectories(dest.getParent)
+      Files.copy(src, dest)
+    } catch {
+      case t: Throwable =>
+        throw new IOException("Error while creating SBT project. Failed to copy resource: " + fileName, t)
+    }
+  }
+
 }

@@ -27,6 +27,8 @@
 
 package scalafx.ensemble.commons
 
+import scala.util.matching.Regex
+
 /** Creates stand alone example source code. */
 class ExampleInfo(exampleName: String, exampleGroupName: String = "") {
 
@@ -43,13 +45,20 @@ class ExampleInfo(exampleName: String, exampleGroupName: String = "") {
     }
   }
 
-  /** Determine samples package stated in sample source code. */
+  /** Samples package stated in sample source code. */
   lazy val packageName: String = extractPackageName(sourceCode)
 
+  /** Samples package stated in sample source code, as a path, with `/` instead of `.` */
+  lazy val packagePath: String = packageName.replaceAll("\\.", "/")
+
   /** Collection of resources used by this example */
-  lazy val resources: Seq[String] = {
-    // TODO implement extraction of resource used by this example
-    throw new UnsupportedOperationException("Determination of resources not yet implemented.")
+  lazy val resources: Set[String] = {
+    def extract(pattern: Regex): Seq[String] = {
+      val resources = for (pattern(resourcePath) <- pattern findAllIn sourceCode) yield resourcePath
+      resources.map(r => if (r.startsWith("/")) r else "/" + packagePath + "/" + r).toSeq
+    }
+
+    extract( """@resource\s*(\S*)""".r).toSet
   }
 
   private def extractPackageName(source: String): String = {
