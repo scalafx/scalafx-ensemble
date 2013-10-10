@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,45 +27,42 @@
 
 package scalafx.ensemble.example.charts
 
-import javafx.scene.chart.{ PieChart => jfxPC }
-import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.chart.PieChart
 import scalafx.scene.control.Label
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.text.Font
 
+/** A circular chart divided into segments. The value of each segment represents
+  * a proportion of the total.
+  *
+  * @see scalafx.scene.chart.PieChart
+  * @see scalafx.scene.chart.Chart
+  */
 class EnsemblePieChart extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = scalafx.scene.layout.Priority.ALWAYS
-      hgrow = scalafx.scene.layout.Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble Pie Chart"
-          font = new Font("Verdana", 20)
-        },
-        createPieChart)
-    }
+
+  def getContent = new VBox {
+    vgrow = Priority.ALWAYS
+    hgrow = Priority.ALWAYS
+    spacing = 10
+    margin = Insets(50, 0, 0, 50)
+    content = List(
+      new Label {
+        text = "Ensemble Pie Chart"
+        font = new Font("Verdana", 20)
+      },
+      createPieChart())
   }
 
-  lazy val createPieChart = {
-
-    val data1 = new jfxPC.Data("Sun", 20)
-    val data2 = new jfxPC.Data("IBM", 12)
-    val data3 = new jfxPC.Data("HP", 25)
-    val data4 = new jfxPC.Data("Dell", 22)
-    val data5 = new jfxPC.Data("Apple", 30)
-
-    val pieChartDataSeq = List(data1, data2, data3, data4, data5).toSeq
-    val observPieChartData = ObservableBuffer[jfxPC.Data](pieChartDataSeq)
-    val pieChart = new PieChart {
-      data = observPieChartData
-      clockwise = false
-    }
-    pieChart
+  def createPieChart() = new PieChart {
+    data = Seq(
+      PieChart.Data("Sun", 20),
+      PieChart.Data("IBM", 12),
+      PieChart.Data("HP", 25),
+      PieChart.Data("Dell", 22),
+      PieChart.Data("Apple", 30)
+    )
+    clockwise = false
   }
 }

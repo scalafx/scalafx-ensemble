@@ -27,85 +27,70 @@
 
 package scalafx.ensemble.example.charts
 
-import javafx.event.EventHandler
-import javafx.scene.chart.{PieChart => jfxPC}
-import javafx.scene.input.MouseEvent
+import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.geometry.Insets.sfxInsets2jfx
 import scalafx.scene.chart.PieChart
-import scalafx.scene.chart.PieChart.sfxPieChart2jfx
 import scalafx.scene.control.Label
-import scalafx.scene.layout.VBox
+import scalafx.scene.input.MouseEvent
+import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.text.Font
 
-/**
- * A pie chart that provides the ability to drill down through data. Selecting a
- * segment in the initial pie chart causes the pie chart to display detailed data
- * for the selected segment.
- *
- * @see scalafx.event.EventHandler
- * @see scalafx.scene.chart.PieChart
- * @see scalafx.scene.chart.Chart
- * @see scalafx.scene.input.MouseEvent
- * @resource DrilldownChart.css
- */
+/** A pie chart that provides the ability to drill down through data. Selecting a
+  * segment in the initial pie chart causes the pie chart to display detailed data
+  * for the selected segment.
+  *
+  * @see scalafx.event.EventHandler
+  * @see scalafx.scene.chart.PieChart
+  * @see scalafx.scene.chart.Chart
+  * @see scalafx.scene.input.MouseEvent
+  * @resource DrilldownChart.css
+  */
 class EnsembleDrilldownPieChart extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = scalafx.scene.layout.Priority.ALWAYS
-      hgrow = scalafx.scene.layout.Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble Drilldown Pie Chart"
-          font = new Font("Verdana", 20)
-        },
-        createPieChart)
-    }
+
+  def getContent = new VBox {
+    vgrow = Priority.ALWAYS
+    hgrow = Priority.ALWAYS
+    spacing = 10
+    margin = Insets(50, 0, 0, 50)
+    content = List(
+      new Label {
+        text = "Ensemble Drilldown Pie Chart"
+        font = new Font("Verdana", 20)
+      },
+      createPieChart())
   }
 
-  lazy val createPieChart = {
-    //Drilldown Pie Chart sytle css
-    val drilldownPieChartCss = this.getClass.getResource("DrilldownChart.css").toExternalForm()
+  def createPieChart() = {
+    //Drilldown Pie Chart style css
+    val drilldownPieChartCss = this.getClass.getResource("DrilldownChart.css").toExternalForm
 
-    val data1 = new jfxPC.Data("A", 20)
-    val data2 = new jfxPC.Data("B", 30)
-    val data3 = new jfxPC.Data("C", 10)
-    val data4 = new jfxPC.Data("D", 40)
-
-    val pieChartDataSeq = List(data1, data2, data3, data4).toSeq
-    val observPieChartData = ObservableBuffer[jfxPC.Data](pieChartDataSeq)
+    val pieChartData = ObservableBuffer(
+      PieChart.Data("A", 20),
+      PieChart.Data("B", 30),
+      PieChart.Data("C", 10),
+      PieChart.Data("D", 40)
+    )
     val pieChart = new PieChart {
-      data = observPieChartData
+      data = pieChartData
       title = "DrillDown Pie Chart"
+      stylesheets += drilldownPieChartCss
     }
-    pieChart.getStylesheets().add(drilldownPieChartCss)
 
-    drillDownData(pieChart, data1, "a")
-    drillDownData(pieChart, data2, "b")
-    drillDownData(pieChart, data3, "c")
-    drillDownData(pieChart, data4, "d")
+    pieChartData.foreach(data => drillDownData(pieChart, data, data.name()))
 
     pieChart
   }
 
-  def drillDownData = (pie: PieChart, pieData: jfxPC.Data, labelPrefix: String) => {
-    pieData.getNode().setOnMouseClicked(new EventHandler[MouseEvent]() {
-      override def handle(me: MouseEvent) {
-        val dataLabel1 = new jfxPC.Data(labelPrefix + "-1", 7)
-        val dataLabel2 = new jfxPC.Data(labelPrefix + "-2", 2)
-        val dataLabel3 = new jfxPC.Data(labelPrefix + "-3", 5)
-        val dataLabel4 = new jfxPC.Data(labelPrefix + "-4", 3)
-        val dataLabel5 = new jfxPC.Data(labelPrefix + "-5", 2)
-
-        val pieChartDataSeq = List(dataLabel1, dataLabel2, dataLabel4, dataLabel5).toSeq
-        val observPieChartData = ObservableBuffer[jfxPC.Data](pieChartDataSeq)
-        pie.data = observPieChartData
-      }
-    })
+  def drillDownData = (pie: PieChart, pieData: PieChart.Data, labelPrefix: String) => {
+    pieData.node.onMouseClicked = (_: MouseEvent) => pie.data = Seq(
+      PieChart.Data(labelPrefix + "-1", 7),
+      PieChart.Data(labelPrefix + "-2", 2),
+      PieChart.Data(labelPrefix + "-3", 5),
+      PieChart.Data(labelPrefix + "-4", 3),
+      PieChart.Data(labelPrefix + "-5", 2)
+    )
   }
-  
+
 }

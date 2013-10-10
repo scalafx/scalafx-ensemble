@@ -64,7 +64,7 @@ class EnsembleBubbleChart extends EnsembleExample {
     val xAxis = NumberAxis("X", 0d, 140d, 20d)
     val yAxis = NumberAxis("Y", 0d, 140d, 20d)
 
-    // Helper function to convert a touple to `XYChart.Data`
+    // Helper function to convert a tuple to `XYChart.Data`
     val toChartData = (t: (Double, Double, Double)) => XYChart.Data[Number, Number](t._1, t._2, t._3)
 
     val series1 = new XYChart.Series[Number, Number] {
