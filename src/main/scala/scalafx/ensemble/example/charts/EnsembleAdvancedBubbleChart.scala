@@ -28,7 +28,6 @@
 package scalafx.ensemble.example.charts
 
 import scala.math.random
-import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
@@ -39,8 +38,16 @@ import scalafx.scene.control.Label
 import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.text.Font
 
-
+/** An advanced bubble chart.
+  *
+  * @see scalafx.scene.chart.BubbleChart
+  * @see scalafx.scene.chart.Chart
+  * @see scalafx.scene.chart.NumberAxis
+  * @see scalafx.scene.chart.ScatterChart
+  * @see scalafx.scene.chart.XYChart
+  */
 class EnsembleAdvancedBubbleChart extends EnsembleExample {
+
   def getContent = {
     new VBox {
       vgrow = Priority.ALWAYS
@@ -58,7 +65,8 @@ class EnsembleAdvancedBubbleChart extends EnsembleExample {
 
   def createBubbleChart() = {
     // Generate some random data
-    def randomData = (1 to 20).map(_ => XYChart.Data[Number, Number](random * 100, random * 100))
+    def randomData = (1 to 20).map(
+      _ => XYChart.Data[Number, Number](random * 100, random * 100, random * 10))
 
     val bcSeries1 = XYChart.Series("Data Series 1", ObservableBuffer(randomData))
     val bcSeries2 = XYChart.Series("Data Series 2", ObservableBuffer(randomData))
@@ -66,7 +74,7 @@ class EnsembleAdvancedBubbleChart extends EnsembleExample {
     // Create Bubble Chart
     new BubbleChart(NumberAxis("X Axis"), NumberAxis("Y Axis")) {
       title = "Advanced BubbleChart"
-      data() ++= Seq(bcSeries1, bcSeries2)
+      data = Seq(bcSeries1, bcSeries2)
     }
   }
 }

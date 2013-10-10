@@ -37,20 +37,26 @@ import scalafx.scene.control.Label
 import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.text.Font
 
+/** An advanced line chart.
+  *
+  * @see scalafx.scene.chart.LineChart
+  * @see scalafx.scene.chart.Chart
+  * @see scalafx.scene.chart.NumberAxis
+  * @see scalafx.scene.chart.XYChart
+  */
 class EnsembleAdvancedLineChart extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble Advanced Line Chart"
-          font = new Font("Verdana", 20)
-        },
-        createLineChart())
-    }
+
+  def getContent = new VBox {
+    vgrow = Priority.ALWAYS
+    hgrow = Priority.ALWAYS
+    spacing = 10
+    margin = Insets(50, 0, 0, 50)
+    content = List(
+      new Label {
+        text = "Ensemble Advanced Line Chart"
+        font = new Font("Verdana", 20)
+      },
+      createLineChart())
   }
 
   def createLineChart() = {

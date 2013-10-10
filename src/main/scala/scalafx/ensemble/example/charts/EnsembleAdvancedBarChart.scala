@@ -39,20 +39,26 @@ import scalafx.scene.control.Label
 import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.text.Font
 
+/** An advanced bar chart.
+  *
+  * @see scalafx.scene.chart.BarChart
+  * @see scalafx.scene.chart.Chart
+  * @see scalafx.scene.chart.NumberAxis
+  * @see scalafx.scene.chart.XYChart
+  */
 class EnsembleAdvancedBarChart extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = Seq(
-        new Label {
-          text = "Ensemble Advanced Bar Chart"
-          font = new Font("Verdana", 20)
-        },
-        barChart)
-    }
+
+  def getContent = new VBox {
+    vgrow = Priority.ALWAYS
+    hgrow = Priority.ALWAYS
+    spacing = 10
+    margin = Insets(50, 0, 0, 50)
+    content = Seq(
+      new Label {
+        text = "Ensemble Advanced Bar Chart"
+        font = new Font("Verdana", 20)
+      },
+      barChart)
   }
 
   lazy val barChart = {
@@ -96,9 +102,9 @@ class EnsembleAdvancedBarChart extends EnsembleExample {
       name = "Data Series 3"
       // Assign data by mapping x and y values to XYChart.Data
       val prices = Seq(800, 1000, 2000)
-      data = ObservableBuffer(years zip prices map {
+      data = years zip prices map {
         case (x, y) => XYChart.Data[String, Number](x, y)
-      })
+      }
     }
 
     // Assign data using a helper function
