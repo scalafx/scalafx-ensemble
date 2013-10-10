@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,10 +35,22 @@ import scalafx.scene.chart.CategoryAxis
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.XYChart
 import scalafx.scene.control.Label
+import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
-import scalafx.scene.layout.Priority
 
+/**
+ * A chart that displays rectangular bars with heights indicating data values
+ * for categories. Used for displaying information when at least one axis has
+ * discontinuous or discrete data.
+ *
+ * @see scalafx.scene.chart.BarChart
+ * @see scalafx.scene.chart.Chart
+ * @see scalafx.scene.chart.Axis
+ * @see scalafx.scene.chart.CategoryAxis
+ * @see scalafx.scene.chart.NumberAxis
+ *
+ */
 class EnsembleBarChart extends EnsembleExample {
   def getContent = {
     new VBox {
@@ -56,45 +68,20 @@ class EnsembleBarChart extends EnsembleExample {
   }
 
   lazy val barChart = {
-    val years = Array("2007", "2008", "2009")
+    val years = ObservableBuffer("2007", "2008", "2009")
 
-    val xAxis = new CategoryAxis()
-    xAxis.setCategories(ObservableBuffer(years.toSeq))
-
+    val xAxis = CategoryAxis(years)
     val yAxis = NumberAxis("Units Sold", 0.0d, 3000.0d, 1000.0d)
 
-    val bcSeries1 = new XYChart.Series[String, Number]()
-    bcSeries1.setName("Apples")
-    // create sample data
-    val sampleData1 = Seq(567d, 1292d, 1292d)
-    sampleData1.zip(years).foreach { case (data, year) =>
-      bcSeries1.getData().add(XYChart.Data[String, Number](year, data))
-    }
+    def xyData(ys: Seq[Number]) = ObservableBuffer(years zip ys map (xy => XYChart.Data(xy._1, xy._2)))
 
-    val bcSeries2 = new XYChart.Series[String, Number]()
-    bcSeries2.setName("Lemons")
-    // create sample data
-    val sampleData2 = Seq(956, 1665, 2559)
-    sampleData2.zip(years).foreach { case (data, year) =>
-      bcSeries2.getData().add(XYChart.Data[String, Number](year, data))
-    }
+    val series1 = XYChart.Series("Apples", xyData(Seq(567d, 1292d, 1292d)))
+    val series2 = XYChart.Series("Lemons", xyData(Seq(956, 1665, 2559)))
+    val series3 = XYChart.Series("Oranges", xyData(Seq(1154, 1927, 2774)))
 
-    val bcSeries3 = new XYChart.Series[String, Number]()
-    bcSeries3.setName("Oranges")
-    // create sample data
-    val sampleData3 = Seq(1154, 1927, 2774)
-    sampleData3.zip(years).foreach { case (data, year) =>
-      bcSeries3.getData().add(XYChart.Data[String, Number](year, data))
+    new BarChart[String, Number](xAxis, yAxis) {
+      data = Seq(series1, series2, series3)
+      categoryGap = 25.0d
     }
-
-    //Bar Chart
-    val barChart = BarChart[String, Number](xAxis, yAxis)
-    val chartData = barChart.getData
-    Seq(bcSeries1, bcSeries2, bcSeries3).foreach {series =>
-      chartData.add(series)
-    }
-    barChart.setCategoryGap(25.0d)
-    barChart
-
   }
 }

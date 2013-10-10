@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,19 +30,27 @@ package scalafx.ensemble.example.charts
 import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
+import scalafx.scene.chart.CategoryAxis
 import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.NumberAxis
-import scalafx.scene.chart.CategoryAxis
 import scalafx.scene.chart.XYChart
 import scalafx.scene.control.Label
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.text.Font
 
+/** A line chart demonstrating a CategoryAxis.
+  *
+  * @see scalafx.scene.chart.CategoryAxis
+  * @see scalafx.scene.chart.Chart
+  * @see scalafx.scene.chart.NumberAxis
+  * @see scalafx.scene.chart.LineChart
+  * @see scalafx.scene.chart.XYChart
+  */
 class EnsembleAdvLineCategoryChart extends EnsembleExample {
   def getContent = {
     new VBox {
-      vgrow = scalafx.scene.layout.Priority.ALWAYS
-      hgrow = scalafx.scene.layout.Priority.ALWAYS
+      vgrow = Priority.ALWAYS
+      hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
       content = List(
@@ -55,26 +63,24 @@ class EnsembleAdvLineCategoryChart extends EnsembleExample {
   }
 
   lazy val createLineChart = {
-    val xAxis = new CategoryAxis()
-    xAxis.setLabel("X Axis")
-    val yAxis = new NumberAxis()
-    yAxis.setLabel("Y Axis")
-
     // add starting data
-    val bcSeries1 = new XYChart.Series[String, Number]()
-    bcSeries1.setName("Data Series 1")
-    // create sample data
-    bcSeries1.getData().add(XYChart.Data[String, Number]("Alpha", 50d))
-    bcSeries1.getData().add(XYChart.Data[String, Number]("Beta", 80d))
-    bcSeries1.getData().add(XYChart.Data[String, Number]("RC1", 90d))
-    bcSeries1.getData().add(XYChart.Data[String, Number]("RC2", 30d))
-    bcSeries1.getData().add(XYChart.Data[String, Number]("1.0", 120d))
-    bcSeries1.getData().add(XYChart.Data[String, Number]("1.1", 20d))
+    val series = new XYChart.Series[String, Number] {
+      name = "Data Series 1"
+      // create sample data
+      data = Seq(
+        XYChart.Data[String, Number]("Alpha", 50d),
+        XYChart.Data[String, Number]("Beta", 80d),
+        XYChart.Data[String, Number]("RC1", 90d),
+        XYChart.Data[String, Number]("RC2", 30d),
+        XYChart.Data[String, Number]("1.0", 120d),
+        XYChart.Data[String, Number]("1.1", 20d)
+      )
+    }
 
     // setup chart
-    val lineChart = LineChart[String, Number](xAxis, yAxis)
-    lineChart.setTitle("LineChart with Category Axis")
-    lineChart.getData.add(bcSeries1)
-    lineChart
+    new LineChart[String, Number](CategoryAxis("X Axis"), NumberAxis("Y Axis")) {
+      title = "LineChart with Category Axis"
+      data() += series
+    }
   }
 }
