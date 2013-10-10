@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -34,62 +34,70 @@ import scalafx.scene.chart.BubbleChart
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.XYChart
 import scalafx.scene.control.Label
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.text.Font
 
+/** A chart that plots bubbles for a series of data points. Bubbles are plotted
+  * according to three numeric parameters: value on x axis, value on y axis,
+  * and radius of the bubble.
+  *
+  * @see scalafx.scene.chart.BubbleChart
+  * @see scalafx.scene.chart.Chart
+  * @see scalafx.scene.chart.Axis
+  * @see scalafx.scene.chart.NumberAxis
+  */
 class EnsembleBubbleChart extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = scalafx.scene.layout.Priority.ALWAYS
-      hgrow = scalafx.scene.layout.Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble Bubble Chart"
-          font = new Font("Verdana", 20)
-        },
-        createBubbleChart)
-    }
+  def getContent = new VBox {
+    vgrow = Priority.ALWAYS
+    hgrow = Priority.ALWAYS
+    spacing = 10
+    margin = Insets(50, 0, 0, 50)
+    content = List(
+      new Label {
+        text = "Ensemble Bubble Chart"
+        font = new Font("Verdana", 20)
+      },
+      createBubbleChart())
   }
 
-  lazy val createBubbleChart = {
+  def createBubbleChart() = {
     val xAxis = NumberAxis("X", 0d, 140d, 20d)
     val yAxis = NumberAxis("Y", 0d, 140d, 20d)
 
-    val bcSeries1 = new XYChart.Series[Number, Number]()
-    bcSeries1.setName("Series 1")
-    // create sample data
-    bcSeries1.getData().add(XYChart.Data[Number, Number](30d, 40d, "10d"))
-    bcSeries1.getData().add(XYChart.Data[Number, Number](60d, 20d, "13d"))
-    bcSeries1.getData().add(XYChart.Data[Number, Number](10d, 90d, "7d"))
-    bcSeries1.getData().add(XYChart.Data[Number, Number](100d, 40d, "10d"))
-    bcSeries1.getData().add(XYChart.Data[Number, Number](50d, 23d, "5d"))
+    // Helper function to convert a touple to `XYChart.Data`
+    val toChartData = (t: (Double, Double, Double)) => XYChart.Data[Number, Number](t._1, t._2, t._3)
 
-    val bcSeries2 = new XYChart.Series[Number, Number]()
-    bcSeries2.setName("Series 2")
-    // create sample data
-    bcSeries2.getData().add(XYChart.Data[Number, Number](13d, 100d, "7d"))
-    bcSeries2.getData().add(XYChart.Data[Number, Number](20d, 80d, "13d"))
-    bcSeries2.getData().add(XYChart.Data[Number, Number](100d, 60d, "10d"))
-    bcSeries2.getData().add(XYChart.Data[Number, Number](30d, 40d, "6d"))
-    bcSeries2.getData().add(XYChart.Data[Number, Number](50d, 20d, "12d"))
+    val series1 = new XYChart.Series[Number, Number] {
+      name = "Series 1"
+      data = Seq(
+        (30d, 40d, 10d),
+        (60d, 20d, 13d),
+        (10d, 90d, 7d),
+        (100d, 40d, 10d),
+        (50d, 23d, 5d)).map(toChartData)
+    }
 
-    val bcSeries3 = new XYChart.Series[Number, Number]()
-    bcSeries3.setName("Series 3")
-    // create sample data
-    bcSeries3.getData().add(XYChart.Data[Number, Number](17d, 55d, "7d"))
-    bcSeries3.getData().add(XYChart.Data[Number, Number](67d, 98d, "13d"))
-    bcSeries3.getData().add(XYChart.Data[Number, Number](45d, 23d, "10d"))
-    bcSeries3.getData().add(XYChart.Data[Number, Number](89d, 87d, "6d"))
-    bcSeries3.getData().add(XYChart.Data[Number, Number](59d, 34d, "12d"))
+    val series2 = new XYChart.Series[Number, Number] {
+      name = "Series 2"
+      data = Seq(
+        (13d, 100d, 7d),
+        (20d, 80d, 13d),
+        (100d, 60d, 10d),
+        (30d, 40d, 6d)).map(toChartData)
+    }
 
-    
-    //Bubble Chart
-    val bubbleChart = BubbleChart[Number, Number](xAxis, yAxis)
-    bubbleChart.getData.add(bcSeries1)
-    bubbleChart.getData.add(bcSeries2)
-    bubbleChart.getData.add(bcSeries3)
-    bubbleChart
+    val series3 = new XYChart.Series[Number, Number] {
+      name = "Series 3"
+      data = Seq(
+        (17d, 55d, 7d),
+        (67d, 98d, 13d),
+        (45d, 23d, 10d),
+        (89d, 87d, 6d),
+        (59d, 34d, 12d)).map(toChartData)
+    }
+
+    new BubbleChart(xAxis, yAxis) {
+      data() ++= Seq(series1, series2, series3)
+    }
   }
 }
