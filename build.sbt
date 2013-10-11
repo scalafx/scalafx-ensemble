@@ -17,7 +17,8 @@ libraryDependencies ++= Seq(
 // can be loaded from the same file that is used to execute the example
 unmanagedResourceDirectories in Compile <+= baseDirectory { _/"src/main/scala"}
 
-shellPrompt := { state => System.getProperty("user.name") + "> " }
+// Set the prompt (for this build) to include the project id.
+shellPrompt := { state => System.getProperty("user.name") + ":" + Project.extract(state).currentRef.project + "> " }
 
 // Add JavaFX 2.0 to classpath
 unmanagedJars in Compile += Attributed.blank(file(System.getenv("JAVA_HOME") + "/jre/lib/jfxrt.jar"))
