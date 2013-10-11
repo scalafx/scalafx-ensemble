@@ -51,7 +51,7 @@ class EnsembleColorPicker extends EnsembleExample {
   def getContent = {
 
     def toStyle(color: Color) =
-      "-fx-base: rgb(" + (color.red * 255) + "," + (color.green * 255) + "," + (color.blue * 255) + ");"
+      s"-fx-base: rgb(${ color.red * 255 }, ${ color.green * 255 }, ${ color.blue * 255 });"
 
     val initialColor = Color.RED
 
