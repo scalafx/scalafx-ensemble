@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,21 +28,33 @@
 package scalafx.ensemble.example.controls
 
 import scalafx.collections.ObservableBuffer
-import scalafx.collections.ObservableBuffer.observableBuffer2ObservableList
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.ComboBox
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
 
+/**
+ * A sample that shows both an un-editable and an editable ComboBox.
+ *
+ * @see scalafx.scene.control.ComboBox
+ * @see scalafx.scene.control.ComboBoxBuilder
+ */
 class EnsembleComboBox extends EnsembleExample {
+
+  val strings = ObservableBuffer(
+    "Option 1", "Option 2", "Option 3",
+    "Option 4", "Option 5", "Option 6",
+    "Longer ComboBox item",
+    "Option 7", "Option 8", "Option 9",
+    "Option 10", "Option 12")
+
   def getContent = {
     new VBox {
       vgrow = Priority.ALWAYS
       hgrow = Priority.ALWAYS
-      spacing = 10
+      spacing = 15
       margin = Insets(50, 0, 0, 50)
       content = List(
         new Text {
@@ -51,18 +63,14 @@ class EnsembleComboBox extends EnsembleExample {
         },
         new ComboBox[String] {
           maxWidth = 200
-          maxHeight = 50
-          promptText = "Choose a fruit..."
-          val seq = List("Apple", "Orange", "Mango", "Banana").toSeq
-          items = ObservableBuffer[String](seq)
+          promptText = "Make a choice..."
+          items = strings
         },
         new ComboBox[String] {
           maxWidth = 200
-          maxHeight = 50
-          promptText = "Edit or Choose a fruit..."
+          promptText = "Edit or Choose..."
           editable = true
-          val seq = List("Apple", "Orange", "Mango", "Banana").toSeq
-          items = ObservableBuffer[String](seq)
+          items = strings
         })
     }
   }

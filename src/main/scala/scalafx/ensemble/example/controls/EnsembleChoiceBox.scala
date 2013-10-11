@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,29 +31,34 @@ import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.ChoiceBox
-import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
 
+/** A sample that shows a choice box with several options. The ChoiceBox control
+  * displays a default or current selection, with an icon to click that expands
+  * the list for a selection.
+  *
+  * @see scalafx.scene.control.ChoiceBox
+  * @related controls/CheckBoxes
+  * @related controls/ToggleButton
+  * @related controls/ToolBar
+  */
 class EnsembleChoiceBox extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Text {
-          text = "Ensemble ChoiceBox"
-          font = new Font("Verdana", 20)
-        },
-        new ChoiceBox[String] {
-          maxWidth = 80
-          maxHeight = 50
-          val seq = List("Earth", "Sky", "Paradise").toSeq
-          items = ObservableBuffer[String](seq)
-        })
-    }
+
+  def getContent = new VBox {
+    spacing = 10
+    margin = Insets(50, 0, 0, 50)
+    content = List(
+      new Text {
+        text = "Ensemble ChoiceBox"
+        font = new Font("Verdana", 20)
+      },
+      new ChoiceBox[String] {
+        maxWidth = 80
+        maxHeight = 50
+        items = ObservableBuffer("Earth", "Sky", "Paradise")
+        selectionModel().selectFirst()
+      })
   }
 }

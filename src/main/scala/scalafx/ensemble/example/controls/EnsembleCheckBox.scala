@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,41 +35,42 @@ import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
 
+/** * An example of checkboxes in various states.
+  *
+  * @see scalafx.scene.control.CheckBox
+  * @related controls/buttons/GraphicButton
+  * @related controls/buttons/RadioButtons
+  */
 class EnsembleCheckBox extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Text {
-          text = "Ensemble CheckBoxes"
-          font = new Font("Verdana", 20)
-        },
-        new Text {
-          text = "-----------------------------------------------------------"
-          font = new Font("Verdana", 8)
-          style = "-fx-font-weight: bold"
 
-        },
-        new CheckBox {
-          maxWidth = 200
-          maxHeight = 50
-          text = "CheckBox 1"
-        },
-        new CheckBox {
-          maxWidth = 200
-          maxHeight = 50
-          text = "CheckBox 2"
-          selected = true
-        },
-        new CheckBox {
-          maxWidth = 200
-          maxHeight = 50
-          text = "CheckBox 3"
-          disable = true
-        })
-    }
+  def getContent = new VBox {
+    vgrow = Priority.ALWAYS
+    hgrow = Priority.ALWAYS
+    spacing = 10
+    margin = Insets(50, 0, 0, 50)
+    content = List(
+      new Text {
+        text = "Ensemble CheckBoxes"
+        font = new Font("Verdana", 20)
+      },
+      new Text {
+        text = "-----------------------------------------------------------"
+        font = new Font("Verdana", 8)
+        style = "-fx-font-weight: bold"
+
+      },
+      new CheckBox {
+        text = "Simple CheckBox"
+      },
+      new CheckBox {
+        text = "Three state checkbox"
+        allowIndeterminate = true
+        indeterminate = false
+      },
+      new CheckBox {
+        text = "Disabled"
+        selected = true
+        disable = true
+      })
   }
 }

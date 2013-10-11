@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,16 +27,22 @@
 
 package scalafx.ensemble.example.controls
 
-import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.Node
 import scalafx.scene.control.Button
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
-import scalafx.scene.layout.VBox
 import scalafx.scene.layout.Priority
+import scalafx.scene.layout.VBox
 
+/**
+ * A button with an embedded image.
+ *
+ * @see scalafx.scene.control.Button
+ * @related controls/CheckBoxes
+ * @related controls/RadioButtons
+ * @resource /scalafx/ensemble/images/icon-48x48.png
+ */
 class EnsembleGraphicButton extends EnsembleExample {
   def getContent = {
     new VBox {
@@ -48,11 +54,11 @@ class EnsembleGraphicButton extends EnsembleExample {
         new Button {
           maxWidth = 170
           maxHeight = 50
-          text = "Graphic Button 1"
+          text = "Graphic Button"
           graphic = new ImageView {
             image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
             margin = Insets(0, 0, 0, 10)
-          }.asInstanceOf[Node]
+          }
         })
     }
   }

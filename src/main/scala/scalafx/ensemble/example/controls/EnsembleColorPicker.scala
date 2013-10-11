@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -28,41 +28,51 @@
 package scalafx.ensemble.example.controls
 
 import scalafx.Includes._
-import scalafx.event.ActionEvent
-import scalafx.event.EventHandler
 import scalafx.ensemble.commons.EnsembleExample
+import scalafx.event.ActionEvent
 import scalafx.geometry.Insets
 import scalafx.scene.control.Button
 import scalafx.scene.control.ColorPicker
 import scalafx.scene.control.Label
 import scalafx.scene.control.ToolBar
+import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
-import scalafx.scene.layout.Priority
 
 
+/** A sample that demonstrates the ColorPicker.
+  *
+  * @see scalafx.scene.control.ColorPicker
+  */
 class EnsembleColorPicker extends EnsembleExample {
+
   def getContent = {
-    val rgbVal = (color: Color) => {
-      "-fx-base: rgb(" + (color.getRed() * 255) + "," + (color.getGreen() * 255) + "," + (color.getBlue() * 255) + ");";
-    }
-    //Label for colorpicker
+
+    def toStyle(color: Color) =
+      "-fx-base: rgb(" + (color.red * 255) + "," + (color.green * 255) + "," + (color.blue * 255) + ");"
+
+    val initialColor = Color.RED
+
+    // Label for ColorPicker
     val labelColor = new Label {
       text = "Colors"
-      font = new Font("Verdana", 18)
+      font = new Font("Verdana", 53)
       style = "-fx-font-weight:bold"
+      textFill = initialColor
     }
-    //Button for colorpicker
-    val buttonColor = new Button {
-      text = "Colored Control"
+    // Button for ColorPicker
+    val buttonColor = new Button("Colored Control") {
+      style = toStyle(initialColor)
     }
-    //Color Picker
-    val colorPicker = new ColorPicker(Color.BLUE)
-    colorPicker.onAction = (ae: ActionEvent) => {
-        labelColor.setTextFill(colorPicker.getValue)
-        buttonColor.setStyle(rgbVal(colorPicker.getValue))
+
+    // ColorPicker
+    val colorPicker = new ColorPicker(initialColor) {
+      onAction = (ae: ActionEvent) => {
+        labelColor.textFill = value()
+        buttonColor.style = toStyle(value())
+      }
     }
 
     new VBox {
@@ -77,7 +87,7 @@ class EnsembleColorPicker extends EnsembleExample {
         },
         new ToolBar {
           maxWidth = 300
-          content = List(colorPicker)
+          content = colorPicker
         },
         labelColor,
         buttonColor)
