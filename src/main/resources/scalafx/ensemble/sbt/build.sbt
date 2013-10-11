@@ -4,7 +4,7 @@ version := "1.0-SNAPSHOT"
 
 scalaVersion := "2.10.3"
 
-libraryDependencies +="org.scalafx" %% "scalafx" % "1.0.0-M5"
+libraryDependencies +="org.scalafx" %% "scalafx" % "1.0.0-M6-SNAPSHOT"
 
 // Add JavaFX 2.0 to classpath
 // For Java 8 it is not needed, it has`jfxrt.jar` in classpath
