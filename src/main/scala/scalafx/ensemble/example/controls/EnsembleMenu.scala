@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,63 +27,72 @@
 
 package scalafx.ensemble.example.controls
 
-import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.Node
-import scalafx.scene.control.Menu
-import scalafx.scene.control.MenuBar
-import scalafx.scene.control.MenuItem
+import scalafx.scene.control.{CheckMenuItem, Menu, MenuBar, MenuItem}
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
+import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
-import scalafx.scene.layout.Priority
 
+
+/** An example of a menu bar. Includes illustration of a check menu item.
+  *
+  * @see scalafx.scene.control.MenuBar
+  * @see scalafx.scene.control.Menu
+  * @see scalafx.scene.control.MenuItem
+  * @resource /scalafx/ensemble/images/crumb-selected-focused.png
+  */
 class EnsembleMenu extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Text {
-          text = "Ensemble Menu"
-          font = new Font("Verdana", 20)
-        },
-        new MenuBar {
-          maxHeight = 70
-          maxWidth = 400
-          useSystemMenuBar = true
-          //TODO CheckMenuItem is missing in scalafx.. create it later
-          menus = List(
-            new Menu("Scala") {
-              items = List(
-                new Menu {
-                  text = "Author Info"
-                  graphic = new ImageView {
-                    image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/crumb-selected-focused.png"))
-                    margin = Insets(0, 0, 0, 5)
-                  }.asInstanceOf[Node]
-                  items = List(new MenuItem {
-                    text = "Type Safe"
-                  }, new MenuItem {
-                    text = "Martin Odersky"
-                  })
-                }, new Menu {
-                  text = "Features"
-                  items = List(new MenuItem {
-                    text = "Object Oriented"
-                  }, new MenuItem {
-                    text = "Functional"
-                  })
-                }, new MenuItem {
-                  text = "ScalaFX"
-                })
-            })
-        })
-    }
+
+  val fooMenuItem = new MenuItem("foo")
+
+  def getContent = new VBox {
+    vgrow = Priority.ALWAYS
+    hgrow = Priority.ALWAYS
+    spacing = 10
+    margin = Insets(50, 0, 0, 50)
+    content = List(
+      new Text {
+        text = "Ensemble Menu"
+        font = new Font("Verdana", 20)
+      },
+      new MenuBar {
+        maxHeight = 70
+        maxWidth = 400
+        useSystemMenuBar = true
+        menus = List(
+          new Menu("Scala") {
+            items = List(
+              new Menu("Author Info") {
+                graphic = new ImageView {
+                  image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/crumb-selected-focused.png"))
+                  margin = Insets(0, 0, 0, 5)
+                }
+                items = List(
+                  new MenuItem("Type Safe"),
+                  new MenuItem("Martin Odersky")
+                )
+              },
+              new Menu("Features") {
+                items = List(
+                  new MenuItem("Object Oriented"),
+                  new MenuItem("Functional"),
+                  fooMenuItem,
+                  new CheckMenuItem( """Show "foo" item""") {
+                    selected = true
+                    selected.onInvalidate {
+                      fooMenuItem.setVisible(selected())
+                      println( """Menu item "foo" is now """ + (if (fooMenuItem.visible()) "" else "not") + " visible")
+                    }
+                  }
+                )
+              },
+              new MenuItem("ScalaFX")
+            )
+          })
+      })
   }
 }
