@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,16 +41,17 @@ import scalafx.scene.layout.Region
 import scalafx.scene.layout.VBox
 import scalafx.stage.Screen
 
+/** The main ScalaFX Ensamble application object. */
 object Ensemble extends JFXApp {
+
+  //
+  // Example selection tree
+  //
   var centerStage = PageDisplayer.choosePage("dashBoard")
   val rootTreeItem = new TreeItem[String]("ScalaFX Ensemble") {
     expanded = true
+    children = EnsembleTree.create().getTree
   }
-
-  val sfxControl = EnsembleTree.create().getTree.reverse
-  sfxControl.foreach(x => {
-    rootTreeItem.getChildren.add(x)
-  })
 
   val screen = Screen.primary
   val controlsView = new TreeView[String]() {
@@ -62,13 +63,13 @@ object Ensemble extends JFXApp {
   }
   controlsView.selectionModel().selectionMode = SelectionMode.SINGLE
   controlsView.selectionModel().selectedItem.onChange {
-    (_, _, selItem) => {
-      val str = (selItem.isLeaf, Option(selItem.getParent)) match {
-        case (true, Some(parent)) => parent.getValue.toLowerCase + " > " + selItem.getValue
-        case (false, Some(_))     => "dashBoard - " + selItem.getValue
+    (_, _, newItem) => {
+      val pageCode = (newItem.isLeaf, Option(newItem.getParent)) match {
+        case (true, Some(parent)) => parent.getValue.toLowerCase + " > " + newItem.getValue
+        case (false, Some(_))     => "dashBoard - " + newItem.getValue
         case (_, _)               => "dashBoard"
       }
-      centerStage = PageDisplayer.choosePage(str)
+      centerStage = PageDisplayer.choosePage(pageCode)
       pageViewHolder.items.remove(1)
       pageViewHolder.items.add(1, centerStage)
     }
@@ -88,13 +89,16 @@ object Ensemble extends JFXApp {
     items.addAll(scrollPane, centerStage)
   }
 
+  //
+  // Layout the main stage
+  //
   stage = new PrimaryStage {
     scene = new Scene(1020, 700) {
       root = new BorderPane {
         top = new VBox {
           vgrow = Priority.ALWAYS
           hgrow = Priority.ALWAYS
-          content = List(new ToolBar {
+          content = new ToolBar {
             prefHeight = 76
             maxHeight = 76
             id = "mainToolBar"
@@ -112,16 +116,15 @@ object Ensemble extends JFXApp {
                 minHeight = 66
                 id = "newButton"
               })
-          })
+          }
         }
         center = new BorderPane {
           center = pageViewHolder
         }
-        styleClass.add("application")
+        styleClass += "application"
       }
     }
-    scene.get.getStylesheets.add(
-      this.getClass.getResource("/scalafx/ensemble/css/ensemble.css").toExternalForm)
+    scene().stylesheets += this.getClass.getResource("/scalafx/ensemble/css/ensemble.css").toExternalForm
   }
   stage.title = "ScalaFX Ensemble"
 }

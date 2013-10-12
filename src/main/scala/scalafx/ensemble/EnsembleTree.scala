@@ -32,13 +32,12 @@ import scala.collection.immutable.TreeMap
 import scalafx.Includes._
 import scalafx.ensemble.commons.PageDisplayer
 import scalafx.ensemble.commons.SortUtils
-import scalafx.geometry.{Pos, Orientation, Insets}
-import scalafx.scene.Node
-import scalafx.scene.control.{Control, Label, TreeItem}
+import scalafx.event.ActionEvent
+import scalafx.geometry.{Orientation, Insets}
+import scalafx.scene.control._
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
-import scalafx.scene.input.MouseEvent
-import scalafx.scene.layout.{VBox, TilePane}
+import scalafx.scene.layout.TilePane
 
 /**
  * Object to load examples as Map which in turn is used
@@ -46,143 +45,112 @@ import scalafx.scene.layout.{VBox, TilePane}
  */
 object EnsembleTree {
 
-  val fil = new File(getClass.getResource("/scalafx/ensemble/example/").getPath)
+  val examplePath = new File(getClass.getResource("/scalafx/ensemble/example/").getPath)
 
-  def create() = {
-    new EnsembleTree(createTree(), createThumbnails())
-  }
+  def create(): EnsembleTree = new EnsembleTree(createTree(), createThumbnails())
 
   /**
    * build a map by iterating through the examples folder.
    * This is used in UI
    */
-  private def createTree() = {
+  private def createTree(): Map[String, List[TreeItem[String]]] = {
     // Sanity check, the listing mey not work when ScalaFX Ensemble is packaged into a jar.
-    val exampleRootFiles = fil.listFiles()
+    val exampleRootFiles = examplePath.listFiles()
     if (exampleRootFiles == null)
       throw new IOException("Cannot list files in the example directory. May be caused by Issue #10.")
 
-    var exampleTree = TreeMap[String, List[TreeItem[String]]]()
-    exampleRootFiles.foreach(x => {
-      if (x.isDirectory) {
-        var leaves = List[TreeItem[String]]()
-        x.listFiles().foreach(a => {
-          if (a.getName.contains(".scala")) {
-            val leafName = a.getName.stripSuffix(".scala").stripPrefix("Ensemble")
-            leaves = leaves.::(new TreeItem(leafName))
-          }
-        })
-        exampleTree = exampleTree.+((x.getName.capitalize,
-          leaves.sortWith(SortUtils.treeItemSort)))
+    val pairs = for (dir <- exampleRootFiles if dir.isDirectory) yield {
+      val leaves = for (f <- dir.listFiles() if f.getName.contains(".scala")) yield {
+        val leafName = f.getName.stripSuffix(".scala").stripPrefix("Ensemble")
+        new TreeItem(leafName)
       }
-    })
-    exampleTree
+      dir.getName.capitalize -> leaves.toList.sortWith(SortUtils.treeItemSort)
+    }
+    TreeMap(pairs: _*)
   }
 
   private def createThumbnails() = {
-    var thumbnails = TreeMap[String, List[EnsembleThumbNail]]()
-    fil.listFiles().foreach(x => {
-      if (x.isDirectory) {
-        val ctrlgpName = x.getName
-        var thumbs = List[EnsembleThumbNail]()
-        x.listFiles().foreach(a => {
-          if (a.getName.contains(".scala")) {
-            val leafName = a.getName.stripSuffix(".scala").stripPrefix("Ensemble")
-            val img = new ImageView {
-              onMouseClicked = (p1: MouseEvent) => {
-                Ensemble.pageViewHolder.items.remove(1)
-                Ensemble.pageViewHolder.items.add(1,
-                  PageDisplayer.choosePage(ctrlgpName + " > " + leafName))
-              }
-              val filePath = "/scalafx/ensemble/example/" + ctrlgpName + "/" + leafName + "Sample.png"
-              image = new Image(this.getClass.getResourceAsStream(filePath))
-            }
-            val lbl = new Label(leafName)
-            thumbs = thumbs.::(EnsembleThumbNail(img, lbl))
+    // Sanity check, the listing mey not work when ScalaFX Ensemble is packaged into a jar.
+    val exampleRootFiles = examplePath.listFiles()
+    if (exampleRootFiles == null)
+      throw new IOException("Cannot list files in the example directory. May be caused by Issue #10.")
+
+    val pairs = for (dir <- examplePath.listFiles() if dir.isDirectory) yield {
+      val groupName = dir.getName
+      val thumbs = for (f <- dir.listFiles() if f.getName.contains(".scala")) yield {
+        val leafName = f.getName.stripSuffix(".scala").stripPrefix("Ensemble")
+        val img = new ImageView {
+          val filePath = "/scalafx/ensemble/example/" + groupName + "/" + leafName + "Sample.png"
+          image = new Image(this.getClass.getResourceAsStream(filePath))
+        }
+        val button = new Button(leafName, img) {
+          contentDisplay = ContentDisplay.TOP
+          styleClass.clear()
+          styleClass += "sample-tile"
+          onAction = (ae: ActionEvent) => {
+            Ensemble.pageViewHolder.items.remove(1)
+            Ensemble.pageViewHolder.items.add(1,
+              PageDisplayer.choosePage(groupName + " > " + leafName))
           }
-        })
-        thumbnails = thumbnails.+((x.getName.capitalize,
-          thumbs.sortWith(SortUtils.thumbNailsSort)))
+        }
+        EnsembleThumbNail(button)
       }
-    })
-    thumbnails
+      dir.getName.capitalize -> thumbs.toList.sortWith(SortUtils.thumbNailsSort)
+    }
+    TreeMap(pairs: _*)
   }
 }
 
-case class EnsembleThumbNail(imgView: ImageView, caption: Label)
+case class EnsembleThumbNail(button: Button)
 
 /**
  * The class provide accessibility methods to access the
  * underlying map
  */
-class EnsembleTree(map: Map[String, List[TreeItem[String]]],
+class EnsembleTree(tree: Map[String, List[TreeItem[String]]],
                    thumbnails: Map[String, List[EnsembleThumbNail]]) {
 
-  def getLeaves(keyName: String) = map get keyName get
+  def getLeaves(keyName: String) = tree(keyName)
 
   /**
    * returns the entire tree
    */
-  def getTree = {
-    var treeSibls = List[TreeItem[String]]()
-    map.foreach(x => {
-      val sibl = new TreeItem[String](x._1)
-      sibl.expanded = true
-      x._2.foreach(y => {
-        sibl.getChildren().add(y)
-      })
-      treeSibls = treeSibls.::(sibl)
-    })
-    treeSibls
-  }
-
-  def getThumbs(keyName: String) = thumbnails get keyName get
-
-
-  def getDashThumbsCtrl() = {
-    var thums = List[Node]()
-    thumbnails.foreach {
-      case (heading, ts) => {
-        thums = thums.::(createCategoryLabel(heading))
-        thums = thums.::(createTiles(ts))
-      }
+  def getTree: List[TreeItem[String]] = tree.map {
+    case (name, items) => new TreeItem[String](name) {
+      expanded = true
+      children = items
     }
-    thums.reverse
-  }
+  }.toList
 
-  def getDashThumb(ctrlGrpName: String) = {
-    var thums = List[Node]()
-    thums = thums.::(createTiles(thumbnails(ctrlGrpName)))
-    thums = thums.::(createCategoryLabel(ctrlGrpName))
-    thums
-  }
+  def getThumbs(keyName: String) = thumbnails(keyName)
 
-  private def createCategoryLabel(value: String): Node = {
+
+  def getDashThumbsCtrl() =
+    thumbnails.flatMap {
+      case (heading, ts) => Seq(createCategoryLabel(heading), createTiles(ts))
+    }
+
+  def getDashThumb(ctrlGrpName: String) =
+    Seq(
+      createCategoryLabel(ctrlGrpName),
+      createTiles(thumbnails(ctrlGrpName))
+    )
+
+  private def createCategoryLabel(value: String) =
     new Label {
       text = value
       maxWidth = Double.MaxValue
       minHeight = Control.USE_PREF_SIZE
-      styleClass.add("category-header")
+      styleClass += "category-header"
     }
-  }
 
-  private def createTiles(value: List[EnsembleThumbNail]): Node = {
-    val fp = new TilePane {
-      prefColumns = 1
-      hgap = 4
-      vgap = 4
-      padding = Insets(10, 10, 10, 10)
-      orientation = Orientation.HORIZONTAL
-      styleClass.add("category-page-flow")
-    }
-    value.foreach(y => {
-      val x = new VBox {
-        styleClass.add("sample-tile")
-        alignmentInParent = Pos.CENTER
-        content = List(y.imgView, y.caption)
-      }
-      fp.content.add(x)
-    })
-    fp
+  private def createTiles(value: List[EnsembleThumbNail]) = new TilePane {
+    prefColumns = 1
+    hgap = 4
+    vgap = 4
+    padding = Insets(10, 10, 10, 10)
+    orientation = Orientation.HORIZONTAL
+    styleClass += "category-page-flow"
+    content = value.map(_.button)
   }
 }

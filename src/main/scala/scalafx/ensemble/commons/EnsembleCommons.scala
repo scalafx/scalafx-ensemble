@@ -24,6 +24,7 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.ensemble.commons
 
 
@@ -89,7 +90,7 @@ object SortUtils {
     compare(ti.value(), t2.value())
 
   def thumbNailsSort = (t1: EnsembleThumbNail, t2: EnsembleThumbNail) =>
-    compare(t1.caption.text(), t2.caption.text())
+    compare(t1.button.text(), t2.button.text())
 
   def sortKeys = (x: String, y: String) => compare(x, y)
 

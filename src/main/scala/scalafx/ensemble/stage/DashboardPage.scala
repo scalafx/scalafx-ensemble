@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,40 +33,29 @@ import scalafx.scene.control.ScrollPane
 import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 
-// Dashboard 
+/** Dashboard Page */
 class DashboardPage(dashPart: String = "dashboard") extends DisplayablePage {
-  val tree = EnsembleTree.create
-  val adjustFactor = 140
+
+  private val tree = EnsembleTree.create()
+
   def getPage = {
-    val boxes = new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-     //  styleClass.add("category-header")
+    val thumbs = dashPart match {
+      case "dashboard" => tree.getDashThumbsCtrl()
+      case _           => tree.getDashThumb(dashPart)
     }
 
-    dashPart match {
-      case "dashboard" => {
-        tree.getDashThumbsCtrl.foreach(box => {
-          boxes.content.add(box)
-        })
-      }
-      case _ => {
-        tree.getDashThumb(dashPart).foreach(box => {
-          boxes.content.add(box)
-        })
-      }
-    }
-
-    val scrollPane = new ScrollPane {
+    new ScrollPane {
       vgrow = Priority.ALWAYS
       hgrow = Priority.ALWAYS
       fitToHeight = true
       fitToWidth = true
-      content = boxes
+      content = new VBox {
+        vgrow = Priority.ALWAYS
+        hgrow = Priority.ALWAYS
+        content = thumbs
+      }
       styleClass.add("category-header")
     }
-
-    scrollPane
   }
 }
 
