@@ -32,13 +32,13 @@ import scala.collection.immutable.TreeMap
 import scalafx.Includes._
 import scalafx.ensemble.commons.PageDisplayer
 import scalafx.ensemble.commons.SortUtils
-import scalafx.geometry.{Orientation, Insets, Pos}
+import scalafx.geometry.{Pos, Orientation, Insets}
 import scalafx.scene.Node
 import scalafx.scene.control.{Control, Label, TreeItem}
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
 import scalafx.scene.input.MouseEvent
-import scalafx.scene.layout.{TilePane, VBox}
+import scalafx.scene.layout.{VBox, TilePane}
 
 /**
  * Object to load examples as Map which in turn is used
@@ -138,27 +138,26 @@ class EnsembleTree(map: Map[String, List[TreeItem[String]]],
 
   def getThumbs(keyName: String) = thumbnails get keyName get
 
-  import scalafx.ensemble.Converter._
 
   def getDashThumbsCtrl() = {
     var thums = List[Node]()
-    thumbnails.foreach(x => {
-      thums = thums.::(x._1)
-      thums = thums.::(x._2)
-    })
+    thumbnails.foreach {
+      case (heading, ts) => {
+        thums = thums.::(createCategoryLabel(heading))
+        thums = thums.::(createTiles(ts))
+      }
+    }
     thums.reverse
   }
 
   def getDashThumb(ctrlGrpName: String) = {
     var thums = List[Node]()
-    thums = thums.::(thumbnails.get(ctrlGrpName).get)
-    thums = thums.::(ctrlGrpName)
+    thums = thums.::(createTiles(thumbnails(ctrlGrpName)))
+    thums = thums.::(createCategoryLabel(ctrlGrpName))
     thums
   }
-}
 
-object Converter {
-  implicit def convertToText(value: String): Node = {
+  private def createCategoryLabel(value: String): Node = {
     new Label {
       text = value
       maxWidth = Double.MaxValue
@@ -167,7 +166,7 @@ object Converter {
     }
   }
 
-  implicit def convertToThumbBoxes(value: List[EnsembleThumbNail]): Node = {
+  private def createTiles(value: List[EnsembleThumbNail]): Node = {
     val fp = new TilePane {
       prefColumns = 1
       hgap = 4
