@@ -28,19 +28,17 @@
 package scalafx.ensemble
 
 import java.io.{IOException, File}
+import scala.collection.immutable.TreeMap
 import scalafx.Includes._
-import scalafx.scene.control.Label
-import scalafx.scene.control.TreeItem
+import scalafx.ensemble.commons.PageDisplayer
+import scalafx.ensemble.commons.SortUtils
+import scalafx.geometry.{Orientation, Insets, Pos}
+import scalafx.scene.Node
+import scalafx.scene.control.{Control, Label, TreeItem}
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
-import scalafx.ensemble.commons.SortUtils
-import scalafx.scene.Node
-import scalafx.scene.text.Text
-import scalafx.scene.layout.{TilePane, VBox}
-import scalafx.geometry.{Orientation, Insets, Pos}
-import scala.collection.immutable.TreeMap
 import scalafx.scene.input.MouseEvent
-import scalafx.ensemble.commons.PageDisplayer
+import scalafx.scene.layout.{TilePane, VBox}
 
 /**
  * Object to load examples as Map which in turn is used
@@ -161,8 +159,10 @@ class EnsembleTree(map: Map[String, List[TreeItem[String]]],
 
 object Converter {
   implicit def convertToText(value: String): Node = {
-    new Text {
+    new Label {
       text = value
+      maxWidth = Double.MaxValue
+      minHeight = Control.USE_PREF_SIZE
       styleClass.add("category-header")
     }
   }
