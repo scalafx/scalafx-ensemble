@@ -24,8 +24,10 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 package scalafx.ensemble
 
+import scala.Some
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -35,19 +37,16 @@ import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
-import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.Region
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout._
 import scalafx.stage.Screen
 
-/** The main ScalaFX Ensamble application object. */
+/** The main ScalaFX Ensemble application object. */
 object Ensemble extends JFXApp {
 
   //
   // Example selection tree
   //
-  var centerStage = PageDisplayer.choosePage("dashBoard")
+  var centerPane = PageDisplayer.choosePage("dashBoard")
   val rootTreeItem = new TreeItem[String]("ScalaFX Ensemble") {
     expanded = true
     children = EnsembleTree.create().getTree
@@ -69,9 +68,9 @@ object Ensemble extends JFXApp {
         case (false, Some(_))     => "dashBoard - " + newItem.getValue
         case (_, _)               => "dashBoard"
       }
-      centerStage = PageDisplayer.choosePage(pageCode)
-      pageViewHolder.items.remove(1)
-      pageViewHolder.items.add(1, centerStage)
+      centerPane = PageDisplayer.choosePage(pageCode)
+      splitPane.items.remove(1)
+      splitPane.items.add(1, centerPane)
     }
   }
 
@@ -83,10 +82,10 @@ object Ensemble extends JFXApp {
     id = "page-tree"
     content = controlsView
   }
-  val pageViewHolder = new SplitPane {
+  val splitPane = new SplitPane {
     dividerPositions = 0
     id = "page-splitpane"
-    items.addAll(scrollPane, centerStage)
+    items.addAll(scrollPane, centerPane)
   }
 
   //
@@ -119,7 +118,7 @@ object Ensemble extends JFXApp {
           }
         }
         center = new BorderPane {
-          center = pageViewHolder
+          center = splitPane
         }
         styleClass += "application"
       }

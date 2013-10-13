@@ -56,10 +56,8 @@ object PageDisplayer {
 
   def choosePage(value: String = "dashBoard"): Node = {
     value match {
-      case "dashBoard" => {
-        displayPage(new DashboardPage)
-      }
-      case _ => {
+      case "dashBoard" => displayPage(new DashboardPage())
+      case _           => {
         if (value.startsWith("dashBoard - ")) {
           displayPage(new DashboardPage(value.split("-")(1).trim()))
         } else {
@@ -70,14 +68,12 @@ object PageDisplayer {
   }
 
   private def displayPage(nodeToAdd: DisplayablePage): Node = {
-    val pageContent = new VBox {
+    new VBox {
       vgrow = Priority.ALWAYS
       hgrow = Priority.ALWAYS
-      styleClass.add("category-page")
+      styleClass += "category-page"
+      content = nodeToAdd.getPage
     }
-    pageContent.content.removeAll()
-    pageContent.content.add(nodeToAdd.getPage)
-    pageContent
   }
 }
 

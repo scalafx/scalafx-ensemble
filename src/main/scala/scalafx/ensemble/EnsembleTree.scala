@@ -88,8 +88,8 @@ object EnsembleTree {
           styleClass.clear()
           styleClass += "sample-tile"
           onAction = (ae: ActionEvent) => {
-            Ensemble.pageViewHolder.items.remove(1)
-            Ensemble.pageViewHolder.items.add(1,
+            Ensemble.splitPane.items.remove(1)
+            Ensemble.splitPane.items.add(1,
               PageDisplayer.choosePage(groupName + " > " + leafName))
           }
         }
