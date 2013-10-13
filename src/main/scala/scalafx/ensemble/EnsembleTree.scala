@@ -84,6 +84,8 @@ object EnsembleTree {
           image = new Image(this.getClass.getResourceAsStream(filePath))
         }
         val button = new Button(leafName, img) {
+          prefWidth = 140
+          prefHeight = 145
           contentDisplay = ContentDisplay.TOP
           styleClass.clear()
           styleClass += "sample-tile"
