@@ -27,9 +27,10 @@
 
 package scalafx.ensemble.example.controls
 
-import javafx.scene.{Node => jfxNode}
+import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.Insets
+import scalafx.event.ActionEvent
+import scalafx.geometry.{Pos, Insets}
 import scalafx.scene.control.Button
 import scalafx.scene.control.Control
 import scalafx.scene.control.Label
@@ -54,37 +55,30 @@ import scalafx.scene.text.Text
   * @resource /scalafx/ensemble/images/animals-200x200/animal8.jpg
   */
 class EnsemblePagination extends EnsembleExample {
+
   def getContent = {
-    //Images to load pages
-    val images = new Array[Image](7)
 
-    for (i <- 0 until 7) {
+    // Images to load pages
+    val images = for (i <- 0 until 7) yield {
       val ipStream = this.getClass.getResourceAsStream("/scalafx/ensemble/images/animals-200x200/animal" + (i + 1) + ".jpg")
-      images(i) = new Image(ipStream)
+      new Image(ipStream)
     }
 
-    val indexToNode = (index: Int) => {
-      new VBox() {
-        content = List(new ImageView(images(index)), new Label("PAGE " + (index + 1)))
-      }
+    // Factory function for creating page content
+    val createAnimalPage = (index: Int) => new VBox() {
+      content = List(new ImageView(images(index)), new Label("PAGE " + (index + 1)))
+      alignment = Pos.CENTER
     }
 
-    //Pagination with 7 pages and index starts at zero
+    // Pagination with 7 pages and index starts at zero
     val pagination = new Pagination(7, 0) {
-      pageFactory = indexToNode
+      pageFactory = createAnimalPage
     }
-    /*
-        //pagination.pageFactory = indexToNode
-        pagination.setPageFactory(new Callback[java.lang.Integer, javafx.scene.Node]() {
-            def call(index: java.lang.Integer) {
-            new VBox().asInstanceOf[jfxNode]
-          }
-        })
-    */
-    //TODO pagination incomplete
+
     new VBox {
       vgrow = Priority.ALWAYS
       hgrow = Priority.ALWAYS
+      alignment = Pos.CENTER
       spacing = 10
       margin = Insets(50, 0, 0, 50)
       content = List(
@@ -97,6 +91,13 @@ class EnsemblePagination extends EnsembleExample {
           maxWidth = Control.USE_PREF_SIZE
           maxHeight = Control.USE_PREF_SIZE
           text = "Toggle Pagination Button"
+          onAction = (ae: ActionEvent) => {
+            if (pagination.styleClass.contains(Pagination.STYLE_CLASS_BULLET)) {
+              pagination.styleClass -= Pagination.STYLE_CLASS_BULLET
+            } else {
+              pagination.styleClass += Pagination.STYLE_CLASS_BULLET
+            }
+          }
         })
     }
   }
