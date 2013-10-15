@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -29,20 +29,26 @@ package scalafx.ensemble.example.controls
 
 import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
+import scalafx.geometry.Insets
 import scalafx.scene.control.ListView
 import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
-import scalafx.geometry.Insets
 
 class EnsembleSimpleListView extends EnsembleExample {
+
   def getContent = {
-    val seq = List("Row 1", "Row 2", "Long Row 3", "Row 4", "Row 5", "Row 6", "Row 7", "Row 8", "Row 9", "Row 10", "Row 11", "Row 12", "Row 13", "Row 14", "Row 15", "Row 16", "Row 17", "Row 18", "Row 19", "Row 20").toSeq
+
+    val seq = Seq("Row 1", "Row 2", "Long Row 3", "Row 4", "Row 5", "Row 6",
+      "Row 7", "Row 8", "Row 9", "Row 10", "Row 11", "Row 12", "Row 13",
+      "Row 14", "Row 15", "Row 16", "Row 17", "Row 18", "Row 19", "Row 20")
+
     val listView = new ListView[String] {
       maxWidth = 300
-      items = ObservableBuffer[String](seq)
+      items = ObservableBuffer(seq)
     }
+
     new VBox {
       vgrow = Priority.ALWAYS
       hgrow = Priority.ALWAYS

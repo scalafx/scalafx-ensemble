@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -36,9 +36,9 @@ import scalafx.scene.text.Font
 import scalafx.scene.text.Text
 
 class EnsembleProgressBar extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
+
+  def getContent = new VBox {
+    vgrow = Priority.ALWAYS
       hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
@@ -51,23 +51,27 @@ class EnsembleProgressBar extends EnsembleExample {
           text = "--------------------------------------------------------------"
           font = new Font("Verdana", 8)
           style = "-fx-font-weight: bold"
-
-        }, new ProgressBar {
+        },
+        new ProgressBar {
           maxWidth = 100
-        }, new ProgressBar {
+        },
+        new ProgressBar {
           maxWidth = 200
-        }, new ProgressBar {
+        },
+        new ProgressBar {
           maxWidth = 300
-        }, new ProgressBar {
+        },
+        new ProgressBar {
           maxWidth = 100
           progress = 0.25
-        }, new ProgressBar {
+        },
+        new ProgressBar {
           maxWidth = 200
           progress = 0.50
-        }, new ProgressBar {
+        },
+        new ProgressBar {
           maxWidth = 300
           progress = 1
         })
     }
-  }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,17 +27,17 @@
 
 package scalafx.ensemble.example.controls
 
-import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.ProgressIndicator
 import scalafx.scene.layout.GridPane
+import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 import scalafx.scene.text.Font
 import scalafx.scene.text.Text
-import scalafx.scene.layout.Priority
 
 class EnsembleProgressIndicator extends EnsembleExample {
+
   def getContent = {
     // Progress Indicators 1, 2, 3, 4
     val p1 = new ProgressIndicator {
@@ -60,14 +60,14 @@ class EnsembleProgressIndicator extends EnsembleExample {
       progress = 1.0F
     }
     //Add all progress indicators in grid pane
-    val gridPane = new GridPane
-    gridPane.add(p1, 1, 0)
-    gridPane.add(p2, 0, 1)
-    gridPane.add(p3, 1, 1)
-    gridPane.add(p4, 2, 1)
-
-    gridPane.setHgap(20)
-    gridPane.setVgap(20)
+    val gridPane = new GridPane() {
+      hgap = 20
+      vgap = 20
+      add(p1, 1, 0)
+      add(p2, 0, 1)
+      add(p3, 1, 1)
+      add(p4, 2, 1)
+    }
 
     new VBox {
       vgrow = Priority.ALWAYS
@@ -84,7 +84,9 @@ class EnsembleProgressIndicator extends EnsembleExample {
           font = new Font("Verdana", 8)
           style = "-fx-font-weight: bold"
 
-        }, gridPane)
+        },
+        gridPane
+      )
     }
   }
 }

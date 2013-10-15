@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,17 +37,17 @@ import scalafx.scene.text.Font
 import scalafx.scene.text.Text
 
 class EnsembleRadioButton extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
+
+  def getContent = new VBox {
+    vgrow = Priority.ALWAYS
       hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
       
       //Radio Button Toggle Group 
-      val tog = new ToggleGroup
-      
-      content = List(
+      val tog = new ToggleGroup()
+
+    content = List(
         new Text {
           text = "Ensemble Radio Buttons"
           font = new Font("Verdana", 20)
@@ -78,5 +78,4 @@ class EnsembleRadioButton extends EnsembleExample {
           disable = true
         })
     }
-  }
 }
