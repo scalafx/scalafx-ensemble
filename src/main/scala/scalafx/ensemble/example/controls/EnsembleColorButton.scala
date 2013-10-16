@@ -32,8 +32,6 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.Button
 import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.text.Text
 
 /** Buttons with different background colors.
   *
@@ -49,10 +47,6 @@ class EnsembleColorButton extends EnsembleExample {
     spacing = 10
     margin = Insets(50, 0, 0, 50)
     content = List(
-      new Text {
-        text = "Ensemble Color Buttons"
-        font = new Font("Verdana", 20)
-      },
       new Button {
         maxWidth = 200
         maxHeight = 150

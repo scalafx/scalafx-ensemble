@@ -30,9 +30,7 @@ package scalafx.ensemble.example.charts
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.chart.PieChart
-import scalafx.scene.control.Label
 import scalafx.scene.layout.{Priority, VBox}
-import scalafx.scene.text.Font
 
 /** An advanced pie chart.
   *
@@ -46,12 +44,7 @@ class EnsembleAdvancedPieChart extends EnsembleExample {
     hgrow = Priority.ALWAYS
     spacing = 10
     margin = Insets(50, 0, 0, 50)
-    content = List(
-      new Label {
-        text = "Ensemble Advanced Pie Chart"
-        font = new Font("Verdana", 20)
-      },
-      createPieChart())
+    content = createPieChart()
   }
 
   def createPieChart() = {

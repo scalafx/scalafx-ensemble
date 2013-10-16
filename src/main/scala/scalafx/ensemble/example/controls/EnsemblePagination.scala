@@ -39,8 +39,6 @@ import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.text.Text
 
 /** A sample that demonstrates pagination
   *
@@ -82,10 +80,6 @@ class EnsemblePagination extends EnsembleExample {
       spacing = 10
       margin = Insets(50, 0, 0, 50)
       content = List(
-        new Text {
-          text = "Ensemble Pagination"
-          font = new Font("Verdana", 20)
-        },
         pagination,
         new Button {
           maxWidth = Control.USE_PREF_SIZE

@@ -39,7 +39,6 @@ import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 import scalafx.scene.text.Font
-import scalafx.scene.text.Text
 
 
 /** A sample that demonstrates the ColorPicker.
@@ -51,7 +50,7 @@ class EnsembleColorPicker extends EnsembleExample {
   def getContent = {
 
     def toStyle(color: Color) =
-      s"-fx-base: rgb(${ color.red * 255 }, ${ color.green * 255 }, ${ color.blue * 255 });"
+      s"-fx-base: rgb(${color.red * 255}, ${color.green * 255}, ${color.blue * 255});"
 
     val initialColor = Color.RED
 
@@ -81,10 +80,6 @@ class EnsembleColorPicker extends EnsembleExample {
       spacing = 10
       margin = Insets(50, 0, 0, 50)
       content = List(
-        new Text {
-          text = "Ensemble ColorPicker"
-          font = new Font("Verdana", 20)
-        },
         new ToolBar {
           maxWidth = 300
           content = colorPicker

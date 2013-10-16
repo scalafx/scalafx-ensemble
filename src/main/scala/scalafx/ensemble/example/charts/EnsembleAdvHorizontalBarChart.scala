@@ -35,9 +35,7 @@ import scalafx.scene.chart.BarChart
 import scalafx.scene.chart.CategoryAxis
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.XYChart
-import scalafx.scene.control.Label
 import scalafx.scene.layout.{Priority, VBox}
-import scalafx.scene.text.Font
 
 /** An advanced horizontal bar chart.
   *
@@ -53,16 +51,11 @@ class EnsembleAdvHorizontalBarChart extends EnsembleExample {
       hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble Horizontal Bar Chart"
-          font = new Font("Verdana", 20)
-        },
-        createBarChart)
+      content = createBarChart()
     }
   }
 
-  lazy val createBarChart = {
+  def createBarChart() = {
     // Category/x values
     val years = Seq("2007", "2008", "2009")
 

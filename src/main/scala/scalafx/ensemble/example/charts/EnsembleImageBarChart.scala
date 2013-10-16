@@ -34,9 +34,7 @@ import scalafx.scene.chart.BarChart
 import scalafx.scene.chart.CategoryAxis
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.XYChart
-import scalafx.scene.control.Label
 import scalafx.scene.layout.{Priority, VBox}
-import scalafx.scene.text.Font
 
 /** A bar chart that uses CSS to display stacks of car images to indicate data values
   * for categories.
@@ -58,12 +56,7 @@ class EnsembleImageBarChart extends EnsembleExample {
     hgrow = Priority.ALWAYS
     spacing = 10
     margin = Insets(50, 0, 0, 50)
-    content = List(
-      new Label {
-        text = "Ensemble Image Bar Chart"
-        font = new Font("Verdana", 20)
-      },
-      createBarChart())
+    content = createBarChart()
   }
 
   def createBarChart() = new BarChart(new CategoryAxis(), new NumberAxis()) {

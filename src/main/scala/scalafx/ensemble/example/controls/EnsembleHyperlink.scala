@@ -30,12 +30,10 @@ package scalafx.ensemble.example.controls
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Hyperlink
-import scalafx.scene.control.Label
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
 
 /**
  * A sample that shows a simple hyperlink and a hyperlink with an image.
@@ -52,10 +50,6 @@ class EnsembleHyperlink extends EnsembleExample {
     spacing = 10
     margin = Insets(50, 0, 0, 50)
     content = List(
-      new Label {
-        text = "Ensemble Hyperlink"
-        font = new Font("Verdana", 20)
-      },
       new Hyperlink {
         maxWidth = 170
         maxHeight = 50

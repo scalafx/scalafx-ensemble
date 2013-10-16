@@ -32,10 +32,8 @@ import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.chart.PieChart
-import scalafx.scene.control.Label
 import scalafx.scene.input.MouseEvent
 import scalafx.scene.layout.{Priority, VBox}
-import scalafx.scene.text.Font
 
 /** A pie chart that provides the ability to drill down through data. Selecting a
   * segment in the initial pie chart causes the pie chart to display detailed data
@@ -54,12 +52,7 @@ class EnsembleDrilldownPieChart extends EnsembleExample {
     hgrow = Priority.ALWAYS
     spacing = 10
     margin = Insets(50, 0, 0, 50)
-    content = List(
-      new Label {
-        text = "Ensemble Drilldown Pie Chart"
-        font = new Font("Verdana", 20)
-      },
-      createPieChart())
+    content = createPieChart()
   }
 
   def createPieChart() = {

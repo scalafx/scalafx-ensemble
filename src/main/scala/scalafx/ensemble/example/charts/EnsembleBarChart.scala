@@ -34,10 +34,8 @@ import scalafx.scene.chart.BarChart
 import scalafx.scene.chart.CategoryAxis
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.XYChart
-import scalafx.scene.control.Label
 import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
 
 /**
  * A chart that displays rectangular bars with heights indicating data values
@@ -58,12 +56,7 @@ class EnsembleBarChart extends EnsembleExample {
       hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble Bar Chart"
-          font = new Font("Verdana", 20)
-        },
-        barChart)
+      content = barChart
     }
   }
 

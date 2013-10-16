@@ -35,9 +35,7 @@ import scalafx.scene.chart.BarChart
 import scalafx.scene.chart.CategoryAxis
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.XYChart
-import scalafx.scene.control.Label
 import scalafx.scene.layout.{Priority, VBox}
-import scalafx.scene.text.Font
 
 /** An advanced bar chart.
   *
@@ -53,12 +51,7 @@ class EnsembleAdvancedBarChart extends EnsembleExample {
     hgrow = Priority.ALWAYS
     spacing = 10
     margin = Insets(50, 0, 0, 50)
-    content = Seq(
-      new Label {
-        text = "Ensemble Advanced Bar Chart"
-        font = new Font("Verdana", 20)
-      },
-      barChart)
+    content = barChart
   }
 
   lazy val barChart = {

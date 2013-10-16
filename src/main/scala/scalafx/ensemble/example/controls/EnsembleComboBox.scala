@@ -32,8 +32,6 @@ import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.ComboBox
 import scalafx.scene.layout.{Priority, VBox}
-import scalafx.scene.text.Font
-import scalafx.scene.text.Text
 
 /**
  * A sample that shows both an un-editable and an editable ComboBox.
@@ -57,10 +55,6 @@ class EnsembleComboBox extends EnsembleExample {
       spacing = 15
       margin = Insets(50, 0, 0, 50)
       content = List(
-        new Text {
-          text = "Ensemble ComboBox"
-          font = new Font("Verdana", 20)
-        },
         new ComboBox[String] {
           maxWidth = 200
           promptText = "Make a choice..."

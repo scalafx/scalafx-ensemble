@@ -33,9 +33,7 @@ import scalafx.geometry.Insets
 import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.XYChart
-import scalafx.scene.control.Label
 import scalafx.scene.layout.{Priority, VBox}
-import scalafx.scene.text.Font
 
 /** An advanced line chart.
   *
@@ -51,12 +49,7 @@ class EnsembleAdvancedLineChart extends EnsembleExample {
     hgrow = Priority.ALWAYS
     spacing = 10
     margin = Insets(50, 0, 0, 50)
-    content = List(
-      new Label {
-        text = "Ensemble Advanced Line Chart"
-        font = new Font("Verdana", 20)
-      },
-      createLineChart())
+    content = createLineChart()
   }
 
   def createLineChart() = {

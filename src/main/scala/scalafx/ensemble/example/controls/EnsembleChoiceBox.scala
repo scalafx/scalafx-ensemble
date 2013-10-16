@@ -32,8 +32,6 @@ import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.ChoiceBox
 import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.text.Text
 
 /** A sample that shows a choice box with several options. The ChoiceBox control
   * displays a default or current selection, with an icon to click that expands
@@ -49,16 +47,11 @@ class EnsembleChoiceBox extends EnsembleExample {
   def getContent = new VBox {
     spacing = 10
     margin = Insets(50, 0, 0, 50)
-    content = List(
-      new Text {
-        text = "Ensemble ChoiceBox"
-        font = new Font("Verdana", 20)
-      },
-      new ChoiceBox[String] {
-        maxWidth = 80
+    content = new ChoiceBox[String] {
+      maxWidth = 80
         maxHeight = 50
         items = ObservableBuffer("Earth", "Sky", "Paradise")
         selectionModel().selectFirst()
-      })
+    }
   }
 }

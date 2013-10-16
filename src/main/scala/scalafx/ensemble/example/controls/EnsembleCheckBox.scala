@@ -32,8 +32,6 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.CheckBox
 import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.text.Text
 
 /** * An example of checkboxes in various states.
   *
@@ -49,16 +47,6 @@ class EnsembleCheckBox extends EnsembleExample {
     spacing = 10
     margin = Insets(50, 0, 0, 50)
     content = List(
-      new Text {
-        text = "Ensemble CheckBoxes"
-        font = new Font("Verdana", 20)
-      },
-      new Text {
-        text = "-----------------------------------------------------------"
-        font = new Font("Verdana", 8)
-        style = "-fx-font-weight: bold"
-
-      },
       new CheckBox {
         text = "Simple CheckBox"
       },

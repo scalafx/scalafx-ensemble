@@ -34,8 +34,6 @@ import scalafx.geometry.Orientation
 import scalafx.scene.control.ListView
 import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.text.Text
 
 /** A sample showing an implementation of the ListView control, in which a list
   * of items is displayed in a horizontal row. ListView is a powerful multirow
@@ -59,17 +57,13 @@ class EnsembleHorizontalListView extends EnsembleExample {
       items = ObservableBuffer(seq)
       orientation = Orientation.HORIZONTAL
     }
+
     new VBox {
       vgrow = Priority.ALWAYS
       hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Text {
-          text = "Ensemble Horizontal ListView"
-          font = new Font("Verdana", 20)
-        },
-        listView)
+      content = listView
     }
   }
 }

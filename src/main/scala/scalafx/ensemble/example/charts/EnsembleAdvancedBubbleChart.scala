@@ -34,9 +34,7 @@ import scalafx.geometry.Insets
 import scalafx.scene.chart.BubbleChart
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.XYChart
-import scalafx.scene.control.Label
 import scalafx.scene.layout.{Priority, VBox}
-import scalafx.scene.text.Font
 
 /** An advanced bubble chart.
   *
@@ -54,12 +52,7 @@ class EnsembleAdvancedBubbleChart extends EnsembleExample {
       hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble Advanced Bubble Chart"
-          font = new Font("Verdana", 20)
-        },
-        createBubbleChart())
+      content = createBubbleChart()
     }
   }
 

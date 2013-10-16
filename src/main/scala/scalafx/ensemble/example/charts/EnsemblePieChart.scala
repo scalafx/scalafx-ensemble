@@ -30,9 +30,7 @@ package scalafx.ensemble.example.charts
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.chart.PieChart
-import scalafx.scene.control.Label
 import scalafx.scene.layout.{Priority, VBox}
-import scalafx.scene.text.Font
 
 /** A circular chart divided into segments. The value of each segment represents
   * a proportion of the total.
@@ -47,12 +45,7 @@ class EnsemblePieChart extends EnsembleExample {
     hgrow = Priority.ALWAYS
     spacing = 10
     margin = Insets(50, 0, 0, 50)
-    content = List(
-      new Label {
-        text = "Ensemble Pie Chart"
-        font = new Font("Verdana", 20)
-      },
-      createPieChart())
+    content = createPieChart()
   }
 
   def createPieChart() = new PieChart {

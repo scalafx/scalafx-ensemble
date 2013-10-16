@@ -33,8 +33,6 @@ import scalafx.scene.control.ProgressIndicator
 import scalafx.scene.layout.GridPane
 import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.text.Text
 
 class EnsembleProgressIndicator extends EnsembleExample {
 
@@ -74,19 +72,7 @@ class EnsembleProgressIndicator extends EnsembleExample {
       hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Text {
-          text = "Ensemble Progress Indicator"
-          font = new Font("Verdana", 20)
-        },
-        new Text {
-          text = "---------------------------------------------------------------------------"
-          font = new Font("Verdana", 8)
-          style = "-fx-font-weight: bold"
-
-        },
-        gridPane
-      )
+      content = gridPane
     }
   }
 }

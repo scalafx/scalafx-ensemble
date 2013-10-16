@@ -32,11 +32,9 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.Accordion
 import scalafx.scene.control.Button
 import scalafx.scene.control.CheckBox
-import scalafx.scene.control.Label
 import scalafx.scene.control.TextField
 import scalafx.scene.control.TitledPane
 import scalafx.scene.layout.{Priority, VBox}
-import scalafx.scene.text.Font
 
 /** An example of an accordion control. You can use accordion controls to define
   * individual panes and  display them one at a time.
@@ -52,30 +50,25 @@ class EnsembleAccordion extends EnsembleExample {
     hgrow = Priority.NEVER
     spacing = 10
     margin = Insets(50, 0, 0, 50)
-    content = List(
-      new Label {
-        text = "Ensemble Accordion"
-        font = new Font("Verdana", 20)
-      },
-      new Accordion {
-        maxWidth = 200
-        maxHeight = 500
-        panes = List(
-          new TitledPane {
-            text = "Ensemble Button 1"
-            content = new Button("Button 1")
-          },
-          new TitledPane {
-            text = "Ensemble TextField 1"
-            content = new TextField {
-              promptText = "Hi! Scalafx Ensemble!"
-            }
-          }, new TitledPane {
-            text = "Ensemble CheckBox 1"
-            content = new CheckBox {
-              text = "CheckBox 1"
-            }
-          })
-      })
+    content = new Accordion {
+      maxWidth = 200
+      maxHeight = 500
+      panes = List(
+        new TitledPane {
+          text = "Ensemble Button 1"
+          content = new Button("Button 1")
+        },
+        new TitledPane {
+          text = "Ensemble TextField 1"
+          content = new TextField {
+            promptText = "Hi! Scalafx Ensemble!"
+          }
+        }, new TitledPane {
+          text = "Ensemble CheckBox 1"
+          content = new CheckBox {
+            text = "CheckBox 1"
+          }
+        })
+    }
   }
 }

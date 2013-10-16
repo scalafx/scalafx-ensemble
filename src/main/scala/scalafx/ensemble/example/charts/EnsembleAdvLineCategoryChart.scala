@@ -34,9 +34,7 @@ import scalafx.scene.chart.CategoryAxis
 import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.XYChart
-import scalafx.scene.control.Label
 import scalafx.scene.layout.{Priority, VBox}
-import scalafx.scene.text.Font
 
 /** A line chart demonstrating a CategoryAxis.
   *
@@ -53,16 +51,11 @@ class EnsembleAdvLineCategoryChart extends EnsembleExample {
       hgrow = Priority.ALWAYS
       spacing = 10
       margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble Advanced Line Category Chart"
-          font = new Font("Verdana", 20)
-        },
-        createLineChart)
+      content = createLineChart()
     }
   }
 
-  lazy val createLineChart = {
+  def createLineChart() = {
     // add starting data
     val series = new XYChart.Series[String, Number] {
       name = "Data Series 1"
