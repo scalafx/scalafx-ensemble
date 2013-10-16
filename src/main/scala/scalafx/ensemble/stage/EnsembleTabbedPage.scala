@@ -28,13 +28,13 @@
 package scalafx.ensemble.stage
 
 import scalafx.Includes._
-import scalafx.scene.control.TabPane
-import scalafx.scene.control.Tab
-import scalafx.scene.layout.{Priority, StackPane}
-import scalafx.geometry.Pos
-import scalafx.scene.Node
 import scalafx.ensemble.commons.ContentFactory
 import scalafx.ensemble.commons.DisplayablePage
+import scalafx.geometry.Pos
+import scalafx.scene.Node
+import scalafx.scene.control.Tab
+import scalafx.scene.control.TabPane
+import scalafx.scene.layout.{Priority, StackPane}
 
 object EnsembleTabbedPage {
 
@@ -43,6 +43,7 @@ object EnsembleTabbedPage {
     val tabbedPage = new TabPane() {
       hgrow = Priority.ALWAYS
       vgrow = Priority.ALWAYS
+      id = "source-tabs"
       tabs = Seq(
         new Tab() {
           text = "Demo"

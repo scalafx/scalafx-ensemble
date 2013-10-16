@@ -31,6 +31,7 @@ package scalafx.ensemble.commons
 import java.util.Locale
 import javafx.scene.control.Dialogs
 import javafx.stage.Stage
+import scala.Some
 import scalafx.Includes._
 import scalafx.ensemble.EnsembleThumbNail
 import scalafx.ensemble.commons.IOUtils.loadResourceAsString
@@ -39,7 +40,7 @@ import scalafx.ensemble.stage.DashboardPage
 import scalafx.ensemble.stage.EnsembleTabbedPage
 import scalafx.event.ActionEvent
 import scalafx.scene.Node
-import scalafx.scene.control.{Button, ToolBar, ScrollPane, TreeItem}
+import scalafx.scene.control._
 import scalafx.scene.input.{ClipboardContent, Clipboard}
 import scalafx.scene.layout.BorderPane
 import scalafx.scene.layout.Priority
@@ -71,7 +72,6 @@ object PageDisplayer {
     new VBox {
       vgrow = Priority.ALWAYS
       hgrow = Priority.ALWAYS
-      styleClass += "category-page"
       content = nodeToAdd.getPage
     }
   }
@@ -99,29 +99,36 @@ object SortUtils {
  * EnsembleExample instance
  */
 object ContentFactory {
-  def createContent(ctrlName: String, ctrlgroupName: String = "") = {
-    val borderPane = new BorderPane
+  def createContent(sampleName: String, groupName: String = "") = {
 
-    //Construct content of the samples dynamically
-    val qualCtrl = "scalafx.ensemble.example." +
-      ctrlgroupName + ".Ensemble" + ctrlName
+
+    // Construct content of the samples dynamically
+    val fullClassName = "scalafx.ensemble.example." + groupName + ".Ensemble" + sampleName
     var cache = Map[String, EnsembleExample]()
-    if (cache.get(qualCtrl).isDefined) {
-      borderPane.setCenter(cache.get(qualCtrl).get.getContent)
+    val sampleNode = if (cache.get(fullClassName).isDefined) {
+      cache(fullClassName).getContent
     } else {
-      val inst = Class.forName(qualCtrl).newInstance().asInstanceOf[EnsembleExample]
-      cache = cache.+((qualCtrl, inst))
-      borderPane.setCenter(inst.getContent)
+      val inst = Class.forName(fullClassName).newInstance().asInstanceOf[EnsembleExample]
+      cache = cache.+((fullClassName, inst))
+      inst.getContent
     }
-    //Scrollpane is applied for borderpane that contains samples
-    val scrollPane = new ScrollPane {
+    //    borderPane.setCenter(sampleNode)
+
+    val header = new Label(sampleName) {
+      styleClass += "page-header"
+    }
+
+    // ScrollPane is applied for borderPane that contains samples
+    new ScrollPane {
       fitToWidth = true
       fitToHeight = true
       minWidth = 725
-      content = borderPane
+      content = new VBox() {
+        children ++= Seq(header, sampleNode)
+        styleClass += "sample-page"
+      }
+      styleClass += "noborder-scroll-pane"
     }
-    scrollPane.styleClass.add("noborder-scroll-pane")
-    scrollPane
   }
 
 
