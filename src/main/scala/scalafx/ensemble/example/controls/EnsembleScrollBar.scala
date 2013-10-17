@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,32 +27,87 @@
 
 package scalafx.ensemble.example.controls
 
+import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.Insets
-import scalafx.scene.control.Button
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.text.Text
+import scalafx.geometry.Orientation
+import scalafx.scene.control.ScrollBar
+import scalafx.scene.layout.Pane
+import scalafx.scene.paint.Color
+import scalafx.scene.shape.{Circle, Rectangle}
 
-//TODO incomplete
+
 class EnsembleScrollBar extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Text {
-          text = "Ensemble Scroll Bar"
-          font = new Font("Verdana", 20)
-        },
-        new Button {
-          maxWidth = 200
-          maxHeight = 150
-          text = "Button 1"
-        })
-    }
+
+  // @scene-property resizable = false
+
+  private var xScrollValue = 0d
+  private var yScrollValue = 15d
+  private val xBarWidth = 393
+  private val xBarHeight = 15
+  private val yBarWidth = 15
+  private val yBarHeight = 393
+  private val circleRadius = 90
+
+  val bg = Rectangle(xBarWidth + yBarWidth, xBarHeight + yBarHeight, Color.rgb(90, 90, 90))
+  val box = new Rectangle {
+    width = 100
+    height = 100
+    fill = Color.rgb(150, 150, 150)
+    translateX = 147
+    translateY = 147
+  }
+
+  // Moveable circle
+  val circle = new Circle {
+    centerX = 45
+    centerY = 45
+    radius = circleRadius
+    fill = Color.rgb(90, 210, 210)
+    opacity = 0.4
+    relocate(0, 15)
+  }
+
+  // Horizontal ScrollBar
+  val xScrollBar = new ScrollBar {
+    minWidth = -1
+    minHeight = -1
+    prefWidth = xBarWidth
+    prefHeight = xBarHeight
+    maxWidth = xBarWidth
+    maxHeight = xBarHeight
+    visibleAmount = 50
+    max = xBarWidth - (2 * circleRadius)
+    unitIncrement = 20.0
+    value.onChange((_, _, _) => {
+      xScrollValue = value()
+      circle.relocate(xScrollValue, yScrollValue)
+    })
+  }
+
+  // Vertical ScrollBar
+  val yScrollBar = new ScrollBar {
+    minWidth = -1
+    minHeight = -1
+    prefWidth = yBarWidth
+    prefHeight = yBarHeight
+    maxWidth = yBarWidth
+    maxHeight = yBarHeight
+    unitIncrement = 20.0
+    visibleAmount = 50
+    max = yBarHeight - (2 * circleRadius)
+    value.onChange((_, _, _) => {
+      yScrollValue = value() + xBarHeight
+      circle.relocate(xScrollValue, yScrollValue)
+    })
+    translateX = yBarHeight
+    translateY = yBarWidth
+    orientation = Orientation.VERTICAL
+  }
+
+
+  def getContent = new Pane {
+    prefWidth = xBarWidth + yBarWidth
+    prefHeight = xBarHeight + yBarHeight
+    children ++= Seq(bg, box, circle, xScrollBar, yScrollBar)
   }
 }

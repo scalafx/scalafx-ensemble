@@ -98,11 +98,19 @@ class ExampleInfo(exampleName: String, exampleGroupName: String) {
     }
   }
 
+  private def extractStageProperties(sourceRaw: String): Seq[String] = {
+    val pattern = """@scene-property\s*(.*)""".r
+    val properties = for (pattern(property) <- pattern findAllIn sourceRaw) yield property.trim
+    properties.toSeq
+  }
 
   private def loadAndConvertSourceCode(path: String): String = {
 
     // Load source code text
     val sourceRaw = IOUtils.loadResourceAsString(this, path)
+
+    // Collect metadata from comments
+    val stageProperties = extractStageProperties(sourceRaw)
 
     // Remove initial comment
     var source = sourceRaw.replaceFirst( """(?s)/\*(.*?)\*/""", "")
@@ -113,6 +121,9 @@ class ExampleInfo(exampleName: String, exampleGroupName: String) {
 
     // Remove empty lines at the beginning
     source = source.replaceFirst( """(?s)\s*""", "")
+
+    // Remove information about added properties
+    source = source.replaceAll( """\s*//\s*@scene-property\s*(.*)""", "")
 
     // Append copyright, package, and required imports
     source = "" +
@@ -140,6 +151,7 @@ class ExampleInfo(exampleName: String, exampleGroupName: String) {
       "\n\n" +
       "  stage = new JFXApp.PrimaryStage {\n" +
       "    title = \"" + formatAddSpaces(extractSampleName(sourceRaw)) + " Example\"\n" +
+      (if (stageProperties.isEmpty) "" else stageProperties.mkString("    ", "\n", "\n")) +
       "    scene = new Scene {\n" +
       "      root ="
     source = source.replaceFirst( """\s*def\s*getContent\s*=""", stageHeader)
