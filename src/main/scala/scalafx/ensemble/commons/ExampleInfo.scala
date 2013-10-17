@@ -29,15 +29,36 @@ package scalafx.ensemble.commons
 
 import scala.util.matching.Regex
 
+
+object ExampleInfo {
+
+  val examplesDir = "/scalafx/ensemble/example/"
+
+  def formatAddSpaces(name: String): String =
+    name.replaceAll( """([\p{Upper}\d])""", " $1").trim
+
+  def formalNoSpaces(name: String): String = name.replaceAllLiterally(" ", "")
+
+  def thumbnailPath(exampleName: String, groupName: String): String =
+    examplesDir + groupName + "/" + formalNoSpaces(exampleName) + "Sample.png"
+
+  def sourcecodePath(exampleName: String, groupName: String): String =
+    examplesDir + groupName + "/" + "Ensemble" + formalNoSpaces(exampleName) + ".scala"
+
+  def className(exampleName: String, groupName: String): String = "scalafx.ensemble.example." + groupName +
+    ".Ensemble" + ExampleInfo.formalNoSpaces(exampleName)
+}
+
 /** Creates stand alone example source code. */
-class ExampleInfo(exampleName: String, exampleGroupName: String = "") {
+class ExampleInfo(exampleName: String, exampleGroupName: String) {
+
+  import ExampleInfo._
 
   /** Source code for the sample. */
-  lazy val sourceCode: String = loadAndConvertSourceCode(
-    "/scalafx/ensemble/example/" + exampleGroupName + "/Ensemble" + exampleName + ".scala")
+  lazy val sourceCode: String = loadAndConvertSourceCode(sourcecodePath(exampleName, exampleGroupName))
 
-  /** Name of example's main class, extracted from the source code */
-  lazy val className: String = {
+  /** Name of example's main class, extracted from the source code, excluding package prefix. */
+  lazy val classSimpleName: String = {
     val pattern = "object\\s*(\\S*)\\s*extends\\s*JFXApp".r
     pattern findFirstIn sourceCode match {
       case Some(pattern(name)) => name
@@ -68,6 +89,15 @@ class ExampleInfo(exampleName: String, exampleGroupName: String = "") {
       case None                => ""
     }
   }
+
+  private def extractSampleName(source: String): String = {
+    val pattern = """class\s*Ensemble(\S*)\s*extends\s*EnsembleExample\s*\{""".r
+    pattern findFirstIn source match {
+      case Some(pattern(name)) => name.trim
+      case None                => ""
+    }
+  }
+
 
   private def loadAndConvertSourceCode(path: String): String = {
 
@@ -107,8 +137,9 @@ class ExampleInfo(exampleName: String, exampleGroupName: String = "") {
 
     // Replace `getContent` method with stage and scene creation
     val stageHeader = "" +
-      "\n" +
+      "\n\n" +
       "  stage = new JFXApp.PrimaryStage {\n" +
+      "    title = \"" + formatAddSpaces(extractSampleName(sourceRaw)) + " Example\"\n" +
       "    scene = new Scene {\n" +
       "      root ="
     source = source.replaceFirst( """\s*def\s*getContent\s*=""", stageHeader)

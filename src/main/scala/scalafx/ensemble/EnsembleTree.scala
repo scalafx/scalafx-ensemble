@@ -30,6 +30,7 @@ package scalafx.ensemble
 import java.io.{IOException, File}
 import scala.collection.immutable.TreeMap
 import scalafx.Includes._
+import scalafx.ensemble.commons.ExampleInfo
 import scalafx.ensemble.commons.PageDisplayer
 import scalafx.ensemble.commons.SortUtils
 import scalafx.event.ActionEvent
@@ -45,7 +46,7 @@ import scalafx.scene.layout.TilePane
  */
 object EnsembleTree {
 
-  val examplePath = new File(getClass.getResource("/scalafx/ensemble/example/").getPath)
+  val examplePath = new File(getClass.getResource(ExampleInfo.examplesDir).getPath)
 
   def create(): EnsembleTree = new EnsembleTree(createTree(), createThumbnails())
 
@@ -62,7 +63,7 @@ object EnsembleTree {
     val pairs = for (dir <- exampleRootFiles if dir.isDirectory) yield {
       val leaves = for (f <- dir.listFiles() if f.getName.contains(".scala")) yield {
         val leafName = f.getName.stripSuffix(".scala").stripPrefix("Ensemble")
-        new TreeItem(leafName)
+        new TreeItem(ExampleInfo.formatAddSpaces(leafName))
       }
       dir.getName.capitalize -> leaves.toList.sortWith(SortUtils.treeItemSort)
     }
@@ -79,11 +80,12 @@ object EnsembleTree {
       val groupName = dir.getName
       val thumbs = for (f <- dir.listFiles() if f.getName.contains(".scala")) yield {
         val leafName = f.getName.stripSuffix(".scala").stripPrefix("Ensemble")
+        val sampleName = ExampleInfo.formatAddSpaces(leafName)
         val img = new ImageView {
-          val filePath = "/scalafx/ensemble/example/" + groupName + "/" + leafName + "Sample.png"
+          val filePath = ExampleInfo.thumbnailPath(leafName, groupName)
           image = new Image(this.getClass.getResourceAsStream(filePath))
         }
-        val button = new Button(leafName, img) {
+        val button = new Button(sampleName, img) {
           prefWidth = 140
           prefHeight = 145
           contentDisplay = ContentDisplay.TOP
@@ -92,7 +94,7 @@ object EnsembleTree {
           onAction = (ae: ActionEvent) => {
             Ensemble.splitPane.items.remove(1)
             Ensemble.splitPane.items.add(1,
-              PageDisplayer.choosePage(groupName + " > " + leafName))
+              PageDisplayer.choosePage(groupName + " > " + sampleName))
           }
         }
         EnsembleThumbNail(button)

@@ -73,7 +73,7 @@ object SBTProjectBuilder {
     val sampleSubDir = sourceSubDir + sampleInfo.packagePath
 
     // Write sample Scala code
-    val samplePath = new File(projectDir, sampleSubDir + "/" + sampleInfo.className + ".scala").toPath
+    val samplePath = new File(projectDir, sampleSubDir + "/" + sampleInfo.classSimpleName + ".scala").toPath
     Files.createDirectories(samplePath.getParent)
     Files.write(samplePath, sampleInfo.sourceCode.getBytes)
 
@@ -82,7 +82,7 @@ object SBTProjectBuilder {
 
     // Copy project files
     copyText(projectDir, "build.sbt",
-      filters = List("@name@" -> projectName, "@mainClass@" -> (sampleInfo.packageName + "." + sampleInfo.className)))
+      filters = List("@name@" -> projectName, "@mainClass@" -> (sampleInfo.packageName + "." + sampleInfo.classSimpleName)))
     copyText(projectDir, "project/build.properties")
     copyText(projectDir, "project/plugins.sbt")
     copyText(projectDir, "README.md")
@@ -95,7 +95,7 @@ object SBTProjectBuilder {
     /** Apply all filters in turn. */
     def filter(string: String, filters: List[(String, String)]): String = {
       filters match {
-        case Nil => string
+        case Nil       => string
         case f :: tail => filter(string.replaceAll(f._1, f._2), tail)
       }
     }

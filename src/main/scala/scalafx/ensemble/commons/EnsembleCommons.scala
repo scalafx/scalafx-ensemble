@@ -99,11 +99,10 @@ object SortUtils {
  * EnsembleExample instance
  */
 object ContentFactory {
-  def createContent(sampleName: String, groupName: String = "") = {
-
+  def createContent(exampleName: String, groupName: String) = {
 
     // Construct content of the samples dynamically
-    val fullClassName = "scalafx.ensemble.example." + groupName + ".Ensemble" + sampleName
+    val fullClassName = ExampleInfo.className(exampleName, groupName)
     var cache = Map[String, EnsembleExample]()
     val sampleNode = if (cache.get(fullClassName).isDefined) {
       cache(fullClassName).getContent
@@ -114,7 +113,7 @@ object ContentFactory {
     }
     //    borderPane.setCenter(sampleNode)
 
-    val header = new Label(sampleName) {
+    val header = new Label(exampleName) {
       styleClass += "page-header"
     }
 
@@ -132,7 +131,7 @@ object ContentFactory {
   }
 
 
-  def createSrcContent(exampleName: String, exampleGroupName: String = ""): Node = {
+  def createSrcContent(exampleName: String, exampleGroupName: String): Node = {
 
     // Load syntax highlighter
     val shCoreJs = loadResourceAsString(this, "/scalafx/ensemble/syntaxhighlighter/shCore.js") + ";"
