@@ -92,6 +92,7 @@ object Ensemble extends JFXApp {
   // Layout the main stage
   //
   stage = new PrimaryStage {
+    title = "ScalaFX Ensemble"
     scene = new Scene(1020, 700) {
       root = new BorderPane {
         top = new VBox {
@@ -125,5 +126,4 @@ object Ensemble extends JFXApp {
     }
     scene().stylesheets += this.getClass.getResource("/scalafx/ensemble/css/ensemble.css").toExternalForm
   }
-  stage.title = "ScalaFX Ensemble"
 }

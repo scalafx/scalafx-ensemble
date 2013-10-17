@@ -111,7 +111,6 @@ object ContentFactory {
       cache = cache.+((fullClassName, inst))
       inst.getContent
     }
-    //    borderPane.setCenter(sampleNode)
 
     val header = new Label(exampleName) {
       styleClass += "page-header"
