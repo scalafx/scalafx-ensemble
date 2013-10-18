@@ -32,8 +32,7 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.Button
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.StackPane
 
 /**
  * A button with an embedded image.
@@ -44,22 +43,16 @@ import scalafx.scene.layout.VBox
  * @resource /scalafx/ensemble/images/icon-48x48.png
  */
 class EnsembleGraphicButton extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Button {
-          maxWidth = 170
-          maxHeight = 50
-          text = "Graphic Button"
-          graphic = new ImageView {
-            image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
-            margin = Insets(0, 0, 0, 10)
-          }
-        })
+  def getContent = new StackPane {
+    padding = Insets(20)
+    content = new Button {
+      maxWidth = 170
+      maxHeight = 50
+      text = "Graphic Button"
+      graphic = new ImageView {
+        image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
+        margin = Insets(0, 0, 0, 10)
+      }
     }
   }
 }

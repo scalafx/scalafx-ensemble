@@ -32,8 +32,7 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.{CheckMenuItem, Menu, MenuBar, MenuItem}
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.BorderPane
 
 
 /** An example of a menu bar. Includes illustration of a check menu item.
@@ -45,15 +44,13 @@ import scalafx.scene.layout.VBox
   */
 class EnsembleMenu extends EnsembleExample {
 
+  // @stage-property width = 400
+  // @stage-property height = 200
+
   val fooMenuItem = new MenuItem("foo")
 
-  def getContent = new VBox {
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
-    spacing = 10
-    margin = Insets(50, 0, 0, 50)
-    content = new MenuBar {
-      maxHeight = 70
+  def getContent = new BorderPane {
+    top = new MenuBar {
       maxWidth = 400
       useSystemMenuBar = true
       menus = List(

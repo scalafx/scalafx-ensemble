@@ -29,12 +29,10 @@ package scalafx.ensemble.example.charts
 
 import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.Insets
 import scalafx.scene.chart.BarChart
 import scalafx.scene.chart.CategoryAxis
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.XYChart
-import scalafx.scene.layout.{Priority, VBox}
 
 /** A bar chart that uses CSS to display stacks of car images to indicate data values
   * for categories.
@@ -51,15 +49,7 @@ import scalafx.scene.layout.{Priority, VBox}
   */
 class EnsembleImageBarChart extends EnsembleExample {
 
-  def getContent = new VBox {
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
-    spacing = 10
-    margin = Insets(50, 0, 0, 50)
-    content = createBarChart()
-  }
-
-  def createBarChart() = new BarChart(new CategoryAxis(), new NumberAxis()) {
+  def getContent = new BarChart(new CategoryAxis(), new NumberAxis()) {
     legendVisible = false
     stylesheets += this.getClass.getResource("ImageBarChart.css").toExternalForm
     data = new XYChart.Series[String, Number]() {

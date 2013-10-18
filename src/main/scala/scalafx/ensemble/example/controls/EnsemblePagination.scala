@@ -78,7 +78,7 @@ class EnsemblePagination extends EnsembleExample {
       hgrow = Priority.ALWAYS
       alignment = Pos.CENTER
       spacing = 10
-      margin = Insets(50, 0, 0, 50)
+      padding = Insets(20)
       content = List(
         pagination,
         new Button {

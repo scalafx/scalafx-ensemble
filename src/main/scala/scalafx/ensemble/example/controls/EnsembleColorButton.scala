@@ -45,7 +45,7 @@ class EnsembleColorButton extends EnsembleExample {
     vgrow = Priority.ALWAYS
     hgrow = Priority.ALWAYS
     spacing = 10
-    margin = Insets(50, 0, 0, 50)
+    padding = Insets(20)
     content = List(
       new Button {
         maxWidth = 200

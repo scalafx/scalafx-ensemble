@@ -37,7 +37,7 @@ import scalafx.event.ActionEvent
 import scalafx.scene.Node
 import scalafx.scene.control.{Button, ToolBar, ScrollPane, Label}
 import scalafx.scene.input.{Clipboard, ClipboardContent}
-import scalafx.scene.layout.{BorderPane, VBox}
+import scalafx.scene.layout.{Priority, StackPane, BorderPane, VBox}
 import scalafx.scene.web.WebView
 import scalafx.stage.DirectoryChooser
 
@@ -63,13 +63,17 @@ object ContentFactory {
       styleClass += "page-header"
     }
 
+    val sampleArea = new StackPane {
+      content = sampleNode
+      vgrow = Priority.SOMETIMES
+    }
+
     // ScrollPane is applied for borderPane that contains samples
     new ScrollPane {
       fitToWidth = true
       fitToHeight = true
-      minWidth = 725
-      content = new VBox() {
-        children ++= Seq(header, sampleNode)
+      content = new VBox(8) {
+        children ++= Seq(header, sampleArea)
         styleClass += "sample-page"
       }
       styleClass += "noborder-scroll-pane"

@@ -30,12 +30,10 @@ package scalafx.ensemble.example.charts
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.Insets
 import scalafx.scene.chart.BarChart
 import scalafx.scene.chart.CategoryAxis
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.XYChart
-import scalafx.scene.layout.{Priority, VBox}
 
 /** An advanced horizontal bar chart.
   *
@@ -46,16 +44,6 @@ import scalafx.scene.layout.{Priority, VBox}
   */
 class EnsembleAdvHorizontalBarChart extends EnsembleExample {
   def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = createBarChart()
-    }
-  }
-
-  def createBarChart() = {
     // Category/x values
     val years = Seq("2007", "2008", "2009")
 

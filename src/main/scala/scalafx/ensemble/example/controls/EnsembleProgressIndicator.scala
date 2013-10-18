@@ -31,8 +31,6 @@ import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.ProgressIndicator
 import scalafx.scene.layout.GridPane
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
 
 class EnsembleProgressIndicator extends EnsembleExample {
 
@@ -58,21 +56,14 @@ class EnsembleProgressIndicator extends EnsembleExample {
       progress = 1.0F
     }
     //Add all progress indicators in grid pane
-    val gridPane = new GridPane() {
+    new GridPane() {
       hgap = 20
       vgap = 20
+      padding = Insets(20)
       add(p1, 1, 0)
       add(p2, 0, 1)
       add(p3, 1, 1)
       add(p4, 2, 1)
-    }
-
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = gridPane
     }
   }
 }

@@ -53,7 +53,7 @@ class EnsembleComboBox extends EnsembleExample {
       vgrow = Priority.ALWAYS
       hgrow = Priority.ALWAYS
       spacing = 15
-      margin = Insets(50, 0, 0, 50)
+      padding = Insets(20)
       content = List(
         new ComboBox[String] {
           maxWidth = 200

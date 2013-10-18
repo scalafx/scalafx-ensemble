@@ -40,7 +40,7 @@ class EnsembleRadioButton extends EnsembleExample {
     vgrow = Priority.ALWAYS
     hgrow = Priority.ALWAYS
     spacing = 10
-    margin = Insets(50, 0, 0, 50)
+    padding = Insets(20)
 
     //Radio Button Toggle Group
     val tog = new ToggleGroup()

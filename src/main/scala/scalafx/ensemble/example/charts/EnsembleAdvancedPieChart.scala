@@ -28,9 +28,7 @@
 package scalafx.ensemble.example.charts
 
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.Insets
 import scalafx.scene.chart.PieChart
-import scalafx.scene.layout.{Priority, VBox}
 
 /** An advanced pie chart.
   *
@@ -39,15 +37,7 @@ import scalafx.scene.layout.{Priority, VBox}
   */
 class EnsembleAdvancedPieChart extends EnsembleExample {
 
-  def getContent = new VBox {
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
-    spacing = 10
-    margin = Insets(50, 0, 0, 50)
-    content = createPieChart()
-  }
-
-  def createPieChart() = {
+  def getContent = {
     val data1 = PieChart.Data("Sun", 20)
     val data2 = PieChart.Data("IBM", 12)
     val data3 = PieChart.Data("HP", 25)

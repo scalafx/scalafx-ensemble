@@ -29,11 +29,9 @@ package scalafx.ensemble.example.charts
 
 import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.Insets
 import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.XYChart
-import scalafx.scene.layout.{Priority, VBox}
 
 /** A chart in which lines connect a series of data points. Useful for viewing
   * data trends over time.
@@ -48,16 +46,6 @@ import scalafx.scene.layout.{Priority, VBox}
 class EnsembleLineChart extends EnsembleExample {
 
   def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = createLineChart()
-    }
-  }
-
-  def createLineChart() = {
 
     val xAxis = NumberAxis("Values for X-Axis", 0, 3, 1)
     val yAxis = NumberAxis("Values for Y-Axis", 0, 3, 1)

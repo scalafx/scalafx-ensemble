@@ -38,7 +38,7 @@ import scalafx.scene.shape.{Circle, Rectangle}
 
 class EnsembleScrollBar extends EnsembleExample {
 
-  // @scene-property resizable = false
+  // @stage-property resizable = false
 
   private var xScrollValue = 0d
   private var yScrollValue = 15d

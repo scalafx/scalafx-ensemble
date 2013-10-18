@@ -30,7 +30,7 @@ package scalafx.ensemble.example.controls
 import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.event.ActionEvent
-import scalafx.geometry.Insets
+import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.control.Button
 import scalafx.scene.control.ColorPicker
 import scalafx.scene.control.Label
@@ -46,6 +46,8 @@ import scalafx.scene.text.Font
   * @see scalafx.scene.control.ColorPicker
   */
 class EnsembleColorPicker extends EnsembleExample {
+
+  // @stage-property height = 300
 
   def getContent = {
 
@@ -77,15 +79,18 @@ class EnsembleColorPicker extends EnsembleExample {
     new VBox {
       vgrow = Priority.ALWAYS
       hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
+      spacing = 50
       content = List(
         new ToolBar {
-          maxWidth = 300
           content = colorPicker
         },
-        labelColor,
-        buttonColor)
+        new VBox {
+          alignment = Pos.CENTER
+          spacing = 20
+          padding = Insets(20)
+          content = Seq(labelColor, buttonColor)
+        }
+      )
     }
   }
 }

@@ -30,38 +30,35 @@ package scalafx.ensemble.example.controls
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.{Orientation, Insets}
 import scalafx.scene.control.Button
-import scalafx.scene.layout.{TilePane, VBox}
+import scalafx.scene.layout.TilePane
 
 /** Example of organizing buttons in column, of the same width. */
 class EnsembleButton extends EnsembleExample {
 
-  def getContent = new VBox {
-    margin = Insets(50, 0, 0, 50)
-    spacing = 10
-    content = new TilePane {
-      orientation = Orientation.VERTICAL
-      hgap = 10
-      vgap = 10
-      content = List(
-        new Button {
-          text = "Button 1"
-          maxWidth = Double.MaxValue
-        },
-        new Button {
-          text = "Default Button - Enter Key"
-          defaultButton = true
-          maxWidth = Double.MaxValue
-        },
-        new Button {
-          text = "Cancel Button - Esc Key"
-          cancelButton = true
-          maxWidth = Double.MaxValue
-        },
-        new Button {
-          text = "Disabled Button"
-          disable = true
-          maxWidth = Double.MaxValue
-        })
-    }
+  def getContent = new TilePane {
+    padding = Insets(10)
+    orientation = Orientation.VERTICAL
+    hgap = 10
+    vgap = 10
+    content = List(
+      new Button {
+        text = "Button 1"
+        maxWidth = Double.MaxValue
+      },
+      new Button {
+        text = "Default Button - Enter Key"
+        defaultButton = true
+        maxWidth = Double.MaxValue
+      },
+      new Button {
+        text = "Cancel Button - Esc Key"
+        cancelButton = true
+        maxWidth = Double.MaxValue
+      },
+      new Button {
+        text = "Disabled Button"
+        disable = true
+        maxWidth = Double.MaxValue
+      })
   }
 }

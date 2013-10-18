@@ -30,37 +30,38 @@ package scalafx.ensemble.example.controls
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.ProgressBar
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{StackPane, VBox}
 
 class EnsembleProgressBar extends EnsembleExample {
 
-  def getContent = new VBox {
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
-    spacing = 10
-    margin = Insets(50, 0, 0, 50)
-    content = List(
-      new ProgressBar {
-        maxWidth = 100
-      },
-      new ProgressBar {
-        maxWidth = 200
-      },
-      new ProgressBar {
-        maxWidth = 300
-      },
-      new ProgressBar {
-        maxWidth = 100
-        progress = 0.25
-      },
-      new ProgressBar {
-        maxWidth = 200
-        progress = 0.50
-      },
-      new ProgressBar {
-        maxWidth = 300
-        progress = 1
-      })
+  // @stage-property width = 400
+
+  def getContent = new StackPane {
+    padding = Insets(20)
+    content = new VBox {
+      spacing = 10
+      content = List(
+        new ProgressBar {
+          maxWidth = 100
+        },
+        new ProgressBar {
+          maxWidth = 200
+        },
+        new ProgressBar {
+          maxWidth = 300
+        },
+        new ProgressBar {
+          maxWidth = 100
+          progress = 0.25
+        },
+        new ProgressBar {
+          maxWidth = 200
+          progress = 0.50
+        },
+        new ProgressBar {
+          maxWidth = 300
+          progress = 1
+        })
+    }
   }
 }

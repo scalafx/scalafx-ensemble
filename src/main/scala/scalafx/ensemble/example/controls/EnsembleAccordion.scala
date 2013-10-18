@@ -34,7 +34,7 @@ import scalafx.scene.control.Button
 import scalafx.scene.control.CheckBox
 import scalafx.scene.control.TextField
 import scalafx.scene.control.TitledPane
-import scalafx.scene.layout.{Priority, VBox}
+import scalafx.scene.layout.StackPane
 
 /** An example of an accordion control. You can use accordion controls to define
   * individual panes and  display them one at a time.
@@ -45,14 +45,15 @@ import scalafx.scene.layout.{Priority, VBox}
   */
 class EnsembleAccordion extends EnsembleExample {
 
-  def getContent = new VBox {
-    vgrow = Priority.NEVER
-    hgrow = Priority.NEVER
-    spacing = 10
-    margin = Insets(50, 0, 0, 50)
+  // @stage-property resizable = false
+  // @stage-property width = 200
+  // @stage-property height = 200
+
+  def getContent = new StackPane {
+    padding = Insets(10)
     content = new Accordion {
-      maxWidth = 200
-      maxHeight = 500
+      maxWidth = 150
+      maxHeight = 150
       panes = List(
         new TitledPane {
           text = "Ensemble Button 1"

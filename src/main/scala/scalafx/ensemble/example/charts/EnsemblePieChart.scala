@@ -28,9 +28,7 @@
 package scalafx.ensemble.example.charts
 
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.Insets
 import scalafx.scene.chart.PieChart
-import scalafx.scene.layout.{Priority, VBox}
 
 /** A circular chart divided into segments. The value of each segment represents
   * a proportion of the total.
@@ -40,15 +38,7 @@ import scalafx.scene.layout.{Priority, VBox}
   */
 class EnsemblePieChart extends EnsembleExample {
 
-  def getContent = new VBox {
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
-    spacing = 10
-    margin = Insets(50, 0, 0, 50)
-    content = createPieChart()
-  }
-
-  def createPieChart() = new PieChart {
+  def getContent = new PieChart {
     data = Seq(
       PieChart.Data("Sun", 20),
       PieChart.Data("IBM", 12),

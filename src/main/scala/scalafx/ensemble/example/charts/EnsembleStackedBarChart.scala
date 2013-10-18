@@ -30,12 +30,10 @@ package scalafx.ensemble.example.charts
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.Insets
 import scalafx.scene.chart.CategoryAxis
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.StackedBarChart
 import scalafx.scene.chart.XYChart
-import scalafx.scene.layout.{Priority, VBox}
 
 /** A sample that displays data in a stacked bar chart.
   *
@@ -46,15 +44,7 @@ import scalafx.scene.layout.{Priority, VBox}
   */
 class EnsembleStackedBarChart extends EnsembleExample {
 
-  def getContent = new VBox {
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
-    spacing = 10
-    margin = Insets(50, 0, 0, 50)
-    content = createBarChart()
-  }
-
-  def createBarChart() = {
+  def getContent = {
     val years = Seq("2007", "2008", "2009")
 
     val xAxis = CategoryAxis(years)

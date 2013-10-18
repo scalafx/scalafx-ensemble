@@ -32,8 +32,7 @@ import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.geometry.Orientation
 import scalafx.scene.control.ListView
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.StackPane
 
 /** A sample showing an implementation of the ListView control, in which a list
   * of items is displayed in a horizontal row. ListView is a powerful multirow
@@ -47,22 +46,20 @@ import scalafx.scene.layout.VBox
   */
 class EnsembleHorizontalListView extends EnsembleExample {
 
+  // @stage-property width = 500
+
   def getContent = {
     val seq = Seq("Row 1", "Row 2", "Long Row 3", "Row 4", "Row 5", "Row 6", "Row 7",
       "Row 8", "Row 9", "Row 10", "Row 11", "Row 12", "Row 13", "Row 14", "Row 15",
       "Row 16", "Row 17", "Row 18", "Row 19", "Row 20")
 
     val listView = new ListView[String] {
-      maxWidth = 500
       items = ObservableBuffer(seq)
       orientation = Orientation.HORIZONTAL
     }
 
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
+    new StackPane {
+      padding = Insets(10)
       content = listView
     }
   }

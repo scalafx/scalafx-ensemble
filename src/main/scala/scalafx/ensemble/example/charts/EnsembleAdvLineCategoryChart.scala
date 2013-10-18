@@ -29,12 +29,10 @@ package scalafx.ensemble.example.charts
 
 import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.Insets
 import scalafx.scene.chart.CategoryAxis
 import scalafx.scene.chart.LineChart
 import scalafx.scene.chart.NumberAxis
 import scalafx.scene.chart.XYChart
-import scalafx.scene.layout.{Priority, VBox}
 
 /** A line chart demonstrating a CategoryAxis.
   *
@@ -46,16 +44,6 @@ import scalafx.scene.layout.{Priority, VBox}
   */
 class EnsembleAdvLineCategoryChart extends EnsembleExample {
   def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = createLineChart()
-    }
-  }
-
-  def createLineChart() = {
     // add starting data
     val series = new XYChart.Series[String, Number] {
       name = "Data Series 1"
