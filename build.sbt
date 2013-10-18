@@ -13,6 +13,8 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "1.9.2" % "test"
 )
 
+resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+
 // Sources should also be copied to output, so the sample code, for the viewer,
 // can be loaded from the same file that is used to execute the example
 unmanagedResourceDirectories in Compile <+= baseDirectory { _/"src/main/scala"}
