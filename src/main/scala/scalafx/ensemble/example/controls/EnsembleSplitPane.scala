@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,18 +31,24 @@ import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.SplitPane
-import scalafx.scene.layout.Region
-import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.text.Text
-import scalafx.scene.control.Button
-import scalafx.scene.layout.Priority
+import scalafx.scene.layout.{StackPane, Region}
 
+/**
+ * A sample that demonstrates styling a hidden split pane with CSS.
+ *
+ * @see javafx.scene.control.SplitPane
+ * @resource /scalafx/ensemble/css/HiddenSplitPane.css
+ */
 class EnsembleSplitPane extends EnsembleExample {
+
+  // @stage-property width = 600
+  // @stage-property height = 400
+
   def getContent = {
-    
+
     //Style Sheet loaded from external 
-    val hiddenSplitPaneCss = this.getClass.getResource("/scalafx/ensemble/css/HiddenSplitPane.css").toExternalForm()
+    val hiddenSplitPaneCss = this.getClass.getResource("/scalafx/ensemble/css/HiddenSplitPane.css").toExternalForm
+
     // Region that will be used in the split pane
     val reg1 = new Region {
       styleClass = List("rounded")
@@ -53,29 +59,16 @@ class EnsembleSplitPane extends EnsembleExample {
     val reg3 = new Region {
       styleClass = List("rounded")
     }
-    //SplitPane
-    val splitPane = new SplitPane()
-    splitPane.setDividerPositions(0.20,0.80)
-    splitPane.items.addAll(reg1, reg2, reg3)
-    splitPane.setId("hiddenSplitter")
-    splitPane.getStylesheets().add(hiddenSplitPaneCss)
 
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Text {
-          text = "Ensemble Hidden Split Pane"
-          font = new Font("Verdana", 20)
-        },
-        new Text {
-          text = "------------------------------------------------------------------------"
-          font = new Font("Verdana", 8)
-          style = "-fx-font-weight: bold"
-
-        }, splitPane)
+    new StackPane {
+      padding = Insets(20)
+      content = new SplitPane {
+        padding = Insets(20)
+        dividerPositions_=(0.20, 0.80)
+        items ++= Seq(reg1, reg2, reg3)
+        id = "hiddenSplitter"
+        stylesheets += hiddenSplitPaneCss
+      }
     }
   }
 }
