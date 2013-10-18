@@ -28,7 +28,7 @@
 package scalafx.ensemble.sbt
 
 import java.io.{IOException, File}
-import java.nio.file.Files
+import java.nio.file.{StandardCopyOption, Files}
 import scala.io.Source
 import scalafx.ensemble.commons.ExampleInfo
 
@@ -120,7 +120,7 @@ object SBTProjectBuilder {
       val src = new File(uri).toPath
       val dest = new File(projectDir, fileName).toPath
       Files.createDirectories(dest.getParent)
-      Files.copy(src, dest)
+      Files.copy(src, dest, StandardCopyOption.REPLACE_EXISTING)
     } catch {
       case t: Throwable =>
         throw new IOException("Error while creating SBT project. Failed to copy resource: " + fileName, t)
