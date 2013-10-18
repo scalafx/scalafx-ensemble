@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,22 +27,18 @@
 
 package scalafx.ensemble.example.controls
 
-import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Button
-import scalafx.scene.control.Label
 import scalafx.scene.control.Slider
 import scalafx.scene.control.ToolBar
 import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.layout.Priority
 
 class EnsembleStyledToolBar extends EnsembleExample {
+
   def getContent = {
     // ToolBar Standard
     val stdToolBar = new ToolBar {
-      maxWidth = 350
       id = "standard"
       content = List(
         new Button {
@@ -55,7 +51,6 @@ class EnsembleStyledToolBar extends EnsembleExample {
     }
     //ToolBar Blue
     val blueToolBar = new ToolBar {
-      maxWidth = 350
       id = "blue"
       style = "-fx-base: dodgerblue"
       content = List(
@@ -69,7 +64,6 @@ class EnsembleStyledToolBar extends EnsembleExample {
     }
     //ToolBar Dark
     val darkToolBar = new ToolBar {
-      maxWidth = 350
       id = "dark"
       style = "-fx-base: #333333"
       content = List(
@@ -83,15 +77,9 @@ class EnsembleStyledToolBar extends EnsembleExample {
     }
 
     new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
       spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble ToolBar"
-          font = new Font("Verdana", 20)
-        }, stdToolBar, darkToolBar, blueToolBar)
+      padding = Insets(20)
+      content = List(stdToolBar, darkToolBar, blueToolBar)
     }
   }
 }

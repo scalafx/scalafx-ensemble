@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,39 +27,31 @@
 
 package scalafx.ensemble.example.controls
 
-import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Button
-import scalafx.scene.control.Label
 import scalafx.scene.control.ToolBar
-import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.layout.Priority
+import scalafx.scene.layout.BorderPane
 
 class EnsembleToolBar extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
+
+  // @stage-property width = 400
+  // @stage-property height = 150
+  def getContent = new BorderPane {
+    padding = Insets(20)
+    top = new ToolBar {
       content = List(
-        new Label {
-          text = "Ensemble ToolBar"
-          font = new Font("Verdana", 20)
-        },
-        new ToolBar {
-          maxWidth = 200
-          content = List(
-            new Button {
-              text = "Home"
-            }, new Button {
-              text = "Options"
-            }, new Button {
-              text = "Help"
-            })
-        })
+        new Button {
+          text = "Home"
+          minWidth = 75
+        }, new Button {
+          text = "Options"
+          minWidth = 75
+        }, new Button {
+          text = "Help"
+          minWidth = 75
+        }
+      )
     }
   }
 }

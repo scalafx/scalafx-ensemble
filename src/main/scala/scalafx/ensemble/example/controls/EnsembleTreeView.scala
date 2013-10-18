@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,56 +27,43 @@
 
 package scalafx.ensemble.example.controls
 
+import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.TreeItem
-import scalafx.scene.control.TreeItem.sfxTreeItemToJfx
 import scalafx.scene.control.TreeView
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.text.Text
-import scalafx.scene.layout.Priority
+import scalafx.scene.layout.StackPane
+
 
 class EnsembleTreeView extends EnsembleExample {
+
   def getContent = {
-
-    //Root Node
-    val rootItem = new TreeItem[String]("Root Node") {
-      expanded = true
+    val treeView = new TreeView[String] {
+      minWidth = 200
+      minHeight = 200
+      showRoot = true
+      root = new TreeItem[String]("Root Node") {
+        expanded = true
+        children = ObservableBuffer(
+          new TreeItem[String] {
+            value = "Node 1"
+          },
+          new TreeItem[String] {
+            value = "Node 2"
+          },
+          new TreeItem[String] {
+            value = "Node 3"
+            children = ObservableBuffer(
+              (4 to 12).map(n => new TreeItem[String]("Child Node " + n))
+            )
+          }
+        )
+      }
     }
-    //Node 3 has two child nodes and expanded
-    val childRoot3 = new TreeItem[String] { value = "Node 3" }
-    childRoot3.getChildren().addAll(
-      new TreeItem[String]("Child Node 1"),
-      new TreeItem[String]("Child Node 2"))
 
-    rootItem.getChildren.addAll(
-      new TreeItem[String] { value = "Node 1" },
-      new TreeItem[String] { value = "Node 2" },
-      childRoot3)
-
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Text {
-          text = "Ensemble TreeView"
-          font = new Font("Verdana", 20)
-        },
-        new Text {
-          text = "------------------------------------------------------"
-          font = new Font("Verdana", 8)
-          style = "-fx-font-weight: bold"
-        },
-        new TreeView[String] {
-          maxWidth = 200
-          maxHeight = 200
-          showRoot = true
-          root = rootItem
-        })
+    new StackPane {
+      padding = Insets(20)
+      content = treeView
     }
   }
 }
