@@ -9,11 +9,11 @@ scalaVersion := "2.10.2"
 assemblySettings
 
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "1.0.0-M6-SNAPSHOT",
+  "org.scalafx" %% "scalafx" % "1.0.0-M6",
   "org.scalatest" %% "scalatest" % "1.9.2" % "test"
 )
 
-resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+// resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
 
 // Sources should also be copied to output, so the sample code, for the viewer,
 // can be loaded from the same file that is used to execute the example
