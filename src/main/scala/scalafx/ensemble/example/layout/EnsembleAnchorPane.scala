@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,7 +27,6 @@
 
 package scalafx.ensemble.example.layout
 
-import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Button
@@ -35,39 +34,31 @@ import scalafx.scene.control.Label
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.AnchorPane
-import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.layout.Priority
 
+/** An example of an AnchorPane layout.
+  *
+  * @see scalafx.scene.layout.AnchorPane
+  * @resource /scalafx/ensemble/images/icon-48x48.png
+  */
 class EnsembleAnchorPane extends EnsembleExample {
+
   def getContent = {
-    val button = new Button {
-      maxWidth = 110
-      maxHeight = 70
-      text = "Submit"
-    }
-    val imageButton = new ImageView {
+    val label = Label("We are all in an AnchorPane.")
+    val button = new Button("Submit")
+    val imageView = new ImageView {
       image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
     }
 
-    AnchorPane.setTopAnchor(button, 2.0)
-    AnchorPane.setTopAnchor(imageButton, 40.0)
+    AnchorPane.setTopAnchor(label, 2.0)
+    AnchorPane.setLeftAnchor(label, 20.0)
+    AnchorPane.setTopAnchor(button, 40.0)
     AnchorPane.setLeftAnchor(button, 20.0)
-    AnchorPane.setLeftAnchor(imageButton, 20.0)
+    AnchorPane.setTopAnchor(imageView, 75.0)
+    AnchorPane.setLeftAnchor(imageView, 20.0)
 
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble Anchor Pane"
-          font = new Font("Verdana", 20)
-        },
-        new AnchorPane {
-          content = List(button, imageButton)
-        })
+    new AnchorPane {
+      padding = Insets(20)
+      content = List(label, button, imageView)
     }
   }
 }
