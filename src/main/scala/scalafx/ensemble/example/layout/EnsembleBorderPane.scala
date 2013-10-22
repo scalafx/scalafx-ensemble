@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,86 +27,75 @@
 
 package scalafx.ensemble.example.layout
 
-import scalafx.Includes._
-import scalafx.geometry.Pos
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.control.Button
 import scalafx.scene.control.Label
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.AnchorPane
 import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.HBox
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
-import scalafx.scene.text.Font
-import scalafx.scene.layout.Priority
 
+/** An example of  a BorderPane layout, with placement of children in the top,
+  * left, center, right, and bottom positions.
+  *
+  * @see scalafx.scene.layout.BorderPane
+  * @resource /scalafx/ensemble/images/icon-48x48.png
+  */
 class EnsembleBorderPane extends EnsembleExample {
+
+  // @stage-property width = 440
+  // @stage-property height = 300
+  // @stage-property resizable = false
+
   def getContent = {
-    // Top Stage using a rectangle
-    val rect = Rectangle(400, 20, Color.DARKSEAGREEN)
-    rect.setStroke(Color.BLACK)
+    // Top content using a rectangle
+    val topRectangle = new Rectangle() {
+      width = 400
+      height = 20
+      fill = Color.DARKSEAGREEN
+      stroke = Color.BLACK
+    }
 
-    // Left Stage using VBox
-    val lVbox = new VBox {
+    // Left content using VBox
+    val leftVBox = new VBox {
       spacing = 10
-      content = List(new Label { text = "Left Hand" }, new Label { text = "Choice One" },
-        new Label { text = "Choice Two" }, new Label { text = "Choice Three" })
+      content = List(Label("Left Hand"), Label("Choice One"), Label("Choice Two"), Label("Choice Three"))
     }
 
-    //Center Stage using Anchor Pane(Button and ImageView)
-    val centerBtn = new Button {
-      maxWidth = 110
-      maxHeight = 70
-      text = "Center"
-    }
+    // Center content using Anchor Pane 
+    val centerLabel = Label("We're in the center area.")
     val imageButton = new ImageView {
       image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
     }
-    AnchorPane.setTopAnchor(centerBtn, 10.0)
+    AnchorPane.setTopAnchor(centerLabel, 10.0)
     AnchorPane.setTopAnchor(imageButton, 40.0)
-    AnchorPane.setLeftAnchor(centerBtn, 80.0)
+    AnchorPane.setLeftAnchor(centerLabel, 80.0)
     AnchorPane.setLeftAnchor(imageButton, 80.0)
     val centerAnchorPane = new AnchorPane {
-      content = List(centerBtn, imageButton)
+      content = List(centerLabel, imageButton)
     }
 
-    // Right Stage using VBox
-    val rVbox = new VBox {
+    // Right content using VBox
+    val rightVBox = new VBox {
       spacing = 10
-      content = List(new Label { text = "Right Hand" }, new Label { text = "Thing A" },
-        new Label { text = "Thing B" }, new Label { text = "Thing C" })
+      content = List(Label("Right Hand"), Label("Thing A"), Label("Thing B"), Label("Thing C"))
     }
 
-    // Right Stage using VBox
-    val bHbox = new HBox {
-      alignment = Pos.BASELINE_CENTER
-      content = List(new Label { text = "I am a status message. I am at the bottom" })
-    }
+    // Right content
+    val bottomLabel = Label("I am a status message. I am at the bottom")
 
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble Border Pane"
-          font = new Font("Verdana", 20)
-        },
-        new BorderPane {
-          maxWidth = 400
-          maxHeight = 500
-          top = rect
-          left = lVbox
-          center = centerAnchorPane
-          right = rVbox
-          bottom = bHbox
-        })
-
+    new BorderPane {
+      maxWidth = 400
+      maxHeight = 300
+      padding = Insets(20)
+      top = topRectangle
+      left = leftVBox
+      center = centerAnchorPane
+      right = rightVBox
+      bottom = bottomLabel
     }
   }
 }
