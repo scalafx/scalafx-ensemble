@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,43 +30,40 @@ package scalafx.ensemble.example.layout
 import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.control.Button
+import scalafx.scene.Group
 import scalafx.scene.control.Label
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.FlowPane
-import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.layout.Priority
 
+/**
+ * An example of a FlowPane layout.
+ *
+ * @see scalafx.scene.layout.FlowPane
+ * @resource /scalafx/ensemble/images/icon-48x48.png
+ */
 class EnsembleFlowPane extends EnsembleExample {
-  def getContent = {
-    val items = 5
-    val label = new Array[Label](items)
-    val button = new Array[Button](items)
-    val imagevw = new Array[ImageView](items)
-    val images = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
 
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble Flow Pane"
-          font = new Font("Verdana", 20)
-        },
-        new FlowPane(2, 4) {
-          maxWidth = 200
-          prefWrapLength = 200
-          for (i <- 1 until items) {
-            label(i) = new Label { text = "I am in flow pane" }
-            button(i) = new Button { text = "I am in flow pane" }
-            imagevw(i) = new ImageView { image = images }
-            children.addAll(label(i), button(i), imagevw(i))
-          }
-        })
+  // @stage-property width = 400
+  // @stage-property height = 500
+  // @stage-property resizable = false
+
+  def getContent = {
+    val image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
+
+    val flowPane = new FlowPane(2, 4) {
+      prefWrapLength = 200
+      padding = Insets(20)
+      for (i <- 1 to 5) {
+        content ++= Seq(
+          new Label("Short label"), new Label("I am a slightly longer label."), new ImageView(image)
+        )
+      }
+    }
+
+    // Wrap in a Group to isolate from parent's layout parameters
+    new Group {
+      content = flowPane
     }
   }
 }
