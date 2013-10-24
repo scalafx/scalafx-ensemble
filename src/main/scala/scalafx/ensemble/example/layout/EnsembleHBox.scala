@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,51 +27,26 @@
 
 package scalafx.ensemble.example.layout
 
-import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
+import scalafx.geometry.Pos
 import scalafx.scene.control.Button
 import scalafx.scene.control.Label
 import scalafx.scene.control.TextField
 import scalafx.scene.layout.HBox
-import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.geometry.Pos
-import scalafx.scene.layout.Priority
 
 class EnsembleHBox extends EnsembleExample {
+
   def getContent = {
+    val label = new Label {text = "Text:"}
+    val textField = new TextField {promptText = "Type something..."}
+    val button = new Button {text = "Search..."}
 
-    val label = new Label {
-      text = "Text:"
-      style = "-fx-font-weight:bold"
-    }
-    val textField = new TextField {
-      promptText = "Type something..."
-    }
-    val button = new Button {
-      maxWidth = 110
-      maxHeight = 70
-      text = "Search..."
-    }
-
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble HBox"
-          font = new Font("Verdana", 20)
-        },
-        new HBox {
-          maxWidth = 300
-          maxHeight = 300
-          spacing = 5
-          alignment = Pos.BOTTOM_LEFT
-          content = List(label, textField, button)
-        })
+    new HBox {
+      padding = Insets(20)
+      spacing = 5
+      alignment = Pos.CENTER
+      content = List(label, textField, button)
     }
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,47 +27,42 @@
 
 package scalafx.ensemble.example.layout
 
-import scalafx.Includes._
-import scalafx.scene.control.ContentDisplay
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.Node
+import scalafx.scene.control.ContentDisplay
 import scalafx.scene.control.Label
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.StackPane
-import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
-import scalafx.scene.text.Font
-import scalafx.scene.layout.Priority
 
+/**
+ * An example of a StackPane layout.
+ *
+ * @see scalafx.scene.layout.FlowPane
+ * @resource /scalafx/ensemble/images/icon-48x48.png
+ */
 class EnsembleStackPane extends EnsembleExample {
-  def getContent = {
-    // function literal to get Rectangle object
-    val rectObj = (rect: Rectangle) => { rect.setStroke(Color.BURLYWOOD); rect }
 
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
+  def getContent = {
+    new StackPane {
+      padding = Insets(20)
       content = List(
-        new Label {
-          text = "Ensemble Stack Pane"
-          font = new Font("Verdana", 20)
+        new Rectangle {
+          width = 200
+          height = 70
+          fill = Color.BISQUE
+          stroke = Color.BURLYWOOD
         },
-        new StackPane {
-          maxWidth = 200
-          content = List(
-            rectObj(Rectangle(200, 50, Color.BISQUE)), new Label {
-              text = "I am in stack pane"
-              contentDisplay = ContentDisplay.LEFT
-              graphic = new ImageView {
-                image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
-              }.asInstanceOf[Node]
-            })
-        })
+        new Label {
+          text = "I am in a stack pane"
+          contentDisplay = ContentDisplay.LEFT
+          graphic = new ImageView {
+            image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
+          }
+        }
+      )
     }
   }
 }

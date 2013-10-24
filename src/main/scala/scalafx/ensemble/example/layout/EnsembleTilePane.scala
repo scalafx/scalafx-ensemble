@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,57 +27,34 @@
 
 package scalafx.ensemble.example.layout
 
-import scalafx.Includes._
-import scalafx.geometry.Orientation
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.Node
 import scalafx.scene.control.Button
-import scalafx.scene.control.Label
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.TilePane
-import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.layout.Priority
 
+/**
+ * An example of a TilePane layout.
+ *
+ * @see scalafx.scene.layout.TilePane
+ * @resource /scalafx/ensemble/images/icon-48x48.png
+ */
 class EnsembleTilePane extends EnsembleExample {
-  def getContent = {
-    //Image for buttons
-    val pic = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
-    //Button Array
-    val buttons = new Array[Button](18)
 
-    // Tiles for example
-    val tiles = new TilePane {
+  def getContent = {
+    // Image for buttons
+    val image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
+
+    // Create buttons
+    val buttons = for (i <- 1 to 17) yield new Button("Button " + i, new ImageView(image))
+
+    new TilePane {
       hgap = 3
       vgap = 3
+      padding = Insets(20)
       prefColumns = 3
-      prefTileWidth = 140
-      prefTileHeight = 70
-      orientation = Orientation.HORIZONTAL
-      for (i <- 0 to 17) {
-        buttons(i) = new Button {
-          text = "Button " + i
-          graphic = new ImageView {
-            image = pic
-          }.asInstanceOf[Node]
-        }
-        children.addAll(buttons(i))
-      }
-    }
-
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble Tile Pane"
-          font = new Font("Verdana", 20)
-        },
-        tiles)
+      content = buttons
     }
   }
 }

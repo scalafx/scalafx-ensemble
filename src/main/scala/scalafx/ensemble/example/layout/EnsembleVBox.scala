@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,50 +27,33 @@
 
 package scalafx.ensemble.example.layout
 
-import scalafx.Includes._
-import scalafx.geometry.Pos
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
+import scalafx.geometry.Pos
 import scalafx.scene.control.CheckBox
 import scalafx.scene.control.Label
 import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.layout.Priority
 
 class EnsembleVBox extends EnsembleExample {
+
   def getContent = {
-    //Checkboxes arranged vertically using VBox
-    val label = new Label {
-      text = "Select your vehicle make:"
-      style = "-fx-font-weight: bold"
-    }
-    val checkBox1 = new CheckBox {
-      text = "Ford"
-    }
-    val checkBox2 = new CheckBox {
-      text = "Hyundai"
-    }
-    val checkBox3 = new CheckBox {
-      text = "Toyoto"
-    }
+    // Checkboxes arranged vertically using VBox
+    val label = Label("Select one or more vehicles:")
+    val checkBox1 = new CheckBox {text = "Ford"}
+    val checkBox2 = new CheckBox {text = "Hyundai"}
+    val checkBox3 = new CheckBox {text = "Toyota"}
 
     new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
+      padding = Insets(20)
       spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble VBox"
-          font = new Font("Verdana", 20)
-        },
+      alignment = Pos.TOP_LEFT
+      content = Seq(
+        label,
         new VBox {
-          maxWidth = 300
-          maxHeight = 300
           spacing = 5
-          alignment = Pos.TOP_LEFT
-          content = List(label, checkBox1, checkBox2, checkBox3)
-        })
+          content = List(checkBox1, checkBox2, checkBox3)
+        }
+      )
     }
   }
 }
