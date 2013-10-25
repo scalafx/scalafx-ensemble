@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,30 +30,25 @@ package scalafx.ensemble.example.text
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Label
-import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
 
+/** A sample that shows styling of text through CSS.
+  *
+  * @resource /scalafx/ensemble/css/InsetText.css
+  *
+  */
 class EnsembleInsetText extends EnsembleExample {
+
   def getContent = {
     //StyleSheets are added
-    val insetTextCss = this.getClass.getResource("/scalafx/ensemble/css/InsetText.css").toExternalForm()
+    val insetTextCss = this.getClass.getResource("/scalafx/ensemble/css/InsetText.css").toExternalForm
     new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      style = "-fx-padding: 8px"
-      content = List(
-        new Label {
-          text = "Ensemble Inset Text"
-          font = new Font("Verdana", 20)
-        },
-        new Label {
-          text = "Label styled as a bar"
-          id = "label1"
-          stylesheets=List(insetTextCss)
-        })
+      padding = Insets(20)
+      content = new Label {
+        text = "Label styled as a bar"
+        id = "label1"
+        stylesheets = List(insetTextCss)
+      }
     }
   }
 }

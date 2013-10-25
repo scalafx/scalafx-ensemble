@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,54 +27,52 @@
 
 package scalafx.ensemble.example.text
 
-import scalafx.Includes._
-import scalafx.scene.control.ContentDisplay
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
+import scalafx.scene.control.ContentDisplay
 import scalafx.scene.control.Label
 import scalafx.scene.image.Image
 import scalafx.scene.image.ImageView
 import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
 
+/**
+ * Several Label controls, displayed in various alignments with respect to an
+ * image.
+ *
+ * @see scalafx.scene.control.Label
+ * @resource /scalafx/ensemble/images/icon-48x48.png
+ */
 class EnsembleAdvancedLabel extends EnsembleExample {
+
   def getContent = {
-    //Image for Advanced labels
-    val ICON_48 = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
+    val icon = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
     new VBox {
-      vgrow = scalafx.scene.layout.Priority.ALWAYS
-      hgrow = scalafx.scene.layout.Priority.ALWAYS
       spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      style = "-fx-padding: 8px"
+      padding = Insets(20)
       content = List(
         new Label {
-          text = "Ensemble Advanced Labels"
-          font = new Font("Verdana", 20)
-        },
-        new Label {
           text = "Image above"
-          graphic = new ImageView(ICON_48);
+          graphic = new ImageView(icon)
           contentDisplay = ContentDisplay.TOP
         },
         new Label {
           text = "Image on the right"
-          graphic = new ImageView(ICON_48);
+          graphic = new ImageView(icon)
           contentDisplay = ContentDisplay.RIGHT
         },
         new Label {
           text = "Image below"
-          graphic = new ImageView(ICON_48);
+          graphic = new ImageView(icon)
           contentDisplay = ContentDisplay.BOTTOM
         },
         new Label {
           text = "Image on the left"
-          graphic = new ImageView(ICON_48);
+          graphic = new ImageView(icon)
           contentDisplay = ContentDisplay.LEFT
         },
         new Label {
           text = "Image centered"
-          graphic = new ImageView(ICON_48);
+          graphic = new ImageView(icon)
           contentDisplay = ContentDisplay.CENTER
         })
     }

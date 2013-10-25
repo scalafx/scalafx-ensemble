@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,32 +30,23 @@ package scalafx.ensemble.example.text
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.TextField
-import scalafx.scene.layout.Priority
 import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.text.Text
 
 class EnsembleTextField extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Text {
-          text = "Ensemble Textfields"
-          font = new Font("Verdana", 20)
-        }, new TextField {
-          maxWidth = 200
-          maxHeight = 50
-          promptText = "Hi! I am Scalafx Textfield"
-        }, new TextField {
-          maxWidth = 200
-          maxHeight = 50
-          promptText = "So Sad! I am disabled"
-          disable = true
-        })
-    }
+
+  def getContent = new VBox {
+    spacing = 10
+    padding = Insets(20)
+    content = List(
+      new TextField {
+        promptText = "Hi! I am Scalafx TextField"
+        maxWidth = 200
+      },
+      new TextField {
+        promptText = "So Sad! I am disabled"
+        disable = true
+        maxWidth = 200
+      }
+    )
   }
 }
