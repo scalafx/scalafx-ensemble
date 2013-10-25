@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,46 +27,34 @@
 
 package scalafx.ensemble.example.shapes
 
-import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.control.Label
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.HBox
 import scalafx.scene.paint.Color
-import scalafx.scene.paint.Paint
-import scalafx.scene.shape.Circle
-import scalafx.scene.text.Font
 import scalafx.scene.shape.Ellipse
-import scalafx.scene.layout.Priority
 
 class EnsembleEllipse extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble Ellipses"
-          font = new Font("Verdana", 20)
-        },
-        new Ellipse{
+
+  def getContent = new HBox {
+    spacing = 25
+    padding = Insets(20)
+    content = List(
+      new Ellipse{
           centerX = 40
           centerY = 45
           radiusX = 30
           radiusY = 45
-          stroke = Color.BLACK
-          fill = Color.BLUE
-        },
+        fill = Color.BLUEVIOLET
+      },
         new Ellipse{
           centerX = 140
           centerY = 145
-          radiusX = 60
-          radiusY = 75
+          radiusX = 30
+          radiusY = 45
           stroke = Color.BLACK
           fill = Color.WHITE
-        })
-    }
+        }
+    )
   }
+
 }

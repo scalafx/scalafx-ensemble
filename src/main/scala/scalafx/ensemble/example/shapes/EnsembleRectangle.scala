@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,50 +27,41 @@
 
 package scalafx.ensemble.example.shapes
 
-import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.control.Label
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.HBox
 import scalafx.scene.paint.Color
-import scalafx.scene.shape.Rectangle
-import scalafx.scene.text.Font
 import scalafx.scene.paint.Paint
-import scalafx.scene.layout.Priority
+import scalafx.scene.shape.Rectangle
 
 class EnsembleRectangle extends EnsembleExample {
   def getContent = {
     // function literal to get Rectangle object
-    val rectObj = (rect: Rectangle) => { rect.setStroke(Color.BURLYWOOD); rect }
-    val rectArcObj = (height:Int,width:Int) => {
+    val rectObj = (rect: Rectangle) => {rect.setStroke(Color.BURLYWOOD); rect}
+    val rectArcObj = (height: Int, width: Int) => {
       val rect = Rectangle(100, 100, Color.WHITE)
       rect.setStroke(Color.GREEN)
       rect.setArcWidth(width)
       rect.setArcHeight(height)
       rect
     }
-    val fillArc=(height:Int,width:Int,color:Paint) => {
-      val rect = Rectangle(100, 100,color)
+    val fillArc = (height: Int, width: Int, color: Paint) => {
+      val rect = Rectangle(100, 100, color)
       rect.setStroke(Color.BLACK)
       rect.setArcWidth(width)
       rect.setArcHeight(height)
       rect
     }
 
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
+    new HBox {
+      spacing = 20
+      padding = Insets(20)
       content = List(
-        new Label {
-          text = "Ensemble Rectangles"
-          font = new Font("Verdana", 20)
-        },
         Rectangle(100, 100, Color.RED),
         rectObj(Rectangle(100, 100, Color.WHITE)),
-        rectArcObj(20,20),
-        fillArc(20,20,Color.BLUE))
+        rectArcObj(20, 20),
+        fillArc(20, 20, Color.BLUE)
+      )
     }
   }
 }

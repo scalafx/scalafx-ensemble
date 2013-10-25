@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,16 +27,12 @@
 
 package scalafx.ensemble.example.shapes
 
-import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.control.Label
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.HBox
 import scalafx.scene.paint.Color
 import scalafx.scene.paint.Paint
 import scalafx.scene.shape.Polyline
-import scalafx.scene.text.Font
-import scalafx.scene.layout.Priority
 
 class EnsemblePolyline extends EnsembleExample {
   def getContent = {
@@ -47,18 +43,13 @@ class EnsemblePolyline extends EnsembleExample {
       poly.setStrokeWidth(1d)
       poly
     }
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
+    new HBox {
+      spacing = 25
+      padding = Insets(20)
       content = List(
-        new Label {
-          text = "Ensemble Polylines"
-          font = new Font("Verdana", 20)
-        }, polyObj(Polyline(45, 10, 10, 80, 45, 80), Color.WHITE),
-        polyObj(Polyline(135, 15, 160, 30, 160, 60, 135, 110, 110, 30), Color.WHITE))
-
+        polyObj(Polyline(45, 10, 10, 80, 45, 80), Color.AZURE),
+        polyObj(Polyline(135, 15, 160, 30, 160, 60, 135, 110, 110, 30), Color.WHITE)
+      )
     }
   }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,48 +27,36 @@
 
 package scalafx.ensemble.example.shapes
 
-import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.control.Label
 import scalafx.scene.layout.VBox
 import scalafx.scene.paint.Color
-import scalafx.scene.shape.Arc
-import scalafx.scene.shape.ArcType
-import scalafx.scene.text.Font
 import scalafx.scene.shape.Line
-import scalafx.scene.layout.Priority
 
 class EnsembleLine extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble Line"
-          font = new Font("Verdana", 20)
-        },
-        new Line {
-          startX = 320
-          startY = 120
-          endX = 20
-          endY = 180
-          fill = Color.BLACK
-          stroke = Color.GREEN
-          strokeWidth = 1d
-        },
-        new Line {
-          startX = 320
-          startY = 120
-          endX = 20
-          endY = 180
-          fill = Color.WHITE
-          stroke = Color.ORANGE
-          strokeWidth = 10d
-        })
-    }
+
+  def getContent = new VBox {
+    spacing = 20
+    padding = Insets(20)
+    content = List(
+      new Line {
+        startX = 320
+        startY = 120
+        endX = 20
+        endY = 180
+        fill = Color.BLACK
+        stroke = Color.GREEN
+        strokeWidth = 1d
+      },
+      new Line {
+        startX = 320
+        startY = 120
+        endX = 20
+        endY = 180
+        fill = Color.WHITE
+        stroke = Color.ORANGE
+        strokeWidth = 10d
+      }
+    )
   }
 }

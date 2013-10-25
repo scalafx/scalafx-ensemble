@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2013, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,9 @@
 
 package scalafx.ensemble.example.shapes
 
-import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.control.Label
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.HBox
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.ArcTo
 import scalafx.scene.shape.ClosePath
@@ -42,34 +40,29 @@ import scalafx.scene.shape.MoveTo
 import scalafx.scene.shape.Path
 import scalafx.scene.shape.QuadCurveTo
 import scalafx.scene.shape.VLineTo
-import scalafx.scene.text.Font
-import scalafx.scene.layout.Priority
 
 class EnsemblePath extends EnsembleExample {
-  def getContent = {
-    new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      spacing = 10
-      margin = Insets(50, 0, 0, 50)
-      content = List(
-        new Label {
-          text = "Ensemble Path"
-          font = new Font("Verdana", 20)
-        },
-        new Path {
-          elements = List(MoveTo(35, 35), HLineTo(75), VLineTo(75), LineTo(35, 75), new ClosePath())
-          fill = Color.ORANGE
-          stroke = Color.BLACK
-          strokeWidth = 1d
-        },
-        new Path {
-          elements = List(MoveTo(100, 55),
-            CubicCurveTo(120, 20, 130, 80, 140, 45),
-            QuadCurveTo(150, 0, 160, 45),
-            ArcTo(20, 40, 0, 180, 45, true, true))
-          fill = Color.AZURE
-        })
-    }
+
+  def getContent = new HBox {
+    spacing = 20
+    padding = Insets(20)
+    content = List(
+      new Path {
+        elements = List(MoveTo(35, 35), HLineTo(75), VLineTo(75), LineTo(35, 75), new ClosePath())
+        fill = Color.ORANGE
+        stroke = Color.BLACK
+        strokeWidth = 1d
+      },
+      new Path {
+        elements = List(
+          MoveTo(100, 55),
+          CubicCurveTo(120, 20, 130, 80, 140, 45),
+          QuadCurveTo(150, 0, 160, 45),
+          ArcTo(20, 40, 0, 180, 45, true, true)
+        )
+        fill = Color.AZURE
+      }
+    )
   }
+
 }
