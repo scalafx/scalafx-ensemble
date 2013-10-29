@@ -1,12 +1,15 @@
 ScalaFX Ensemble
 ================
 
-ScalaFX Ensemble show cases various controls that have been implemented in scalaFX. Each control
-displays a running example and code. We believe ScalaFX Ensemble could help beginners or adopters 
-of ScalaFX to get inspired to start building apps. This project is inspired from JavaFX Ensemble. 
+ScalaFX Ensemble showcases various controls that have been implemented in [ScalaFX](http://scalafx.org). Each control
+displays a running example and source code.
+Each example can be saved as a stand-alone [SBT](http://www.scala-sbt.org/) project,
+with option to convert to [Eclipse](http://www.eclipse.org/) or [IntelliJ IDEA](http://www.jetbrains.com/idea/) projects.
 
-[scalaFX](http://code.google.com/p/scalafx/)
-[Home Page](http://jugchennai.github.com/scalafx-ensemble/)
+We believe ScalaFX Ensemble could help beginners or adopters of ScalaFX to get inspired to start building apps.
+This project is inspired by [JavaFX Ensemble](http://www.oracle.com/technetwork/java/javafx/samples/index.html).
+
+[ScalaFX Ensemble Home Page](http://jugchennai.github.com/scalafx-ensemble/)
 
 Setup
 =====
