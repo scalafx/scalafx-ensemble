@@ -10,6 +10,7 @@ This example can be compiled and run using the [Simple Build Tool](http://www.sc
 [Eclipse](http://www.eclipse.org) and [Intellij IDEA](http://www.jetbrains.com/idea/)
 project configurations can be generated from the SBT setup.
 
+
 Requirements
 ============
 
@@ -18,12 +19,14 @@ To compile and run the project you only need to have
 (u40 or newer version of 1.7) and [SBT](http://www.scala-sbt.org/) (v.0.13 or newer) installed.
 All missing dependencies, including proper version of Scala and ScalaFX, will be downloaded by SBT.
 
+
 Compile and Run using SBT
 =========================
 
 1. Open command prompt
 2. Change directory to where you saved the sample (directory containing this README file).
 3. Type `sbt run`
+
 
 Generate IntelliJ IDEA project configuration
 ============================================
@@ -33,6 +36,7 @@ Generate IntelliJ IDEA project configuration
 3. Type `sbt gen-idea`
 4. Open generated using IntelliJ IDEA (you will also need to install Scala plugin)
 
+
 Generate Eclipse project configuration
 ======================================
 
@@ -41,4 +45,10 @@ Generate Eclipse project configuration
 3. Type `sbt eclipse`
 4. Import generated project into your Eclipse workspace (you will also need to install Scala-IDE plugin)
 
+
+Got questions about ScalaFX?
+============================
+
+To post questions or send feedback about ScalaFX Ensamble or ScalaFX in general, please use
+[scalafx-user](https://groups.google.com/forum/?fromgroups#!forum/scalafx-users) discussion group.
 
