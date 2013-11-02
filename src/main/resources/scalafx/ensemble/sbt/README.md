@@ -12,7 +12,7 @@ project configurations can be generated from the SBT setup.
 
 
 Requirements
-============
+------------
 
 To compile and run the project you only need to have
 [Java 1.7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
@@ -21,7 +21,7 @@ All missing dependencies, including proper version of Scala and ScalaFX, will be
 
 
 Compile and Run using SBT
-=========================
+-------------------------
 
 1. Open command prompt
 2. Change directory to where you saved the sample (directory containing this README file).
@@ -29,7 +29,7 @@ Compile and Run using SBT
 
 
 Generate IntelliJ IDEA project configuration
-============================================
+--------------------------------------------
 
 1. Open command prompt
 2. Change directory to where you saved the sample (directory containing this README file).
@@ -38,7 +38,7 @@ Generate IntelliJ IDEA project configuration
 
 
 Generate Eclipse project configuration
-======================================
+--------------------------------------
 
 1. Open command prompt
 2. Change directory to where you saved the sample (directory containing this README file).
@@ -47,7 +47,7 @@ Generate Eclipse project configuration
 
 
 Got questions about ScalaFX?
-============================
+----------------------------
 
 To post questions or send feedback about ScalaFX Ensamble or ScalaFX in general, please use
 [scalafx-user](https://groups.google.com/forum/?fromgroups#!forum/scalafx-users) discussion group.
