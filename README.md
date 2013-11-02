@@ -24,13 +24,12 @@ Larger size screenshots and information about changes can be found on the
 
 
 How to run ScalaFX Ensemble
-===========================
+---------------------------
 
 ScalaFX Ensemble can be easily run from the source code, instructions are provided below.
 In the future, we will also provide an excitable version.
 
-Requirements
-------------
+### Requirements ###
 
 To compile and run the project you only need to have:
 
@@ -41,8 +40,7 @@ To compile and run the project you only need to have:
 
 All missing dependencies, including proper version of Scala and ScalaFX, will be downloaded by SBT.
 
-Compile and Run using SBT
--------------------------
+### Compile and Run using SBT ###
 
 Once you have [JDK 1.7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 and [SBT](http://www.scala-sbt.org/) installed,
@@ -58,21 +56,19 @@ When run the very first time, SBT will download all needed dependencies includin
 
 
 Creating Project Setups for Eclipse or IntelliJ IDEA
-====================================================
+----------------------------------------------------
 
 Project configurations for [Eclipse](http://www.eclipse.org/) or
 [IntelliJ IDEA](http://www.jetbrains.com/idea/) can be quickly generated using SBT.
 
-Generate IntelliJ IDEA project configuration
---------------------------------------------
+### Generate IntelliJ IDEA project configuration ###
 
 1. Open command prompt
 2. Change directory to where you saved the ScalaFX Ensemble source code (directory containing this README file).
 3. Type `sbt gen-idea`
 4. Open generated using IntelliJ IDEA (you will also need to install Scala plugin)
 
-Generate Eclipse project configuration
---------------------------------------
+### Generate Eclipse project configuration ###
 
 1. Open command prompt
 2. Change directory to where you saved the ScalaFX Ensemble source code (directory containing this README file).
@@ -82,7 +78,8 @@ Generate Eclipse project configuration
 
 
 Project Status
-==============
+--------------
+
 This project is in a "stable" pre-release state, the main missing future planned for the first release is support
 for building native executables.
 
@@ -90,7 +87,8 @@ for building native executables.
 
 
 Mailing list
-============
+------------
+
 To post questions or send feedback about ScalaFX Ensemble or ScalaFX in general, please use ScalaFX discussion groups:
 
 [scalafx-user](https://groups.google.com/forum/?fromgroups#!forum/scalafx-users) - for users of ScalaFX
@@ -99,7 +97,8 @@ To post questions or send feedback about ScalaFX Ensemble or ScalaFX in general,
 
 
 License
-=======
+-------
+
 Copyright (c) 2012-2013, ScalaFX Project
 All rights reserved.
 
