@@ -4,7 +4,7 @@ version := "1.0-SNAPSHOT"
 
 organization := "org.scalafx"
 
-scalaVersion := "2.10.2"
+scalaVersion := "2.10.3"
 
 assemblySettings
 
