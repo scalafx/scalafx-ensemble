@@ -9,7 +9,7 @@ scalaVersion := "2.10.3"
 assemblySettings
 
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "1.0.0-M7-SNAPSHOT",
+  "org.scalafx" %% "scalafx" % "1.0.0-M7",
   "org.scalatest" %% "scalatest" % "1.9.2" % "test"
 )
 

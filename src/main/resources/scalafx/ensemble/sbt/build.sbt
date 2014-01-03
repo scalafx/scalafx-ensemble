@@ -4,10 +4,7 @@ version := "1.0-SNAPSHOT"
 
 scalaVersion := "2.10.3"
 
-libraryDependencies +="org.scalafx" %% "scalafx" % "1.0.0-M7-SNAPSHOT"
-
-// Repository for snapshots
-resolvers += "Sonatype OSS Snapshots" at "https://oss.sonatype.org/content/repositories/snapshots"
+libraryDependencies +="org.scalafx" %% "scalafx" % "1.0.0-M7"
 
 // Add JavaFX 2.0 to classpath
 // For Java 8 it is not needed, it has`jfxrt.jar` in classpath
