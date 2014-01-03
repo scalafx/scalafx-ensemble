@@ -99,7 +99,7 @@ To post questions or send feedback about ScalaFX Ensemble or ScalaFX in general,
 License
 -------
 
-Copyright (c) 2012-2013, ScalaFX Project
+Copyright (c) 2012-2014, ScalaFX Project
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
