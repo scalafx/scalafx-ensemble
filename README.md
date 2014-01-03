@@ -34,8 +34,8 @@ In the future, we will also provide an excitable version.
 To compile and run the project you only need to have:
 
 *  [Java 1.7 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-(u40 or newer version of 1.7).
-*  [SBT](http://www.scala-sbt.org/) (v.0.13 or newer) installed.
+(u45 or newer version of 1.7).
+*  [SBT](http://www.scala-sbt.org/) (v.0.13.1 or newer) installed.
 *  ScalaFX Ensemble source code
 
 All missing dependencies, including proper version of Scala and ScalaFX, will be downloaded by SBT.
@@ -82,8 +82,6 @@ Project Status
 
 This project is in a "stable" pre-release state, the main missing future planned for the first release is support
 for building native executables.
-
-> This project is currently maintained by JUGChennai, once it get shape, will be moved to ScalaFX repo.
 
 
 Mailing list
