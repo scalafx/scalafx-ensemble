@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2013, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2014, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -83,7 +83,11 @@ object EnsembleTree {
         val sampleName = ExampleInfo.formatAddSpaces(leafName)
         val img = new ImageView {
           val filePath = ExampleInfo.thumbnailPath(leafName, groupName)
-          image = new Image(this.getClass.getResourceAsStream(filePath))
+          val inputStream = this.getClass.getResourceAsStream(filePath)
+          if (inputStream == null) {
+            throw new IOException("Unable to locate resource: " + filePath)
+          }
+          image = new Image(inputStream)
         }
         val button = new Button(sampleName, img) {
           prefWidth = 140
