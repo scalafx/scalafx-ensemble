@@ -40,13 +40,12 @@ object PageDisplayer {
   def choosePage(value: String = "dashBoard"): Node = {
     value match {
       case "dashBoard" => displayPage(new DashboardPage())
-      case _           => {
+      case _ =>
         if (value.startsWith("dashBoard - ")) {
           displayPage(new DashboardPage(value.split("-")(1).trim()))
         } else {
           displayPage(EnsembleTabbedPage.buildTab(value.split(">")(1).trim(), value.split(">")(0).trim()))
         }
-      }
     }
   }
 

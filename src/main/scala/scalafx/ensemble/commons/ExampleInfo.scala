@@ -175,8 +175,7 @@ class ExampleInfo(exampleName: String, exampleGroupName: String) {
         source(index) match {
           case '{' => braceCount += 1
           case '}' => braceCount -= 1
-          case _   => {
-          }
+          case _ =>
         }
       }
       index

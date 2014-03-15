@@ -144,18 +144,16 @@ object ContentFactory {
               }
               val result = Option(fileChooser.showDialog(thisButton.scene.window()))
               result match {
-                case Some(projectDir) => {
+                case Some(projectDir) =>
                   SBTProjectBuilder.createSampleProject(projectDir, exampleInfo)
                   SBTProjectBuilder.parentDir = projectDir.getCanonicalFile.getParentFile
-                }
-                case _                => {}
+                case _                =>
               }
             } catch {
-              case t: Throwable => {
+              case t: Throwable =>
                 val stage = thisButton.scene().window().asInstanceOf[Stage]
                 Dialogs.showErrorDialog(stage, t.getClass.getName + ": " + t.getMessage,
                   "Error saving sample SBT project", thisButton.text(), t)
-              }
             }
           },
           new Button {
@@ -168,11 +166,10 @@ object ContentFactory {
               content.putHtml(htmlSource)
               Clipboard.systemClipboard.setContent(content)
             } catch {
-              case t: Throwable => {
+              case t: Throwable =>
                 val stage = thisButton.scene().window().asInstanceOf[Stage]
                 Dialogs.showErrorDialog(stage, t.getClass.getName + ": " + t.getMessage,
                   "Error copying source to clipboard", thisButton.text(), t)
-              }
             }
           }
         )
