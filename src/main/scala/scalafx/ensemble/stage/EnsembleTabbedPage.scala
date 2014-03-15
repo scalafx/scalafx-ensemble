@@ -71,7 +71,7 @@ object EnsembleTabbedPage {
 class EnsembleTabbedPage(tabPane: TabPane, ctrlName: String, ctrlGroup: String)
   extends DisplayablePage {
 
-  def getPage() = {
+  def getPage = {
     import EnsembleTabbedPage._
     tabPane.tabs(0).content = buildTabContent(ContentFactory.createContent(ctrlName, ctrlGroup))
     tabPane.tabs(1).content = buildTabContent(ContentFactory.createSrcContent(ctrlName, ctrlGroup))

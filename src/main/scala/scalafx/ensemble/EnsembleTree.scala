@@ -133,7 +133,7 @@ class EnsembleTree(tree: Map[String, List[TreeItem[String]]],
   def getThumbs(keyName: String) = thumbnails(keyName)
 
 
-  def getDashThumbsCtrl() =
+  def getDashThumbsCtrl =
     thumbnails.flatMap {
       case (heading, ts) => Seq(createCategoryLabel(heading), createTiles(ts))
     }
