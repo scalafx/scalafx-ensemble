@@ -43,10 +43,7 @@ All missing dependencies, including proper version of Scala and ScalaFX, will be
 ### Compile and Run using SBT ###
 
 Once you have [JDK 1.7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-and [SBT](http://www.scala-sbt.org/) installed,
-make sure that you have an environment variable `JAVA_HOME` pointing to installation of your JDK.
-
-At this point, to run ScalaFX Ensemble:
+and [SBT](http://www.scala-sbt.org/) installed, you can complie and run ScalaFX Ensemble from command prompt using `sbt`:
 
 1. Open command prompt
 2. Change directory to where you saved the ScalaFX Ensemble source code (directory containing this README file).

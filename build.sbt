@@ -20,7 +20,7 @@ unmanagedResourceDirectories in Compile <+= baseDirectory { _/"src/main/scala"}
 shellPrompt := { state => System.getProperty("user.name") + ":" + Project.extract(state).currentRef.project + "> " }
 
 // Add JavaFX 2.0 to classpath
-unmanagedJars in Compile += Attributed.blank(file(System.getenv("JAVA_HOME") + "/jre/lib/jfxrt.jar"))
+unmanagedJars in Compile += Attributed.blank(file(scala.util.Properties.javaHome + "/lib/jfxrt.jar"))
 
 // Run in separate VM, so there are no issues with double initialization of JavaFX
 fork := true
