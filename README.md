@@ -51,21 +51,14 @@ and [SBT](http://www.scala-sbt.org/) installed, you can complie and run ScalaFX 
 
 When run the very first time, SBT will download all needed dependencies including Scala and ScalaFX.
 
+### Compile and Run using Intellij IDEA ###
 
-Creating Project Setups for Eclipse or IntelliJ IDEA
-----------------------------------------------------
-
-Project configurations for [Eclipse](http://www.eclipse.org/) or
-[IntelliJ IDEA](http://www.jetbrains.com/idea/) can be quickly generated using SBT.
-
-### Generate IntelliJ IDEA project configuration ###
-
-1. Open command prompt
-2. Change directory to where you saved the ScalaFX Ensemble source code (directory containing this README file).
-3. Type `sbt gen-idea`
-4. Open generated using IntelliJ IDEA (you will also need to install Scala plugin)
+[IntelliJ IDEA](http://www.jetbrains.com/idea/) with Scala plugin can import project settings from an SBT configuration.
+Simply select `File > Import Project...` and point to location of the ScalaFX Ensemble `build.sbt`.
 
 ### Generate Eclipse project configuration ###
+
+Project configurations for [Eclipse](http://www.eclipse.org/) can be quickly generated using SBT.
 
 1. Open command prompt
 2. Change directory to where you saved the ScalaFX Ensemble source code (directory containing this README file).
