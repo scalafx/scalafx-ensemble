@@ -4,10 +4,10 @@ ScalaFX Ensemble
 ScalaFX Ensemble provides a gallery of over 60 sample applications illustrating how
 [ScalaFX](http://scalafx.org) can be used for creation of user interfaces controls, charts, graphics, media and web views.
 
-![ScalaFX Ensemble Application - Demo navigation](http://jugchennai.github.io/scalafx-ensemble/images/ScalaFX_Ensemble-grid-50p.png)
+![ScalaFX Ensemble Application - Demo navigation](http://scalafx.github.io/scalafx-ensemble/images/ScalaFX_Ensemble-grid-50p.png)
 
-![ScalaFX Ensemble Application - Demo tab](http://jugchennai.github.io/scalafx-ensemble/images/ScalaFX_Ensemble-demo-50p.png)
-![ScalaFX Ensemble Application - Demo source](http://jugchennai.github.io/scalafx-ensemble/images/ScalaFX_Ensemble-source-50p.png)
+![ScalaFX Ensemble Application - Demo tab](http://scalafx.github.io/scalafx-ensemble/images/ScalaFX_Ensemble-demo-50p.png)
+![ScalaFX Ensemble Application - Demo source](http://scalafx.github.io/scalafx-ensemble/images/ScalaFX_Ensemble-source-50p.png)
 
 Each example can be executed within the ScalaFX Ensemble application, its source code can be easily seen there too.
 Example can be saved, from within ScalaFX Ensemble application, as an stand-alone [SBT](http://www.scala-sbt.org/) project,
@@ -15,12 +15,12 @@ with option to convert to [Eclipse](http://www.eclipse.org/) or [IntelliJ IDEA](
 
 ScalaFX Ensemble can be used by ScalaFX beginners as a set of examples and by more experienced users as a visual
 reference. Larger size screenshots and information about changes can be found on the
-[ScalaFX Ensemble Home Page](http://jugchennai.github.com/scalafx-ensemble/).
+[ScalaFX Ensemble Home Page](http://scalafx.github.com/scalafx-ensemble/).
 
 This project is inspired by [JavaFX Ensemble](http://www.oracle.com/technetwork/java/javafx/samples/index.html).
 
 Larger size screenshots and information about changes can be found on the
-[ScalaFX Ensemble Home Page](http://jugchennai.github.com/scalafx-ensemble/)
+[ScalaFX Ensemble Home Page](http://scalafx.github.com/scalafx-ensemble/)
 
 
 How to run ScalaFX Ensemble
