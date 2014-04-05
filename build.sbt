@@ -1,4 +1,4 @@
-name := "scalafxEnsemble"
+name := "scalafx-ensemble"
 
 version := "1.0-SNAPSHOT"
 
