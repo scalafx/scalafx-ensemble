@@ -2,9 +2,9 @@ name := "@name@"
 
 version := "1.0-SNAPSHOT"
 
-scalaVersion := "2.10.3"
+scalaVersion := "2.11.2"
 
-libraryDependencies +="org.scalafx" %% "scalafx" % "1.0.0-R8"
+libraryDependencies +="org.scalafx" %% "scalafx" % "2.2.67-R10"
 
 // Add JavaFX 2.0 to classpath
 // For Java 8 it is not needed, it has`jfxrt.jar` in classpath

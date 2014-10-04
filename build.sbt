@@ -4,11 +4,14 @@ version := "1.0-SNAPSHOT"
 
 organization := "org.scalafx"
 
-scalaVersion := "2.10.3"
+scalaVersion := "2.11.2"
 
 assemblySettings
 
-libraryDependencies += "org.scalafx" %% "scalafx" % "1.0.0-R8"
+libraryDependencies ++= Seq(
+  "org.scalafx"            %% "scalafx" % "2.2.67-R10",
+  "org.scala-lang.modules" %% "scala-xml" % "1.0.2"
+)
 
 resolvers += Opts.resolver.sonatypeSnapshots
 
