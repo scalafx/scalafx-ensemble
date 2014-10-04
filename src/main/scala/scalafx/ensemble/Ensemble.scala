@@ -91,6 +91,7 @@ object Ensemble extends JFXApp {
   //
   stage = new PrimaryStage {
     title = "ScalaFX Ensemble"
+    icons += new Image("/scalafx/ensemble/images/ScalaFX-icon-64x64.png")
     scene = new Scene(1020, 700) {
       root = new BorderPane {
         top = new VBox {
