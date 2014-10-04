@@ -28,11 +28,8 @@
 package scalafx.ensemble.example.layout
 
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.Insets
-import scalafx.geometry.Pos
-import scalafx.scene.control.Button
-import scalafx.scene.control.Label
-import scalafx.scene.control.TextField
+import scalafx.geometry.{Insets, Pos}
+import scalafx.scene.control.{Button, Label, TextField}
 import scalafx.scene.layout.HBox
 
 class EnsembleHBox extends EnsembleExample {
@@ -45,7 +42,7 @@ class EnsembleHBox extends EnsembleExample {
     new HBox {
       padding = Insets(20)
       spacing = 5
-      alignment = Pos.CENTER
+      alignment = Pos.Center
       content = List(label, textField, button)
     }
   }

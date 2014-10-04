@@ -28,22 +28,18 @@
 package scalafx.ensemble.example.controls
 
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.Insets
-import scalafx.geometry.Side
-import scalafx.scene.control.Tab
-import scalafx.scene.control.TabPane
+import scalafx.geometry.{Insets, Side}
+import scalafx.scene.control.{Tab, TabPane}
 import scalafx.scene.control.TabPane.TabClosingPolicy
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
-import scalafx.scene.text.Font
-import scalafx.scene.text.Text
+import scalafx.scene.layout.{Priority, VBox}
+import scalafx.scene.text.{Font, Text}
 
 
 class EnsembleTab extends EnsembleExample {
 
   def getContent = new VBox {
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
+    vgrow = Priority.Always
+    hgrow = Priority.Always
     spacing = 10
     padding = Insets(20)
     content = List(

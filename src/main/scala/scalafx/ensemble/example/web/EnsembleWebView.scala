@@ -31,9 +31,8 @@ import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.event.ActionEvent
 import scalafx.geometry.Insets
-import scalafx.scene.control.Button
-import scalafx.scene.control.TextField
-import scalafx.scene.layout.{BorderPane, Priority, HBox}
+import scalafx.scene.control.{Button, TextField}
+import scalafx.scene.layout.{BorderPane, HBox, Priority}
 import scalafx.scene.web.WebView
 
 class EnsembleWebView extends EnsembleExample {
@@ -45,7 +44,7 @@ class EnsembleWebView extends EnsembleExample {
     val defaultURL = "http://www.scala-lang.org/"
     val locationField = new TextField {
       text = defaultURL
-      hgrow = Priority.ALWAYS
+      hgrow = Priority.Always
     }
     val goButton = new Button {
       text = "Go"

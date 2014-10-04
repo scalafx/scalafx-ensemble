@@ -44,8 +44,8 @@ class EnsembleLine extends EnsembleExample {
         startY = 120
         endX = 20
         endY = 180
-        fill = Color.BLACK
-        stroke = Color.GREEN
+        fill = Color.Black
+        stroke = Color.Green
         strokeWidth = 1d
       },
       new Line {
@@ -53,8 +53,8 @@ class EnsembleLine extends EnsembleExample {
         startY = 120
         endX = 20
         endY = 180
-        fill = Color.WHITE
-        stroke = Color.ORANGE
+        fill = Color.White
+        stroke = Color.Orange
         strokeWidth = 10d
       }
     )

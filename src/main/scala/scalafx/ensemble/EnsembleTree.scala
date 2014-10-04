@@ -27,17 +27,15 @@
 
 package scalafx.ensemble
 
-import java.io.{IOException, File}
+import java.io.{File, IOException}
+
 import scala.collection.immutable.TreeMap
 import scalafx.Includes._
-import scalafx.ensemble.commons.ExampleInfo
-import scalafx.ensemble.commons.PageDisplayer
-import scalafx.ensemble.commons.SortUtils
+import scalafx.ensemble.commons.{ExampleInfo, PageDisplayer, SortUtils}
 import scalafx.event.ActionEvent
-import scalafx.geometry.{Orientation, Insets}
+import scalafx.geometry.{Insets, Orientation}
 import scalafx.scene.control._
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
+import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.TilePane
 
 /**
@@ -92,7 +90,7 @@ object EnsembleTree {
         val button = new Button(sampleName, img) {
           prefWidth = 140
           prefHeight = 145
-          contentDisplay = ContentDisplay.TOP
+          contentDisplay = ContentDisplay.Top
           styleClass.clear()
           styleClass += "sample-tile"
           onAction = (ae: ActionEvent) => {

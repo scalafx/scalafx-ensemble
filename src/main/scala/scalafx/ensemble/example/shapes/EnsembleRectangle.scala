@@ -30,24 +30,23 @@ package scalafx.ensemble.example.shapes
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.layout.HBox
-import scalafx.scene.paint.Color
-import scalafx.scene.paint.Paint
+import scalafx.scene.paint.{Color, Paint}
 import scalafx.scene.shape.Rectangle
 
 class EnsembleRectangle extends EnsembleExample {
   def getContent = {
     // function literal to get Rectangle object
-    val rectObj = (rect: Rectangle) => {rect.setStroke(Color.BURLYWOOD); rect}
+    val rectObj = (rect: Rectangle) => {rect.setStroke(Color.Burlywood); rect}
     val rectArcObj = (height: Int, width: Int) => {
-      val rect = Rectangle(100, 100, Color.WHITE)
-      rect.setStroke(Color.GREEN)
+      val rect = Rectangle(100, 100, Color.White)
+      rect.setStroke(Color.Green)
       rect.setArcWidth(width)
       rect.setArcHeight(height)
       rect
     }
     val fillArc = (height: Int, width: Int, color: Paint) => {
       val rect = Rectangle(100, 100, color)
-      rect.setStroke(Color.BLACK)
+      rect.setStroke(Color.Black)
       rect.setArcWidth(width)
       rect.setArcHeight(height)
       rect
@@ -57,10 +56,10 @@ class EnsembleRectangle extends EnsembleExample {
       spacing = 20
       padding = Insets(20)
       content = List(
-        Rectangle(100, 100, Color.RED),
-        rectObj(Rectangle(100, 100, Color.WHITE)),
+        Rectangle(100, 100, Color.Red),
+        rectObj(Rectangle(100, 100, Color.White)),
         rectArcObj(20, 20),
-        fillArc(20, 20, Color.BLUE)
+        fillArc(20, 20, Color.Blue)
       )
     }
   }

@@ -29,10 +29,8 @@ package scalafx.ensemble.example.text
 
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.control.ContentDisplay
-import scalafx.scene.control.Label
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
+import scalafx.scene.control.{ContentDisplay, Label}
+import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.VBox
 
 /**
@@ -53,27 +51,27 @@ class EnsembleAdvancedLabel extends EnsembleExample {
         new Label {
           text = "Image above"
           graphic = new ImageView(icon)
-          contentDisplay = ContentDisplay.TOP
+          contentDisplay = ContentDisplay.Top
         },
         new Label {
           text = "Image on the right"
           graphic = new ImageView(icon)
-          contentDisplay = ContentDisplay.RIGHT
+          contentDisplay = ContentDisplay.Right
         },
         new Label {
           text = "Image below"
           graphic = new ImageView(icon)
-          contentDisplay = ContentDisplay.BOTTOM
+          contentDisplay = ContentDisplay.Bottom
         },
         new Label {
           text = "Image on the left"
           graphic = new ImageView(icon)
-          contentDisplay = ContentDisplay.LEFT
+          contentDisplay = ContentDisplay.Left
         },
         new Label {
           text = "Image centered"
           graphic = new ImageView(icon)
-          contentDisplay = ContentDisplay.CENTER
+          contentDisplay = ContentDisplay.Center
         })
     }
   }

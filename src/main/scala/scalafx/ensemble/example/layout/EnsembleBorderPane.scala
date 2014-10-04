@@ -30,11 +30,8 @@ package scalafx.ensemble.example.layout
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Label
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
-import scalafx.scene.layout.AnchorPane
-import scalafx.scene.layout.BorderPane
-import scalafx.scene.layout.VBox
+import scalafx.scene.image.{Image, ImageView}
+import scalafx.scene.layout.{AnchorPane, BorderPane, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
@@ -55,8 +52,8 @@ class EnsembleBorderPane extends EnsembleExample {
     val topRectangle = new Rectangle() {
       width = 400
       height = 20
-      fill = Color.DARKSEAGREEN
-      stroke = Color.BLACK
+      fill = Color.DarkSeaGreen
+      stroke = Color.Black
     }
 
     // Left content using VBox

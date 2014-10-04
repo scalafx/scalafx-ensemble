@@ -30,10 +30,8 @@ package scalafx.ensemble.example.controls
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Hyperlink
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.scene.image.{Image, ImageView}
+import scalafx.scene.layout.{Priority, VBox}
 
 /**
  * A sample that shows a simple hyperlink and a hyperlink with an image.
@@ -45,8 +43,8 @@ import scalafx.scene.layout.VBox
 class EnsembleHyperlink extends EnsembleExample {
 
   def getContent = new VBox {
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
+    vgrow = Priority.Always
+    hgrow = Priority.Always
     spacing = 10
     padding = Insets(20)
     content = List(

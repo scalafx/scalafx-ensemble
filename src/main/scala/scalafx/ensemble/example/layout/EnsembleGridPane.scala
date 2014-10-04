@@ -29,15 +29,10 @@ package scalafx.ensemble.example.layout
 
 import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.{HPos, Pos, Insets}
-import scalafx.scene.control.{Button, TextField, Label, Separator}
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
-import scalafx.scene.layout.ColumnConstraints
-import scalafx.scene.layout.GridPane
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.RowConstraints
-import scalafx.scene.layout.VBox
+import scalafx.geometry.{HPos, Insets, Pos}
+import scalafx.scene.control.{Button, Label, Separator, TextField}
+import scalafx.scene.image.{Image, ImageView}
+import scalafx.scene.layout.{ColumnConstraints, GridPane, Priority, RowConstraints, VBox}
 
 /**
  * An example of a GridPane layout. There is more than one approach to using a
@@ -61,23 +56,23 @@ class EnsembleGridPane extends EnsembleExample {
 
     val label1 = new Label("Name:") {
       style = "-fx-font-weight:bold"
-      alignmentInParent = Pos.BASELINE_RIGHT
+      alignmentInParent = Pos.BaselineRight
     }
     GridPane.setConstraints(label1, 0, 0, 1, 1)
 
     val label11 = new Label("John Q. Public") {
-      alignmentInParent = Pos.BASELINE_LEFT
+      alignmentInParent = Pos.BaselineLeft
     }
     GridPane.setConstraints(label11, 1, 0, 2, 1)
 
     val label21 = new Label("Address:") {
       style = "-fx-font-weight:bold"
-      alignmentInParent = Pos.BASELINE_RIGHT
+      alignmentInParent = Pos.BaselineRight
     }
     GridPane.setConstraints(label21, 0, 1, 1, 1)
 
     val label22 = new Label("12345 Main Street, Some City, CA") {
-      alignmentInParent = Pos.BASELINE_LEFT
+      alignmentInParent = Pos.BaselineLeft
     }
     GridPane.setConstraints(label22, 1, 1, 5, 1)
 
@@ -99,45 +94,45 @@ class EnsembleGridPane extends EnsembleExample {
     val category = new Label {
       text = "Category:"
       style = "-fx-font-weight:bold"
-      alignmentInParent = Pos.BASELINE_RIGHT
+      alignmentInParent = Pos.BaselineRight
     }
     GridPane.setConstraints(category, 0, 0)
 
     val categoryValue = new Label {
       text = "Wines"
-      alignmentInParent = Pos.BASELINE_LEFT
+      alignmentInParent = Pos.BaselineLeft
     }
     GridPane.setConstraints(categoryValue, 1, 0)
 
     val company = new Label {
       text = "Company:"
       style = "-fx-font-weight:bold"
-      alignmentInParent = Pos.BASELINE_RIGHT
+      alignmentInParent = Pos.BaselineRight
     }
     GridPane.setConstraints(company, 0, 1)
 
     val companyValue = new Label {
       text = "Acme Winery"
-      alignmentInParent = Pos.BASELINE_LEFT
+      alignmentInParent = Pos.BaselineLeft
     }
     GridPane.setConstraints(companyValue, 1, 1)
 
     val rating = new Label {
       text = "Rating:"
       style = "-fx-font-weight:bold"
-      alignmentInParent = Pos.BASELINE_RIGHT
+      alignmentInParent = Pos.BaselineRight
     }
     GridPane.setConstraints(rating, 0, 2)
 
     val ratingValue = new Label {
       text = "Excellent"
-      alignmentInParent = Pos.BASELINE_LEFT
+      alignmentInParent = Pos.BaselineLeft
     }
     GridPane.setConstraints(ratingValue, 1, 2)
 
     val imageView = new ImageView {
       image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
-      alignmentInParent = Pos.CENTER
+      alignmentInParent = Pos.Center
     }
     GridPane.setConstraints(imageView, 2, 1)
 
@@ -181,14 +176,14 @@ class EnsembleGridPane extends EnsembleExample {
     }
 
     val condLabel = new Label(" Member Name:")
-    GridPane.setHalignment(condLabel, HPos.RIGHT)
+    GridPane.setHalignment(condLabel, HPos.Right)
     GridPane.setConstraints(condLabel, 0, 0)
     val condValue = new Label("MyName")
     GridPane.setMargin(condValue, Insets(0, 0, 0, 10))
     GridPane.setConstraints(condValue, 1, 0)
 
     val acctLabel = new Label("Member Number:")
-    GridPane.setHalignment(acctLabel, HPos.RIGHT)
+    GridPane.setHalignment(acctLabel, HPos.Right)
     GridPane.setConstraints(acctLabel, 0, 1)
     val textBox = new TextField {text = "Your number"}
     GridPane.setMargin(textBox, Insets(10, 10, 10, 10))
@@ -197,14 +192,14 @@ class EnsembleGridPane extends EnsembleExample {
     val button = new Button("Help")
     GridPane.setConstraints(button, 2, 1)
     GridPane.setMargin(button, Insets(10, 10, 10, 10))
-    GridPane.setHalignment(button, HPos.CENTER)
+    GridPane.setHalignment(button, HPos.Center)
 
     GridPane.setConstraints(condValue, 1, 0)
     grid3.children ++= Seq(condLabel, condValue, button, acctLabel, textBox)
 
     new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
+      vgrow = Priority.Always
+      hgrow = Priority.Always
       spacing = 10
       padding = Insets(20)
       content = List(

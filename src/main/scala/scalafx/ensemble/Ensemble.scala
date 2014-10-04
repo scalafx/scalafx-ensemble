@@ -27,7 +27,6 @@
 
 package scalafx.ensemble
 
-import scala.Some
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
@@ -35,8 +34,7 @@ import scalafx.ensemble.commons.PageDisplayer
 import scalafx.geometry.Insets
 import scalafx.scene.Scene
 import scalafx.scene.control._
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
+import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout._
 import scalafx.stage.Screen
 
@@ -96,8 +94,8 @@ object Ensemble extends JFXApp {
     scene = new Scene(1020, 700) {
       root = new BorderPane {
         top = new VBox {
-          vgrow = Priority.ALWAYS
-          hgrow = Priority.ALWAYS
+          vgrow = Priority.Always
+          hgrow = Priority.Always
           content = new ToolBar {
             prefHeight = 76
             maxHeight = 76

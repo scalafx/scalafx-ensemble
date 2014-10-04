@@ -29,10 +29,8 @@ package scalafx.ensemble.example.images
 
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.scene.image.{Image, ImageView}
+import scalafx.scene.layout.{Priority, VBox}
 
 /**
  * A sample that demonstrates the use of two different constructors in the Image
@@ -46,8 +44,8 @@ import scalafx.scene.layout.VBox
  */
 class EnsembleImageCreation extends EnsembleExample {
   def getContent = new VBox {
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
+    vgrow = Priority.Always
+    hgrow = Priority.Always
     spacing = 10
     padding = Insets(20)
     content = List(

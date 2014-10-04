@@ -50,8 +50,8 @@ class EnsembleComboBox extends EnsembleExample {
 
   def getContent = {
     new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
+      vgrow = Priority.Always
+      hgrow = Priority.Always
       spacing = 15
       padding = Insets(20)
       content = List(

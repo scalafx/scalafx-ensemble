@@ -30,8 +30,7 @@ package scalafx.ensemble.example.controls
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Button
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{Priority, VBox}
 
 /** Buttons with different background colors.
   *
@@ -42,8 +41,8 @@ import scalafx.scene.layout.VBox
 class EnsembleColorButton extends EnsembleExample {
 
   def getContent = new VBox {
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
+    vgrow = Priority.Always
+    hgrow = Priority.Always
     spacing = 10
     padding = Insets(20)
     content = List(

@@ -31,8 +31,7 @@ import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.layout.HBox
 import scalafx.scene.paint.Color
-import scalafx.scene.shape.Arc
-import scalafx.scene.shape.ArcType
+import scalafx.scene.shape.{Arc, ArcType}
 
 class EnsembleArc extends EnsembleExample {
   def getContent = new HBox {
@@ -46,9 +45,9 @@ class EnsembleArc extends EnsembleExample {
         radiusY = 100
         length = 100
         startAngle = 130
-        fill = Color.GREEN
-        stroke = Color.BLACK
-        `type` = ArcType.OPEN
+        fill = Color.Green
+        stroke = Color.Black
+        `type` = ArcType.Open
       },
       new Arc {
         centerX = 200
@@ -57,9 +56,9 @@ class EnsembleArc extends EnsembleExample {
         radiusY = 100
         length = 40
         startAngle = 150
-        fill = Color.WHITE
-        stroke = Color.BLACK
-        `type` = ArcType.ROUND
+        fill = Color.White
+        stroke = Color.Black
+        `type` = ArcType.Round
       },
       new Arc {
         centerX = 200
@@ -68,9 +67,9 @@ class EnsembleArc extends EnsembleExample {
         radiusY = 100
         length = 80
         startAngle = 130
-        fill = Color.BLUE
-        stroke = Color.AZURE
-        `type` = ArcType.CHORD
+        fill = Color.Blue
+        stroke = Color.Azure
+        `type` = ArcType.Chord
       },
       new Arc {
         centerX = 200
@@ -80,9 +79,9 @@ class EnsembleArc extends EnsembleExample {
         length = 80
         startAngle = 45
         fill = null
-        stroke = Color.CORAL
+        stroke = Color.Coral
         strokeWidth = 3
-        `type` = ArcType.OPEN
+        `type` = ArcType.Open
       }
     )
   }

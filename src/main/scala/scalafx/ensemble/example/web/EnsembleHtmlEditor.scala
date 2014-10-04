@@ -31,9 +31,7 @@ import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.event.ActionEvent
 import scalafx.geometry.Insets
-import scalafx.scene.control.Button
-import scalafx.scene.control.Label
-import scalafx.scene.control.ScrollPane
+import scalafx.scene.control.{Button, Label, ScrollPane}
 import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.web.HTMLEditor
 
@@ -50,8 +48,8 @@ class EnsembleHtmlEditor extends EnsembleExample {
 
     val htmlEditor = new HTMLEditor {
       prefHeight = 250
-      hgrow = Priority.ALWAYS
-      vgrow = Priority.ALWAYS
+      hgrow = Priority.Always
+      vgrow = Priority.Always
       htmlText = initialText
     }
 
@@ -70,8 +68,8 @@ class EnsembleHtmlEditor extends EnsembleExample {
         },
         new ScrollPane {
           prefHeight = 200
-          hgrow = Priority.ALWAYS
-          vgrow = Priority.ALWAYS
+          hgrow = Priority.Always
+          vgrow = Priority.Always
           content = htmlLabel
         }
       )

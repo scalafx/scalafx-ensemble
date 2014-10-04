@@ -28,13 +28,9 @@
 package scalafx.ensemble.example.images
 
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.Insets
-import scalafx.geometry.Rectangle2D
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
-import scalafx.scene.layout.HBox
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.geometry.{Insets, Rectangle2D}
+import scalafx.scene.image.{Image, ImageView}
+import scalafx.scene.layout.{HBox, Priority, VBox}
 
 /** A sample that demonstrates how to resize images and use the Viewport property.
   *
@@ -80,8 +76,8 @@ class EnsembleImageProperties extends EnsembleExample {
     }
 
     new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
+      vgrow = Priority.Always
+      hgrow = Priority.Always
       spacing = 10
       padding = Insets(20)
       content = List(

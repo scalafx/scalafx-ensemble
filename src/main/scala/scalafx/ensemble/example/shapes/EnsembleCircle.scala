@@ -40,7 +40,7 @@ class EnsembleCircle extends EnsembleExample {
       centerX = 200
       centerY = 200
       radius = 50
-      stroke = Color.BLACK
+      stroke = Color.Black
       strokeWidth = 3
       strokeDashArray ++= Seq(15d, 10d)
       fill = null
@@ -50,9 +50,9 @@ class EnsembleCircle extends EnsembleExample {
       centerX = 200
       centerY = 200
       radius = 50
-      stroke = Color.BROWN
+      stroke = Color.Brown
       strokeWidth = 2
-      fill = Color.DARKKHAKI
+      fill = Color.DarkKhaki
     }
 
     new HBox {

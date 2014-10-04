@@ -31,8 +31,7 @@ import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Label
 import scalafx.scene.effect.InnerShadow
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.text.Font
 
@@ -40,8 +39,8 @@ class EnsembleInnerShadow extends EnsembleExample {
 
   def getContent = {
     new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
+      vgrow = Priority.Always
+      hgrow = Priority.Always
       spacing = 10
       padding = Insets(20)
       content = List(

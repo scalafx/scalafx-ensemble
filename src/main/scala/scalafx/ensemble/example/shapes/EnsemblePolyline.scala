@@ -30,8 +30,7 @@ package scalafx.ensemble.example.shapes
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.layout.HBox
-import scalafx.scene.paint.Color
-import scalafx.scene.paint.Paint
+import scalafx.scene.paint.{Color, Paint}
 import scalafx.scene.shape.Polyline
 
 class EnsemblePolyline extends EnsembleExample {
@@ -39,7 +38,7 @@ class EnsemblePolyline extends EnsembleExample {
     //Set polyline fill color using literal
     val polyObj = (poly: Polyline, color: Paint) => {
       poly.setFill(color)
-      poly.setStroke(Color.BLUE)
+      poly.setStroke(Color.Blue)
       poly.setStrokeWidth(1d)
       poly
     }
@@ -47,8 +46,8 @@ class EnsemblePolyline extends EnsembleExample {
       spacing = 25
       padding = Insets(20)
       content = List(
-        polyObj(Polyline(45, 10, 10, 80, 45, 80), Color.AZURE),
-        polyObj(Polyline(135, 15, 160, 30, 160, 60, 135, 110, 110, 30), Color.WHITE)
+        polyObj(Polyline(45, 10, 10, 80, 45, 80), Color.Azure),
+        polyObj(Polyline(135, 15, 160, 30, 160, 60, 135, 110, 110, 30), Color.White)
       )
     }
   }

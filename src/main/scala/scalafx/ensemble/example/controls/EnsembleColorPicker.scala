@@ -31,12 +31,8 @@ import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.event.ActionEvent
 import scalafx.geometry.{Insets, Pos}
-import scalafx.scene.control.Button
-import scalafx.scene.control.ColorPicker
-import scalafx.scene.control.Label
-import scalafx.scene.control.ToolBar
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.scene.control.{Button, ColorPicker, Label, ToolBar}
+import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.text.Font
 
@@ -54,7 +50,7 @@ class EnsembleColorPicker extends EnsembleExample {
     def toStyle(color: Color) =
       s"-fx-base: rgb(${color.red * 255}, ${color.green * 255}, ${color.blue * 255});"
 
-    val initialColor = Color.RED
+    val initialColor = Color.Red
 
     // Label for ColorPicker
     val labelColor = new Label {
@@ -77,15 +73,15 @@ class EnsembleColorPicker extends EnsembleExample {
     }
 
     new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
+      vgrow = Priority.Always
+      hgrow = Priority.Always
       spacing = 50
       content = List(
         new ToolBar {
           content = colorPicker
         },
         new VBox {
-          alignment = Pos.CENTER
+          alignment = Pos.Center
           spacing = 20
           padding = Insets(20)
           content = Seq(labelColor, buttonColor)

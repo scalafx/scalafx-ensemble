@@ -27,7 +27,7 @@
 
 package scalafx.ensemble.commons
 
-import scalafx.ensemble.stage.{EnsembleTabbedPage, DashboardPage}
+import scalafx.ensemble.stage.{DashboardPage, EnsembleTabbedPage}
 import scalafx.scene.Node
 import scalafx.scene.layout.{Priority, VBox}
 
@@ -51,8 +51,8 @@ object PageDisplayer {
 
   private def displayPage(nodeToAdd: DisplayablePage): Node = {
     new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
+      vgrow = Priority.Always
+      hgrow = Priority.Always
       content = nodeToAdd.getPage
     }
   }

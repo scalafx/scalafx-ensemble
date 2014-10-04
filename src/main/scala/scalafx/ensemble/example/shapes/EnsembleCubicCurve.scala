@@ -48,8 +48,8 @@ class EnsembleCubicCurve extends EnsembleExample {
         startY = 45
         endX = 180
         endY = 45
-        stroke = Color.BURLYWOOD
-        fill = Color.ORANGE
+        stroke = Color.Burlywood
+        fill = Color.Orange
         strokeWidth = 2d
       },
       new CubicCurve {
@@ -61,8 +61,8 @@ class EnsembleCubicCurve extends EnsembleExample {
         startY = 90
         endX = 120
         endY = 55
-        stroke = Color.DARKORANGE
-        fill = Color.WHITE
+        stroke = Color.DarkOrange
+        fill = Color.White
         strokeWidth = 5d
       }
     )

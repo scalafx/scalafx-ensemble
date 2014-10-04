@@ -30,14 +30,15 @@ package scalafx.ensemble.commons
 import java.util.Locale
 import javafx.scene.control.Dialogs
 import javafx.stage.Stage
+
 import scalafx.Includes._
 import scalafx.ensemble.commons.IOUtils._
 import scalafx.ensemble.sbt.SBTProjectBuilder
 import scalafx.event.ActionEvent
 import scalafx.scene.Node
-import scalafx.scene.control.{Button, ToolBar, ScrollPane, Label}
+import scalafx.scene.control.{Button, Label, ScrollPane, ToolBar}
 import scalafx.scene.input.{Clipboard, ClipboardContent}
-import scalafx.scene.layout.{Priority, StackPane, BorderPane, VBox}
+import scalafx.scene.layout.{BorderPane, Priority, StackPane, VBox}
 import scalafx.scene.web.WebView
 import scalafx.stage.DirectoryChooser
 
@@ -65,7 +66,7 @@ object ContentFactory {
 
     val sampleArea = new StackPane {
       content = sampleNode
-      vgrow = Priority.SOMETIMES
+      vgrow = Priority.Sometimes
     }
 
     // ScrollPane is applied for borderPane that contains samples

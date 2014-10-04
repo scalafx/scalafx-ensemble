@@ -31,8 +31,7 @@ import scalafx.Includes._
 import scalafx.ensemble.EnsembleTree
 import scalafx.ensemble.commons.DisplayablePage
 import scalafx.scene.control.ScrollPane
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{Priority, VBox}
 
 /** Dashboard Page */
 class DashboardPage(dashPart: String = "dashboard") extends DisplayablePage {
@@ -46,13 +45,13 @@ class DashboardPage(dashPart: String = "dashboard") extends DisplayablePage {
     }
 
     new ScrollPane {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
+      vgrow = Priority.Always
+      hgrow = Priority.Always
       fitToHeight = true
       fitToWidth = true
       content = new VBox {
-        vgrow = Priority.ALWAYS
-        hgrow = Priority.ALWAYS
+        vgrow = Priority.Always
+        hgrow = Priority.Always
         content = thumbs
       }
       styleClass += "category-page"

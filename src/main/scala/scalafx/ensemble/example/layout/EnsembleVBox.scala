@@ -28,10 +28,8 @@
 package scalafx.ensemble.example.layout
 
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.Insets
-import scalafx.geometry.Pos
-import scalafx.scene.control.CheckBox
-import scalafx.scene.control.Label
+import scalafx.geometry.{Insets, Pos}
+import scalafx.scene.control.{CheckBox, Label}
 import scalafx.scene.layout.VBox
 
 class EnsembleVBox extends EnsembleExample {
@@ -46,7 +44,7 @@ class EnsembleVBox extends EnsembleExample {
     new VBox {
       padding = Insets(20)
       spacing = 10
-      alignment = Pos.TOP_LEFT
+      alignment = Pos.TopLeft
       content = Seq(
         label,
         new VBox {

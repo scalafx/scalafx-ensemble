@@ -45,8 +45,8 @@ class EnsembleQuadCurve extends EnsembleExample {
         startY = 45
         endX = 180
         endY = 45
-        stroke = Color.RED
-        fill = Color.ROSYBROWN
+        stroke = Color.Red
+        fill = Color.RosyBrown
         strokeWidth = 2d
       },
       new QuadCurve {
@@ -56,8 +56,8 @@ class EnsembleQuadCurve extends EnsembleExample {
         startY = 145
         endX = 210
         endY = 145
-        stroke = Color.BLUE
-        fill = Color.WHITE
+        stroke = Color.Blue
+        fill = Color.White
         strokeWidth = 2d
       })
   }

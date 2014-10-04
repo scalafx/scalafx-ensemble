@@ -44,15 +44,15 @@ class EnsembleEllipse extends EnsembleExample {
           centerY = 45
           radiusX = 30
           radiusY = 45
-        fill = Color.BLUEVIOLET
+        fill = Color.BlueViolet
       },
         new Ellipse{
           centerX = 140
           centerY = 145
           radiusX = 30
           radiusY = 45
-          stroke = Color.BLACK
-          fill = Color.WHITE
+          stroke = Color.Black
+          fill = Color.White
         }
     )
   }

@@ -28,12 +28,10 @@
 package scalafx.ensemble.stage
 
 import scalafx.Includes._
-import scalafx.ensemble.commons.ContentFactory
-import scalafx.ensemble.commons.DisplayablePage
+import scalafx.ensemble.commons.{ContentFactory, DisplayablePage}
 import scalafx.geometry.Pos
 import scalafx.scene.Node
-import scalafx.scene.control.Tab
-import scalafx.scene.control.TabPane
+import scalafx.scene.control.{Tab, TabPane}
 import scalafx.scene.layout.{Priority, StackPane}
 
 object EnsembleTabbedPage {
@@ -41,8 +39,8 @@ object EnsembleTabbedPage {
   def buildTab(ctrlName: String, ctrlgrop: String) = {
 
     val tabbedPage = new TabPane() {
-      hgrow = Priority.ALWAYS
-      vgrow = Priority.ALWAYS
+      hgrow = Priority.Always
+      vgrow = Priority.Always
       id = "source-tabs"
       tabs = Seq(
         new Tab() {
@@ -61,7 +59,7 @@ object EnsembleTabbedPage {
 
   def buildTabContent(node: Node) = {
     val demoTabStack = new StackPane {
-      alignmentInParent = Pos.TOP_LEFT
+      alignmentInParent = Pos.TopLeft
       content = List(node)
     }
     demoTabStack
@@ -72,7 +70,7 @@ class EnsembleTabbedPage(tabPane: TabPane, ctrlName: String, ctrlGroup: String)
   extends DisplayablePage {
 
   def getPage = {
-    import EnsembleTabbedPage._
+    import scalafx.ensemble.stage.EnsembleTabbedPage._
     tabPane.tabs(0).content = buildTabContent(ContentFactory.createContent(ctrlName, ctrlGroup))
     tabPane.tabs(1).content = buildTabContent(ContentFactory.createSrcContent(ctrlName, ctrlGroup))
     tabPane

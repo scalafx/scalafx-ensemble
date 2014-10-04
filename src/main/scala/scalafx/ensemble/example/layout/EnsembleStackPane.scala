@@ -29,10 +29,8 @@ package scalafx.ensemble.example.layout
 
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.control.ContentDisplay
-import scalafx.scene.control.Label
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
+import scalafx.scene.control.{ContentDisplay, Label}
+import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.StackPane
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
@@ -52,12 +50,12 @@ class EnsembleStackPane extends EnsembleExample {
         new Rectangle {
           width = 200
           height = 70
-          fill = Color.BISQUE
-          stroke = Color.BURLYWOOD
+          fill = Color.Bisque
+          stroke = Color.Burlywood
         },
         new Label {
           text = "I am in a stack pane"
-          contentDisplay = ContentDisplay.LEFT
+          contentDisplay = ContentDisplay.Left
           graphic = new ImageView {
             image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
           }

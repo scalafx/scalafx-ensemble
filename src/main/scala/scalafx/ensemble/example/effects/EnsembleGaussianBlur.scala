@@ -30,10 +30,8 @@ package scalafx.ensemble.example.effects
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.effect.GaussianBlur
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.scene.image.{Image, ImageView}
+import scalafx.scene.layout.{Priority, VBox}
 
 /**
  * A sample that demonstrates a Gaussian blur effect on an image, with varying
@@ -46,8 +44,8 @@ import scalafx.scene.layout.VBox
 class EnsembleGaussianBlur extends EnsembleExample {
 
   def getContent = new VBox {
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
+    vgrow = Priority.Always
+    hgrow = Priority.Always
     spacing = 10
     padding = Insets(20, 100, 20, 100)
     content = List(

@@ -31,23 +31,22 @@ import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Label
 import scalafx.scene.effect.DropShadow
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.text.Font
 
 class EnsembleDropShadow extends EnsembleExample {
 
   def getContent = new VBox {
-    vgrow = Priority.ALWAYS
-    hgrow = Priority.ALWAYS
+    vgrow = Priority.Always
+    hgrow = Priority.Always
     spacing = 30
     padding = Insets(20, 75, 20, 75)
     content = List(
       new Label {
         text = "Ensemble Drop Shadow 1"
         font = new Font("Verdana", 20)
-        effect = new DropShadow(12, Color.BLUE) {
+        effect = new DropShadow(12, Color.Blue) {
           offsetX = 60
           offsetY = 15
         }

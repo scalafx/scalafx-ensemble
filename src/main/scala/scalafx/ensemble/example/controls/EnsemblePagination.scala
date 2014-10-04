@@ -30,15 +30,10 @@ package scalafx.ensemble.example.controls
 import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.event.ActionEvent
-import scalafx.geometry.{Pos, Insets}
-import scalafx.scene.control.Button
-import scalafx.scene.control.Control
-import scalafx.scene.control.Label
-import scalafx.scene.control.Pagination
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
-import scalafx.scene.layout.Priority
-import scalafx.scene.layout.VBox
+import scalafx.geometry.{Insets, Pos}
+import scalafx.scene.control.{Button, Control, Label, Pagination}
+import scalafx.scene.image.{Image, ImageView}
+import scalafx.scene.layout.{Priority, VBox}
 
 /** A sample that demonstrates pagination
   *
@@ -65,7 +60,7 @@ class EnsemblePagination extends EnsembleExample {
     // Factory function for creating page content
     val createAnimalPage = (index: Int) => new VBox() {
       content = List(new ImageView(images(index)), new Label("PAGE " + (index + 1)))
-      alignment = Pos.CENTER
+      alignment = Pos.Center
     }
 
     // Pagination with 7 pages and index starts at zero
@@ -74,9 +69,9 @@ class EnsemblePagination extends EnsembleExample {
     }
 
     new VBox {
-      vgrow = Priority.ALWAYS
-      hgrow = Priority.ALWAYS
-      alignment = Pos.CENTER
+      vgrow = Priority.Always
+      hgrow = Priority.Always
+      alignment = Pos.Center
       spacing = 10
       padding = Insets(20)
       content = List(
