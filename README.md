@@ -33,16 +33,19 @@ In the future, we will also provide an excitable version.
 
 To compile and run the project you only need to have:
 
-*  [Java 1.7 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-(u67 or newer version of 1.7).
+*  [Java 1.8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+(u20 or newer version of 1.8).
 *  [SBT](http://www.scala-sbt.org/) (v.0.13.6 or newer) installed.
 *  ScalaFX Ensemble source code
 
 All missing dependencies, including proper version of Scala and ScalaFX, will be downloaded by SBT.
 
+The older version of ScalaFX Ensemble for ScalaFX 2.2 (Java 1.7) is on branch
+[SFX-2](https://github.com/scalafx/scalafx-ensemble/tree/SFX-2).
+
 ### Compile and Run using SBT ###
 
-Once you have [JDK 1.7](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+Once you have [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 and [SBT](http://www.scala-sbt.org/) installed, you can complie and run ScalaFX Ensemble from command prompt using `sbt`:
 
 1. Open command prompt

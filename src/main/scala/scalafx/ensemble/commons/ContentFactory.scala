@@ -28,7 +28,8 @@
 package scalafx.ensemble.commons
 
 import java.util.Locale
-import javafx.scene.control.Dialogs
+import javafx.scene.control.Alert
+import javafx.scene.control.Alert.AlertType
 import javafx.stage.Stage
 
 import scalafx.Includes._
@@ -148,13 +149,13 @@ object ContentFactory {
                 case Some(projectDir) =>
                   SBTProjectBuilder.createSampleProject(projectDir, exampleInfo)
                   SBTProjectBuilder.parentDir = projectDir.getCanonicalFile.getParentFile
-                case _                =>
+                case _ =>
               }
             } catch {
               case t: Throwable =>
                 val stage = thisButton.scene().window().asInstanceOf[Stage]
-                Dialogs.showErrorDialog(stage, t.getClass.getName + ": " + t.getMessage,
-                  "Error saving sample SBT project", thisButton.text(), t)
+                showError(stage, title = thisButton.text(), header = "Error saving sample SBT project",
+                  message = t.getClass.getName + ": " + t.getMessage, t)
             }
           },
           new Button {
@@ -169,8 +170,8 @@ object ContentFactory {
             } catch {
               case t: Throwable =>
                 val stage = thisButton.scene().window().asInstanceOf[Stage]
-                Dialogs.showErrorDialog(stage, t.getClass.getName + ": " + t.getMessage,
-                  "Error copying source to clipboard", thisButton.text(), t)
+                showError(stage, title = thisButton.text(),
+                  header = "Error copying source to clipboard", message = t.getClass.getName + ": " + t.getMessage, t)
             }
           }
         )
@@ -189,5 +190,15 @@ object ContentFactory {
   def isMac: Boolean = {
     val os = System.getProperty("os.name").toLowerCase(new Locale(""))
     os.indexOf("mac") >= 0
+  }
+
+  private def showError(stage: Stage, title: String, header: String, message: String, t: Throwable): Unit = {
+    t.printStackTrace()
+    val alert = new Alert(AlertType.ERROR)
+    alert.initOwner(stage)
+    alert.setContentText(message)
+    alert.setHeaderText(header)
+    alert.setTitle(title)
+    alert.showAndWait()
   }
 }

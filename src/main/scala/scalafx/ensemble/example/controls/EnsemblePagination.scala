@@ -31,9 +31,9 @@ import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.event.ActionEvent
 import scalafx.geometry.{Insets, Pos}
-import scalafx.scene.control.{Button, Control, Label, Pagination}
+import scalafx.scene.control.{Button, Label, Pagination}
 import scalafx.scene.image.{Image, ImageView}
-import scalafx.scene.layout.{Priority, VBox}
+import scalafx.scene.layout.{Priority, Region, VBox}
 
 /** A sample that demonstrates pagination
   *
@@ -77,8 +77,8 @@ class EnsemblePagination extends EnsembleExample {
       content = List(
         pagination,
         new Button {
-          maxWidth = Control.USE_PREF_SIZE
-          maxHeight = Control.USE_PREF_SIZE
+          maxWidth = Region.USE_PREF_SIZE
+          maxHeight = Region.USE_PREF_SIZE
           text = "Toggle Pagination Button"
           onAction = (ae: ActionEvent) => {
             if (pagination.styleClass.contains(Pagination.STYLE_CLASS_BULLET)) {

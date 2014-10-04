@@ -9,8 +9,9 @@ scalaVersion := "2.11.2"
 assemblySettings
 
 libraryDependencies ++= Seq(
-  "org.scalafx"            %% "scalafx" % "2.2.67-R10",
-  "org.scala-lang.modules" %% "scala-xml" % "1.0.2"
+  "org.scalafx"            %% "scalafx"         % "8.0.20-R6",
+  "org.scala-lang.modules" %% "scala-xml"       % "1.0.2",
+  "org.controlsfx"          % "openjfx-dialogs" % "1.0.2"
 )
 
 resolvers += Opts.resolver.sonatypeSnapshots
@@ -23,9 +24,6 @@ unmanagedResourceDirectories in Compile <+= baseDirectory { _/"src/main/scala"}
 
 // Set the prompt (for this build) to include the project id.
 shellPrompt := { state => System.getProperty("user.name") + ":" + Project.extract(state).currentRef.project + "> " }
-
-// Add JavaFX 2.0 to classpath
-unmanagedJars in Compile += Attributed.blank(file(scala.util.Properties.javaHome + "/lib/jfxrt.jar"))
 
 // Run in separate VM, so there are no issues with double initialization of JavaFX
 fork := true

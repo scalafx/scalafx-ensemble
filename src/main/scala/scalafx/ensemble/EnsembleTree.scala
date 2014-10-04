@@ -36,7 +36,7 @@ import scalafx.event.ActionEvent
 import scalafx.geometry.{Insets, Orientation}
 import scalafx.scene.control._
 import scalafx.scene.image.{Image, ImageView}
-import scalafx.scene.layout.TilePane
+import scalafx.scene.layout.{Region, TilePane}
 
 /**
  * Object to load examples as Map which in turn is used
@@ -84,7 +84,7 @@ object EnsembleTree {
           val inputStream = this.getClass.getResourceAsStream(filePath)
           if (inputStream == null) {
             throw new IOException("Unable to locate resource: " + filePath)
-          }
+        }
           image = new Image(inputStream)
         }
         val button = new Button(sampleName, img) {
@@ -146,7 +146,7 @@ class EnsembleTree(tree: Map[String, List[TreeItem[String]]],
     new Label {
       text = value
       maxWidth = Double.MaxValue
-      minHeight = Control.USE_PREF_SIZE
+      minHeight = Region.USE_PREF_SIZE
       styleClass += "category-header"
     }
 

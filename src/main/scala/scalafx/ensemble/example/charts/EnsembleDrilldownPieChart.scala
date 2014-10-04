@@ -67,7 +67,7 @@ class EnsembleDrilldownPieChart extends EnsembleExample {
   }
 
   def drillDownData = (pie: PieChart, pieData: PieChart.Data, labelPrefix: String) => {
-    pieData.node.onMouseClicked = (_: MouseEvent) => pie.data = Seq(
+    pieData.node().onMouseClicked = (_: MouseEvent) => pie.data = Seq(
       PieChart.Data(labelPrefix + "-1", 7),
       PieChart.Data(labelPrefix + "-2", 2),
       PieChart.Data(labelPrefix + "-3", 5),
