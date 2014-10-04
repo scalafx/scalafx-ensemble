@@ -491,6 +491,7 @@
 }
 /* Category Page Styles */
 .category-page {
+    -fx-background: #333333;
 	-fx-background-image: url("../images/texture.png");
 	-fx-background-repeat: repeat repeat;
 	-fx-background-position: left top;
@@ -507,8 +508,13 @@
 }
 
 .category-header {
-	-fx-padding: 8px 0 10px 0;
-	-fx-background-color: rgba(0, 0, 0, 0.12);
+	-fx-padding: 8px 8pt 10px 8pt;
+    -fx-background-color:
+            linear-gradient(#686868 0%, #232723 10%, #373837 90%, #757575 100%),
+            linear-gradient(#020b02, #3a3a3a),
+            linear-gradient(#9d9e9d 0%, #6b6a6b 20%, #343534 80%, #242424 100%),
+            linear-gradient(#8a8a8a 0%, #6b6a6b 20%, #343534 80%, #262626 100%),
+            linear-gradient(#777777 0%, #606060 30%, #505250 70%, #2a2b2a 100%);
 	-fx-background-insets: 4 -8 4 -8;
 	-fx-border-color: rgba(255, 255, 255, 0.2) transparent
 		rgba(255, 255, 255, 0.2) transparent;
