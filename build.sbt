@@ -4,13 +4,13 @@ version := "1.0-SNAPSHOT"
 
 organization := "org.scalafx"
 
-scalaVersion := "2.11.2"
+scalaVersion := "2.11.5"
 
 assemblySettings
 
 libraryDependencies ++= Seq(
-  "org.scalafx"            %% "scalafx"         % "8.0.20-R6",
-  "org.scala-lang.modules" %% "scala-xml"       % "1.0.2",
+  "org.scalafx"            %% "scalafx"         % "8.0.31-R7",
+  "org.scala-lang.modules" %% "scala-xml"       % "1.0.3",
   "org.controlsfx"          % "openjfx-dialogs" % "1.0.2"
 )
 
