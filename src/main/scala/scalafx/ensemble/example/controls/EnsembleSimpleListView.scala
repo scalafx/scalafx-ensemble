@@ -31,14 +31,14 @@ import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.control.{SelectionMode, ListView}
+import scalafx.scene.control.{ListView, SelectionMode}
 import scalafx.scene.layout.StackPane
 
 class EnsembleSimpleListView extends EnsembleExample {
 
   def getContent = new StackPane {
     padding = Insets(20)
-    content = new ListView[String] {
+    children = new ListView[String] {
       maxWidth = 200
       items = ObservableBuffer("Row 1", "Row 2", "Long Row 3", "Row 4", "Row 5", "Row 6",
         "Row 7", "Row 8", "Row 9", "Row 10", "Row 11", "Row 12", "Row 13",

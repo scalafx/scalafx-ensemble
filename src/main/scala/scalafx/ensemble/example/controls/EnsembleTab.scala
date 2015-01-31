@@ -29,8 +29,8 @@ package scalafx.ensemble.example.controls
 
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.{Insets, Side}
-import scalafx.scene.control.{Tab, TabPane}
 import scalafx.scene.control.TabPane.TabClosingPolicy
+import scalafx.scene.control.{Tab, TabPane}
 import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.text.{Font, Text}
 
@@ -42,7 +42,7 @@ class EnsembleTab extends EnsembleExample {
     hgrow = Priority.Always
     spacing = 10
     padding = Insets(20)
-    content = List(
+    children = List(
       new Text {
         text = "Ensemble Tabs"
         font = new Font("Verdana", 20)

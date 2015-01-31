@@ -30,8 +30,7 @@ package scalafx.ensemble.example.controls
 import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.control.TreeItem
-import scalafx.scene.control.TreeView
+import scalafx.scene.control.{TreeItem, TreeView}
 import scalafx.scene.layout.StackPane
 
 
@@ -63,7 +62,7 @@ class EnsembleTreeView extends EnsembleExample {
 
     new StackPane {
       padding = Insets(20)
-      content = treeView
+      children = treeView
     }
   }
 }

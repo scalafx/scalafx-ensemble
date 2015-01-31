@@ -38,9 +38,9 @@ class EnsembleProgressBar extends EnsembleExample {
 
   def getContent = new StackPane {
     padding = Insets(20)
-    content = new VBox {
+    children = new VBox {
       spacing = 10
-      content = List(
+      children = List(
         new ProgressBar {
           maxWidth = 100
         },

@@ -45,7 +45,7 @@ class EnsembleColorButton extends EnsembleExample {
     hgrow = Priority.Always
     spacing = 10
     padding = Insets(20)
-    content = List(
+    children = List(
       new Button {
         maxWidth = 200
         maxHeight = 150

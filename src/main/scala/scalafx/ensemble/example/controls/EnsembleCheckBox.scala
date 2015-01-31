@@ -45,7 +45,7 @@ class EnsembleCheckBox extends EnsembleExample {
     hgrow = Priority.Always
     spacing = 10
     padding = Insets(20)
-    content = List(
+    children = List(
       new CheckBox {
         text = "Simple CheckBox"
       },

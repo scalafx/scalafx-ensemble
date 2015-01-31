@@ -29,10 +29,8 @@ package scalafx.ensemble.example.layout
 
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.control.Button
-import scalafx.scene.control.Label
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
+import scalafx.scene.control.{Button, Label}
+import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.AnchorPane
 
 /** An example of an AnchorPane layout.
@@ -58,7 +56,7 @@ class EnsembleAnchorPane extends EnsembleExample {
 
     new AnchorPane {
       padding = Insets(20)
-      content = List(label, button, imageView)
+      children = List(label, button, imageView)
     }
   }
 }

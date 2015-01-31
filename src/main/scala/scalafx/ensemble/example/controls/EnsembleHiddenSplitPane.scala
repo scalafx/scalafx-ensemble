@@ -31,7 +31,7 @@ import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.SplitPane
-import scalafx.scene.layout.{StackPane, Region}
+import scalafx.scene.layout.{Region, StackPane}
 
 /**
  * A sample that demonstrates styling a hidden split pane with CSS.
@@ -62,7 +62,7 @@ class EnsembleHiddenSplitPane extends EnsembleExample {
 
     new StackPane {
       padding = Insets(20)
-      content = new SplitPane {
+      children = new SplitPane {
         padding = Insets(20)
         dividerPositions_=(0.20, 0.80)
         items ++= Seq(reg1, reg2, reg3)

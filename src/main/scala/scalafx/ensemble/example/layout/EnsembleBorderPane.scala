@@ -59,10 +59,10 @@ class EnsembleBorderPane extends EnsembleExample {
     // Left content using VBox
     val leftVBox = new VBox {
       spacing = 10
-      content = List(Label("Left Hand"), Label("Choice One"), Label("Choice Two"), Label("Choice Three"))
+      children = List(Label("Left Hand"), Label("Choice One"), Label("Choice Two"), Label("Choice Three"))
     }
 
-    // Center content using Anchor Pane 
+    // Center content using Anchor Pane
     val centerLabel = Label("We're in the center area.")
     val imageButton = new ImageView {
       image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
@@ -72,13 +72,13 @@ class EnsembleBorderPane extends EnsembleExample {
     AnchorPane.setLeftAnchor(centerLabel, 80.0)
     AnchorPane.setLeftAnchor(imageButton, 80.0)
     val centerAnchorPane = new AnchorPane {
-      content = List(centerLabel, imageButton)
+      children = List(centerLabel, imageButton)
     }
 
     // Right content using VBox
     val rightVBox = new VBox {
       spacing = 10
-      content = List(Label("Right Hand"), Label("Thing A"), Label("Thing B"), Label("Thing C"))
+      children = List(Label("Right Hand"), Label("Thing A"), Label("Thing B"), Label("Thing C"))
     }
 
     // Right content

@@ -60,7 +60,7 @@ class EnsembleHtmlEditor extends EnsembleExample {
     new VBox {
       spacing = 5
       padding = Insets(5)
-      content = List(
+      children = List(
         htmlEditor,
         new Button {
           text = "Display Html below"
@@ -70,7 +70,7 @@ class EnsembleHtmlEditor extends EnsembleExample {
           prefHeight = 200
           hgrow = Priority.Always
           vgrow = Priority.Always
-          content = htmlLabel
+          children = htmlLabel
         }
       )
     }

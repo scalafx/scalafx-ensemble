@@ -43,7 +43,7 @@ class EnsembleInnerShadow extends EnsembleExample {
       hgrow = Priority.Always
       spacing = 10
       padding = Insets(20)
-      content = List(
+      children = List(
         new Label {
           text = "Ensemble Inner Shadow 1"
           font = new Font("Arial Black", 30)

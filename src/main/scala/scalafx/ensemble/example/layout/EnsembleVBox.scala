@@ -45,11 +45,11 @@ class EnsembleVBox extends EnsembleExample {
       padding = Insets(20)
       spacing = 10
       alignment = Pos.TopLeft
-      content = Seq(
+      children = Seq(
         label,
         new VBox {
           spacing = 5
-          content = List(checkBox1, checkBox2, checkBox3)
+          children = List(checkBox1, checkBox2, checkBox3)
         }
       )
     }

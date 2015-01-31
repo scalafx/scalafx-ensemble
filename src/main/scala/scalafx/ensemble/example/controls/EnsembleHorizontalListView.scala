@@ -29,8 +29,7 @@ package scalafx.ensemble.example.controls
 
 import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.Insets
-import scalafx.geometry.Orientation
+import scalafx.geometry.{Insets, Orientation}
 import scalafx.scene.control.ListView
 import scalafx.scene.layout.StackPane
 
@@ -60,7 +59,7 @@ class EnsembleHorizontalListView extends EnsembleExample {
 
     new StackPane {
       padding = Insets(10)
-      content = listView
+      children = listView
     }
   }
 }

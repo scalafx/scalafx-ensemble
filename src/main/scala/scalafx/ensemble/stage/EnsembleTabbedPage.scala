@@ -60,7 +60,7 @@ object EnsembleTabbedPage {
   def buildTabContent(node: Node) = {
     val demoTabStack = new StackPane {
       alignmentInParent = Pos.TopLeft
-      content = List(node)
+      children = List(node)
     }
     demoTabStack
   }

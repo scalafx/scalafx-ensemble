@@ -38,7 +38,7 @@ class EnsembleEllipse extends EnsembleExample {
   def getContent = new HBox {
     spacing = 25
     padding = Insets(20)
-    content = List(
+    children = List(
       new Ellipse{
           centerX = 40
           centerY = 45

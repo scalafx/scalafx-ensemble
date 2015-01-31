@@ -44,7 +44,7 @@ class EnsembleInsetText extends EnsembleExample {
     val insetTextCss = this.getClass.getResource("/scalafx/ensemble/css/InsetText.css").toExternalForm
     new VBox {
       padding = Insets(20)
-      content = new Label {
+      children = new Label {
         text = "Label styled as a bar"
         id = "label1"
         stylesheets = List(insetTextCss)

@@ -59,7 +59,7 @@ class EnsemblePagination extends EnsembleExample {
 
     // Factory function for creating page content
     val createAnimalPage = (index: Int) => new VBox() {
-      content = List(new ImageView(images(index)), new Label("PAGE " + (index + 1)))
+      children = List(new ImageView(images(index)), new Label("PAGE " + (index + 1)))
       alignment = Pos.Center
     }
 
@@ -74,7 +74,7 @@ class EnsemblePagination extends EnsembleExample {
       alignment = Pos.Center
       spacing = 10
       padding = Insets(20)
-      content = List(
+      children = List(
         pagination,
         new Button {
           maxWidth = Region.USE_PREF_SIZE

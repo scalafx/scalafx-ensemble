@@ -161,7 +161,7 @@ class EnsembleGridPane extends EnsembleExample {
     val grid3 = new GridPane {
       padding = Insets(18)
       gridLinesVisible = true
-      content ++= Seq(grid3Caption)
+      children ++= Seq(grid3Caption)
       val rowConstr50Perc = new RowConstraints {percentHeight = 50}
       val colConstr25Perc = new ColumnConstraints {percentWidth = 25}
       val colConstr50Perc = new ColumnConstraints {percentWidth = 50}
@@ -202,12 +202,12 @@ class EnsembleGridPane extends EnsembleExample {
       hgrow = Priority.Always
       spacing = 10
       padding = Insets(20)
-      content = List(
-        new VBox {content = List(grid1Caption, grid1)},
+      children = List(
+        new VBox {children = List(grid1Caption, grid1)},
         new Separator(),
-        new VBox {content = List(grid2Caption, grid2)},
+        new VBox {children = List(grid2Caption, grid2)},
         new Separator(),
-        new VBox {content = List(grid3Caption, grid3)}
+        new VBox {children = List(grid3Caption, grid3)}
       )
     }
   }

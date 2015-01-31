@@ -43,7 +43,7 @@ class EnsembleRadioButton extends EnsembleExample {
     //Radio Button Toggle Group
     val tog = new ToggleGroup()
 
-    content = List(
+    children = List(
       new RadioButton {
         maxWidth = 200
         maxHeight = 50

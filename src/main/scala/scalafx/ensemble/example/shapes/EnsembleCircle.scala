@@ -58,7 +58,7 @@ class EnsembleCircle extends EnsembleExample {
     new HBox {
       spacing = 25
       padding = Insets(20)
-      content = List(circle1, circle2)
+      children = List(circle1, circle2)
     }
   }
 }

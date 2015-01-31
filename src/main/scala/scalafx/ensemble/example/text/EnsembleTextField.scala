@@ -37,7 +37,7 @@ class EnsembleTextField extends EnsembleExample {
   def getContent = new VBox {
     spacing = 10
     padding = Insets(20)
-    content = List(
+    children = List(
       new TextField {
         promptText = "Hi! I am Scalafx TextField"
         maxWidth = 200

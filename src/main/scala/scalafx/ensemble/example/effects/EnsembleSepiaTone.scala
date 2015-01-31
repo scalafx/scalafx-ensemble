@@ -30,8 +30,7 @@ package scalafx.ensemble.example.effects
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.effect.SepiaTone
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
+import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.StackPane
 
 /** A sample that demonstrates a sepia tone effect.
@@ -45,7 +44,7 @@ class EnsembleSepiaTone extends EnsembleExample {
   def getContent = {
     new StackPane {
       padding = Insets(20)
-      content = new ImageView {
+      children = new ImageView {
         image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/boat.jpg"))
         effect = new SepiaTone() {
           level = 0.9d

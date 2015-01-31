@@ -30,8 +30,7 @@ package scalafx.ensemble.example.effects
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.effect.Reflection
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
+import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.StackPane
 
 /**
@@ -46,7 +45,7 @@ class EnsembleReflection extends EnsembleExample {
   def getContent = {
     new StackPane {
       padding = Insets(20, 20, 170, 20)
-      content = new ImageView {
+      children = new ImageView {
         image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/boat.jpg"))
         fitHeight = 150
         preserveRatio = true

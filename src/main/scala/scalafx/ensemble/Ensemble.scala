@@ -97,7 +97,7 @@ object Ensemble extends JFXApp {
         top = new VBox {
           vgrow = Priority.Always
           hgrow = Priority.Always
-          content = new ToolBar {
+          children = new ToolBar {
             prefHeight = 76
             maxHeight = 76
             id = "mainToolBar"

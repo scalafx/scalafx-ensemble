@@ -55,7 +55,7 @@ class EnsembleRectangle extends EnsembleExample {
     new HBox {
       spacing = 20
       padding = Insets(20)
-      content = List(
+      children = List(
         Rectangle(100, 100, Color.Red),
         rectObj(Rectangle(100, 100, Color.White)),
         rectArcObj(20, 20),

@@ -38,7 +38,7 @@ class EnsembleLine extends EnsembleExample {
   def getContent = new VBox {
     spacing = 20
     padding = Insets(20)
-    content = List(
+    children = List(
       new Line {
         startX = 320
         startY = 120

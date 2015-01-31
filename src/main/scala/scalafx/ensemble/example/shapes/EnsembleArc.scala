@@ -37,7 +37,7 @@ class EnsembleArc extends EnsembleExample {
   def getContent = new HBox {
     spacing = 50
     padding = Insets(20)
-    content = List(
+    children = List(
       new Arc {
         centerX = 200
         centerY = 200

@@ -29,9 +29,7 @@ package scalafx.ensemble.example.controls
 
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.control.Button
-import scalafx.scene.control.Slider
-import scalafx.scene.control.ToolBar
+import scalafx.scene.control.{Button, Slider, ToolBar}
 import scalafx.scene.layout.VBox
 
 class EnsembleStyledToolBar extends EnsembleExample {
@@ -79,7 +77,7 @@ class EnsembleStyledToolBar extends EnsembleExample {
     new VBox {
       spacing = 10
       padding = Insets(20)
-      content = List(stdToolBar, darkToolBar, blueToolBar)
+      children = List(stdToolBar, darkToolBar, blueToolBar)
     }
   }
 }

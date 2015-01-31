@@ -42,7 +42,7 @@ class EnsembleDropShadow extends EnsembleExample {
     hgrow = Priority.Always
     spacing = 30
     padding = Insets(20, 75, 20, 75)
-    content = List(
+    children = List(
       new Label {
         text = "Ensemble Drop Shadow 1"
         font = new Font("Verdana", 20)

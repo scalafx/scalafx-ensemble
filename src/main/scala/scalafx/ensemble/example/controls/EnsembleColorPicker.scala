@@ -76,7 +76,7 @@ class EnsembleColorPicker extends EnsembleExample {
       vgrow = Priority.Always
       hgrow = Priority.Always
       spacing = 50
-      content = List(
+      children = List(
         new ToolBar {
           content = colorPicker
         },
@@ -84,7 +84,7 @@ class EnsembleColorPicker extends EnsembleExample {
           alignment = Pos.Center
           spacing = 20
           padding = Insets(20)
-          content = Seq(labelColor, buttonColor)
+          children = Seq(labelColor, buttonColor)
         }
       )
     }

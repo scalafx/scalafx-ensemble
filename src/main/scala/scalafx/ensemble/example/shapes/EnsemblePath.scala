@@ -38,7 +38,7 @@ class EnsemblePath extends EnsembleExample {
   def getContent = new HBox {
     spacing = 20
     padding = Insets(20)
-    content = List(
+    children = List(
       new Path {
         elements = List(MoveTo(35, 35), HLineTo(75), VLineTo(75), LineTo(35, 75), new ClosePath())
         fill = Color.Orange

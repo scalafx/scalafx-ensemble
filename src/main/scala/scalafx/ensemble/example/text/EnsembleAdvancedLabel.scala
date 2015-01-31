@@ -47,7 +47,7 @@ class EnsembleAdvancedLabel extends EnsembleExample {
     new VBox {
       spacing = 10
       padding = Insets(20)
-      content = List(
+      children = List(
         new Label {
           text = "Image above"
           graphic = new ImageView(icon)

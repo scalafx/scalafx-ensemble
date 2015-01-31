@@ -37,7 +37,7 @@ class EnsembleQuadCurve extends EnsembleExample {
   def getContent = new VBox {
     spacing = 20
     padding = Insets(20)
-    content = List(
+    children = List(
       new QuadCurve {
         controlX = 50
         controlY = 10

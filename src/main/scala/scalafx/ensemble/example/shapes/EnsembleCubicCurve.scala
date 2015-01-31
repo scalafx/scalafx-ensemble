@@ -38,7 +38,7 @@ class EnsembleCubicCurve extends EnsembleExample {
   def getContent = new HBox {
     spacing = 10
     padding = Insets(20)
-    content = List(
+    children = List(
       new CubicCurve {
         controlX1 = 30.0
         controlX2 = 150.0

@@ -28,7 +28,7 @@
 package scalafx.ensemble.example.controls
 
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.geometry.{Orientation, Insets}
+import scalafx.geometry.{Insets, Orientation}
 import scalafx.scene.control.Button
 import scalafx.scene.layout.TilePane
 
@@ -40,7 +40,7 @@ class EnsembleButton extends EnsembleExample {
     orientation = Orientation.VERTICAL
     hgap = 10
     vgap = 10
-    content = List(
+    children = List(
       new Button {
         text = "Button 1"
         maxWidth = Double.MaxValue

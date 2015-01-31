@@ -30,8 +30,7 @@ package scalafx.ensemble.example.controls
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Button
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
+import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.StackPane
 
 /**
@@ -45,7 +44,7 @@ import scalafx.scene.layout.StackPane
 class EnsembleGraphicButton extends EnsembleExample {
   def getContent = new StackPane {
     padding = Insets(20)
-    content = new Button {
+    children = new Button {
       maxWidth = 170
       maxHeight = 50
       text = "Graphic Button"

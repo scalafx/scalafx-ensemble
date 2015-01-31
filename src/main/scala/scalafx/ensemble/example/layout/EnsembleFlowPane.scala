@@ -32,8 +32,7 @@ import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.Group
 import scalafx.scene.control.Label
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
+import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.FlowPane
 
 /**
@@ -55,7 +54,7 @@ class EnsembleFlowPane extends EnsembleExample {
       prefWrapLength = 200
       padding = Insets(20)
       for (i <- 1 to 5) {
-        content ++= Seq(
+        children ++= Seq(
           new Label("Short label"), new Label("I am a slightly longer label."), new ImageView(image)
         )
       }
@@ -63,7 +62,7 @@ class EnsembleFlowPane extends EnsembleExample {
 
     // Wrap in a Group to isolate from parent's layout parameters
     new Group {
-      content = flowPane
+      children = flowPane
     }
   }
 }

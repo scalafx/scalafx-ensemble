@@ -41,7 +41,7 @@ class EnsembleSimpleLabel extends EnsembleExample {
 
   def getContent = new VBox {
     padding = Insets(20)
-    content = new Label {
+    children = new Label {
       text = "A simple label with a graphic on the left."
       graphic = new ImageView {
         image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))

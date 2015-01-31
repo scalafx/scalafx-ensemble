@@ -53,7 +53,7 @@ object PageDisplayer {
     new VBox {
       vgrow = Priority.Always
       hgrow = Priority.Always
-      content = nodeToAdd.getPage
+      children = nodeToAdd.getPage
     }
   }
 }

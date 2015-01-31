@@ -54,7 +54,7 @@ class EnsembleComboBox extends EnsembleExample {
       hgrow = Priority.Always
       spacing = 15
       padding = Insets(20)
-      content = List(
+      children = List(
         new ComboBox[String] {
           maxWidth = 200
           promptText = "Make a choice..."

@@ -27,7 +27,6 @@
 
 package scalafx.ensemble.stage
 
-import scalafx.Includes._
 import scalafx.ensemble.EnsembleTree
 import scalafx.ensemble.commons.DisplayablePage
 import scalafx.scene.control.ScrollPane
@@ -52,7 +51,7 @@ class DashboardPage(dashPart: String = "dashboard") extends DisplayablePage {
       content = new VBox {
         vgrow = Priority.Always
         hgrow = Priority.Always
-        content = thumbs
+        children = thumbs
       }
       styleClass += "category-page"
     }

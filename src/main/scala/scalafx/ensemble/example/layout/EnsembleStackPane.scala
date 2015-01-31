@@ -46,7 +46,7 @@ class EnsembleStackPane extends EnsembleExample {
   def getContent = {
     new StackPane {
       padding = Insets(20)
-      content = List(
+      children = List(
         new Rectangle {
           width = 200
           height = 70

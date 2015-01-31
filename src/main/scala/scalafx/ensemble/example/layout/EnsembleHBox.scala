@@ -43,7 +43,7 @@ class EnsembleHBox extends EnsembleExample {
       padding = Insets(20)
       spacing = 5
       alignment = Pos.Center
-      content = List(label, textField, button)
+      children = List(label, textField, button)
     }
   }
 }

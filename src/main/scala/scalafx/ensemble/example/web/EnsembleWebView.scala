@@ -68,7 +68,7 @@ class EnsembleWebView extends EnsembleExample {
       top = new HBox {
         spacing = 5
         margin = Insets(top = 0, right = 0, bottom = 5, left = 0)
-        content = List(locationField, goButton)
+        children = List(locationField, goButton)
       }
       center = webView
     }

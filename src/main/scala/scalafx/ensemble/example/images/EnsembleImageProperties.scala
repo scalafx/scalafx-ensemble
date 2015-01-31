@@ -80,10 +80,10 @@ class EnsembleImageProperties extends EnsembleExample {
       hgrow = Priority.Always
       spacing = 10
       padding = Insets(20)
-      content = List(
+      children = List(
         new HBox {
           spacing = 5
-          content = List(sample1, sample3, sample4, sample5)
+          children = List(sample1, sample3, sample4, sample5)
         },
         sample2
       )

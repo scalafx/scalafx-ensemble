@@ -30,8 +30,7 @@ package scalafx.ensemble.example.layout
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.Button
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
+import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.TilePane
 
 /**
@@ -54,7 +53,7 @@ class EnsembleTilePane extends EnsembleExample {
       vgap = 3
       padding = Insets(20)
       prefColumns = 3
-      content = buttons
+      children = buttons
     }
   }
 }

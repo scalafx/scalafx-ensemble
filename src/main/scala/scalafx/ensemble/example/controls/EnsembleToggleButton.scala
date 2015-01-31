@@ -56,10 +56,10 @@ class EnsembleToggleButton extends EnsembleExample {
       hgrow = Priority.Always
       spacing = 10
       padding = Insets(20)
-      content = List(
+      children = List(
         new HBox {
           spacing = 10
-          content = List(
+          children = List(
             new ToggleButton {
               minWidth = 100
               text = "Hi"

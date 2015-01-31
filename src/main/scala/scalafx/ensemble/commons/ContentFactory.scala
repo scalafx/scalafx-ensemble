@@ -66,7 +66,7 @@ object ContentFactory {
     }
 
     val sampleArea = new StackPane {
-      content = sampleNode
+      children = sampleNode
       vgrow = Priority.Sometimes
     }
 

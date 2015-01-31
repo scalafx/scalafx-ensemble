@@ -48,7 +48,7 @@ class EnsembleGaussianBlur extends EnsembleExample {
     hgrow = Priority.Always
     spacing = 10
     padding = Insets(20, 100, 20, 100)
-    content = List(
+    children = List(
       new ImageView {
         image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
         effect = new GaussianBlur()
