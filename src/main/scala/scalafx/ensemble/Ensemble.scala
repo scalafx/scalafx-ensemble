@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2014, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2015, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -80,7 +80,7 @@ object Ensemble extends JFXApp {
     id = "page-tree"
     content = controlsView
   }
-  val splitPane = new SplitPane {
+  lazy val splitPane = new SplitPane {
     dividerPositions = 0
     id = "page-splitpane"
     items.addAll(scrollPane, centerPane)
