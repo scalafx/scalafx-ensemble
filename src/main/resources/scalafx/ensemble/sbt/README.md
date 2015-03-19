@@ -7,8 +7,8 @@ This is a [ScalaFX](http://scalafx.org) sample project created by
 ScalaFX Ensemble provides examples of using ScalaFX to create graphical user interfaces.
 
 This example can be compiled and run using the [Simple Build Tool](http://www.scala-sbt.org/) (SBT).
-[Eclipse](http://www.eclipse.org) and [Intellij IDEA](http://www.jetbrains.com/idea/)
-project configurations can be generated from the SBT setup.
+[Intellij IDEA](http://www.jetbrains.com/idea/) can import SBT configuration file `build.sbt`.
+[Eclipse](http://www.eclipse.org) project configurations can be generated from the SBT setup.
 
 
 Requirements
@@ -16,7 +16,7 @@ Requirements
 
 To compile and run the project you only need to have
 [Java 1.8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-(u20 or newer version of 1.8) and [SBT](http://www.scala-sbt.org/) (v.0.13.6 or newer) installed.
+(u40 or newer version of 1.8) and [SBT](http://www.scala-sbt.org/) (v.0.13.7 or newer) installed.
 All missing dependencies, including proper version of Scala and ScalaFX, will be downloaded by SBT.
 
 
@@ -28,13 +28,12 @@ Compile and Run using SBT
 3. Type `sbt run`
 
 
-Generate IntelliJ IDEA project configuration
+Import IntelliJ IDEA project configuration
 --------------------------------------------
 
-1. Open command prompt
+1. From IDEA select File > Open
 2. Change directory to where you saved the sample (directory containing this README file).
-3. Type `sbt gen-idea`
-4. Open generated using IntelliJ IDEA (you will also need to install Scala plugin)
+3. Select `build.sbt` and click OK
 
 
 Generate Eclipse project configuration
