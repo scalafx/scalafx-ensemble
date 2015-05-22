@@ -40,10 +40,10 @@ object ExampleInfo {
   def formalNoSpaces(name: String): String = name.replaceAllLiterally(" ", "")
 
   def thumbnailPath(exampleName: String, groupName: String): String =
-    examplesDir + groupName + "/" + formalNoSpaces(exampleName) + "Sample.png"
+    examplesDir + groupName.toLowerCase + "/" + formalNoSpaces(exampleName) + "Sample.png"
 
   def sourcecodePath(exampleName: String, groupName: String): String =
-    examplesDir + groupName + "/" + "Ensemble" + formalNoSpaces(exampleName) + ".scala"
+    examplesDir + groupName.toLowerCase + "/" + "Ensemble" + formalNoSpaces(exampleName) + ".scala"
 
   def className(exampleName: String, groupName: String): String = "scalafx.ensemble.example." + groupName +
     ".Ensemble" + ExampleInfo.formalNoSpaces(exampleName)

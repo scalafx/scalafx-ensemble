@@ -27,7 +27,7 @@
 
 package scalafx.ensemble
 
-import java.io.{File, IOException}
+import java.io.IOException
 
 import scala.collection.immutable.TreeMap
 import scalafx.Includes._
@@ -44,7 +44,8 @@ import scalafx.scene.layout.{Region, TilePane}
  */
 object EnsembleTree {
 
-  val examplePath = new File(getClass.getResource(ExampleInfo.examplesDir).getPath)
+  private val exampleListPath = ExampleInfo.examplesDir + "example.tree"
+  private val examplListURL = getClass.getResource(exampleListPath)
 
   def create(): EnsembleTree = new EnsembleTree(createTree(), createThumbnails())
 
@@ -53,38 +54,41 @@ object EnsembleTree {
    * This is used in UI
    */
   private def createTree(): Map[String, List[TreeItem[String]]] = {
-    // Sanity check, the listing mey not work when ScalaFX Ensemble is packaged into a jar.
-    val exampleRootFiles = examplePath.listFiles()
-    if (exampleRootFiles == null)
-      throw new IOException("Cannot list files in the example directory. May be caused by Issue #10.")
-
-    val pairs = for (dir <- exampleRootFiles if dir.isDirectory) yield {
-      val leaves = for (f <- dir.listFiles() if f.getName.contains(".scala")) yield {
-        val leafName = f.getName.stripSuffix(".scala").stripPrefix("Ensemble")
+    val pairs = for ((dirName, examples) <- loadExampleNames()) yield {
+      val leaves = for (leafName <- examples) yield {
         new TreeItem(ExampleInfo.formatAddSpaces(leafName))
       }
-      dir.getName.capitalize -> leaves.toList.sortWith(SortUtils.treeItemSort)
+      dirName -> leaves.toList.sortWith(SortUtils.treeItemSort)
     }
     TreeMap(pairs: _*)
   }
 
-  private def createThumbnails() = {
-    // Sanity check, the listing mey not work when ScalaFX Ensemble is packaged into a jar.
-    val exampleRootFiles = examplePath.listFiles()
-    if (exampleRootFiles == null)
-      throw new IOException("Cannot list files in the example directory. May be caused by Issue #10.")
+  private def loadExampleNames(): Array[(String, Array[String])] = {
 
-    val pairs = for (dir <- examplePath.listFiles() if dir.isDirectory) yield {
-      val groupName = dir.getName
-      val thumbs = for (f <- dir.listFiles() if f.getName.contains(".scala")) yield {
-        val leafName = f.getName.stripSuffix(".scala").stripPrefix("Ensemble")
+    require(examplListURL != null, "Failed to locate resource in classpath: " + exampleListPath)
+
+    val lines = scala.io.Source.fromURL(examplListURL).getLines()
+
+    for (line <- lines.toArray) yield {
+      val v = line.split("->")
+      assert(v.length == 2)
+      val dirName = v.head.trim
+      val examples = v(1).split(",").map(_.trim())
+      dirName -> examples
+    }
+  }
+
+  private def createThumbnails() = {
+    val pairs = for ((dirName, examples) <- loadExampleNames()) yield {
+      val groupName = dirName
+      val thumbs = for (leafName <- examples) yield {
         val sampleName = ExampleInfo.formatAddSpaces(leafName)
         val img = new ImageView {
           val filePath = ExampleInfo.thumbnailPath(leafName, groupName)
           val inputStream = this.getClass.getResourceAsStream(filePath)
           if (inputStream == null) {
             throw new IOException("Unable to locate resource: " + filePath)
-        }
+          }
           image = new Image(inputStream)
         }
         val button = new Button(sampleName, img) {
@@ -101,7 +105,7 @@ object EnsembleTree {
         }
         EnsembleThumbNail(button)
       }
-      dir.getName.capitalize -> thumbs.toList.sortWith(SortUtils.thumbNailsSort)
+      dirName.capitalize -> thumbs.toList.sortWith(SortUtils.thumbNailsSort)
     }
     TreeMap(pairs: _*)
   }
