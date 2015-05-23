@@ -37,16 +37,16 @@ object ExampleInfo {
   def formatAddSpaces(name: String): String =
     name.replaceAll( """([\p{Upper}\d])""", " $1").trim
 
-  def formalNoSpaces(name: String): String = name.replaceAllLiterally(" ", "")
+  def formatNoSpaces(name: String): String = name.replaceAllLiterally(" ", "")
 
   def thumbnailPath(exampleName: String, groupName: String): String =
-    examplesDir + groupName.toLowerCase + "/" + formalNoSpaces(exampleName) + "Sample.png"
+    examplesDir + groupName.toLowerCase + "/" + formatNoSpaces(exampleName) + "Sample.png"
 
   def sourcecodePath(exampleName: String, groupName: String): String =
-    examplesDir + groupName.toLowerCase + "/" + "Ensemble" + formalNoSpaces(exampleName) + ".scala"
+    examplesDir + groupName.toLowerCase + "/" + "Ensemble" + formatNoSpaces(exampleName) + ".scala"
 
-  def className(exampleName: String, groupName: String): String = "scalafx.ensemble.example." + groupName +
-    ".Ensemble" + ExampleInfo.formalNoSpaces(exampleName)
+  def className(exampleName: String, groupName: String): String =
+    "scalafx.ensemble.example." + groupName.toLowerCase + ".Ensemble" + ExampleInfo.formatNoSpaces(exampleName)
 }
 
 /** Creates stand alone example source code. */
@@ -175,7 +175,7 @@ class ExampleInfo(exampleName: String, exampleGroupName: String) {
         source(index) match {
           case '{' => braceCount += 1
           case '}' => braceCount -= 1
-          case _ =>
+          case _   =>
         }
       }
       index
