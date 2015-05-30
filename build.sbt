@@ -1,8 +1,8 @@
 import java.io.File
 
-name := "scalafx-ensemble"
+name := "ScalaFX Ensemble"
 
-version := "1.0-SNAPSHOT"
+version := "1.0.0"
 
 organization := "org.scalafx"
 
@@ -61,4 +61,31 @@ resourceGenerators in Compile <+= Def.task {
   )
 }
 
+mainClass in Compile := Some("scalafx.ensemble.Ensemble")
 mainClass in assembly := Some("scalafx.ensemble.Ensemble")
+
+//
+// Configuration for sbt-native-packager / JDKPackagerPlugin
+//
+
+enablePlugins(JDKPackagerPlugin)
+
+maintainer := "ScalaFX Organization (scalafx.org)"
+packageSummary := "Collection of live ScalaFX examples"
+packageDescription := "An application demonstrating ScalaFX code samples."
+
+lazy val iconGlob = sys.props("os.name").toLowerCase match {
+  case os if os.contains("mac") => "*.icns"
+  case os if os.contains("win") => "*.ico"
+  case _                        => "*.png"
+}
+
+jdkAppIcon := (sourceDirectory.value ** iconGlob).getPaths.headOption.map(file)
+jdkPackagerType := "installer"
+
+// this is to help ubuntu 15.10
+antPackagerTasks in JDKPackager := (antPackagerTasks in JDKPackager).value orElse {
+  for {
+    f <- Some(file("/usr/lib/jvm/java-8-oracle/lib/ant-javafx.jar")) if f.exists()
+  } yield f
+}

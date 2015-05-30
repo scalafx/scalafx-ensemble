@@ -77,6 +77,14 @@ This project is in a "stable" pre-release state, the main missing future planned
 for building native executables.
 
 
+Creating Native Installer
+-------------------------
+To create a native installer for current OS (Windows, Linux or MacOSX) issue following command:
+
+```
+sbt jdkPackager:packageBin
+```
+
 Mailing list
 ------------
 
