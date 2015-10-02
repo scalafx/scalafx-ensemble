@@ -6,11 +6,11 @@ version := "1.0.0"
 
 organization := "org.scalafx"
 
-scalaVersion := "2.11.6"
+scalaVersion := "2.11.7"
 
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "8.0.40-R8",
-  "org.scala-lang.modules" %% "scala-xml" % "1.0.3"
+  "org.scalafx" %% "scalafx" % "8.0.60-R9-SNAPSHOT",
+  "org.scala-lang.modules" %% "scala-xml" % "1.0.5"
 )
 
 resolvers += Opts.resolver.sonatypeSnapshots
