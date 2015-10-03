@@ -9,7 +9,7 @@ organization := "org.scalafx"
 scalaVersion := "2.11.7"
 
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "8.0.60-R9-SNAPSHOT",
+  "org.scalafx" %% "scalafx" % "8.0.60-R9",
   "org.scala-lang.modules" %% "scala-xml" % "1.0.5"
 )
 
