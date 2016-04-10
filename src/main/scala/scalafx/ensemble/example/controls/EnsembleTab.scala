@@ -81,8 +81,8 @@ class EnsembleTab extends EnsembleExample {
             text = "Tab 3"
           }
         )
-        tabClosingPolicy = TabClosingPolicy.UNAVAILABLE
-        side = Side.TOP
+        tabClosingPolicy = TabClosingPolicy.Unavailable
+        side = Side.Top
       }
     )
   }

@@ -37,7 +37,7 @@ class EnsembleButton extends EnsembleExample {
 
   def getContent = new TilePane {
     padding = Insets(10)
-    orientation = Orientation.VERTICAL
+    orientation = Orientation.Vertical
     hgap = 10
     vgap = 10
     children = List(

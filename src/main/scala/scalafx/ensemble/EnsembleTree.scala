@@ -159,7 +159,7 @@ class EnsembleTree(tree: Map[String, List[TreeItem[String]]],
     hgap = 4
     vgap = 4
     padding = Insets(10, 10, 10, 10)
-    orientation = Orientation.HORIZONTAL
+    orientation = Orientation.Horizontal
     styleClass += "category-page-flow"
     children = value.map(_.button)
   }

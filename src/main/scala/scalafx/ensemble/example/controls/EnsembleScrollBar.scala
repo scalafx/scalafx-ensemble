@@ -101,7 +101,7 @@ class EnsembleScrollBar extends EnsembleExample {
     })
     translateX = yBarHeight
     translateY = yBarWidth
-    orientation = Orientation.VERTICAL
+    orientation = Orientation.Vertical
   }
 
 
