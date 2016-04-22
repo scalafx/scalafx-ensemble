@@ -2,14 +2,14 @@ import java.io.File
 
 name := "ScalaFX Ensemble"
 
-version := "1.0.1"
+version := "1.0.2"
 
 organization := "org.scalafx"
 
 scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "8.0.72-R10-SNAPSHOT",
+  "org.scalafx" %% "scalafx" % "8.0.92-R10",
   "org.scala-lang.modules" %% "scala-xml" % "1.0.5"
 )
 
@@ -32,7 +32,7 @@ fork in Test := true
 // Create file used to determine available examples at runtime.
 resourceGenerators in Compile <+= Def.task {
   /** Scan source directory for available examples
-    * Return pairs 'directory' -> 'collectionof examples in that directory'.
+    * Return pairs 'directory' -> 'collection of examples in that directory'.
     */
   def loadExampleNames(inSourceDir: File): Array[(String, Array[String])] = {
     val examplesDir = "/scalafx/ensemble/example/"

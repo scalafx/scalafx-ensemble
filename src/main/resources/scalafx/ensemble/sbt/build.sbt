@@ -1,10 +1,10 @@
 name := "@name@"
 
-version := "1.0-SNAPSHOT"
+version := "1.0"
 
 scalaVersion := "2.11.8"
 
-libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.60-R9"
+libraryDependencies += "org.scalafx" %% "scalafx" % "8.0.92-R10"
 
 scalacOptions ++= Seq("-unchecked", "-deprecation")
 
