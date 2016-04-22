@@ -58,7 +58,7 @@ object Ensemble extends JFXApp {
     root = rootTreeItem
     id = "page-tree"
   }
-  controlsView.selectionModel().selectionMode = SelectionMode.SINGLE
+  controlsView.selectionModel().selectionMode = SelectionMode.Single
   controlsView.selectionModel().selectedItem.onChange {
     (_, _, newItem) => {
       val pageCode = (newItem.isLeaf, Option(newItem.getParent)) match {

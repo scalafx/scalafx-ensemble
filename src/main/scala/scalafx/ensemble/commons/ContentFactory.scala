@@ -144,7 +144,7 @@ object ContentFactory {
                 title = "Save SBT Project As:"
                 initialDirectory = initialDir
               }
-              val result = Option(fileChooser.showDialog(thisButton.scene.window()))
+              val result = Option(fileChooser.showDialog(thisButton.scene().window()))
               result match {
                 case Some(projectDir) =>
                   SBTProjectBuilder.createSampleProject(projectDir, exampleInfo)

@@ -81,10 +81,10 @@ class EnsemblePagination extends EnsembleExample {
           maxHeight = Region.USE_PREF_SIZE
           text = "Toggle Pagination Button"
           onAction = (ae: ActionEvent) => {
-            if (pagination.styleClass.contains(Pagination.STYLE_CLASS_BULLET)) {
-              pagination.styleClass -= Pagination.STYLE_CLASS_BULLET
+            if (pagination.styleClass.contains(Pagination.StyleClassBullet)) {
+              pagination.styleClass -= Pagination.StyleClassBullet
             } else {
-              pagination.styleClass += Pagination.STYLE_CLASS_BULLET
+              pagination.styleClass += Pagination.StyleClassBullet
             }
           }
         })

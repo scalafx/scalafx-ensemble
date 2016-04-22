@@ -54,7 +54,7 @@ class EnsembleHorizontalListView extends EnsembleExample {
 
     val listView = new ListView[String] {
       items = ObservableBuffer(seq)
-      orientation = Orientation.HORIZONTAL
+      orientation = Orientation.Horizontal
     }
 
     new StackPane {
