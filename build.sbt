@@ -2,14 +2,14 @@ import java.io.File
 
 name := "ScalaFX Ensemble"
 
-version := "1.0.2"
+version := "1.0.3"
 
 organization := "org.scalafx"
 
 scalaVersion := "2.11.8"
 
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "8.0.92-R10",
+  "org.scalafx" %% "scalafx" % "8.0.102-R11",
   "org.scala-lang.modules" %% "scala-xml" % "1.0.5"
 )
 
