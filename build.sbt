@@ -9,9 +9,19 @@ organization := "org.scalafx"
 scalaVersion := "2.12.7"
 
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "8.0.102-R11",
+  "org.scalafx" %% "scalafx" % "11-R16",
   "org.scala-lang.modules" %% "scala-xml" % "1.0.5"
 )
+
+// Add OS specific JavaFX dependencies
+val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
+val osName = System.getProperty("os.name") match {
+  case n if n.startsWith("Linux") => "linux"
+  case n if n.startsWith("Mac") => "mac"
+  case n if n.startsWith("Windows") => "win"
+  case _ => throw new Exception("Unknown platform!")
+}
+libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "11" classifier osName)
 
 resolvers += Opts.resolver.sonatypeSnapshots
 
@@ -19,9 +29,7 @@ scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xlint")
 
 // Sources should also be copied to output, so the sample code, for the viewer,
 // can be loaded from the same file that is used to execute the example
-unmanagedResourceDirectories in Compile += (baseDirectory {
-  _ / "src/main/scala"
-}).value
+unmanagedResourceDirectories in Compile += baseDirectory(_ / "src/main/scala").value
 
 // Set the prompt (for this build) to include the project id.
 shellPrompt := { state => System.getProperty("user.name") + ":" + Project.extract(state).currentRef.project + "> " }

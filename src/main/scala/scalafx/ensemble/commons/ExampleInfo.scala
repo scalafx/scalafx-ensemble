@@ -185,7 +185,7 @@ class ExampleInfo(exampleName: String, exampleGroupName: String) {
     val prefix = source.substring(0, openingBraceIndex + 1)
     val bodyIndented = {
       val body = source.substring(openingBraceIndex + 1, closingBraceIndex + 1)
-      body.lines.mkString("\n    ")
+      body.linesIterator.mkString("\n    ")
     }
     val postfix = source.substring(closingBraceIndex + 1)
 
