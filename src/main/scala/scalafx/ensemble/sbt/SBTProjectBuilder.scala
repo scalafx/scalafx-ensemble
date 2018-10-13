@@ -27,10 +27,12 @@
 
 package scalafx.ensemble.sbt
 
-import java.io.{IOException, File}
-import java.nio.file.{StandardCopyOption, Files}
-import scala.io.Source
+import java.io.{File, IOException}
+import java.nio.file.{FileAlreadyExistsException, Files, StandardCopyOption}
+
 import scalafx.ensemble.commons.ExampleInfo
+
+import scala.io.Source
 
 /** Creates SBT project for a sample code. */
 object SBTProjectBuilder {
@@ -84,7 +86,6 @@ object SBTProjectBuilder {
     copyText(projectDir, "build.sbt",
       filters = List("@name@" -> projectName, "@mainClass@" -> (sampleInfo.packageName + "." + sampleInfo.classSimpleName)))
     copyText(projectDir, "project/build.properties")
-    copyText(projectDir, "project/plugins.sbt")
     copyText(projectDir, "README.md")
   }
 

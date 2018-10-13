@@ -1,6 +1,8 @@
 name := "@name@"
 
-version := "1.0"
+version := "1.11"
+
+scalaVersion := "2.12.7"
 
 scalaVersion := "2.11.8"
 

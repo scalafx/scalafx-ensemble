@@ -1,12 +1,12 @@
-import java.io.File
+//import java.io.File
 
 name := "ScalaFX Ensemble"
 
-version := "1.0.3"
+version := "1.11.0"
 
 organization := "org.scalafx"
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.7"
 
 libraryDependencies ++= Seq(
   "org.scalafx" %% "scalafx" % "8.0.102-R11",
@@ -19,7 +19,9 @@ scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xlint")
 
 // Sources should also be copied to output, so the sample code, for the viewer,
 // can be loaded from the same file that is used to execute the example
-unmanagedResourceDirectories in Compile <+= baseDirectory {_ / "src/main/scala"}
+unmanagedResourceDirectories in Compile += (baseDirectory {
+  _ / "src/main/scala"
+}).value
 
 // Set the prompt (for this build) to include the project id.
 shellPrompt := { state => System.getProperty("user.name") + ":" + Project.extract(state).currentRef.project + "> " }
@@ -30,7 +32,7 @@ fork := true
 fork in Test := true
 
 // Create file used to determine available examples at runtime.
-resourceGenerators in Compile <+= Def.task {
+resourceGenerators in Compile += Def.task {
   /** Scan source directory for available examples
     * Return pairs 'directory' -> 'collection of examples in that directory'.
     */
@@ -65,7 +67,7 @@ resourceGenerators in Compile <+= Def.task {
     (resourceManaged in Compile).value,
     "/scalafx/ensemble/example/example.tree"
   )
-}
+}.taskValue
 
 mainClass in Compile := Some("scalafx.ensemble.Ensemble")
 mainClass in assembly := Some("scalafx.ensemble.Ensemble")
