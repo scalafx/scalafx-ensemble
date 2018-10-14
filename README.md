@@ -33,8 +33,7 @@ In the future, we will also provide an excitable version.
 
 To compile and run the project you only need to have:
 
-*  [Java 11 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-(u20 or newer version of 1.8).
+*  [Java 11 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 *  [SBT](http://www.scala-sbt.org/) (v.1 or newer) installed.
 *  ScalaFX Ensemble source code
 
@@ -45,8 +44,8 @@ The older version of ScalaFX Ensemble for ScalaFX 8 on branch [SFX-8](https://gi
 
 ### Compile and Run using SBT ###
 
-Once you have [JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-and [SBT](http://www.scala-sbt.org/) installed, you can complie and run ScalaFX Ensemble from command prompt using `sbt`:
+Once you have [JDK 11](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+and [SBT](http://www.scala-sbt.org/) installed, you can compile and run ScalaFX Ensemble from command prompt using `sbt`:
 
 1. Open command prompt
 2. Change directory to where you saved the ScalaFX Ensemble source code (directory containing this README file).
@@ -58,6 +57,13 @@ When run the very first time, SBT will download all needed dependencies includin
 
 [IntelliJ IDEA](http://www.jetbrains.com/idea/) with Scala plugin can import project settings from an SBT configuration.
 Simply select `File > Import Project...` and point to location of the ScalaFX Ensemble `build.sbt`.
+
+Ensemble requires some resources to be generated from the sources to run.
+To best way to run it is be defining an SBT task in Run Configuration:
+1. Select "Run" > "Edit Configurations"
+2. Clock on "+" and then on "SBT task"
+3. Give it a name "Ensemble"
+3. In "Task" field type "run" and click OK
 
 
 Project Status
@@ -80,9 +86,11 @@ Mailing list
 
 To post questions or send feedback about ScalaFX Ensemble or ScalaFX in general, please use ScalaFX discussion groups:
 
-[scalafx-user](https://groups.google.com/forum/?fromgroups#!forum/scalafx-users) - for users of ScalaFX
+* [scalafx-user](https://groups.google.com/forum/?fromgroups#!forum/scalafx-users) - for users of ScalaFX
 
-[scalafx-dev](https://groups.google.com/forum/?fromgroups#!forum/scalafx-dev) - for ScalaFX contributors/committers
+* [scalafx-dev](https://groups.google.com/forum/?fromgroups#!forum/scalafx-dev) - for ScalaFX contributors/committers
+
+* [ScalaFX](https://stackoverflow.com/questions/tagged/scalafx) on StackOverflow
 
 
 License
