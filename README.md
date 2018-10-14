@@ -90,7 +90,7 @@ To post questions or send feedback about ScalaFX Ensemble or ScalaFX in general,
 
 * [scalafx-dev](https://groups.google.com/forum/?fromgroups#!forum/scalafx-dev) - for ScalaFX contributors/committers
 
-* [ScalaFX][https://stackoverflow.com/questions/tagged/scalafx] on StackOverflow
+* [ScalaFX](https://stackoverflow.com/questions/tagged/scalafx) on StackOverflow
 
 
 License
