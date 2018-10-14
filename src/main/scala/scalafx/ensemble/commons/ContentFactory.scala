@@ -28,10 +28,10 @@
 package scalafx.ensemble.commons
 
 import java.util.Locale
+
 import javafx.scene.control.Alert
 import javafx.scene.control.Alert.AlertType
 import javafx.stage.Stage
-
 import scalafx.Includes._
 import scalafx.ensemble.commons.IOUtils._
 import scalafx.ensemble.sbt.SBTProjectBuilder
@@ -56,7 +56,7 @@ object ContentFactory {
     val sampleNode = if (cache.get(fullClassName).isDefined) {
       cache(fullClassName).getContent
     } else {
-      val inst = Class.forName(fullClassName).newInstance().asInstanceOf[EnsembleExample]
+      val inst = Class.forName(fullClassName).getDeclaredConstructor().newInstance().asInstanceOf[EnsembleExample]
       cache = cache.+((fullClassName, inst))
       inst.getContent
     }

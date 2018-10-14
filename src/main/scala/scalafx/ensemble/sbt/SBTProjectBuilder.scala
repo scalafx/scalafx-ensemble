@@ -28,7 +28,7 @@
 package scalafx.ensemble.sbt
 
 import java.io.{File, IOException}
-import java.nio.file.{FileAlreadyExistsException, Files, StandardCopyOption}
+import java.nio.file.{Files, StandardCopyOption}
 
 import scalafx.ensemble.commons.ExampleInfo
 
@@ -55,8 +55,8 @@ object SBTProjectBuilder {
     *
     * @param projectDir directory where to save the project
     * @param sampleInfo information about the sample code
-    * @throws FileAlreadyExistsException - if `projectDir` exists but is not a directory
-    * @throws IOException - if an I/O error occurs
+    * @throws java.nio.file.FileAlreadyExistsException - if `projectDir` exists but is not a directory
+    * @throws IOException                              - if an I/O error occurs
     */
   def createSampleProject(projectDir: File, sampleInfo: ExampleInfo) {
 
