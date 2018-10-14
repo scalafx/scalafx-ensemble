@@ -29,7 +29,6 @@ package scalafx.ensemble.example.web
 
 import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.event.ActionEvent
 import scalafx.geometry.Insets
 import scalafx.scene.control.{Button, TextField}
 import scalafx.scene.layout.{BorderPane, HBox, Priority}
@@ -59,7 +58,7 @@ class EnsembleWebView extends EnsembleExample {
 
     def validUrl(url: String) = if (url.startsWith("http://")) url else "http://" + locationField.text()
 
-    val loadAction = (ae: ActionEvent) => webView.engine.load(validUrl(locationField.text()))
+    val loadAction = () => webView.engine.load(validUrl(locationField.text()))
     goButton.onAction = loadAction
     locationField.onAction = loadAction
 

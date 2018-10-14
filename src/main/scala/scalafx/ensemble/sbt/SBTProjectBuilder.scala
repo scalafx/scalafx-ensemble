@@ -27,10 +27,12 @@
 
 package scalafx.ensemble.sbt
 
-import java.io.{IOException, File}
-import java.nio.file.{StandardCopyOption, Files}
-import scala.io.Source
+import java.io.{File, IOException}
+import java.nio.file.{Files, StandardCopyOption}
+
 import scalafx.ensemble.commons.ExampleInfo
+
+import scala.io.Source
 
 /** Creates SBT project for a sample code. */
 object SBTProjectBuilder {
@@ -53,8 +55,8 @@ object SBTProjectBuilder {
     *
     * @param projectDir directory where to save the project
     * @param sampleInfo information about the sample code
-    * @throws FileAlreadyExistsException - if `projectDir` exists but is not a directory
-    * @throws IOException - if an I/O error occurs
+    * @throws java.nio.file.FileAlreadyExistsException - if `projectDir` exists but is not a directory
+    * @throws IOException                              - if an I/O error occurs
     */
   def createSampleProject(projectDir: File, sampleInfo: ExampleInfo) {
 
@@ -84,7 +86,6 @@ object SBTProjectBuilder {
     copyText(projectDir, "build.sbt",
       filters = List("@name@" -> projectName, "@mainClass@" -> (sampleInfo.packageName + "." + sampleInfo.classSimpleName)))
     copyText(projectDir, "project/build.properties")
-    copyText(projectDir, "project/plugins.sbt")
     copyText(projectDir, "README.md")
   }
 
@@ -101,8 +102,9 @@ object SBTProjectBuilder {
     }
 
     try {
-      val uri = this.getClass.getResource(fileName).toURI
-      val contentRaw = Source.fromFile(uri).getLines().mkString("\n")
+      val is = this.getClass.getResourceAsStream(fileName)
+      val contentRaw = Source.fromInputStream(is).getLines().mkString("\n")
+      is.close()
       val content = filter(contentRaw, filters)
       val path = new File(projectDir, fileName).toPath
       Files.createDirectories(path.getParent)
@@ -116,11 +118,11 @@ object SBTProjectBuilder {
   /** Copy a resource that may be an image or other binary file. */
   private def copyResource(projectDir: File, fileName: String) {
     try {
-      val uri = this.getClass.getResource(fileName).toURI
-      val src = new File(uri).toPath
+      val is = this.getClass.getResourceAsStream(fileName)
       val dest = new File(projectDir, fileName).toPath
       Files.createDirectories(dest.getParent)
-      Files.copy(src, dest, StandardCopyOption.REPLACE_EXISTING)
+      Files.copy(is, dest, StandardCopyOption.REPLACE_EXISTING)
+      is.close()
     } catch {
       case t: Throwable =>
         throw new IOException("Error while creating SBT project. Failed to copy resource: " + fileName, t)

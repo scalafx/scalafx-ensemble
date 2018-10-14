@@ -33,14 +33,14 @@ In the future, we will also provide an excitable version.
 
 To compile and run the project you only need to have:
 
-*  [Java 1.8 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+*  [Java 11 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 (u20 or newer version of 1.8).
-*  [SBT](http://www.scala-sbt.org/) (v.0.13.6 or newer) installed.
+*  [SBT](http://www.scala-sbt.org/) (v.1 or newer) installed.
 *  ScalaFX Ensemble source code
 
 All missing dependencies, including proper version of Scala and ScalaFX, will be downloaded by SBT.
 
-The older version of ScalaFX Ensemble for ScalaFX 2.2 (Java 1.7) is on branch
+The older version of ScalaFX Ensemble for ScalaFX 8 on branch [SFX-8](https://github.com/scalafx/scalafx-ensemble/tree/SFX-8), ScalaFX 2.2 (Java 1.7) is on branch
 [SFX-2](https://github.com/scalafx/scalafx-ensemble/tree/SFX-2).
 
 ### Compile and Run using SBT ###
@@ -58,16 +58,6 @@ When run the very first time, SBT will download all needed dependencies includin
 
 [IntelliJ IDEA](http://www.jetbrains.com/idea/) with Scala plugin can import project settings from an SBT configuration.
 Simply select `File > Import Project...` and point to location of the ScalaFX Ensemble `build.sbt`.
-
-### Generate Eclipse project configuration ###
-
-Project configurations for [Eclipse](http://www.eclipse.org/) can be quickly generated using SBT.
-
-1. Open command prompt
-2. Change directory to where you saved the ScalaFX Ensemble source code (directory containing this README file).
-3. Type `sbt eclipse`
-4. Import generated project into your Eclipse workspace (you will also need to install
-   [Scala-IDE](http://scala-ide.org/index.html) plugin)
 
 
 Project Status
@@ -98,7 +88,7 @@ To post questions or send feedback about ScalaFX Ensemble or ScalaFX in general,
 License
 -------
 
-Copyright (c) 2012-2014, ScalaFX Project
+Copyright (c) 2012-2018, ScalaFX Project
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

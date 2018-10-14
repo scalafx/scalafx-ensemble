@@ -15,8 +15,8 @@ Requirements
 ------------
 
 To compile and run the project you only need to have
-[Java 1.8](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-(u40 or newer version of 1.8) and [SBT](http://www.scala-sbt.org/) (v.0.13.7 or newer) installed.
+[Java 11](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+(u40 or newer version of 1.8) and [SBT](http://www.scala-sbt.org/) (v.1 or newer) installed.
 All missing dependencies, including proper version of Scala and ScalaFX, will be downloaded by SBT.
 
 
@@ -34,15 +34,6 @@ Import IntelliJ IDEA project configuration
 1. From IDEA select File > Open
 2. Change directory to where you saved the sample (directory containing this README file).
 3. Select `build.sbt` and click OK
-
-
-Generate Eclipse project configuration
---------------------------------------
-
-1. Open command prompt
-2. Change directory to where you saved the sample (directory containing this README file).
-3. Type `sbt eclipse`
-4. Import generated project into your Eclipse workspace (you will also need to install Scala-IDE plugin)
 
 
 Got questions about ScalaFX?

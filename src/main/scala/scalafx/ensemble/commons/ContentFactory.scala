@@ -28,14 +28,13 @@
 package scalafx.ensemble.commons
 
 import java.util.Locale
+
 import javafx.scene.control.Alert
 import javafx.scene.control.Alert.AlertType
 import javafx.stage.Stage
-
 import scalafx.Includes._
 import scalafx.ensemble.commons.IOUtils._
 import scalafx.ensemble.sbt.SBTProjectBuilder
-import scalafx.event.ActionEvent
 import scalafx.scene.Node
 import scalafx.scene.control.{Button, Label, ScrollPane, ToolBar}
 import scalafx.scene.input.{Clipboard, ClipboardContent}
@@ -56,7 +55,7 @@ object ContentFactory {
     val sampleNode = if (cache.get(fullClassName).isDefined) {
       cache(fullClassName).getContent
     } else {
-      val inst = Class.forName(fullClassName).newInstance().asInstanceOf[EnsembleExample]
+      val inst = Class.forName(fullClassName).getDeclaredConstructor().newInstance().asInstanceOf[EnsembleExample]
       cache = cache.+((fullClassName, inst))
       inst.getContent
     }
@@ -138,7 +137,7 @@ object ContentFactory {
             thisButton =>
             text = "Save SBT Project..."
             tooltip = "Save sample code in a new project that can be build and run with SBT"
-            onAction = (ae: ActionEvent) => try {
+            onAction = () => try {
               val initialDir = SBTProjectBuilder.parentDir
               val fileChooser = new DirectoryChooser() {
                 title = "Save SBT Project As:"
@@ -153,6 +152,7 @@ object ContentFactory {
               }
             } catch {
               case t: Throwable =>
+                t.printStackTrace()
                 val stage = thisButton.scene().window().asInstanceOf[Stage]
                 showError(stage, title = thisButton.text(), header = "Error saving sample SBT project",
                   message = t.getClass.getName + ": " + t.getMessage, t)
@@ -162,7 +162,7 @@ object ContentFactory {
             thisButton =>
             text = "Copy Source"
             tooltip = "Copy sample source code to clipboard"
-            onAction = (ae: ActionEvent) => try {
+            onAction = () => try {
               val content = new ClipboardContent()
               content.putString(exampleInfo.sourceCode)
               content.putHtml(htmlSource)
