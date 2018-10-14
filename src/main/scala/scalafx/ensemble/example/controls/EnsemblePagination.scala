@@ -29,7 +29,6 @@ package scalafx.ensemble.example.controls
 
 import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.event.ActionEvent
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.control.{Button, Label, Pagination}
 import scalafx.scene.image.{Image, ImageView}
@@ -80,7 +79,7 @@ class EnsemblePagination extends EnsembleExample {
           maxWidth = Region.USE_PREF_SIZE
           maxHeight = Region.USE_PREF_SIZE
           text = "Toggle Pagination Button"
-          onAction = (ae: ActionEvent) => {
+          onAction = () => {
             if (pagination.styleClass.contains(Pagination.StyleClassBullet)) {
               pagination.styleClass -= Pagination.StyleClassBullet
             } else {

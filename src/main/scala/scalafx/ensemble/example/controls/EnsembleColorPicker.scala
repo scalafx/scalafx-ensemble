@@ -29,7 +29,6 @@ package scalafx.ensemble.example.controls
 
 import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.event.ActionEvent
 import scalafx.geometry.{Insets, Pos}
 import scalafx.scene.control.{Button, ColorPicker, Label, ToolBar}
 import scalafx.scene.layout.{Priority, VBox}
@@ -66,7 +65,7 @@ class EnsembleColorPicker extends EnsembleExample {
 
     // ColorPicker
     val colorPicker = new ColorPicker(initialColor) {
-      onAction = (ae: ActionEvent) => {
+      onAction = () => {
         labelColor.textFill = value()
         buttonColor.style = toStyle(value())
       }

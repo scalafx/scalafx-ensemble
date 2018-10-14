@@ -235,7 +235,7 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
       if (shouldAnimate) {
         new FadeTransition(500 ms, candle) {
           toValue = 0
-          onFinished = (_: ActionEvent) => plotChildren -= candle
+          onFinished = () => plotChildren -= candle
 
         }.play()
       }
