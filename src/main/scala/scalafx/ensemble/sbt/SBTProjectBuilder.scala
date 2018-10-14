@@ -102,8 +102,9 @@ object SBTProjectBuilder {
     }
 
     try {
-      val uri = this.getClass.getResource(fileName).toURI
-      val contentRaw = Source.fromFile(uri).getLines().mkString("\n")
+      val is = this.getClass.getResourceAsStream(fileName)
+      val contentRaw = Source.fromInputStream(is).getLines().mkString("\n")
+      is.close()
       val content = filter(contentRaw, filters)
       val path = new File(projectDir, fileName).toPath
       Files.createDirectories(path.getParent)
@@ -117,11 +118,11 @@ object SBTProjectBuilder {
   /** Copy a resource that may be an image or other binary file. */
   private def copyResource(projectDir: File, fileName: String) {
     try {
-      val uri = this.getClass.getResource(fileName).toURI
-      val src = new File(uri).toPath
+      val is = this.getClass.getResourceAsStream(fileName)
       val dest = new File(projectDir, fileName).toPath
       Files.createDirectories(dest.getParent)
-      Files.copy(src, dest, StandardCopyOption.REPLACE_EXISTING)
+      Files.copy(is, dest, StandardCopyOption.REPLACE_EXISTING)
+      is.close()
     } catch {
       case t: Throwable =>
         throw new IOException("Error while creating SBT project. Failed to copy resource: " + fileName, t)

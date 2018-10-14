@@ -153,6 +153,7 @@ object ContentFactory {
               }
             } catch {
               case t: Throwable =>
+                t.printStackTrace()
                 val stage = thisButton.scene().window().asInstanceOf[Stage]
                 showError(stage, title = thisButton.text(), header = "Error saving sample SBT project",
                   message = t.getClass.getName + ": " + t.getMessage, t)
