@@ -42,6 +42,7 @@ import scalafx.scene.shape.{Line, LineTo, MoveTo, Path}
 
 import scala.collection.JavaConverters._
 import scala.collection.mutable
+import scala.language.postfixOps
 
 
 /**
