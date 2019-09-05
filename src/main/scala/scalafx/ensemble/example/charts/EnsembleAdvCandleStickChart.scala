@@ -40,8 +40,8 @@ import scalafx.scene.control.{Label, Tooltip}
 import scalafx.scene.layout.{GridPane, Region}
 import scalafx.scene.shape.{Line, LineTo, MoveTo, Path}
 
-import scala.collection.JavaConverters._
 import scala.collection.mutable
+import scala.jdk.CollectionConverters._
 import scala.language.postfixOps
 
 
