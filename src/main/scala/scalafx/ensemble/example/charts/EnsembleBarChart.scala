@@ -27,25 +27,23 @@
 
 package scalafx.ensemble.example.charts
 
+import javafx.scene.{chart => jfxsc}
 import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.scene.chart.BarChart
-import scalafx.scene.chart.CategoryAxis
-import scalafx.scene.chart.NumberAxis
-import scalafx.scene.chart.XYChart
+import scalafx.scene.chart.{BarChart, CategoryAxis, NumberAxis, XYChart}
 
 /**
- * A chart that displays rectangular bars with heights indicating data values
- * for categories. Used for displaying information when at least one axis has
- * discontinuous or discrete data.
- *
- * @see scalafx.scene.chart.BarChart
- * @see scalafx.scene.chart.Chart
- * @see scalafx.scene.chart.Axis
- * @see scalafx.scene.chart.CategoryAxis
- * @see scalafx.scene.chart.NumberAxis
- *
- */
+  * A chart that displays rectangular bars with heights indicating data values
+  * for categories. Used for displaying information when at least one axis has
+  * discontinuous or discrete data.
+  *
+  * @see scalafx.scene.chart.BarChart
+  * @see scalafx.scene.chart.Chart
+  * @see scalafx.scene.chart.Axis
+  * @see scalafx.scene.chart.CategoryAxis
+  * @see scalafx.scene.chart.NumberAxis
+  *
+  */
 class EnsembleBarChart extends EnsembleExample {
   def getContent = {
     val years = ObservableBuffer("2007", "2008", "2009")
@@ -53,7 +51,8 @@ class EnsembleBarChart extends EnsembleExample {
     val xAxis = CategoryAxis(years)
     val yAxis = NumberAxis("Units Sold", 0.0d, 3000.0d, 1000.0d)
 
-    def xyData(ys: Seq[Number]) = ObservableBuffer(years zip ys map (xy => XYChart.Data(xy._1, xy._2)))
+    def xyData(ys: Seq[Number]): ObservableBuffer[jfxsc.XYChart.Data[String, Number]] =
+      ObservableBuffer((years zip ys map (xy => XYChart.Data(xy._1, xy._2))).toSeq)
 
     val series1 = XYChart.Series("Apples", xyData(Seq(567d, 1292d, 1292d)))
     val series2 = XYChart.Series("Lemons", xyData(Seq(956, 1665, 2559)))

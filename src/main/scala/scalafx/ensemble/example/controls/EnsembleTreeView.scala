@@ -27,7 +27,6 @@
 
 package scalafx.ensemble.example.controls
 
-import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.{TreeItem, TreeView}
@@ -43,7 +42,7 @@ class EnsembleTreeView extends EnsembleExample {
       showRoot = true
       root = new TreeItem[String]("Root Node") {
         expanded = true
-        children = ObservableBuffer(
+        children = Seq(
           new TreeItem[String] {
             value = "Node 1"
           },
@@ -52,9 +51,7 @@ class EnsembleTreeView extends EnsembleExample {
           },
           new TreeItem[String] {
             value = "Node 3"
-            children = ObservableBuffer(
-              (4 to 12).map(n => new TreeItem[String]("Child Node " + n))
-            )
+            children = (4 to 12).map(n => new TreeItem[String]("Child Node " + n))
           }
         )
       }

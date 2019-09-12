@@ -60,7 +60,7 @@ object EnsembleTree {
       }
       dirName -> leaves.toList.sortWith(SortUtils.treeItemSort)
     }
-    TreeMap(pairs: _*)
+    TreeMap(pairs.toIndexedSeq: _*)
   }
 
   private def loadExampleNames(): Array[(String, Array[String])] = {
@@ -107,7 +107,7 @@ object EnsembleTree {
       }
       dirName.capitalize -> thumbs.toList.sortWith(SortUtils.thumbNailsSort)
     }
-    TreeMap(pairs: _*)
+    TreeMap(pairs.toIndexedSeq: _*)
   }
 }
 

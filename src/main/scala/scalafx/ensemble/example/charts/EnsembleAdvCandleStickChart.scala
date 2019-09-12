@@ -40,8 +40,9 @@ import scalafx.scene.control.{Label, Tooltip}
 import scalafx.scene.layout.{GridPane, Region}
 import scalafx.scene.shape.{Line, LineTo, MoveTo, Path}
 
-import scala.collection.JavaConverters._
 import scala.collection.mutable
+import scala.jdk.CollectionConverters._
+import scala.language.postfixOps
 
 
 /**
@@ -147,13 +148,13 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
 
     def title: String = getTitle
 
-    def title_=(t: String) {
+    def title_=(t: String): Unit = {
       setTitle(t)
     }
 
     def data: ObservableBuffer[jfxsc.XYChart.Series[Number, Number]] = getData
 
-    def data_=(d: ObservableBuffer[jfxsc.XYChart.Series[Number, Number]]) {
+    def data_=(d: ObservableBuffer[jfxsc.XYChart.Series[Number, Number]]): Unit = {
       setData(d)
     }
 
@@ -162,7 +163,7 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
     def yAxis = getYAxis
 
     /** Called to update and layout the content for the plot */
-    override protected def layoutPlotChildren() {
+    override protected def layoutPlotChildren(): Unit = {
       if (data == null) {
         return
       }
@@ -211,10 +212,10 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
       }
     }
 
-    override protected def dataItemChanged(item: jfxsc.XYChart.Data[Number, Number]) {}
+    override protected def dataItemChanged(item: jfxsc.XYChart.Data[Number, Number]): Unit = {}
 
     override protected def dataItemAdded(series: jfxsc.XYChart.Series[Number, Number],
-                                         itemIndex: Int, item: jfxsc.XYChart.Data[Number, Number]) {
+                                         itemIndex: Int, item: jfxsc.XYChart.Data[Number, Number]): Unit = {
       val candle = Candle(getData.indexOf(series), item, itemIndex)
       if (shouldAnimate) {
         candle.opacity = 0
@@ -230,7 +231,7 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
       }
     }
 
-    override protected def dataItemRemoved(item: jfxsc.XYChart.Data[Number, Number], series: jfxsc.XYChart.Series[Number, Number]) {
+    override protected def dataItemRemoved(item: jfxsc.XYChart.Data[Number, Number], series: jfxsc.XYChart.Series[Number, Number]): Unit = {
       val candle = item.node()
       if (shouldAnimate) {
         new FadeTransition(500 ms, candle) {
@@ -244,7 +245,7 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
       }
     }
 
-    override protected def seriesAdded(series: jfxsc.XYChart.Series[Number, Number], seriesIndex: Int) {
+    override protected def seriesAdded(series: jfxsc.XYChart.Series[Number, Number], seriesIndex: Int): Unit = {
       for (j <- 0 until series.data().size) {
         val item = series.data()(j)
         val candle = Candle(seriesIndex, item, j)
@@ -267,7 +268,7 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
       plotChildren += seriesPath
     }
 
-    override protected def seriesRemoved(series: jfxsc.XYChart.Series[Number, Number]) {
+    override protected def seriesRemoved(series: jfxsc.XYChart.Series[Number, Number]): Unit = {
       for (d <- series.getData) {
         val candle = d.node()
         if (shouldAnimate) {
@@ -288,7 +289,7 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
       * ranging then we compile a list of all data that the given axis has to plot and call invalidateRange() on the
       * axis passing it that data.
       */
-    override protected def updateAxisRange() {
+    override protected def updateAxisRange(): Unit = {
 
       if (xAxis.isAutoRanging) {
         val xData = for (series <- data; seriesData <- series.data()) yield seriesData.XValue()
@@ -352,13 +353,13 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
     tooltip.graphic = new TooltipContent()
     Tooltip.install(bar, tooltip)
 
-    def setSeriesAndDataStyleClasses(seriesStyleClass: String, dataStyleClass: String) {
+    def setSeriesAndDataStyleClasses(seriesStyleClass: String, dataStyleClass: String): Unit = {
       this.seriesStyleClass = seriesStyleClass
       this.dataStyleClass = dataStyleClass
       updateStyleClasses()
     }
 
-    def update(closeOffset: Double, highOffset: Double, lowOffset: Double, candleWidth: Double) {
+    def update(closeOffset: Double, highOffset: Double, lowOffset: Double, candleWidth: Double): Unit = {
       openAboveClose = closeOffset > 0
       updateStyleClasses()
       highLowLine.startY = highOffset
@@ -376,12 +377,12 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
       }
     }
 
-    def updateTooltip(open: Double, close: Double, high: Double, low: Double) {
+    def updateTooltip(open: Double, close: Double, high: Double, low: Double): Unit = {
       val tooltipContent: TooltipContent = tooltip.graphic().asInstanceOf[TooltipContent]
       tooltipContent.update(open, close, high, low)
     }
 
-    private def updateStyleClasses() {
+    private def updateStyleClasses(): Unit = {
       val closeVsOpen = if (openAboveClose) "open-above-close" else "close-above-open"
 
       styleClass = Seq("candlestick-candle", seriesStyleClass, dataStyleClass)
@@ -420,7 +421,7 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
     GridPane.setConstraints(lowValue, 1, 3)
     getChildren.addAll(open, openValue, close, closeValue, high, highValue, low, lowValue)
 
-    def update(open: Double, close: Double, high: Double, low: Double) {
+    def update(open: Double, close: Double, high: Double, low: Double): Unit = {
       openValue.text = open.toString
       closeValue.text = close.toString
       highValue.text = high.toString

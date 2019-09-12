@@ -2,15 +2,15 @@
 
 name := "ScalaFX Ensemble"
 
-version := "1.11.0"
+version := "1.12.0"
 
 organization := "org.scalafx"
 
-scalaVersion := "2.12.7"
+scalaVersion := "2.13.0"
 
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "11-R16",
-  "org.scala-lang.modules" %% "scala-xml" % "1.1.1"
+  "org.scalafx" %% "scalafx" % "12.0.2-R18",
+  "org.scala-lang.modules" %% "scala-xml" % "1.2.0"
 )
 
 // Add OS specific JavaFX dependencies
@@ -21,7 +21,7 @@ val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Windows") => "win"
   case _ => throw new Exception("Unknown platform!")
 }
-libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "11" classifier osName)
+libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "12.0.2" classifier osName)
 
 resolvers += Opts.resolver.sonatypeSnapshots
 

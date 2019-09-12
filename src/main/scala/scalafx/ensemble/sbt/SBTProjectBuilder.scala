@@ -58,7 +58,7 @@ object SBTProjectBuilder {
     * @throws java.nio.file.FileAlreadyExistsException - if `projectDir` exists but is not a directory
     * @throws IOException                              - if an I/O error occurs
     */
-  def createSampleProject(projectDir: File, sampleInfo: ExampleInfo) {
+  def createSampleProject(projectDir: File, sampleInfo: ExampleInfo): Unit = {
 
     // extract project name
     val projectName = {
@@ -92,7 +92,7 @@ object SBTProjectBuilder {
   /** Copy text resource from the classpath relative to this object to a `projectDir`.
     * Line ending will be changed to platform specific.
     */
-  private def copyText(projectDir: File, fileName: String, filters: List[(String, String)] = Nil) {
+  private def copyText(projectDir: File, fileName: String, filters: List[(String, String)] = Nil): Unit = {
     /** Apply all filters in turn. */
     def filter(string: String, filters: List[(String, String)]): String = {
       filters match {
@@ -116,7 +116,7 @@ object SBTProjectBuilder {
   }
 
   /** Copy a resource that may be an image or other binary file. */
-  private def copyResource(projectDir: File, fileName: String) {
+  private def copyResource(projectDir: File, fileName: String): Unit = {
     try {
       val is = this.getClass.getResourceAsStream(fileName)
       val dest = new File(projectDir, fileName).toPath
