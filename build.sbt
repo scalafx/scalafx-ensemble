@@ -2,11 +2,11 @@
 
 name := "ScalaFX Ensemble"
 
-version := "1.12.0"
+version := "1.13.0"
 
 organization := "org.scalafx"
 
-scalaVersion := "2.13.0"
+scalaVersion := "2.13.1"
 
 libraryDependencies ++= Seq(
   "org.scalafx" %% "scalafx" % "12.0.2-R18",
