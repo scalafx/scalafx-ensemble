@@ -2,7 +2,7 @@
 
 name := "ScalaFX Ensemble"
 
-version := "1.13.1-SNAPSHOT"
+version := "1.14.0"
 
 organization := "org.scalafx"
 
