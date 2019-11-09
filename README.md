@@ -2,7 +2,7 @@ ScalaFX Ensemble
 ================
 
 ScalaFX Ensemble provides a gallery of over 60 sample applications illustrating how
-[ScalaFX](http://scalafx.org) can be used for creation of user interfaces controls, charts, graphics, media and web views.
+[ScalaFX] can be used for creation of user interfaces controls, charts, graphics, media and web views.
 
 ![ScalaFX Ensemble Application - Demo navigation](http://scalafx.github.io/scalafx-ensemble/images/ScalaFX_Ensemble-grid-50p.png)
 
@@ -10,18 +10,13 @@ ScalaFX Ensemble provides a gallery of over 60 sample applications illustrating 
 ![ScalaFX Ensemble Application - Demo source](http://scalafx.github.io/scalafx-ensemble/images/ScalaFX_Ensemble-source-50p.png)
 
 Each example can be executed within the ScalaFX Ensemble application, its source code can be easily seen there too.
-Example can be saved, from within ScalaFX Ensemble application, as an stand-alone [SBT](http://www.scala-sbt.org/) project,
-with option to convert to [Eclipse](http://www.eclipse.org/) or [IntelliJ IDEA](http://www.jetbrains.com/idea/) project.
+Example can be saved, from within ScalaFX Ensemble application, as an stand-alone [SBT] project. [IntelliJ IDEA] can load SBT projects if you have IntelliJ's Scala plugin installed. SBT projects can be converted to [Eclipse] projects using [sbteclipse] plugin.
 
 ScalaFX Ensemble can be used by ScalaFX beginners as a set of examples and by more experienced users as a visual
 reference. Larger size screenshots and information about changes can be found on the
-[ScalaFX Ensemble Home Page](http://scalafx.github.com/scalafx-ensemble/).
+[ScalaFX Ensemble Home Page].
 
-This project is inspired by [JavaFX Ensemble](http://www.oracle.com/technetwork/java/javafx/samples/index.html).
-
-Larger size screenshots and information about changes can be found on the
-[ScalaFX Ensemble Home Page](http://scalafx.github.com/scalafx-ensemble/)
-
+This project is inspired by [JavaFX Ensemble].
 
 How to run ScalaFX Ensemble
 ---------------------------
@@ -33,19 +28,18 @@ In the future, we will also provide an excitable version.
 
 To compile and run the project you only need to have:
 
-*  [Java 11 JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
-*  [SBT](http://www.scala-sbt.org/) (v.1 or newer) installed.
-*  ScalaFX Ensemble source code
+*  [Java JDK] 11 or newer
+*  [SBT] 1 or newer
+*  ScalaFX Ensemble source code. All missing dependencies, including proper version of Scala and ScalaFX, will be downloaded by SBT.
 
-All missing dependencies, including proper version of Scala and ScalaFX, will be downloaded by SBT.
+Alternatively you can download a stand-alone installer from the [Releases], see [Stand-Alone Application](#stand-alone-application) below.
 
-The older version of ScalaFX Ensemble for ScalaFX 8 on branch [SFX-8](https://github.com/scalafx/scalafx-ensemble/tree/SFX-8), ScalaFX 2.2 (Java 1.7) is on branch
+The older version of ScalaFX Ensemble for ScalaFX 8 are on branch [SFX-8](https://github.com/scalafx/scalafx-ensemble/tree/SFX-8), ScalaFX 2.2 (Java 1.7) is on branch
 [SFX-2](https://github.com/scalafx/scalafx-ensemble/tree/SFX-2).
 
 ### Compile and Run using SBT ###
 
-Once you have [JDK 11](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-and [SBT](http://www.scala-sbt.org/) installed, you can compile and run ScalaFX Ensemble from command prompt using `sbt`:
+Once you have [Java JDK] and [SBT] installed, you can compile and run ScalaFX Ensemble from command prompt using `sbt`:
 
 1. Open command prompt
 2. Change directory to where you saved the ScalaFX Ensemble source code (directory containing this README file).
@@ -53,9 +47,26 @@ and [SBT](http://www.scala-sbt.org/) installed, you can compile and run ScalaFX 
 
 When run the very first time, SBT will download all needed dependencies including Scala and ScalaFX.
 
+### Saving and Building Individual Examples
+
+ScalaFX Ensemble Application gives you ability to save each example as a separate SBT project. You can then build and run that example.
+
+To save an example as a stand-alone SBT project:  
+
+1. Start ScalaFX Ensemble Application
+2. Select an an example from the panel on the left. For instance "Charts" > "Adv Candle Stick Chart"
+3. Select on "Source" tab above the example
+4. Select "Save SBT Project..." then select **empty** directory where to save the project
+
+To run the saved example, assuming that you have [SBT] and JDK installed:
+
+1. From a command line prompt navigate to the directory you saved the example
+2. At command line type: `sbt run`. This will download necessary dependencies, build, and run the example.
+ 
+
 ### Compile and Run using Intellij IDEA ###
 
-[IntelliJ IDEA](http://www.jetbrains.com/idea/) with Scala plugin can import project settings from an SBT configuration.
+[IntelliJ IDEA] with Scala plugin can import project settings from an SBT configuration.
 Simply select `File > Import Project...` and point to location of the ScalaFX Ensemble `build.sbt`.
 
 Ensemble requires some resources to be generated from the sources to run.
@@ -65,32 +76,39 @@ To best way to run it is be defining an SBT task in Run Configuration:
 3. Give it a name "Ensemble"
 3. In "Task" field type "run" and click OK
 
+Stand-Alone Application
+-----------------------
 
-Project Status
---------------
+Installer for stand-alone version of ScalaFX Ensemble Application are available for Windows, Mac OS, and Linux from the [Releases] page.
 
-This project is in a "stable" pre-release state, the main missing future planned for the first release is support
-for building native executables.
+![Install4J](https://www.ej-technologies.com/images/product_banners/install4j_medium.png)
 
+Installers are created using [Install4J] and the [sbt-install4j] plugin.
 
-Creating Native Installer
--------------------------
-To create a native installer for current OS (Windows, Linux or MacOSX) issue following command:
+Building Installers
+-------------------
+To build an installer you need to have [Install4J] installed. 
+
+Use SBT task `install4j -m _os_`, for instance to create Windows installer:
 
 ```
-sbt jdkPackager:packageBin
+sbt> install4j -m windows
 ```
+
+Note that due to native dependencies in JavaFX distribution you have to build installer on a destination OS. Current SBT setup does not allow for cross-building on different OS. It is technically possible but not currently implemented in this project.
+
+For more information about `install4j` see [sbt-install4j].
 
 Mailing list
 ------------
 
 To post questions or send feedback about ScalaFX Ensemble or ScalaFX in general, please use ScalaFX discussion groups:
 
-* [scalafx-user](https://groups.google.com/forum/?fromgroups#!forum/scalafx-users) - for users of ScalaFX
+* [scalafx-user] - for users of ScalaFX
 
-* [scalafx-dev](https://groups.google.com/forum/?fromgroups#!forum/scalafx-dev) - for ScalaFX contributors/committers
+* [scalafx-dev] - for ScalaFX contributors/committers
 
-* [ScalaFX](https://stackoverflow.com/questions/tagged/scalafx) on StackOverflow
+* [ScalaFX on StackOverflow](https://stackoverflow.com/questions/tagged/scalafx) 
 
 
 License
@@ -121,3 +139,18 @@ AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+[Apache2]: https://www.apache.org/licenses/LICENSE-2.0.html
+[Eclipse]: http://www.eclipse.org/
+[Install4J]: https://www.ej-technologies.com/products/install4j/overview.html
+[IntelliJ IDEA]: http://www.jetbrains.com/idea/
+[Java JDK]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
+[JavaFX Ensemble]: http://www.oracle.com/technetwork/java/javafx/samples/index.html
+[sbt-install4j]: https://github.com/jpsacha/sbt-install4j
+[sbteclipse]: https://github.com/sbt/sbteclipse
+[SBT]: http://www.scala-sbt.org/
+
+[ScalaFX]: http://scalafx.org
+[scalafx-dev]: https://groups.google.com/forum/?fromgroups#!forum/scalafx-dev
+[scalafx-user]: https://groups.google.com/forum/?fromgroups#!forum/scalafx-users
+[ScalaFX Ensemble Home Page]: http://scalafx.github.com/scalafx-ensemble/
+[Releases]: https://github.com/scalafx/scalafx-ensemble/releases

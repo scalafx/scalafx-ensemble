@@ -15,3 +15,5 @@ bin
 /.idea
 /.idea_modules
 /.worksheet
+/installer/media/
+*.install4j~

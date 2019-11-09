@@ -1,4 +1,0 @@
--Xms512m
--Xmx1024m
--XX:ReservedCodeCacheSize=128m
--DjvmoptsPropertyExample=myProperty
