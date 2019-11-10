@@ -97,7 +97,7 @@ sbt> install4j -m windows
 
 Note that due to native dependencies in JavaFX distribution you have to build installer on a destination OS. Current SBT setup does not allow for cross-building on different OS. It is technically possible but not currently implemented in this project.
 
-For more information about `install4j` see [sbt-install4j].
+For more information about SBT `install4j` task see [sbt-install4j].
 
 Mailing list
 ------------
