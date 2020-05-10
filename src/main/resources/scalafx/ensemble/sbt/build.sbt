@@ -1,10 +1,10 @@
 name := "@name@"
 
-version := "1.14"
+version := "1.15"
 
 scalaVersion := "2.13.1"
 
-libraryDependencies += "org.scalafx" %% "scalafx" % "12.0.2-R18"
+libraryDependencies += "org.scalafx" %% "scalafx" % "14-R19"
 
 // Determine OS version of JavaFX binaries
 lazy val osName = System.getProperty("os.name") match {
@@ -17,7 +17,7 @@ lazy val osName = System.getProperty("os.name") match {
 // Add JavaFX dependencies
 lazy val javaFXModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
 libraryDependencies ++= javaFXModules.map(m =>
-  "org.openjfx" % s"javafx-$m" % "12.0.2" classifier osName
+  "org.openjfx" % s"javafx-$m" % "14.0.1" classifier osName
 )
 
 scalacOptions ++= Seq("-unchecked", "-deprecation")

@@ -16,7 +16,7 @@ Requirements
 
 To compile and run the project you only need to have
 [Java 11](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-(u40 or newer version of 1.8) and [SBT](http://www.scala-sbt.org/) (v.1 or newer) installed.
+(version 11 or newer) and [SBT](http://www.scala-sbt.org/) (v.1.3 or newer) installed.
 All missing dependencies, including proper version of Scala and ScalaFX, will be downloaded by SBT.
 
 
