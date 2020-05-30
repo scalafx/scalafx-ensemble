@@ -31,6 +31,8 @@ import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.{CategoryAxis, LineChart, NumberAxis, XYChart}
 
+import scala.language.implicitConversions
+
 /** A line chart demonstrating a CategoryAxis.
   *
   * @see scalafx.scene.chart.CategoryAxis

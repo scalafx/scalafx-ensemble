@@ -32,6 +32,8 @@ import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.PieChart
 
+import scala.language.implicitConversions
+
 /** A pie chart that provides the ability to drill down through data. Selecting a
   * segment in the initial pie chart causes the pie chart to display detailed data
   * for the selected segment.

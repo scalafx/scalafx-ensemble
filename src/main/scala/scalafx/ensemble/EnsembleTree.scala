@@ -40,6 +40,7 @@ import scalafx.scene.layout.{Region, TilePane}
 
 import scala.collection.immutable
 import scala.collection.immutable.TreeMap
+import scala.language.implicitConversions
 
 /**
   * Object to load examples as Map which in turn is used

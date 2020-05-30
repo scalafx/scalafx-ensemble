@@ -31,6 +31,8 @@ import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.{BubbleChart, NumberAxis, XYChart}
 
+import scala.language.implicitConversions
+
 /** A chart that plots bubbles for a series of data points. Bubbles are plotted
   * according to three numeric parameters: value on x axis, value on y axis,
   * and radius of the bubble.

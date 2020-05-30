@@ -40,6 +40,8 @@ import scalafx.scene.layout.{BorderPane, Priority, StackPane, VBox}
 import scalafx.scene.web.WebView
 import scalafx.stage.DirectoryChooser
 
+import scala.language.implicitConversions
+
 /**
   * populates the tabbed content by loading
   * EnsembleExample instance

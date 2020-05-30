@@ -32,6 +32,8 @@ import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.{CategoryAxis, NumberAxis, StackedBarChart, XYChart}
 
+import scala.language.implicitConversions
+
 /** A sample that displays data in a stacked bar chart.
   *
   * @see scalafx.scene.chart.StackedBarChart
