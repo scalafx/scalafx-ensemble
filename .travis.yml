@@ -1,0 +1,20 @@
+sudo: false
+
+language: scala
+scala:
+  - 2.13.1
+
+dist: xenial
+services:
+  - xvfb
+
+jdk:
+  - openjdk11
+  - openjdk14
+
+install: true
+
+script:
+  - java -version
+  - sbt test
+
