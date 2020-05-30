@@ -6,13 +6,18 @@ version := "1.14.1-SNAPSHOT"
 
 organization := "org.scalafx"
 
-scalaVersion := "2.13.1"
+val dottyVersion = "0.24.0-RC1"
+val scala213Version = "2.13.1"
+scalaVersion := dottyVersion
+
+// To cross compile with Dotty and Scala 2
+crossScalaVersions := Seq(dottyVersion, scala213Version)
 
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "14-R19",
-  "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
-  "org.scalafx" %% "scalafx-extras" % "0.3.4",
-  "org.scalatest" %% "scalatest" % "3.1.2"
+  "org.scalafx" % "scalafx_2.13" % "14-R19",
+  "org.scala-lang.modules" % "scala-xml_2.13" % "1.3.0",
+  "org.scalafx" % "scalafx-extras_2.13" % "0.3.4",
+  "org.scalatest" % "scalatest_2.13" % "3.1.2"
 )
 
 // Add OS specific JavaFX dependencies
