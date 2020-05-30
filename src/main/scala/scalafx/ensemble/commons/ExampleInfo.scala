@@ -35,7 +35,7 @@ object ExampleInfo {
   val examplesDir = "/scalafx/ensemble/example/"
 
   def formatAddSpaces(name: String): String =
-    name.replaceAll( """([\p{Upper}\d])""", " $1").trim
+    name.replaceAll("""([\p{Upper}\d])""", " $1").trim
 
   def formatNoSpaces(name: String): String = name.replaceAllLiterally(" ", "")
 
@@ -47,46 +47,18 @@ object ExampleInfo {
 
   def className(exampleName: String, groupName: String): String =
     "scalafx.ensemble.example." + groupName.toLowerCase + ".Ensemble" + ExampleInfo.formatNoSpaces(exampleName)
-}
 
-/** Creates stand alone example source code. */
-class ExampleInfo(exampleName: String, exampleGroupName: String) {
-
-  import ExampleInfo._
-
-  /** Source code for the sample. */
-  lazy val sourceCode: String = loadAndConvertSourceCode(sourcecodePath(exampleName, exampleGroupName))
-
-  /** Name of example's main class, extracted from the source code, excluding package prefix. */
-  lazy val classSimpleName: String = {
-    val pattern = "object\\s*(\\S*)\\s*extends\\s*JFXApp".r
-    pattern findFirstIn sourceCode match {
-      case Some(pattern(name)) => name
-      case None                => throw new IllegalArgumentException("Cannot extract sample class name.")
-    }
+  private[commons] def extractStageProperties(sourceRaw: String): Seq[String] = {
+    val pattern = """@stage-property\s*(.*)""".r
+    val properties = for (pattern(property) <- pattern findAllIn sourceRaw) yield property.trim
+    properties.toSeq
   }
 
-  /** Samples package stated in sample source code. */
-  lazy val packageName: String = extractPackageName(sourceCode)
-
-  /** Samples package stated in sample source code, as a path, with `/` instead of `.` */
-  lazy val packagePath: String = packageName.replaceAll("\\.", "/")
-
-  /** Collection of resources used by this example */
-  lazy val resources: Set[String] = {
-    def extract(pattern: Regex): Seq[String] = {
-      val resources = for (pattern(resourcePath) <- pattern findAllIn sourceCode) yield resourcePath
-      resources.map(r => if (r.startsWith("/")) r else "/" + packagePath + "/" + r).toSeq
-    }
-
-    extract( """@resource\s*(\S*)""".r).toSet
-  }
-
-  private def extractPackageName(source: String): String = {
+  private[commons] def extractPackageName(source: String): String = {
     val pattern = ".*package\\s(\\S*)".r
     pattern findFirstIn source match {
       case Some(pattern(name)) => name.trim
-      case None                => ""
+      case None => ""
     }
   }
 
@@ -94,36 +66,26 @@ class ExampleInfo(exampleName: String, exampleGroupName: String) {
     val pattern = """class\s*Ensemble(\S*)\s*extends\s*EnsembleExample\s*\{""".r
     pattern findFirstIn source match {
       case Some(pattern(name)) => name.trim
-      case None                => ""
+      case None => ""
     }
   }
 
-  private def extractStageProperties(sourceRaw: String): Seq[String] = {
-    val pattern = """@stage-property\s*(.*)""".r
-    val properties = for (pattern(property) <- pattern findAllIn sourceRaw) yield property.trim
-    properties.toSeq
-  }
-
-  private def loadAndConvertSourceCode(path: String): String = {
-
-    // Load source code text
-    val sourceRaw = IOUtils.loadResourceAsString(this, path)
-
+  private[commons] def convertSourceCode(sourceRaw: String): String = {
     // Collect metadata from comments
     val stageProperties = extractStageProperties(sourceRaw)
 
     // Remove initial comment
-    var source = sourceRaw.replaceFirst( """(?s)/\*(.*?)\*/""", "")
+    var source = sourceRaw.replaceFirst("""(?s)/\*(.*?)\*/""", "")
 
     // Remove package statement, for a time being, so it is easier to prepend to the source code
     val originalPackageName = extractPackageName(source)
-    source = source.replaceFirst( """package\s*\S*""", "")
+    source = source.replaceFirst("""package\s*\S*""", "")
 
     // Remove empty lines at the beginning
-    source = source.replaceFirst( """(?s)\s*""", "")
+    source = source.replaceFirst("""(?s)\s*""", "")
 
     // Remove information about added properties
-    source = source.replaceAll( """\s*//\s*@stage-property\s*(.*)""", "")
+    source = source.replaceAll("""\s*//\s*@stage-property\s*(.*)""", "")
 
     // Append copyright, package, and required imports
     source = "" +
@@ -138,7 +100,7 @@ class ExampleInfo(exampleName: String, exampleGroupName: String) {
       source
 
     // Remove local imports
-    source = source.replaceAll( """import scalafx.ensemble.\S*\s*""", "")
+    source = source.replaceAll("""import scalafx.ensemble.\S*\s*""", "")
 
     // Change `class ExampleSomething extends EnsembleExample {`
     // to     `object SomethingSample extends JFXApp
@@ -154,10 +116,11 @@ class ExampleInfo(exampleName: String, exampleGroupName: String) {
       (if (stageProperties.isEmpty) "" else stageProperties.mkString("    ", "\n    ", "\n")) +
       "    scene = new Scene {\n" +
       "      root ="
-    source = source.replaceFirst( """\s*def\s*getContent\s*=""", stageHeader)
+
+    source = source.replaceFirst(""" *def *getContent:[ \S]* =""", stageHeader)
 
     // Cleanup extra carriage-return characters
-    source = source.replaceAll( """\r\n""", "\n")
+    source = source.replaceAll("""\r\n""", "\n")
 
     // Locate code that needs additional braces since two were introduced in `stageHeader`
     val openingBraceIndex = {
@@ -175,7 +138,7 @@ class ExampleInfo(exampleName: String, exampleGroupName: String) {
         source(index) match {
           case '{' => braceCount += 1
           case '}' => braceCount -= 1
-          case _   =>
+          case _ =>
         }
       }
       index
@@ -195,5 +158,47 @@ class ExampleInfo(exampleName: String, exampleGroupName: String) {
       "    }\n" +
       "  }" +
       postfix
+  }
+
+  private def loadAndConvertSourceCode(path: String): String = {
+    // Load source code text
+    val sourceRaw = IOUtils.loadResourceAsString(this, path)
+
+    // Convert source
+    convertSourceCode(sourceRaw)
+  }
+}
+
+/** Creates stand alone example source code. */
+class ExampleInfo(exampleName: String, exampleGroupName: String) {
+
+  import ExampleInfo._
+
+  /** Source code for the sample. */
+  lazy val sourceCode: String = loadAndConvertSourceCode(sourcecodePath(exampleName, exampleGroupName))
+
+  /** Name of example's main class, extracted from the source code, excluding package prefix. */
+  lazy val classSimpleName: String = {
+    val pattern = "object\\s*(\\S*)\\s*extends\\s*JFXApp".r
+    pattern findFirstIn sourceCode match {
+      case Some(pattern(name)) => name
+      case None => throw new IllegalArgumentException("Cannot extract sample class name.")
+    }
+  }
+
+  /** Samples package stated in sample source code. */
+  lazy val packageName: String = extractPackageName(sourceCode)
+
+  /** Samples package stated in sample source code, as a path, with `/` instead of `.` */
+  lazy val packagePath: String = packageName.replaceAll("\\.", "/")
+
+  /** Collection of resources used by this example */
+  lazy val resources: Set[String] = {
+    def extract(pattern: Regex): Seq[String] = {
+      val resources = for (pattern(resourcePath) <- pattern findAllIn sourceCode) yield resourcePath
+      resources.map(r => if (r.startsWith("/")) r else "/" + packagePath + "/" + r).toSeq
+    }
+
+    extract("""@resource\s*(\S*)""".r).toSet
   }
 }
