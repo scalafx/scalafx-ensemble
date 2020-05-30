@@ -37,7 +37,6 @@ import scalafx.scene.control._
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout._
 import scalafx.scene.{Node, Scene}
-import scalafx.stage.Screen
 
 /** The main ScalaFX Ensemble application object. */
 object Ensemble extends JFXApp {
@@ -55,7 +54,6 @@ object Ensemble extends JFXApp {
     children = EnsembleTree.create().getTree
   }
 
-  private val screen = Screen.primary
   private val controlsView: TreeView[String] = new TreeView[String]() {
     minWidth = 200
     maxWidth = 200
