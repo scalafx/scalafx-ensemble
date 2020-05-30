@@ -32,6 +32,8 @@ import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.{BarChart, CategoryAxis, NumberAxis, XYChart}
 
+import scala.language.implicitConversions
+
 /** An advanced bar chart.
   *
   * @see scalafx.scene.chart.BarChart

@@ -31,6 +31,8 @@ import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.{LineChart, NumberAxis, XYChart}
 
+import scala.language.implicitConversions
+
 /** A chart in which lines connect a series of data points. Useful for viewing
   * data trends over time.
   *

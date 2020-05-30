@@ -34,15 +34,17 @@ import scalafx.scene.control.{Button, Label, Separator, TextField}
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout._
 
+import scala.language.implicitConversions
+
 /**
- * An example of a GridPane layout. There is more than one approach to using a
- * GridPane. First, the code can specify which rows and/or columns should
- * contain the content. Second, the code can alter the constraints of the
- * rows and/or columns themselves, either by specifying the preferred minimum
- * or  maximum heights or widths, or by specifying the percentage of the
- * GridPane that belongs to certain rows or columns.
- *
- * @see scalafx.scene.layout.GridPane
+  * An example of a GridPane layout. There is more than one approach to using a
+  * GridPane. First, the code can specify which rows and/or columns should
+  * contain the content. Second, the code can alter the constraints of the
+  * rows and/or columns themselves, either by specifying the preferred minimum
+  * or  maximum heights or widths, or by specifying the percentage of the
+  * GridPane that belongs to certain rows or columns.
+  *
+  * @see scalafx.scene.layout.GridPane
  * @resource /scalafx/ensemble/images/icon-48x48.png
  */
 class EnsembleGridPane extends EnsembleExample {

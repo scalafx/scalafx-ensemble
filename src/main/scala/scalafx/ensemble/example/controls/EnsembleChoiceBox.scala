@@ -47,7 +47,7 @@ class EnsembleChoiceBox extends EnsembleExample {
   def getContent: VBox = new VBox {
     spacing = 10
     padding = Insets(20)
-    children = new ChoiceBox[String] {
+    children = new ChoiceBox[String]() {
       maxWidth = 80
       maxHeight = 50
       items = ObservableBuffer("Earth", "Sky", "Paradise")

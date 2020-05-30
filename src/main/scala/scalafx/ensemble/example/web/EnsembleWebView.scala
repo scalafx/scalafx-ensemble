@@ -34,6 +34,8 @@ import scalafx.scene.control.{Button, TextField}
 import scalafx.scene.layout.{BorderPane, HBox, Priority}
 import scalafx.scene.web.WebView
 
+import scala.language.implicitConversions
+
 class EnsembleWebView extends EnsembleExample {
   // @stage-property width = 1020
   // @stage-property height = 700

@@ -55,12 +55,12 @@ class EnsembleComboBox extends EnsembleExample {
       spacing = 15
       padding = Insets(20)
       children = List(
-        new ComboBox[String] {
+        new ComboBox[String]() {
           maxWidth = 200
           promptText = "Make a choice..."
           items = strings
         },
-        new ComboBox[String] {
+        new ComboBox[String]() {
           maxWidth = 200
           promptText = "Edit or Choose..."
           editable = true
