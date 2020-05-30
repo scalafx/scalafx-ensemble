@@ -42,7 +42,7 @@ import scalafx.scene.layout.VBox
  */
 class EnsembleAdvancedLabel extends EnsembleExample {
 
-  def getContent = {
+  def getContent: VBox = {
     val icon = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
     new VBox {
       spacing = 10

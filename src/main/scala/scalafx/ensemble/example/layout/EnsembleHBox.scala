@@ -34,10 +34,16 @@ import scalafx.scene.layout.HBox
 
 class EnsembleHBox extends EnsembleExample {
 
-  def getContent = {
-    val label = new Label {text = "Text:"}
-    val textField = new TextField {promptText = "Type something..."}
-    val button = new Button {text = "Search..."}
+  def getContent: HBox = {
+    val label = new Label {
+      text = "Text:"
+    }
+    val textField = new TextField {
+      promptText = "Type something..."
+    }
+    val button = new Button {
+      text = "Search..."
+    }
 
     new HBox {
       padding = Insets(20)

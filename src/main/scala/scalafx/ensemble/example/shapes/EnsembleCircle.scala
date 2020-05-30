@@ -34,7 +34,7 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.Circle
 
 class EnsembleCircle extends EnsembleExample {
-  def getContent = {
+  def getContent: HBox = {
 
     val circle1 = new Circle {
       centerX = 200

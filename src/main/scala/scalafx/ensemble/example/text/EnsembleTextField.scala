@@ -34,7 +34,7 @@ import scalafx.scene.layout.VBox
 
 class EnsembleTextField extends EnsembleExample {
 
-  def getContent = new VBox {
+  def getContent: VBox = new VBox {
     spacing = 10
     padding = Insets(20)
     children = List(

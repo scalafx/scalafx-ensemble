@@ -41,7 +41,7 @@ import scalafx.scene.layout.StackPane
   */
 class EnsembleSepiaTone extends EnsembleExample {
 
-  def getContent = {
+  def getContent: StackPane = {
     new StackPane {
       padding = Insets(20)
       children = new ImageView {

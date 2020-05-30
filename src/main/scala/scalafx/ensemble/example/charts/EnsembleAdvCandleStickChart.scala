@@ -58,7 +58,7 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
 
   case class CandleStick(day: Int, open: Double, close: Double, high: Double, low: Double, average: Double)
 
-  def getContent = {
+  def getContent: XYChart[Number, Number] = {
 
     val data = Array[CandleStick](
       CandleStick(1, 25, 20, 32, 16, 20),
@@ -398,16 +398,16 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
     private val highValue = new Label()
     private val lowValue = new Label()
 
-    val open = new Label("OPEN:") {
+    val open: Label = new Label("OPEN:") {
       styleClass += "candlestick-tooltip-label"
     }
-    val close = new Label("CLOSE:") {
+    val close: Label = new Label("CLOSE:") {
       styleClass += "candlestick-tooltip-label"
     }
-    val high = new Label("HIGH:") {
+    val high: Label = new Label("HIGH:") {
       styleClass += "candlestick-tooltip-label"
     }
-    val low = new Label("LOW:") {
+    val low: Label = new Label("LOW:") {
       styleClass += "candlestick-tooltip-label"
     }
 

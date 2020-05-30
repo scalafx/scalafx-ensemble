@@ -44,7 +44,7 @@ import scalafx.scene.layout.VBox
   */
 class EnsembleChoiceBox extends EnsembleExample {
 
-  def getContent = new VBox {
+  def getContent: VBox = new VBox {
     spacing = 10
     padding = Insets(20)
     children = new ChoiceBox[String] {

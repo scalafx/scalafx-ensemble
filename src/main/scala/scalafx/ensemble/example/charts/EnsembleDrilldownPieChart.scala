@@ -44,7 +44,7 @@ import scalafx.scene.chart.PieChart
   */
 class EnsembleDrilldownPieChart extends EnsembleExample {
 
-  def getContent = {
+  def getContent: PieChart = {
     //Drilldown Pie Chart style css
     val drilldownPieChartCss = this.getClass.getResource("DrilldownChart.css").toExternalForm
 
@@ -65,7 +65,7 @@ class EnsembleDrilldownPieChart extends EnsembleExample {
     pieChart
   }
 
-  def drillDownData = (pie: PieChart, pieData: PieChart.Data, labelPrefix: String) => {
+  def drillDownData: (PieChart, PieChart.Data, String) => Unit = (pie: PieChart, pieData: PieChart.Data, labelPrefix: String) => {
     pieData.node().onMouseClicked = () => pie.data = Seq(
       PieChart.Data(labelPrefix + "-1", 7),
       PieChart.Data(labelPrefix + "-2", 2),

@@ -47,7 +47,7 @@ object SBTProjectBuilder {
     _parentDir
   }
 
-  def parentDir_=(dir: File) = synchronized {
+  def parentDir_=(dir: File): Unit = synchronized {
     _parentDir = dir
   }
 
@@ -94,6 +94,7 @@ object SBTProjectBuilder {
     */
   private def copyText(projectDir: File, fileName: String, filters: List[(String, String)] = Nil): Unit = {
     /** Apply all filters in turn. */
+    @scala.annotation.tailrec
     def filter(string: String, filters: List[(String, String)]): String = {
       filters match {
         case Nil       => string

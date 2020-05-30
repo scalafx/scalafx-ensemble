@@ -36,7 +36,7 @@ import scalafx.scene.layout.StackPane
 
 class EnsembleSimpleListView extends EnsembleExample {
 
-  def getContent = new StackPane {
+  def getContent: StackPane = new StackPane {
     padding = Insets(20)
     children = new ListView[String] {
       maxWidth = 200

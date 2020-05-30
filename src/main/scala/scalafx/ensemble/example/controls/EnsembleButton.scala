@@ -35,7 +35,7 @@ import scalafx.scene.layout.TilePane
 /** Example of organizing buttons in column, of the same width. */
 class EnsembleButton extends EnsembleExample {
 
-  def getContent = new TilePane {
+  def getContent: TilePane = new TilePane {
     padding = Insets(10)
     orientation = Orientation.Vertical
     hgap = 10

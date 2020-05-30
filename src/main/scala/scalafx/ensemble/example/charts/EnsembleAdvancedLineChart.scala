@@ -29,9 +29,7 @@ package scalafx.ensemble.example.charts
 
 import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.scene.chart.LineChart
-import scalafx.scene.chart.NumberAxis
-import scalafx.scene.chart.XYChart
+import scalafx.scene.chart.{LineChart, NumberAxis, XYChart}
 
 /** An advanced line chart.
   *
@@ -42,7 +40,7 @@ import scalafx.scene.chart.XYChart
   */
 class EnsembleAdvancedLineChart extends EnsembleExample {
 
-  def getContent = {
+  def getContent: LineChart[Number, Number] = {
 
     // Create sample data. Here we use a collection of (x,y) pairs
     val xyData = Seq(

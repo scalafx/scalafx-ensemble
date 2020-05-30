@@ -48,7 +48,7 @@ import scalafx.scene.layout.{Priority, Region, VBox}
   */
 class EnsemblePagination extends EnsembleExample {
 
-  def getContent = {
+  def getContent: VBox = {
 
     // Images to load pages
     val images = for (i <- 0 until 7) yield {

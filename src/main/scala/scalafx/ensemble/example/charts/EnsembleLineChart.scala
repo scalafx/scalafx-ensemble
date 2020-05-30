@@ -29,9 +29,7 @@ package scalafx.ensemble.example.charts
 
 import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.scene.chart.LineChart
-import scalafx.scene.chart.NumberAxis
-import scalafx.scene.chart.XYChart
+import scalafx.scene.chart.{LineChart, NumberAxis, XYChart}
 
 /** A chart in which lines connect a series of data points. Useful for viewing
   * data trends over time.
@@ -45,7 +43,7 @@ import scalafx.scene.chart.XYChart
   */
 class EnsembleLineChart extends EnsembleExample {
 
-  def getContent = {
+  def getContent: LineChart[Number, Number] = {
 
     val xAxis = NumberAxis("Values for X-Axis", 0, 3, 1)
     val yAxis = NumberAxis("Values for Y-Axis", 0, 3, 1)

@@ -29,9 +29,7 @@ package scalafx.ensemble.example.charts
 
 import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.scene.chart.BubbleChart
-import scalafx.scene.chart.NumberAxis
-import scalafx.scene.chart.XYChart
+import scalafx.scene.chart.{BubbleChart, NumberAxis, XYChart}
 
 /** A chart that plots bubbles for a series of data points. Bubbles are plotted
   * according to three numeric parameters: value on x axis, value on y axis,
@@ -43,7 +41,7 @@ import scalafx.scene.chart.XYChart
   * @see scalafx.scene.chart.NumberAxis
   */
 class EnsembleBubbleChart extends EnsembleExample {
-  def getContent = {
+  def getContent: BubbleChart[Number, Number] = {
     val xAxis = NumberAxis("X", 0d, 140d, 20d)
     val yAxis = NumberAxis("Y", 0d, 140d, 20d)
 

@@ -27,12 +27,11 @@
 
 package scalafx.ensemble.example.charts
 
-import scala.math.random
 import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.scene.chart.BubbleChart
-import scalafx.scene.chart.NumberAxis
-import scalafx.scene.chart.XYChart
+import scalafx.scene.chart.{BubbleChart, NumberAxis, XYChart}
+
+import scala.math.random
 
 /** An advanced bubble chart.
   *
@@ -44,7 +43,7 @@ import scalafx.scene.chart.XYChart
   */
 class EnsembleAdvancedBubbleChart extends EnsembleExample {
 
-  def getContent = {
+  def getContent: BubbleChart[Number, Number] = {
     // Generate some random data
     def randomData = (1 to 20).map(
       _ => XYChart.Data[Number, Number](random * 100, random * 100, random * 10))

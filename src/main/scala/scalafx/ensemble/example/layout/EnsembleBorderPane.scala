@@ -47,7 +47,7 @@ class EnsembleBorderPane extends EnsembleExample {
   // @stage-property height = 300
   // @stage-property resizable = false
 
-  def getContent = {
+  def getContent: BorderPane = {
     // Top content using a rectangle
     val topRectangle = new Rectangle() {
       width = 400

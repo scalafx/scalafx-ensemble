@@ -40,7 +40,7 @@ import scalafx.scene.layout.AnchorPane
   */
 class EnsembleAnchorPane extends EnsembleExample {
 
-  def getContent = {
+  def getContent: AnchorPane = {
     val label = Label("We are all in an AnchorPane.")
     val button = new Button("Submit")
     val imageView = new ImageView {

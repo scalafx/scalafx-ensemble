@@ -37,7 +37,7 @@ import scalafx.scene.text.Font
 
 class EnsembleDropShadow extends EnsembleExample {
 
-  def getContent = new VBox {
+  def getContent: VBox = new VBox {
     vgrow = Priority.Always
     hgrow = Priority.Always
     spacing = 30

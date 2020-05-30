@@ -28,7 +28,6 @@
 package scalafx.ensemble.example.controls
 
 import javafx.scene.control.{ToggleButton => JfxToggleBtn}
-
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.{Label, ToggleButton, ToggleGroup}
@@ -36,13 +35,13 @@ import scalafx.scene.layout.{HBox, Priority, VBox}
 
 class EnsembleToggleButton extends EnsembleExample {
 
-  val toggleLabel = new Label {
+  val toggleLabel: Label = new Label {
     text = ""
     style = "-fx-font-size: 2em;"
   }
 
   // Radio Button Toggle Group
-  val tog = new ToggleGroup {
+  val tog: ToggleGroup = new ToggleGroup {
     selectedToggle.onChange(
       (_, oldValue, newValue) => {
         toggleLabel.text = "You selected : " + newValue.asInstanceOf[JfxToggleBtn].getText
@@ -50,7 +49,7 @@ class EnsembleToggleButton extends EnsembleExample {
     )
   }
 
-  def getContent = {
+  def getContent: VBox = {
     new VBox {
       vgrow = Priority.Always
       hgrow = Priority.Always

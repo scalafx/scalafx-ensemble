@@ -38,7 +38,7 @@ class EnsembleWebView extends EnsembleExample {
   // @stage-property width = 1020
   // @stage-property height = 700
 
-  def getContent = {
+  def getContent: BorderPane = {
     // Default URL to load at first
     val defaultURL = "http://www.scala-lang.org/"
     val locationField = new TextField {

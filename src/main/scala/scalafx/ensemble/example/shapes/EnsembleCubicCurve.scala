@@ -35,7 +35,7 @@ import scalafx.scene.shape.CubicCurve
 
 class EnsembleCubicCurve extends EnsembleExample {
 
-  def getContent = new HBox {
+  def getContent: HBox = new HBox {
     spacing = 10
     padding = Insets(20)
     children = List(

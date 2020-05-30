@@ -37,7 +37,7 @@ import scalafx.scene.chart.PieChart
   */
 class EnsembleAdvancedPieChart extends EnsembleExample {
 
-  def getContent = {
+  def getContent: PieChart = {
     val data1 = PieChart.Data("Sun", 20)
     val data2 = PieChart.Data("IBM", 12)
     val data3 = PieChart.Data("HP", 25)

@@ -29,10 +29,7 @@ package scalafx.ensemble.example.charts
 
 import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.scene.chart.CategoryAxis
-import scalafx.scene.chart.LineChart
-import scalafx.scene.chart.NumberAxis
-import scalafx.scene.chart.XYChart
+import scalafx.scene.chart.{CategoryAxis, LineChart, NumberAxis, XYChart}
 
 /** A line chart demonstrating a CategoryAxis.
   *
@@ -43,7 +40,7 @@ import scalafx.scene.chart.XYChart
   * @see scalafx.scene.chart.XYChart
   */
 class EnsembleAdvLineCategoryChart extends EnsembleExample {
-  def getContent = {
+  def getContent: LineChart[String, Number] = {
     // add starting data
     val series = new XYChart.Series[String, Number] {
       name = "Data Series 1"

@@ -35,7 +35,7 @@ import scalafx.scene.layout.StackPane
 
 class EnsembleTreeView extends EnsembleExample {
 
-  def getContent = {
+  def getContent: StackPane = {
     val treeView = new TreeView[String] {
       minWidth = 200
       minHeight = 200

@@ -42,7 +42,7 @@ import scalafx.scene.layout.{Priority, VBox}
  */
 class EnsembleHyperlink extends EnsembleExample {
 
-  def getContent = new VBox {
+  def getContent: VBox = new VBox {
     vgrow = Priority.Always
     hgrow = Priority.Always
     spacing = 10

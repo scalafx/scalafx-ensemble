@@ -48,8 +48,8 @@ class EnsembleScrollBar extends EnsembleExample {
   private val yBarHeight = 393
   private val circleRadius = 90
 
-  val bg = Rectangle(xBarWidth + yBarWidth, xBarHeight + yBarHeight, Color.rgb(90, 90, 90))
-  val box = new Rectangle {
+  val bg: Rectangle = Rectangle(xBarWidth + yBarWidth, xBarHeight + yBarHeight, Color.rgb(90, 90, 90))
+  val box: Rectangle = new Rectangle {
     width = 100
     height = 100
     fill = Color.rgb(150, 150, 150)
@@ -58,7 +58,7 @@ class EnsembleScrollBar extends EnsembleExample {
   }
 
   // Moveable circle
-  val circle = new Circle {
+  val circle: Circle = new Circle {
     centerX = 45
     centerY = 45
     radius = circleRadius
@@ -68,7 +68,7 @@ class EnsembleScrollBar extends EnsembleExample {
   }
 
   // Horizontal ScrollBar
-  val xScrollBar = new ScrollBar {
+  val xScrollBar: ScrollBar = new ScrollBar {
     minWidth = -1
     minHeight = -1
     prefWidth = xBarWidth
@@ -85,7 +85,7 @@ class EnsembleScrollBar extends EnsembleExample {
   }
 
   // Vertical ScrollBar
-  val yScrollBar = new ScrollBar {
+  val yScrollBar: ScrollBar = new ScrollBar {
     minWidth = -1
     minHeight = -1
     prefWidth = yBarWidth
@@ -105,7 +105,7 @@ class EnsembleScrollBar extends EnsembleExample {
   }
 
 
-  def getContent = new Pane {
+  def getContent: Pane = new Pane {
     prefWidth = xBarWidth + yBarWidth
     prefHeight = xBarHeight + yBarHeight
     children ++= Seq(bg, box, circle, xScrollBar, yScrollBar)

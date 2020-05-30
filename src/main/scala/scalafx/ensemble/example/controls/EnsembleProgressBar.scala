@@ -36,7 +36,7 @@ class EnsembleProgressBar extends EnsembleExample {
 
   // @stage-property width = 400
 
-  def getContent = new StackPane {
+  def getContent: StackPane = new StackPane {
     padding = Insets(20)
     children = new VBox {
       spacing = 10

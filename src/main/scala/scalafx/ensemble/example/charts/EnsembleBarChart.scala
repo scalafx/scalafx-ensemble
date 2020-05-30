@@ -45,7 +45,7 @@ import scalafx.scene.chart.{BarChart, CategoryAxis, NumberAxis, XYChart}
   *
   */
 class EnsembleBarChart extends EnsembleExample {
-  def getContent = {
+  def getContent: BarChart[String, Number] = {
     val years = ObservableBuffer("2007", "2008", "2009")
 
     val xAxis = CategoryAxis(years)

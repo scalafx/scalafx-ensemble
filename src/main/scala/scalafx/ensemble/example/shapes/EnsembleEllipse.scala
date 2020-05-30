@@ -35,15 +35,15 @@ import scalafx.scene.shape.Ellipse
 
 class EnsembleEllipse extends EnsembleExample {
 
-  def getContent = new HBox {
+  def getContent: HBox = new HBox {
     spacing = 25
     padding = Insets(20)
     children = List(
-      new Ellipse{
-          centerX = 40
-          centerY = 45
-          radiusX = 30
-          radiusY = 45
+      new Ellipse {
+        centerX = 40
+        centerY = 45
+        radiusX = 30
+        radiusY = 45
         fill = Color.BlueViolet
       },
         new Ellipse{

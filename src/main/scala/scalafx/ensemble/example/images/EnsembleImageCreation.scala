@@ -43,7 +43,7 @@ import scalafx.scene.layout.{Priority, VBox}
  * @resource /scalafx/ensemble/images/scala-logo.png
  */
 class EnsembleImageCreation extends EnsembleExample {
-  def getContent = new VBox {
+  def getContent: VBox = new VBox {
     vgrow = Priority.Always
     hgrow = Priority.Always
     spacing = 10

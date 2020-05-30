@@ -35,7 +35,7 @@ import scalafx.scene.shape.Line
 
 class EnsembleLine extends EnsembleExample {
 
-  def getContent = new VBox {
+  def getContent: VBox = new VBox {
     spacing = 20
     padding = Insets(20)
     children = List(

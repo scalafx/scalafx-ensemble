@@ -44,7 +44,7 @@ class EnsembleHiddenSplitPane extends EnsembleExample {
   // @stage-property width = 600
   // @stage-property height = 400
 
-  def getContent = {
+  def getContent: StackPane = {
 
     //Style Sheet loaded from external 
     val hiddenSplitPaneCss = this.getClass.getResource("/scalafx/ensemble/css/HiddenSplitPane.css").toExternalForm

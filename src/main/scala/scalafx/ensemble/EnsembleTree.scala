@@ -29,13 +29,16 @@ package scalafx.ensemble
 
 import java.io.IOException
 
+import javafx.scene.layout
 import scalafx.Includes._
+import scalafx.delegate.AlignmentDelegate
 import scalafx.ensemble.commons.{ExampleInfo, PageDisplayer, SortUtils}
 import scalafx.geometry.{Insets, Orientation}
 import scalafx.scene.control._
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.{Region, TilePane}
 
+import scala.collection.immutable
 import scala.collection.immutable.TreeMap
 
 /**
@@ -45,7 +48,7 @@ import scala.collection.immutable.TreeMap
 object EnsembleTree {
 
   private val exampleListPath = ExampleInfo.examplesDir + "example.tree"
-  private val examplListURL = getClass.getResource(exampleListPath)
+  private val exampleListURL = getClass.getResource(exampleListPath)
 
   def create(): EnsembleTree = new EnsembleTree(createTree(), createThumbnails())
 
@@ -65,9 +68,9 @@ object EnsembleTree {
 
   private def loadExampleNames(): Array[(String, Array[String])] = {
 
-    require(examplListURL != null, "Failed to locate resource in classpath: " + exampleListPath)
+    require(exampleListURL != null, "Failed to locate resource in classpath: " + exampleListPath)
 
-    val lines = scala.io.Source.fromURL(examplListURL).getLines()
+    val lines = scala.io.Source.fromURL(exampleListURL).getLines()
 
     for (line <- lines.toArray) yield {
       val v = line.split("->")
@@ -120,7 +123,7 @@ case class EnsembleThumbNail(button: Button)
 class EnsembleTree(tree: Map[String, List[TreeItem[String]]],
                    thumbnails: Map[String, List[EnsembleThumbNail]]) {
 
-  def getLeaves(keyName: String) = tree(keyName)
+  def getLeaves(keyName: String): List[TreeItem[String]] = tree(keyName)
 
   /**
     * returns the entire tree
@@ -132,15 +135,15 @@ class EnsembleTree(tree: Map[String, List[TreeItem[String]]],
     }
   }.toList
 
-  def getThumbs(keyName: String) = thumbnails(keyName)
+  def getThumbs(keyName: String): List[EnsembleThumbNail] = thumbnails(keyName)
 
 
-  def getDashThumbsCtrl =
+  def getDashThumbsCtrl: immutable.Iterable[Region with AlignmentDelegate[_ <: layout.Region]] =
     thumbnails.flatMap {
       case (heading, ts) => Seq(createCategoryLabel(heading), createTiles(ts))
     }
 
-  def getDashThumb(ctrlGrpName: String) =
+  def getDashThumb(ctrlGrpName: String): Seq[Region with AlignmentDelegate[_ <: layout.Region]] =
     Seq(
       createCategoryLabel(ctrlGrpName),
       createTiles(thumbnails(ctrlGrpName))

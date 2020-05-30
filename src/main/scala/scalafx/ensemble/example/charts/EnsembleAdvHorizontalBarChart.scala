@@ -30,10 +30,7 @@ package scalafx.ensemble.example.charts
 import scalafx.Includes._
 import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
-import scalafx.scene.chart.BarChart
-import scalafx.scene.chart.CategoryAxis
-import scalafx.scene.chart.NumberAxis
-import scalafx.scene.chart.XYChart
+import scalafx.scene.chart.{BarChart, CategoryAxis, NumberAxis, XYChart}
 
 /** An advanced horizontal bar chart.
   *
@@ -43,7 +40,7 @@ import scalafx.scene.chart.XYChart
   * @see scalafx.scene.chart.XYChart
   */
 class EnsembleAdvHorizontalBarChart extends EnsembleExample {
-  def getContent = {
+  def getContent: BarChart[Number, String] = {
     // Category/x values
     val years = Seq("2007", "2008", "2009")
 

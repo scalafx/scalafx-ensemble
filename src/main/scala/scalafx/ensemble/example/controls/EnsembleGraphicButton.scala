@@ -42,7 +42,7 @@ import scalafx.scene.layout.StackPane
  * @resource /scalafx/ensemble/images/icon-48x48.png
  */
 class EnsembleGraphicButton extends EnsembleExample {
-  def getContent = new StackPane {
+  def getContent: StackPane = new StackPane {
     padding = Insets(20)
     children = new Button {
       maxWidth = 170

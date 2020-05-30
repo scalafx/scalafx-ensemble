@@ -41,7 +41,7 @@ import scalafx.scene.layout.TilePane
  */
 class EnsembleTilePane extends EnsembleExample {
 
-  def getContent = {
+  def getContent: TilePane = {
     // Image for buttons
     val image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
 

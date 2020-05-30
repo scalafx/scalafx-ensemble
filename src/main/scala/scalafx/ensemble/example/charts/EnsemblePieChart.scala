@@ -38,7 +38,7 @@ import scalafx.scene.chart.PieChart
   */
 class EnsemblePieChart extends EnsembleExample {
 
-  def getContent = new PieChart {
+  def getContent: PieChart = new PieChart {
     data = Seq(
       PieChart.Data("Sun", 20),
       PieChart.Data("IBM", 12),

@@ -41,7 +41,7 @@ import scalafx.scene.layout.{HBox, Priority, VBox}
   */
 class EnsembleImageProperties extends EnsembleExample {
 
-  def getContent = {
+  def getContent: VBox = {
     // We can set image properties directly during creation
     val url = this.getClass.getResource("/scalafx/ensemble/images/sanfran.jpg").toExternalForm
     val sample1 = new ImageView(

@@ -39,7 +39,7 @@ import scalafx.scene.layout.VBox
   */
 class EnsembleSimpleLabel extends EnsembleExample {
 
-  def getContent = new VBox {
+  def getContent: VBox = new VBox {
     padding = Insets(20)
     children = new Label {
       text = "A simple label with a graphic on the left."

@@ -34,9 +34,11 @@ import scalafx.scene.paint.{Color, Paint}
 import scalafx.scene.shape.Rectangle
 
 class EnsembleRectangle extends EnsembleExample {
-  def getContent = {
+  def getContent: HBox = {
     // function literal to get Rectangle object
-    val rectObj = (rect: Rectangle) => {rect.setStroke(Color.Burlywood); rect}
+    val rectObj = (rect: Rectangle) => {
+      rect.setStroke(Color.Burlywood); rect
+    }
     val rectArcObj = (height: Int, width: Int) => {
       val rect = Rectangle(100, 100, Color.White)
       rect.setStroke(Color.Green)

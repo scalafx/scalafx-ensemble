@@ -46,7 +46,7 @@ class EnsembleFlowPane extends EnsembleExample {
   // @stage-property height = 500
   // @stage-property resizable = false
 
-  def getContent = {
+  def getContent: FlowPane = {
     val image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))
 
     new FlowPane(2, 4) {

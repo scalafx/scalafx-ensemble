@@ -34,7 +34,7 @@ import scalafx.scene.layout.VBox
 
 class EnsembleStyledToolBar extends EnsembleExample {
 
-  def getContent = {
+  def getContent: VBox = {
     // ToolBar Standard
     val stdToolBar = new ToolBar {
       id = "standard"

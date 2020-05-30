@@ -39,7 +39,7 @@ import scalafx.scene.layout.VBox
   */
 class EnsembleInsetText extends EnsembleExample {
 
-  def getContent = {
+  def getContent: VBox = {
     //StyleSheets are added
     val insetTextCss = this.getClass.getResource("/scalafx/ensemble/css/InsetText.css").toExternalForm
     new VBox {

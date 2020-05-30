@@ -29,7 +29,7 @@ package scalafx.ensemble.example.controls
 
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.control.{Accordion, Button, CheckBox, TextField, TitledPane}
+import scalafx.scene.control._
 import scalafx.scene.layout.StackPane
 
 /** An example of an accordion control. You can use accordion controls to define
@@ -45,7 +45,7 @@ class EnsembleAccordion extends EnsembleExample {
   // @stage-property width = 200
   // @stage-property height = 200
 
-  def getContent = new StackPane {
+  def getContent: StackPane = new StackPane {
     padding = Insets(10)
     children = new Accordion {
       maxWidth = 150

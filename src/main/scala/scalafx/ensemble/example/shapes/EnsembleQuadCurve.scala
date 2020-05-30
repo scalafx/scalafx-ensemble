@@ -34,7 +34,7 @@ import scalafx.scene.paint.Color
 import scalafx.scene.shape.QuadCurve
 
 class EnsembleQuadCurve extends EnsembleExample {
-  def getContent = new VBox {
+  def getContent: VBox = new VBox {
     spacing = 20
     padding = Insets(20)
     children = List(

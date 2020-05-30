@@ -30,8 +30,7 @@ package scalafx.ensemble.example.controls
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.control.{CheckMenuItem, Menu, MenuBar, MenuItem}
-import scalafx.scene.image.Image
-import scalafx.scene.image.ImageView
+import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.BorderPane
 
 
@@ -49,7 +48,7 @@ class EnsembleMenu extends EnsembleExample {
 
   val fooMenuItem = new MenuItem("foo")
 
-  def getContent = new BorderPane {
+  def getContent: BorderPane = new BorderPane {
     top = new MenuBar {
       maxWidth = 400
       useSystemMenuBar = true

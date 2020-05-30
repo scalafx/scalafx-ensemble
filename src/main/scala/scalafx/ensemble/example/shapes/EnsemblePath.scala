@@ -31,11 +31,11 @@ import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
 import scalafx.scene.layout.HBox
 import scalafx.scene.paint.Color
-import scalafx.scene.shape.{ArcTo, ClosePath, CubicCurveTo, HLineTo, LineTo, MoveTo, Path, QuadCurveTo, VLineTo}
+import scalafx.scene.shape._
 
 class EnsemblePath extends EnsembleExample {
 
-  def getContent = new HBox {
+  def getContent: HBox = new HBox {
     spacing = 20
     padding = Insets(20)
     children = List(

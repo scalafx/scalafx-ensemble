@@ -36,7 +36,7 @@ import scalafx.scene.web.HTMLEditor
 
 class EnsembleHtmlEditor extends EnsembleExample {
 
-  def getContent = {
+  def getContent: VBox = {
     // Initial Text in the html editor
     val initialText =
       """<html><body>Lorem ipsum dolor sit amet, consectetur adipiscing elit.

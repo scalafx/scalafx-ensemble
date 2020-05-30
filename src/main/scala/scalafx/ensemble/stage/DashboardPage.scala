@@ -37,10 +37,10 @@ class DashboardPage(dashPart: String = "dashboard") extends DisplayablePage {
 
   private val tree = EnsembleTree.create()
 
-  def getPage = {
+  def getPage: ScrollPane = {
     val thumbs = dashPart match {
       case "dashboard" => tree.getDashThumbsCtrl
-      case _           => tree.getDashThumb(dashPart)
+      case _ => tree.getDashThumb(dashPart)
     }
 
     new ScrollPane {

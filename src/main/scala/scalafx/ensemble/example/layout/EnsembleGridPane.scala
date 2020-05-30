@@ -32,7 +32,7 @@ import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.{HPos, Insets, Pos}
 import scalafx.scene.control.{Button, Label, Separator, TextField}
 import scalafx.scene.image.{Image, ImageView}
-import scalafx.scene.layout.{ColumnConstraints, GridPane, Priority, RowConstraints, VBox}
+import scalafx.scene.layout._
 
 /**
  * An example of a GridPane layout. There is more than one approach to using a
@@ -47,7 +47,7 @@ import scalafx.scene.layout.{ColumnConstraints, GridPane, Priority, RowConstrain
  */
 class EnsembleGridPane extends EnsembleExample {
 
-  def getContent = {
+  def getContent: VBox = {
     // grid1 places the children by specifying the rows and columns in GridPane.setConstraints()
     val grid1Caption = new Label {
       text = "The example below shows GridPane content placement by specifying rows and columns:"

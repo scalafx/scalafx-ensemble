@@ -34,7 +34,7 @@ import scalafx.scene.layout.GridPane
 
 class EnsembleProgressIndicator extends EnsembleExample {
 
-  def getContent = {
+  def getContent: GridPane = {
     // Progress Indicators 1, 2, 3, 4
     val p1 = new ProgressIndicator {
       prefWidth = 50

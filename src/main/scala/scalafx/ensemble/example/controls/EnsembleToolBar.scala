@@ -29,15 +29,14 @@ package scalafx.ensemble.example.controls
 
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Insets
-import scalafx.scene.control.Button
-import scalafx.scene.control.ToolBar
+import scalafx.scene.control.{Button, ToolBar}
 import scalafx.scene.layout.BorderPane
 
 class EnsembleToolBar extends EnsembleExample {
 
   // @stage-property width = 400
   // @stage-property height = 150
-  def getContent = new BorderPane {
+  def getContent: BorderPane = new BorderPane {
     padding = Insets(20)
     top = new ToolBar {
       content = List(

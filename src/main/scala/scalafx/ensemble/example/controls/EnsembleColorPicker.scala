@@ -44,7 +44,7 @@ class EnsembleColorPicker extends EnsembleExample {
 
   // @stage-property height = 300
 
-  def getContent = {
+  def getContent: VBox = {
 
     def toStyle(color: Color) =
       s"-fx-base: rgb(${color.red * 255}, ${color.green * 255}, ${color.blue * 255});"
