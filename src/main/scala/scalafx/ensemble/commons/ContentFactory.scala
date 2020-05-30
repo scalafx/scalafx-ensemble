@@ -29,9 +29,7 @@ package scalafx.ensemble.commons
 
 import java.util.Locale
 
-import javafx.scene.control.Alert
-import javafx.scene.control.Alert.AlertType
-import javafx.stage.Stage
+import org.scalafx.extras.showException
 import scalafx.Includes._
 import scalafx.ensemble.commons.IOUtils._
 import scalafx.ensemble.sbt.SBTProjectBuilder
@@ -43,16 +41,16 @@ import scalafx.scene.web.WebView
 import scalafx.stage.DirectoryChooser
 
 /**
- * populates the tabbed content by loading
- * EnsembleExample instance
- */
+  * populates the tabbed content by loading
+  * EnsembleExample instance
+  */
 object ContentFactory {
-  def createContent(exampleName: String, groupName: String) = {
+  def createContent(exampleName: String, groupName: String): ScrollPane = {
 
     // Construct content of the samples dynamically
     val fullClassName = ExampleInfo.className(exampleName, groupName)
     var cache = Map[String, EnsembleExample]()
-    val sampleNode = if (cache.get(fullClassName).isDefined) {
+    val sampleNode = if (cache.contains(fullClassName)) {
       cache(fullClassName).getContent
     } else {
       val inst = Class.forName(fullClassName).getDeclaredConstructor().newInstance().asInstanceOf[EnsembleExample]
@@ -152,10 +150,14 @@ object ContentFactory {
               }
             } catch {
               case t: Throwable =>
+                // FIXME: test casting
                 t.printStackTrace()
-                val stage = thisButton.scene().window().asInstanceOf[Stage]
-                showError(stage, title = thisButton.text(), header = "Error saving sample SBT project",
-                  message = t.getClass.getName + ": " + t.getMessage, t)
+                val window = thisButton.scene().window()
+                showException(
+                  title = thisButton.text(),
+                  message = "Error saving sample SBT project.",
+                  t = t,
+                  ownerWindow = window)
             }
           },
           new Button {
@@ -169,9 +171,12 @@ object ContentFactory {
               Clipboard.systemClipboard.setContent(content)
             } catch {
               case t: Throwable =>
-                val stage = thisButton.scene().window().asInstanceOf[Stage]
-                showError(stage, title = thisButton.text(),
-                  header = "Error copying source to clipboard", message = t.getClass.getName + ": " + t.getMessage, t)
+                val window = thisButton.scene().window()
+                showException(
+                  title = thisButton.text(),
+                  message = "Error copying source to clipboard",
+                  t = t,
+                  ownerWindow = window)
             }
           }
         )
@@ -192,13 +197,4 @@ object ContentFactory {
     os.indexOf("mac") >= 0
   }
 
-  private def showError(stage: Stage, title: String, header: String, message: String, t: Throwable): Unit = {
-    t.printStackTrace()
-    val alert = new Alert(AlertType.ERROR)
-    alert.initOwner(stage)
-    alert.setContentText(message)
-    alert.setHeaderText(header)
-    alert.setTitle(title)
-    alert.showAndWait()
-  }
 }

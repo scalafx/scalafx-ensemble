@@ -10,7 +10,9 @@ scalaVersion := "2.13.1"
 
 libraryDependencies ++= Seq(
   "org.scalafx" %% "scalafx" % "14-R19",
-  "org.scala-lang.modules" %% "scala-xml" % "1.3.0"
+  "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
+  "org.scalafx" %% "scalafx-extras" % "0.3.4",
+  "org.scalatest" %% "scalatest" % "3.1.2"
 )
 
 // Add OS specific JavaFX dependencies

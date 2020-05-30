@@ -27,31 +27,36 @@
 
 package scalafx.ensemble
 
+import org.scalafx.extras.{onFXAndWait, showException}
 import scalafx.Includes._
 import scalafx.application.JFXApp
 import scalafx.application.JFXApp.PrimaryStage
 import scalafx.ensemble.commons.PageDisplayer
 import scalafx.geometry.Insets
-import scalafx.scene.Scene
 import scalafx.scene.control._
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout._
+import scalafx.scene.{Node, Scene}
 import scalafx.stage.Screen
 
 /** The main ScalaFX Ensemble application object. */
 object Ensemble extends JFXApp {
 
+  private val Title = "ScalaFX Ensemble"
+
+  setupUncaughtExceptionHandling()
+
   //
   // Example selection tree
   //
-  var centerPane = PageDisplayer.choosePage("dashBoard")
-  val rootTreeItem = new TreeItem[String]("ScalaFX Ensemble") {
+  private var centerPane: Node = PageDisplayer.choosePage("dashBoard")
+  private val rootTreeItem: TreeItem[String] = new TreeItem[String](Title) {
     expanded = true
     children = EnsembleTree.create().getTree
   }
 
-  val screen = Screen.primary
-  val controlsView = new TreeView[String]() {
+  private val screen = Screen.primary
+  private val controlsView: TreeView[String] = new TreeView[String]() {
     minWidth = 200
     maxWidth = 200
     editable = true
@@ -63,8 +68,8 @@ object Ensemble extends JFXApp {
     (_, _, newItem) => {
       val pageCode = (newItem.isLeaf, Option(newItem.getParent)) match {
         case (true, Some(parent)) => parent.getValue.toLowerCase + " > " + newItem.getValue
-        case (false, Some(_))     => "dashBoard - " + newItem.getValue
-        case (_, _)               => "dashBoard"
+        case (false, Some(_)) => "dashBoard - " + newItem.getValue
+        case (_, _) => "dashBoard"
       }
       centerPane = PageDisplayer.choosePage(pageCode)
       splitPane.items.remove(1)
@@ -72,7 +77,7 @@ object Ensemble extends JFXApp {
     }
   }
 
-  val scrollPane = new ScrollPane {
+  private val scrollPane: ScrollPane = new ScrollPane {
     minWidth = 200
     maxWidth = 200
     fitToWidth = true
@@ -80,7 +85,8 @@ object Ensemble extends JFXApp {
     id = "page-tree"
     content = controlsView
   }
-  lazy val splitPane = new SplitPane {
+
+  lazy val splitPane: SplitPane = new SplitPane {
     dividerPositions = 0
     id = "page-splitpane"
     items.addAll(scrollPane, centerPane)
@@ -123,6 +129,23 @@ object Ensemble extends JFXApp {
         }
         styleClass += "application"
       }
+    }
+  }
+
+  def setupUncaughtExceptionHandling(): Unit = {
+    Thread.setDefaultUncaughtExceptionHandler(
+      (t: Thread, e: Throwable) => {
+        showException(Title, s"Unhandled exception on thread ${t.getName}.", e, stage)
+      }
+    )
+
+
+    onFXAndWait {
+      Thread.currentThread().setUncaughtExceptionHandler(
+        (t: Thread, e: Throwable) => {
+          showException(Title, s"Unhandled exception on thread ${t.getName}.", e, stage)
+        }
+      )
     }
   }
 }
