@@ -2,7 +2,7 @@ sudo: false
 
 language: scala
 scala:
-  - 2.13.1
+  - 2.13.4
 
 dist: xenial
 services:
@@ -10,7 +10,7 @@ services:
 
 jdk:
   - openjdk11
-  - openjdk14
+  - openjdk15
 
 install: true
 
