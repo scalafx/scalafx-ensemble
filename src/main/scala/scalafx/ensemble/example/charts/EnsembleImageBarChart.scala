@@ -27,7 +27,6 @@
 
 package scalafx.ensemble.example.charts
 
-import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.{BarChart, CategoryAxis, NumberAxis, XYChart}
 

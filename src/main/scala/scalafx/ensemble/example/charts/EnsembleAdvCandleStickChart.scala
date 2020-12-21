@@ -141,7 +141,7 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
       * @param yAxis The y axis to use
       * @param data  The data to use, this is the actual list used so any changes to it will be reflected in the chart
       */
-    def this(xAxis: Axis[Number], yAxis: Axis[Number], data: ObservableBuffer[jfxsc.XYChart.Series[Number, Number]]) {
+    def this(xAxis: Axis[Number], yAxis: Axis[Number], data: ObservableBuffer[jfxsc.XYChart.Series[Number, Number]]) = {
       this(xAxis, yAxis)
       setData(data)
     }

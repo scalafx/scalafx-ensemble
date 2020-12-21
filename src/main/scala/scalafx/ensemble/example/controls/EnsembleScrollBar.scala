@@ -27,7 +27,6 @@
 
 package scalafx.ensemble.example.controls
 
-import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.geometry.Orientation
 import scalafx.scene.control.ScrollBar

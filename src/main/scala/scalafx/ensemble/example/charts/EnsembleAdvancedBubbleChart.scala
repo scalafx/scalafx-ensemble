@@ -46,7 +46,7 @@ class EnsembleAdvancedBubbleChart extends EnsembleExample {
   def getContent: BubbleChart[Number, Number] = {
     // Generate some random data
     def randomData = (1 to 20).map(
-      _ => XYChart.Data[Number, Number](random * 100, random * 100, random * 10))
+      _ => XYChart.Data[Number, Number](random() * 100, random() * 100, random() * 10))
 
     val bcSeries1 = XYChart.Series("Data Series 1", ObservableBuffer(randomData))
     val bcSeries2 = XYChart.Series("Data Series 2", ObservableBuffer(randomData))

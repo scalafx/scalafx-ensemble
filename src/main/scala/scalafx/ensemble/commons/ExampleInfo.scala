@@ -37,7 +37,7 @@ object ExampleInfo {
   def formatAddSpaces(name: String): String =
     name.replaceAll("""([\p{Upper}\d])""", " $1").trim
 
-  def formatNoSpaces(name: String): String = name.replaceAllLiterally(" ", "")
+  def formatNoSpaces(name: String): String = name.replace(" ", "")
 
   def thumbnailPath(exampleName: String, groupName: String): String =
     examplesDir + groupName.toLowerCase + "/" + formatNoSpaces(exampleName) + "Sample.png"
@@ -93,7 +93,7 @@ object ExampleInfo {
       " * Copyright 2013 ScalaFX Project\n" +
       " * All right reserved.\n" +
       " */\n" +
-      (if (!originalPackageName.isEmpty) "package " + originalPackageName + "\n" else "") +
+      (if (originalPackageName.nonEmpty) "package " + originalPackageName + "\n" else "") +
       "\n" +
       "import scalafx.application.JFXApp\n" +
       "import scalafx.scene.Scene\n" +
