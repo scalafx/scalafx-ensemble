@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2015, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2020, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,11 +27,10 @@
 
 package scalafx.ensemble.sbt
 
-import java.io.{File, IOException}
-import java.nio.file.{Files, StandardCopyOption}
-
 import scalafx.ensemble.commons.ExampleInfo
 
+import java.io.{File, IOException}
+import java.nio.file.{Files, StandardCopyOption}
 import scala.io.Source
 
 /** Creates SBT project for a sample code. */

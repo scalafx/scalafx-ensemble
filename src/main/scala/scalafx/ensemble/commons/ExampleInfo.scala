@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2015, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2020, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -90,7 +90,7 @@ object ExampleInfo {
     // Append copyright, package, and required imports
     source = "" +
       "/*\n" +
-      " * Copyright 2013 ScalaFX Project\n" +
+      " * Copyright (c) 2012-2020 ScalaFX Project\n" +
       " * All right reserved.\n" +
       " */\n" +
       (if (originalPackageName.nonEmpty) "package " + originalPackageName + "\n" else "") +
