@@ -73,10 +73,11 @@ class EnsembleAdvancedBarChart extends EnsembleExample {
     val series2 = new XYChart.Series[String, Number] {
       name = "Data Series 2"
       // Example of assigning data using a container
-      data = ObservableBuffer(
+      data = ObservableBuffer(Seq(
         XYChart.Data[String, Number](years(0), 956),
         XYChart.Data[String, Number](years(1), 1665),
         XYChart.Data[String, Number](years(2), 2450)
+      )
       )
     }
 

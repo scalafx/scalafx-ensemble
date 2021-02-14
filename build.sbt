@@ -38,9 +38,6 @@ scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xlint")
 // can be loaded from the same file that is used to execute the example
 unmanagedResourceDirectories in Compile += baseDirectory(_ / "src/main/scala").value
 
-// Set the prompt (for this build) to include the project id.
-shellPrompt := { state => System.getProperty("user.name") + ":" + Project.extract(state).currentRef.project + "> " }
-
 // Run in separate VM, so there are no issues with double initialization of JavaFX
 fork := true
 

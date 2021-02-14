@@ -73,9 +73,11 @@ class EnsembleAdvHorizontalBarChart extends EnsembleExample {
       name = "Data Series 2"
       // Example of assigning data using a container
       data = ObservableBuffer(
-        XYChart.Data[Number, String](956, years(0)),
-        XYChart.Data[Number, String](1665, years(1)),
-        XYChart.Data[Number, String](2450, years(2))
+        Seq(
+          XYChart.Data[Number, String](956, years(0)),
+          XYChart.Data[Number, String](1665, years(1)),
+          XYChart.Data[Number, String](2450, years(2))
+        )
       )
     }
 

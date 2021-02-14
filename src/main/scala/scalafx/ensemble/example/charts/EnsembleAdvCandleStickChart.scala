@@ -114,7 +114,7 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
 
     new CandleStickChart(xAxis, yAxis) {
       this.title = "Custom Candle Stick Chart"
-      this.data = ObservableBuffer(series)
+      this.data = ObservableBuffer(Seq(series))
       this.stylesheets += css
     }
   }
