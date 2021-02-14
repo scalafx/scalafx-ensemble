@@ -4,7 +4,7 @@ version := "1.17"
 
 scalaVersion := "2.13.4"
 
-libraryDependencies += "org.scalafx" %% "scalafx" % "15.0.1-R20"
+libraryDependencies += "org.scalafx" %% "scalafx" % "15.0.1-R21"
 
 // Determine OS version of JavaFX binaries
 lazy val osName = System.getProperty("os.name") match {
