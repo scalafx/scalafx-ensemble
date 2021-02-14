@@ -2,22 +2,22 @@
 
 name := "ScalaFX Ensemble"
 
-version := "1.14.1-SNAPSHOT"
+version := "15.0.1-R20"
 
 organization := "org.scalafx"
 
-val dottyVersion = "0.24.0-RC1"
-val scala213Version = "2.13.1"
-scalaVersion := dottyVersion
+val scala2Version = "2.13.4"
+val scala3Version = "3.0.0-M3"
+scalaVersion := scala3Version
 
-// To cross compile with Dotty and Scala 2
-crossScalaVersions := Seq(dottyVersion, scala213Version)
+// To cross compile with Scala 3 and Scala 2
+crossScalaVersions := Seq(scala3Version, scala2Version)
 
 libraryDependencies ++= Seq(
-  "org.scalafx" % "scalafx_2.13" % "14-R19",
-  "org.scala-lang.modules" % "scala-xml_2.13" % "1.3.0",
-  "org.scalafx" % "scalafx-extras_2.13" % "0.3.4",
-  "org.scalatest" % "scalatest_2.13" % "3.1.2"
+  ("org.scalafx" %% "scalafx" % "15.0.1-R21").withDottyCompat(scalaVersion.value),
+  ("org.scala-lang.modules" %% "scala-xml" % "1.3.0").withDottyCompat(scalaVersion.value),
+  ("org.scalafx" %% "scalafx-extras" % "0.3.6").withDottyCompat(scalaVersion.value),
+  ("org.scalatest" %% "scalatest" % "3.2.3").withDottyCompat(scalaVersion.value)
 )
 
 // Add OS specific JavaFX dependencies
@@ -28,7 +28,7 @@ val osName = System.getProperty("os.name") match {
   case n if n.startsWith("Windows") => "win"
   case _ => throw new Exception("Unknown platform!")
 }
-libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "14.0.1" classifier osName)
+libraryDependencies ++= javafxModules.map(m => "org.openjfx" % s"javafx-$m" % "15.0.1" classifier osName)
 
 resolvers += Opts.resolver.sonatypeSnapshots
 

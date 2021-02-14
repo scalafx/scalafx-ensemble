@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2015, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,7 @@ object ExampleInfo {
   def formatAddSpaces(name: String): String =
     name.replaceAll("""([\p{Upper}\d])""", " $1").trim
 
-  def formatNoSpaces(name: String): String = name.replaceAllLiterally(" ", "")
+  def formatNoSpaces(name: String): String = name.replace(" ", "")
 
   def thumbnailPath(exampleName: String, groupName: String): String =
     examplesDir + groupName.toLowerCase + "/" + formatNoSpaces(exampleName) + "Sample.png"
@@ -56,18 +56,18 @@ object ExampleInfo {
 
   private[commons] def extractPackageName(source: String): String = {
     val pattern = ".*package\\s(\\S*)".r
-    pattern findFirstIn source match {
-      case Some(pattern(name)) => name.trim
-      case None => ""
-    }
+    pattern
+      .findFirstMatchIn(source)
+      .map(m => m.group(1).trim)
+      .getOrElse("")
   }
 
   private def extractSampleName(source: String): String = {
     val pattern = """class\s*Ensemble(\S*)\s*extends\s*EnsembleExample\s*\{""".r
-    pattern findFirstIn source match {
-      case Some(pattern(name)) => name.trim
-      case None => ""
-    }
+    pattern
+      .findFirstMatchIn(source)
+      .map(m => m.group(1).trim)
+      .getOrElse("")
   }
 
   private[commons] def convertSourceCode(sourceRaw: String): String = {
@@ -90,10 +90,10 @@ object ExampleInfo {
     // Append copyright, package, and required imports
     source = "" +
       "/*\n" +
-      " * Copyright 2013 ScalaFX Project\n" +
+      " * Copyright (c) 2012-2020 ScalaFX Project\n" +
       " * All right reserved.\n" +
       " */\n" +
-      (if (!originalPackageName.isEmpty) "package " + originalPackageName + "\n" else "") +
+      (if (originalPackageName.nonEmpty) "package " + originalPackageName + "\n" else "") +
       "\n" +
       "import scalafx.application.JFXApp\n" +
       "import scalafx.scene.Scene\n" +
@@ -180,10 +180,10 @@ class ExampleInfo(exampleName: String, exampleGroupName: String) {
   /** Name of example's main class, extracted from the source code, excluding package prefix. */
   lazy val classSimpleName: String = {
     val pattern = "object\\s*(\\S*)\\s*extends\\s*JFXApp".r
-    pattern findFirstIn sourceCode match {
-      case Some(pattern(name)) => name
-      case None => throw new IllegalArgumentException("Cannot extract sample class name.")
-    }
+    pattern
+      .findFirstMatchIn(sourceCode)
+      .map(m => m.group(1).trim)
+      .getOrElse(throw new IllegalArgumentException("Cannot extract sample class name."))
   }
 
   /** Samples package stated in sample source code. */

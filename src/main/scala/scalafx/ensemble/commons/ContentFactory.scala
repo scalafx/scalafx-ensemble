@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2015, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2020, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,6 @@
 
 package scalafx.ensemble.commons
 
-import java.util.Locale
-
 import org.scalafx.extras.showException
 import scalafx.Includes._
 import scalafx.ensemble.commons.IOUtils._
@@ -40,6 +38,7 @@ import scalafx.scene.layout.{BorderPane, Priority, StackPane, VBox}
 import scalafx.scene.web.WebView
 import scalafx.stage.DirectoryChooser
 
+import java.util.Locale
 import scala.language.implicitConversions
 
 /**

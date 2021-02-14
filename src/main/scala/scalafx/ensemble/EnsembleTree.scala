@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2015, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2020, ScalaFX Ensemble Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,8 +27,6 @@
 
 package scalafx.ensemble
 
-import java.io.IOException
-
 import javafx.scene.layout
 import scalafx.Includes._
 import scalafx.delegate.AlignmentDelegate
@@ -38,6 +36,7 @@ import scalafx.scene.control._
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.{Region, TilePane}
 
+import java.io.IOException
 import scala.collection.immutable
 import scala.collection.immutable.TreeMap
 import scala.language.implicitConversions

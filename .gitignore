@@ -17,3 +17,4 @@ bin
 /.worksheet
 /installer/media/
 *.install4j~
+.bsp
