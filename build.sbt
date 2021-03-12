@@ -6,14 +6,14 @@ version := "15.0.1-R20"
 
 organization := "org.scalafx"
 
-scalaVersion := "2.13.4"
+scalaVersion := "2.13.5"
 
 libraryDependencies ++= Seq(
   "org.scalafx" %% "scalafx" % "15.0.1-R21",
   "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
   "org.scalafx" %% "scalafx-extras" % "0.3.6",
-  "org.scalatest" %% "scalatest" % "3.2.3"
-)
+  "org.scalatest" %% "scalatest" % "3.2.6"
+  )
 
 // Add OS specific JavaFX dependencies
 val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
