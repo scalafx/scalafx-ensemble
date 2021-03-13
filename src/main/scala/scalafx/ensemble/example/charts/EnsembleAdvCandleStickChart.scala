@@ -42,7 +42,7 @@ import scalafx.scene.shape.{Line, LineTo, MoveTo, Path}
 
 import scala.collection.mutable
 import scala.jdk.CollectionConverters._
-import scala.language.postfixOps
+import scala.language.{implicitConversions, postfixOps}
 
 
 /**
@@ -113,9 +113,9 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
     val series = XYChart.Series[Number, Number](ObservableBuffer(seriesData.toSeq))
 
     new CandleStickChart(xAxis, yAxis) {
-      title = "Custom Candle Stick Chart"
-      data = ObservableBuffer(series)
-      getStylesheets += css
+      this.title = "Custom Candle Stick Chart"
+      this.data = ObservableBuffer(Seq(series))
+      this.stylesheets += css
     }
   }
 
@@ -345,7 +345,7 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
     private var openAboveClose: Boolean = true
     private val tooltip: Tooltip = new Tooltip
 
-    def styleClass = getStyleClass
+    def styleClass: ObservableBuffer[String] = getStyleClass
 
     setAutoSizeChildren(false)
     getChildren.addAll(highLowLine, bar)
@@ -385,9 +385,12 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
     private def updateStyleClasses(): Unit = {
       val closeVsOpen = if (openAboveClose) "open-above-close" else "close-above-open"
 
-      styleClass = Seq("candlestick-candle", seriesStyleClass, dataStyleClass)
-      highLowLine.styleClass = Seq("candlestick-line", seriesStyleClass, dataStyleClass, closeVsOpen)
-      bar.styleClass = Seq("candlestick-bar", seriesStyleClass, dataStyleClass, closeVsOpen)
+      styleClass.clear()
+      styleClass ++= Seq("candlestick-candle", seriesStyleClass, dataStyleClass)
+      highLowLine.styleClass.clear()
+      highLowLine.styleClass ++= Seq("candlestick-line", seriesStyleClass, dataStyleClass, closeVsOpen)
+      bar.styleClass.clear()
+      bar.styleClass ++= Seq("candlestick-bar", seriesStyleClass, dataStyleClass, closeVsOpen)
     }
 
   }

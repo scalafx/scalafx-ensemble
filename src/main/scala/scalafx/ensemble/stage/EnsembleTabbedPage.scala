@@ -34,6 +34,8 @@ import scalafx.scene.Node
 import scalafx.scene.control.{Tab, TabPane}
 import scalafx.scene.layout.{Priority, StackPane}
 
+import scala.language.implicitConversions
+
 object EnsembleTabbedPage {
 
   def buildTab(ctrlName: String, ctrlgrop: String): EnsembleTabbedPage = {

@@ -34,6 +34,8 @@ import scalafx.scene.control.{Button, Label, Pagination}
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.{Priority, Region, VBox}
 
+import scala.language.implicitConversions
+
 /** A sample that demonstrates pagination
   *
   * @see scalafx.scene.control.Pagination

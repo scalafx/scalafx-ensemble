@@ -12,7 +12,9 @@ ScalaFX Ensemble provides a gallery of over 60 sample applications illustrating 
 ![ScalaFX Ensemble Application - Demo source](http://scalafx.github.io/scalafx-ensemble/images/ScalaFX_Ensemble-source-50p.png)
 
 Each example can be executed within the ScalaFX Ensemble application, its source code can be easily seen there too.
-Example can be saved, from within ScalaFX Ensemble application, as a stand-alone [SBT] project. [IntelliJ IDEA] can load SBT projects if you have IntelliJ's Scala plugin installed. SBT projects can be converted to [Eclipse] projects using [sbteclipse] plugin.
+Example can be saved, from within ScalaFX Ensemble application, as a stand-alone [SBT] project. [IntelliJ IDEA] can load
+SBT projects if you have IntelliJ's Scala plugin installed. SBT projects can be converted to [Eclipse] projects
+using [sbteclipse] plugin.
 
 ScalaFX Ensemble can be used by ScalaFX beginners as a set of examples and by more experienced users as a visual
 reference. Larger size screenshots and information about changes can be found on the
@@ -31,8 +33,9 @@ In the future, we will also provide an excitable version.
 To compile and run the project you only need to have:
 
 *  [Java JDK] 11 or newer
-*  [SBT] 1 or newer
-*  ScalaFX Ensemble source code. All missing dependencies, including a proper version of Scala and ScalaFX, will be downloaded by SBT.
+* [SBT] 1 or newer
+* ScalaFX Ensemble source code. All missing dependencies, including a proper version of Scala and ScalaFX, will be
+  downloaded by SBT.
 
 Alternatively you can download a stand-alone installer from the [Releases], see [Stand-Alone Application](#stand-alone-application) below.
 
@@ -68,11 +71,11 @@ To run the saved example, assuming that you have [SBT] and JDK installed:
 
 ### Compile and Run using Intellij IDEA ###
 
-[IntelliJ IDEA] with Scala plugin can import project settings from an SBT configuration.
-Simply select `File > Import Project...` and point to location of the ScalaFX Ensemble `build.sbt`.
+[IntelliJ IDEA] with Scala plugin can import project settings from an SBT configuration. Simply
+select `File > Import Project...` and point to location of the ScalaFX Ensemble `build.sbt`.
 
-Ensemble requires some resources to be generated from the sources to run.
-The best way to run it is by defining an SBT task in Run Configuration:
+Ensemble requires some resources to be generated from the sources to run. The best way to run it is by defining an SBT
+task in Run Configuration:
 1. Select "Run" > "Edit Configurations"
 2. Clock on "+" and then on "SBT task"
 3. Give it a name "Ensemble"
@@ -81,7 +84,8 @@ The best way to run it is by defining an SBT task in Run Configuration:
 Stand-Alone Application
 -----------------------
 
-Installer for a stand-alone version of ScalaFX Ensemble Application are available for Windows, macOS, and Linux from the [Releases] page.
+Installer for a stand-alone version of ScalaFX Ensemble Application are available for Windows, macOS, and Linux from
+the [Releases] page.
 
 ![Install4J](https://www.ej-technologies.com/images/product_banners/install4j_medium.png)
 

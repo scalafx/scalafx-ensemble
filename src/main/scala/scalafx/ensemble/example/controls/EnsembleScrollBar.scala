@@ -34,6 +34,7 @@ import scalafx.scene.layout.Pane
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.{Circle, Rectangle}
 
+import scala.language.implicitConversions
 
 class EnsembleScrollBar extends EnsembleExample {
 

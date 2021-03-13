@@ -33,6 +33,7 @@ import scalafx.scene.control.{CheckMenuItem, Menu, MenuBar, MenuItem}
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.BorderPane
 
+import scala.language.implicitConversions
 
 /** An example of a menu bar. Includes illustration of a check menu item.
   *

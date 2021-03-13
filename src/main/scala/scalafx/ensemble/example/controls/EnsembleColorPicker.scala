@@ -35,6 +35,7 @@ import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.text.Font
 
+import scala.language.implicitConversions
 
 /** A sample that demonstrates the ColorPicker.
   *

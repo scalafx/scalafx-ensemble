@@ -27,8 +27,8 @@
 
 package scalafx.ensemble.commons
 
+import scala.language.implicitConversions
 import scala.util.matching.Regex
-
 
 object ExampleInfo {
 

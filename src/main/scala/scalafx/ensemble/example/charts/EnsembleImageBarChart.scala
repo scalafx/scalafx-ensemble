@@ -30,6 +30,8 @@ package scalafx.ensemble.example.charts
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.{BarChart, CategoryAxis, NumberAxis, XYChart}
 
+import scala.language.implicitConversions
+
 /** A bar chart that uses CSS to display stacks of car images to indicate data values
   * for categories.
   *

@@ -36,20 +36,20 @@ import scalafx.scene.layout.StackPane
 class EnsembleTreeView extends EnsembleExample {
 
   def getContent: StackPane = {
-    val treeView = new TreeView[String] {
+    val treeView = new TreeView[String]() {
       minWidth = 200
       minHeight = 200
       showRoot = true
       root = new TreeItem[String]("Root Node") {
         expanded = true
         children = Seq(
-          new TreeItem[String] {
+          new TreeItem[String]() {
             value = "Node 1"
           },
-          new TreeItem[String] {
+          new TreeItem[String]() {
             value = "Node 2"
           },
-          new TreeItem[String] {
+          new TreeItem[String]() {
             value = "Node 3"
             children = (4 to 12).map(n => new TreeItem[String]("Child Node " + n))
           }

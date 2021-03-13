@@ -2,17 +2,21 @@
 
 name := "ScalaFX Ensemble"
 
-version := "15.0.1-R20"
+version := "15.0.1-R21"
 
 organization := "org.scalafx"
 
-scalaVersion := "2.13.5"
+val scala2Version = "2.13.5"
+val scala3Version = "3.0.0-RC1"
+// To cross compile with Scala 2 and Scala 3
+crossScalaVersions := Seq(scala2Version, scala3Version)
+scalaVersion := scala2Version
 
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "15.0.1-R21",
-  "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
-  "org.scalafx" %% "scalafx-extras" % "0.3.6",
-  "org.scalatest" %% "scalatest" % "3.2.6"
+  ("org.scalafx" %% "scalafx" % "15.0.1-R21").withDottyCompat(scalaVersion.value),
+  ("org.scala-lang.modules" %% "scala-xml" % "1.3.0").withDottyCompat(scalaVersion.value),
+  ("org.scalafx" %% "scalafx-extras" % "0.3.6").withDottyCompat(scalaVersion.value),
+  ("org.scalatest" %% "scalatest" % "3.2.6").withDottyCompat(scalaVersion.value)
   )
 
 // Add OS specific JavaFX dependencies
@@ -61,7 +65,7 @@ resourceGenerators in Compile += Def.task {
   /** Create file representing names and directories for all availabe examples.
     * It will be loaded by the application at runtime and used to popolate example tree.
     */
-  def generateExampleTreeFile(inSourceDir: File,
+  def generateExampleTreeFile(inSourceDir : File,
                               outSourceDir: File,
                               templatePath: String): Seq[File] = {
     val exampleDirs = loadExampleNames(inSourceDir)
@@ -76,7 +80,7 @@ resourceGenerators in Compile += Def.task {
     (scalaSource in Compile).value,
     (resourceManaged in Compile).value,
     "/scalafx/ensemble/example/example.tree"
-  )
+    )
 }.taskValue
 
 mainClass in Compile := Some("scalafx.ensemble.Ensemble")
