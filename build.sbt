@@ -8,7 +8,8 @@ organization := "org.scalafx"
 
 val scala2Version = "2.13.5"
 val scala3Version = "3.0.0-M3"
-scalaVersion := scala3Version
+// To cross compile with Scala 3 and Scala 2
+crossScalaVersions := Seq(scala3Version, scala2Version)
 
 libraryDependencies ++= Seq(
   ("org.scalafx" %% "scalafx" % "15.0.1-R21").withDottyCompat(scalaVersion.value),
