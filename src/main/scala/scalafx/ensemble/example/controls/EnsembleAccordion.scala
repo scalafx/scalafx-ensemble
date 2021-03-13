@@ -53,16 +53,16 @@ class EnsembleAccordion extends EnsembleExample {
       panes = List(
         new TitledPane {
           text = "Ensemble Button 1"
-          children = new Button("Button 1")
+          content = new Button("Button 1")
         },
         new TitledPane {
           text = "Ensemble TextField 1"
-          children = new TextField {
+          content = new TextField {
             promptText = "Hi! Scalafx Ensemble!"
           }
         }, new TitledPane {
           text = "Ensemble CheckBox 1"
-          children = new CheckBox {
+          content = new CheckBox {
             text = "CheckBox 1"
           }
         })

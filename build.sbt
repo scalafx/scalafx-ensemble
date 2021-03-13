@@ -6,18 +6,15 @@ version := "15.0.1-R20"
 
 organization := "org.scalafx"
 
-val scala2Version = "2.13.4"
+val scala2Version = "2.13.5"
 val scala3Version = "3.0.0-M3"
 scalaVersion := scala3Version
-
-// To cross compile with Scala 3 and Scala 2
-crossScalaVersions := Seq(scala3Version, scala2Version)
 
 libraryDependencies ++= Seq(
   ("org.scalafx" %% "scalafx" % "15.0.1-R21").withDottyCompat(scalaVersion.value),
   ("org.scala-lang.modules" %% "scala-xml" % "1.3.0").withDottyCompat(scalaVersion.value),
   ("org.scalafx" %% "scalafx-extras" % "0.3.6").withDottyCompat(scalaVersion.value),
-  ("org.scalatest" %% "scalatest" % "3.2.3").withDottyCompat(scalaVersion.value)
+  ("org.scalatest" %% "scalatest" % "3.2.6").withDottyCompat(scalaVersion.value)
 )
 
 // Add OS specific JavaFX dependencies
@@ -37,6 +34,9 @@ scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xlint")
 // Sources should also be copied to output, so the sample code, for the viewer,
 // can be loaded from the same file that is used to execute the example
 unmanagedResourceDirectories in Compile += baseDirectory(_ / "src/main/scala").value
+
+// Set the prompt (for this build) to include the project id.
+shellPrompt := { state => System.getProperty("user.name") + ":" + Project.extract(state).currentRef.project + "> " }
 
 // Run in separate VM, so there are no issues with double initialization of JavaFX
 fork := true

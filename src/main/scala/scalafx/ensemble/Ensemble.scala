@@ -51,13 +51,13 @@ object Ensemble extends JFXApp3 {
 
   def centerPane_=(newValue: Node): Unit = _centerPane = newValue
 
-  lazy val splitPane: SplitPane = new SplitPane {
+  private[ensemble] lazy val splitPane: SplitPane = new SplitPane {
     dividerPositions = 0
     id = "page-splitpane"
     items.addAll(scrollPane, centerPane)
   }
 
-  lazy val scrollPane: ScrollPane = new ScrollPane {
+  private lazy val scrollPane: ScrollPane = new ScrollPane {
     minWidth = 200
     maxWidth = 200
     fitToWidth = true
@@ -66,7 +66,7 @@ object Ensemble extends JFXApp3 {
     content = controlsView
   }
 
-  lazy val controlsView: TreeView[String] = new TreeView[String]() {
+  private lazy val controlsView: TreeView[String] = new TreeView[String]() {
     minWidth = 200
     maxWidth = 200
     editable = true
@@ -74,7 +74,7 @@ object Ensemble extends JFXApp3 {
     id = "page-tree"
   }
 
-  lazy val rootTreeItem: TreeItem[String] = new TreeItem[String](Title) {
+  private lazy val rootTreeItem: TreeItem[String] = new TreeItem[String](Title) {
     expanded = true
     children = EnsembleTree.create().getTree
   }
@@ -99,6 +99,8 @@ object Ensemble extends JFXApp3 {
         centerPane = PageDisplayer.choosePage(pageCode)
         splitPane.items.remove(1)
         splitPane.items.add(1, centerPane)
+        // Update layout after updating content
+        splitPane.autosize()
       }
     }
 
