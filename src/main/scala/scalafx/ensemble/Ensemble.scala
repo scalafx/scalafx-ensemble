@@ -72,6 +72,8 @@ object Ensemble extends JFXApp {
       centerPane = PageDisplayer.choosePage(pageCode)
       splitPane.items.remove(1)
       splitPane.items.add(1, centerPane)
+      // Update layout after updating content
+      splitPane.autosize()
     }
   }
 
