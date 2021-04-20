@@ -14,12 +14,8 @@ scalaVersion := scala2Version
 
 //@formatter:off
 libraryDependencies ++= Seq(
-//  ("org.scalafx"            %% "scalafx"        % "15.0.1-R21").cross(CrossVersion.for3Use2_13),
-  "org.scalafx"            %% "scalafx"        % "15.0.1-R22-SNAPSHOT",
-//  "org.scala-lang.modules"  %% "scala-xml" % "2.0.0-RC1",
-//  ("org.scala-lang.modules" %% "scala-xml"      % "1.3.0").cross(CrossVersion.for3Use2_13),
-  ("org.scalafx"            %% "scalafx-extras" % "0.3.6").cross(CrossVersion.for3Use2_13),
-  "org.scalatest"           %% "scalatest"      % "3.2.7"
+  "org.scalafx"   %% "scalafx"   % "15.0.1-R22-SNAPSHOT",
+  "org.scalatest" %% "scalatest" % "3.2.7"
   )
 //@formatter:on
 
