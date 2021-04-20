@@ -49,7 +49,7 @@ class EnsembleAdvancedBarChart extends EnsembleExample {
 
     val xAxis = new CategoryAxis {
       label = "Year"
-      categories = ObservableBuffer(years)
+      categories = ObservableBuffer.from(years)
     }
 
     val yAxis = new NumberAxis {
@@ -73,12 +73,11 @@ class EnsembleAdvancedBarChart extends EnsembleExample {
     val series2 = new XYChart.Series[String, Number] {
       name = "Data Series 2"
       // Example of assigning data using a container
-      data = ObservableBuffer(Seq(
+      data = ObservableBuffer(
         XYChart.Data[String, Number](years(0), 956),
         XYChart.Data[String, Number](years(1), 1665),
         XYChart.Data[String, Number](years(2), 2450)
-      )
-      )
+        )
     }
 
     val series3 = new XYChart.Series[String, Number] {
@@ -91,7 +90,7 @@ class EnsembleAdvancedBarChart extends EnsembleExample {
     }
 
     // Assign data using a helper function
-    def xyData(ys: Seq[Number]) = ObservableBuffer(years zip ys map (xy => XYChart.Data(xy._1, xy._2)))
+    def xyData(ys: Seq[Number]) = ObservableBuffer.from(years zip ys map (xy => XYChart.Data(xy._1, xy._2)))
     val series4 = XYChart.Series("Data Series 4", xyData(Seq(786, 2100, 450)))
 
     // Setup chart

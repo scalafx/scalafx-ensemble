@@ -50,7 +50,7 @@ class EnsembleStackedBarChart extends EnsembleExample {
     val yAxis = NumberAxis("Units Sold", 0.0d, 10000.0d, 1000.0d)
 
     // Helper function to convert collections to `XYChart.Data`
-    def xyData(ys: Seq[Number]) = ObservableBuffer(years zip ys map (xy => XYChart.Data(xy._1, xy._2)))
+    def xyData(ys: Seq[Number]) = ObservableBuffer.from(years zip ys map (xy => XYChart.Data(xy._1, xy._2)))
 
     val series1 = new XYChart.Series[String, Number] {
       name = "Region 1"

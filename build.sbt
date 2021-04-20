@@ -2,22 +2,26 @@
 
 name := "ScalaFX Ensemble"
 
-version := "15.0.1-R21"
+version := "15.0.1-R22-SNAPSHOT"
 
 organization := "org.scalafx"
 
 val scala2Version = "2.13.5"
-val scala3Version = "3.0.0-RC1"
+val scala3Version = "3.0.0-RC2"
 // To cross compile with Scala 2 and Scala 3
 crossScalaVersions := Seq(scala2Version, scala3Version)
 scalaVersion := scala2Version
 
+//@formatter:off
 libraryDependencies ++= Seq(
-  ("org.scalafx" %% "scalafx" % "15.0.1-R21").withDottyCompat(scalaVersion.value),
-  ("org.scala-lang.modules" %% "scala-xml" % "1.3.0").withDottyCompat(scalaVersion.value),
-  ("org.scalafx" %% "scalafx-extras" % "0.3.6").withDottyCompat(scalaVersion.value),
-  ("org.scalatest" %% "scalatest" % "3.2.6").withDottyCompat(scalaVersion.value)
+//  ("org.scalafx"            %% "scalafx"        % "15.0.1-R21").cross(CrossVersion.for3Use2_13),
+  "org.scalafx"            %% "scalafx"        % "15.0.1-R22-SNAPSHOT",
+//  "org.scala-lang.modules"  %% "scala-xml" % "2.0.0-RC1",
+//  ("org.scala-lang.modules" %% "scala-xml"      % "1.3.0").cross(CrossVersion.for3Use2_13),
+  ("org.scalafx"            %% "scalafx-extras" % "0.3.6").cross(CrossVersion.for3Use2_13),
+  "org.scalatest"           %% "scalatest"      % "3.2.7"
   )
+//@formatter:on
 
 // Add OS specific JavaFX dependencies
 val javafxModules = Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")

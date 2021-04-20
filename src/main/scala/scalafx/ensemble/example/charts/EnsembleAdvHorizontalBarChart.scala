@@ -48,7 +48,7 @@ class EnsembleAdvHorizontalBarChart extends EnsembleExample {
 
     val yAxis = new CategoryAxis {
       label = "Year"
-      categories = ObservableBuffer(years)
+      categories = ObservableBuffer.from(years)
     }
 
     val xAxis = new NumberAxis {
@@ -73,11 +73,9 @@ class EnsembleAdvHorizontalBarChart extends EnsembleExample {
       name = "Data Series 2"
       // Example of assigning data using a container
       data = ObservableBuffer(
-        Seq(
           XYChart.Data[Number, String](956, years(0)),
           XYChart.Data[Number, String](1665, years(1)),
           XYChart.Data[Number, String](2450, years(2))
-        )
       )
     }
 
@@ -85,13 +83,13 @@ class EnsembleAdvHorizontalBarChart extends EnsembleExample {
       name = "Data Series 3"
       // Assign data by mapping x and y values to XYChart.Data
       val prices = Seq(800, 1000, 2000)
-      data = ObservableBuffer(prices zip years map {
+      data = ObservableBuffer.from(prices zip years map {
         case (x, y) => XYChart.Data[Number, String](x, y)
       })
     }
 
     // Assign data using a helper function
-    def xyData(xs: Seq[Number]) = ObservableBuffer(xs zip years map (xy => XYChart.Data(xy._1, xy._2)))
+    def xyData(xs: Seq[Number]) = ObservableBuffer.from(xs zip years map (xy => XYChart.Data(xy._1, xy._2)))
     val series4 = XYChart.Series("Data Series 4", xyData(Seq(786, 2100, 450)))
 
     // setup chart

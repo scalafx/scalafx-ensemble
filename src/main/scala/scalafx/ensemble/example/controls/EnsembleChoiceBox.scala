@@ -50,7 +50,7 @@ class EnsembleChoiceBox extends EnsembleExample {
     children = new ChoiceBox[String]() {
       maxWidth = 80
       maxHeight = 50
-      items = ObservableBuffer(Seq("Earth", "Sky", "Paradise"))
+      items = ObservableBuffer("Earth", "Sky", "Paradise")
       selectionModel().selectFirst()
     }
   }

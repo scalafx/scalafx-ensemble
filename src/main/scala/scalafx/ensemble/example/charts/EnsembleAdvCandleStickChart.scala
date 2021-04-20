@@ -110,11 +110,11 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
 
     val seriesData = data.map { d => XYChart.Data[Number, Number](d.day, d.open, d) }
 
-    val series = XYChart.Series[Number, Number](ObservableBuffer(seriesData.toSeq))
+    val series = XYChart.Series[Number, Number](ObservableBuffer.from(seriesData))
 
     new CandleStickChart(xAxis, yAxis) {
       this.title = "Custom Candle Stick Chart"
-      this.data = ObservableBuffer(Seq(series))
+      this.data = ObservableBuffer(series)
       this.stylesheets += css
     }
   }

@@ -53,7 +53,7 @@ class EnsembleHorizontalListView extends EnsembleExample {
       "Row 16", "Row 17", "Row 18", "Row 19", "Row 20")
 
     val listView = new ListView[String]() {
-      items = ObservableBuffer(seq)
+      items = ObservableBuffer.from(seq)
       orientation = Orientation.Horizontal
     }
 
