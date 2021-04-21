@@ -1,8 +1,8 @@
 name := "@name@"
 
-version := "1.17"
+version := "1.18"
 
-scalaVersion := "2.13.4"
+scalaVersion := "2.13.5"
 
 libraryDependencies += "org.scalafx" %% "scalafx" % "15.0.1-R21"
 
@@ -22,9 +22,9 @@ libraryDependencies ++= javaFXModules.map(m =>
 
 scalacOptions ++= Seq("-unchecked", "-deprecation")
 
-mainClass in Compile := Some("@mainClass@")
+Compile / mainClass := Some("@mainClass@")
 
 // Run in separate VM, so there are no issues with double initialization of JavaFX
 fork := true
 
-fork in Test := true
+Test / fork := true
