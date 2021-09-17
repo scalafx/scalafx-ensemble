@@ -2,20 +2,20 @@
 
 name := "ScalaFX Ensemble"
 
-version := "16.0.0-R22"
+version := "16.0.0-R25-SNAPSHOT"
 
 organization := "org.scalafx"
 
-val scala2Version = "2.13.5"
-val scala3Version = "3.0.0-RC3"
+val scala2Version = "2.13.6"
+val scala3Version = "3.0.2"
 // To cross compile with Scala 2 and Scala 3
 crossScalaVersions := Seq(scala2Version, scala3Version)
 scalaVersion := scala2Version
 
 //@formatter:off
 libraryDependencies ++= Seq(
-  "org.scalafx"   %% "scalafx"   % "16.0.0-R22",
-  "org.scalatest" %% "scalatest" % "3.2.8"
+  "org.scalafx"   %% "scalafx"   % "16.0.0-R25-SNAPSHOT",
+  "org.scalatest" %% "scalatest" % "3.2.10"
   )
 
 // Add OS specific JavaFX dependencies
