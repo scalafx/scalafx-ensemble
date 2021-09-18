@@ -14,7 +14,7 @@ scalaVersion := scala2Version
 
 //@formatter:off
 libraryDependencies ++= Seq(
-  "org.scalafx"   %% "scalafx"   % "16.0.0-R25-SNAPSHOT",
+  "org.scalafx"   %% "scalafx"   % "16.0.0-R25",
   "org.scalatest" %% "scalatest" % "3.2.10"
   )
 
