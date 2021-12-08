@@ -2,6 +2,7 @@ ScalaFX Ensemble
 ================
 
 [![Build Status](https://travis-ci.org/scalafx/scalafx-ensemble.svg?branch=master)](https://travis-ci.org/scalafx/scalafx-ensemble)  
+[![Scala CI](https://github.com/scalafx/scalafx-ensemble/actions/workflows/scala.yml/badge.svg)](https://github.com/scalafx/scalafx-ensemble/actions/workflows/scala.yml)
 
 ScalaFX Ensemble provides a gallery of over 60 sample applications illustrating how
 [ScalaFX] can be used for creation of user interfaces controls, charts, graphics, media and web views.
