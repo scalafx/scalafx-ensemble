@@ -39,25 +39,25 @@ import scalafx.scene.web.WebView
 import scalafx.stage.DirectoryChooser
 
 import java.util.Locale
-import scala.language.implicitConversions
 
 /**
-  * populates the tabbed content by loading
-  * EnsembleExample instance
-  */
+ * populates the tabbed content by loading
+ * EnsembleExample instance
+ */
 object ContentFactory {
   def createContent(exampleName: String, groupName: String): ScrollPane = {
 
     // Construct content of the samples dynamically
     val fullClassName = ExampleInfo.className(exampleName, groupName)
-    var cache = Map[String, EnsembleExample]()
-    val sampleNode = if (cache.contains(fullClassName)) {
-      cache(fullClassName).getContent
-    } else {
-      val inst = Class.forName(fullClassName).getDeclaredConstructor().newInstance().asInstanceOf[EnsembleExample]
-      cache = cache.+((fullClassName, inst))
-      inst.getContent
-    }
+    var cache         = Map[String, EnsembleExample]()
+    val sampleNode =
+      if (cache.contains(fullClassName)) {
+        cache(fullClassName).getContent
+      } else {
+        val inst = Class.forName(fullClassName).getDeclaredConstructor().newInstance().asInstanceOf[EnsembleExample]
+        cache = cache.+((fullClassName, inst))
+        inst.getContent
+      }
 
     val header = new Label(exampleName) {
       styleClass += "page-header"
@@ -80,12 +80,11 @@ object ContentFactory {
     }
   }
 
-
   def createSrcContent(exampleName: String, exampleGroupName: String): Node = {
 
     // Load syntax highlighter
-    val shCoreJs = loadResourceAsString(this, "/scalafx/ensemble/syntaxhighlighter/shCore.js") + ";"
-    val shBrushScala = loadResourceAsString(this, "/scalafx/ensemble/syntaxhighlighter/shBrushScala.js")
+    val shCoreJs         = loadResourceAsString(this, "/scalafx/ensemble/syntaxhighlighter/shCore.js") + ";"
+    val shBrushScala     = loadResourceAsString(this, "/scalafx/ensemble/syntaxhighlighter/shBrushScala.js")
     val shCoreDefaultCss = loadResourceAsString(this, "/scalafx/ensemble/syntaxhighlighter/shCoreDefault.css")
 
     val exampleInfo = new ExampleInfo(exampleName, exampleGroupName)
@@ -122,12 +121,12 @@ object ContentFactory {
       </html>
 
     // Inject SyntaxHighlighter scripts
-    val htmlSource = html.mkString.
-      replace("@@shCoreJs@@", shCoreJs).
-      replace("@@shBrushScala@@", shBrushScala).
-      replace("@@shCoreDefaultCss@@", shCoreDefaultCss)
+    val htmlSource = html.mkString.replace("@@shCoreJs@@", shCoreJs).replace("@@shBrushScala@@", shBrushScala).replace(
+      "@@shCoreDefaultCss@@",
+      shCoreDefaultCss
+    )
 
-    //Border pane is sufficient to handle the content
+    // Border pane is sufficient to handle the content
     val borderPane = new BorderPane() {
 
       top = new ToolBar {
@@ -136,49 +135,53 @@ object ContentFactory {
             thisButton =>
             text = "Save SBT Project..."
             tooltip = "Save sample code in a new project that can be build and run with SBT"
-            onAction = () => try {
-              val initialDir = SBTProjectBuilder.parentDir
-              val fileChooser = new DirectoryChooser() {
-                title = "Save SBT Project As:"
-                initialDirectory = initialDir
+            onAction = () =>
+              try {
+                val initialDir = SBTProjectBuilder.parentDir
+                val fileChooser = new DirectoryChooser() {
+                  title = "Save SBT Project As:"
+                  initialDirectory = initialDir
+                }
+                val result = Option(fileChooser.showDialog(thisButton.scene().window()))
+                result match {
+                  case Some(projectDir) =>
+                    SBTProjectBuilder.createSampleProject(projectDir, exampleInfo)
+                    SBTProjectBuilder.parentDir = projectDir.getCanonicalFile.getParentFile
+                  case _ =>
+                }
+              } catch {
+                case t: Throwable =>
+                  // FIXME: test casting
+                  t.printStackTrace()
+                  val window = thisButton.scene().window()
+                  showException(
+                    title = thisButton.text(),
+                    message = "Error saving sample SBT project.",
+                    t = t,
+                    ownerWindow = window
+                  )
               }
-              val result = Option(fileChooser.showDialog(thisButton.scene().window()))
-              result match {
-                case Some(projectDir) =>
-                  SBTProjectBuilder.createSampleProject(projectDir, exampleInfo)
-                  SBTProjectBuilder.parentDir = projectDir.getCanonicalFile.getParentFile
-                case _ =>
-              }
-            } catch {
-              case t: Throwable =>
-                // FIXME: test casting
-                t.printStackTrace()
-                val window = thisButton.scene().window()
-                showException(
-                  title = thisButton.text(),
-                  message = "Error saving sample SBT project.",
-                  t = t,
-                  ownerWindow = window)
-            }
           },
           new Button {
             thisButton =>
             text = "Copy Source"
             tooltip = "Copy sample source code to clipboard"
-            onAction = () => try {
-              val content = new ClipboardContent()
-              content.putString(exampleInfo.sourceCode)
-              content.putHtml(htmlSource)
-              Clipboard.systemClipboard.setContent(content)
-            } catch {
-              case t: Throwable =>
-                val window = thisButton.scene().window()
-                showException(
-                  title = thisButton.text(),
-                  message = "Error copying source to clipboard",
-                  t = t,
-                  ownerWindow = window)
-            }
+            onAction = () =>
+              try {
+                val content = new ClipboardContent()
+                content.putString(exampleInfo.sourceCode)
+                content.putHtml(htmlSource)
+                Clipboard.systemClipboard.setContent(content)
+              } catch {
+                case t: Throwable =>
+                  val window = thisButton.scene().window()
+                  showException(
+                    title = thisButton.text(),
+                    message = "Error copying source to clipboard",
+                    t = t,
+                    ownerWindow = window
+                  )
+              }
           }
         )
       }

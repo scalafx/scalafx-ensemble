@@ -33,8 +33,6 @@ import scalafx.scene.layout.HBox
 import scalafx.scene.paint.{Color, Paint}
 import scalafx.scene.shape.Rectangle
 
-import scala.language.implicitConversions
-
 class EnsembleRectangle extends EnsembleExample {
   def getContent: HBox = {
     // function literal to get Rectangle object

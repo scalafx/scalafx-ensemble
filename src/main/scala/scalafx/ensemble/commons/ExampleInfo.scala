@@ -27,7 +27,6 @@
 
 package scalafx.ensemble.commons
 
-import scala.language.implicitConversions
 import scala.util.matching.Regex
 
 object ExampleInfo {
@@ -49,7 +48,7 @@ object ExampleInfo {
     "scalafx.ensemble.example." + groupName.toLowerCase + ".Ensemble" + ExampleInfo.formatNoSpaces(exampleName)
 
   private[commons] def extractStageProperties(sourceRaw: String): Seq[String] = {
-    val pattern = """@stage-property\s*(.*)""".r
+    val pattern    = """@stage-property\s*(.*)""".r
     val properties = for (pattern(property) <- pattern findAllIn sourceRaw) yield property.trim
     properties.toSeq
   }
@@ -106,7 +105,8 @@ object ExampleInfo {
     // to     `object SomethingSample extends JFXApp
     source = source.replaceFirst(
       """class\s*Ensemble(\S*)\s*extends\s*EnsembleExample\s*\{""",
-      """object $1Sample extends JFXApp {""")
+      """object $1Sample extends JFXApp {"""
+    )
 
     // Replace `getContent` method with stage and scene creation
     val stageHeader = "" +
@@ -132,13 +132,13 @@ object ExampleInfo {
     // Get index of closing brace
     val closingBraceIndex = {
       var braceCount = 1
-      var index = openingBraceIndex
+      var index      = openingBraceIndex
       while (braceCount > 0) {
         index += 1
         source(index) match {
           case '{' => braceCount += 1
           case '}' => braceCount -= 1
-          case _ =>
+          case _   =>
         }
       }
       index

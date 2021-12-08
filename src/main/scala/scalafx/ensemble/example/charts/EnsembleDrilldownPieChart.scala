@@ -32,22 +32,21 @@ import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.PieChart
 
-import scala.language.implicitConversions
-
-/** A pie chart that provides the ability to drill down through data. Selecting a
-  * segment in the initial pie chart causes the pie chart to display detailed data
-  * for the selected segment.
-  *
-  * @see scalafx.event.EventHandler
-  * @see scalafx.scene.chart.PieChart
-  * @see scalafx.scene.chart.Chart
-  * @see scalafx.scene.input.MouseEvent
-  * @resource DrilldownChart.css
-  */
+/**
+ * A pie chart that provides the ability to drill down through data. Selecting a
+ * segment in the initial pie chart causes the pie chart to display detailed data
+ * for the selected segment.
+ *
+ * @see scalafx.event.EventHandler
+ * @see scalafx.scene.chart.PieChart
+ * @see scalafx.scene.chart.Chart
+ * @see scalafx.scene.input.MouseEvent
+ * @resource DrilldownChart.css
+ */
 class EnsembleDrilldownPieChart extends EnsembleExample {
 
   def getContent: PieChart = {
-    //Drilldown Pie Chart style css
+    // Drilldown Pie Chart style css
     val drilldownPieChartCss = this.getClass.getResource("DrilldownChart.css").toExternalForm
 
     val pieChartData = ObservableBuffer(
@@ -55,7 +54,7 @@ class EnsembleDrilldownPieChart extends EnsembleExample {
       PieChart.Data("B", 30),
       PieChart.Data("C", 10),
       PieChart.Data("D", 40)
-      )
+    )
     val pieChart = new PieChart {
       data = pieChartData
       title = "DrillDown Pie Chart"
@@ -67,14 +66,16 @@ class EnsembleDrilldownPieChart extends EnsembleExample {
     pieChart
   }
 
-  def drillDownData: (PieChart, PieChart.Data, String) => Unit = (pie: PieChart, pieData: PieChart.Data, labelPrefix: String) => {
-    pieData.node().onMouseClicked = () => pie.data = Seq(
-      PieChart.Data(labelPrefix + "-1", 7),
-      PieChart.Data(labelPrefix + "-2", 2),
-      PieChart.Data(labelPrefix + "-3", 5),
-      PieChart.Data(labelPrefix + "-4", 3),
-      PieChart.Data(labelPrefix + "-5", 2)
-    )
-  }
+  def drillDownData: (PieChart, PieChart.Data, String) => Unit =
+    (pie: PieChart, pieData: PieChart.Data, labelPrefix: String) => {
+      pieData.node().onMouseClicked = () =>
+        pie.data = Seq(
+          PieChart.Data(labelPrefix + "-1", 7),
+          PieChart.Data(labelPrefix + "-2", 2),
+          PieChart.Data(labelPrefix + "-3", 5),
+          PieChart.Data(labelPrefix + "-4", 3),
+          PieChart.Data(labelPrefix + "-5", 2)
+        )
+    }
 
 }

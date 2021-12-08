@@ -34,35 +34,36 @@ import scalafx.scene.control.{Button, Label, Pagination}
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.{Priority, Region, VBox}
 
-import scala.language.implicitConversions
-
-/** A sample that demonstrates pagination
-  *
-  * @see scalafx.scene.control.Pagination
-  * @resource /scalafx/ensemble/images/animals-200x200/animal1.jpg
-  * @resource /scalafx/ensemble/images/animals-200x200/animal2.jpg
-  * @resource /scalafx/ensemble/images/animals-200x200/animal3.jpg
-  * @resource /scalafx/ensemble/images/animals-200x200/animal4.jpg
-  * @resource /scalafx/ensemble/images/animals-200x200/animal5.jpg
-  * @resource /scalafx/ensemble/images/animals-200x200/animal6.jpg
-  * @resource /scalafx/ensemble/images/animals-200x200/animal7.jpg
-  * @resource /scalafx/ensemble/images/animals-200x200/animal8.jpg
-  */
+/**
+ * A sample that demonstrates pagination
+ *
+ * @see scalafx.scene.control.Pagination
+ * @resource /scalafx/ensemble/images/animals-200x200/animal1.jpg
+ * @resource /scalafx/ensemble/images/animals-200x200/animal2.jpg
+ * @resource /scalafx/ensemble/images/animals-200x200/animal3.jpg
+ * @resource /scalafx/ensemble/images/animals-200x200/animal4.jpg
+ * @resource /scalafx/ensemble/images/animals-200x200/animal5.jpg
+ * @resource /scalafx/ensemble/images/animals-200x200/animal6.jpg
+ * @resource /scalafx/ensemble/images/animals-200x200/animal7.jpg
+ * @resource /scalafx/ensemble/images/animals-200x200/animal8.jpg
+ */
 class EnsemblePagination extends EnsembleExample {
 
   def getContent: VBox = {
 
     // Images to load pages
     val images = for (i <- 0 until 7) yield {
-      val ipStream = this.getClass.getResourceAsStream("/scalafx/ensemble/images/animals-200x200/animal" + (i + 1) + ".jpg")
+      val ipStream =
+        this.getClass.getResourceAsStream("/scalafx/ensemble/images/animals-200x200/animal" + (i + 1) + ".jpg")
       new Image(ipStream)
     }
 
     // Factory function for creating page content
-    val createAnimalPage = (index: Int) => new VBox() {
-      children = List(new ImageView(images(index)), new Label("PAGE " + (index + 1)))
-      alignment = Pos.Center
-    }
+    val createAnimalPage = (index: Int) =>
+      new VBox() {
+        children = List(new ImageView(images(index)), new Label("PAGE " + (index + 1)))
+        alignment = Pos.Center
+      }
 
     // Pagination with 7 pages and index starts at zero
     val pagination = new Pagination(7, 0) {
@@ -88,7 +89,8 @@ class EnsemblePagination extends EnsembleExample {
               pagination.styleClass += Pagination.StyleClassBullet
             }
           }
-        })
+        }
+      )
     }
   }
 }

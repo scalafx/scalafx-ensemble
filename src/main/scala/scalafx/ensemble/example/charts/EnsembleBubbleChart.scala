@@ -31,17 +31,16 @@ import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.{BubbleChart, NumberAxis, XYChart}
 
-import scala.language.implicitConversions
-
-/** A chart that plots bubbles for a series of data points. Bubbles are plotted
-  * according to three numeric parameters: value on x axis, value on y axis,
-  * and radius of the bubble.
-  *
-  * @see scalafx.scene.chart.BubbleChart
-  * @see scalafx.scene.chart.Chart
-  * @see scalafx.scene.chart.Axis
-  * @see scalafx.scene.chart.NumberAxis
-  */
+/**
+ * A chart that plots bubbles for a series of data points. Bubbles are plotted
+ * according to three numeric parameters: value on x axis, value on y axis,
+ * and radius of the bubble.
+ *
+ * @see scalafx.scene.chart.BubbleChart
+ * @see scalafx.scene.chart.Chart
+ * @see scalafx.scene.chart.Axis
+ * @see scalafx.scene.chart.NumberAxis
+ */
 class EnsembleBubbleChart extends EnsembleExample {
   def getContent: BubbleChart[Number, Number] = {
     val xAxis = NumberAxis("X", 0d, 140d, 20d)
@@ -57,7 +56,8 @@ class EnsembleBubbleChart extends EnsembleExample {
         (60d, 20d, 13d),
         (10d, 90d, 7d),
         (100d, 40d, 10d),
-        (50d, 23d, 5d)).map(toChartData)
+        (50d, 23d, 5d)
+      ).map(toChartData)
     }
 
     val series2 = new XYChart.Series[Number, Number] {
@@ -66,7 +66,8 @@ class EnsembleBubbleChart extends EnsembleExample {
         (13d, 100d, 7d),
         (20d, 80d, 13d),
         (100d, 60d, 10d),
-        (30d, 40d, 6d)).map(toChartData)
+        (30d, 40d, 6d)
+      ).map(toChartData)
     }
 
     val series3 = new XYChart.Series[Number, Number] {
@@ -76,7 +77,8 @@ class EnsembleBubbleChart extends EnsembleExample {
         (67d, 98d, 13d),
         (45d, 23d, 10d),
         (89d, 87d, 6d),
-        (59d, 34d, 12d)).map(toChartData)
+        (59d, 34d, 12d)
+      ).map(toChartData)
     }
 
     new BubbleChart(xAxis, yAxis) {

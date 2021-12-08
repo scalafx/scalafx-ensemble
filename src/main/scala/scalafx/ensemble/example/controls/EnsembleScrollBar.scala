@@ -34,18 +34,16 @@ import scalafx.scene.layout.Pane
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.{Circle, Rectangle}
 
-import scala.language.implicitConversions
-
 class EnsembleScrollBar extends EnsembleExample {
 
   // @stage-property resizable = false
 
   private var xScrollValue = 0d
   private var yScrollValue = 15d
-  private val xBarWidth = 393
-  private val xBarHeight = 15
-  private val yBarWidth = 15
-  private val yBarHeight = 393
+  private val xBarWidth    = 393
+  private val xBarHeight   = 15
+  private val yBarWidth    = 15
+  private val yBarHeight   = 393
   private val circleRadius = 90
 
   val bg: Rectangle = Rectangle(xBarWidth + yBarWidth, xBarHeight + yBarHeight, Color.rgb(90, 90, 90))
@@ -103,7 +101,6 @@ class EnsembleScrollBar extends EnsembleExample {
     translateY = yBarWidth
     orientation = Orientation.Vertical
   }
-
 
   def getContent: Pane = new Pane {
     prefWidth = xBarWidth + yBarWidth

@@ -30,21 +30,20 @@ package scalafx.ensemble.example.charts
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.{BarChart, CategoryAxis, NumberAxis, XYChart}
 
-import scala.language.implicitConversions
-
-/** A bar chart that uses CSS to display stacks of car images to indicate data values
-  * for categories.
-  *
-  * @see scalafx.scene.chart.BarChart
-  * @see scalafx.scene.chart.Chart
-  * @see scalafx.scene.chart.CategoryAxis
-  * @see scalafx.scene.chart.NumberAxis
-  * @resource ImageBarChart.css
-  * @resource sedan-s.png
-  * @resource suv-s.png
-  * @resource truck-s.png
-  * @resource van-s.png
-  */
+/**
+ * A bar chart that uses CSS to display stacks of car images to indicate data values
+ * for categories.
+ *
+ * @see scalafx.scene.chart.BarChart
+ * @see scalafx.scene.chart.Chart
+ * @see scalafx.scene.chart.CategoryAxis
+ * @see scalafx.scene.chart.NumberAxis
+ * @resource ImageBarChart.css
+ * @resource sedan-s.png
+ * @resource suv-s.png
+ * @resource truck-s.png
+ * @resource van-s.png
+ */
 class EnsembleImageBarChart extends EnsembleExample {
 
   def getContent: BarChart[String, Number] = new BarChart(new CategoryAxis(), new NumberAxis()) {

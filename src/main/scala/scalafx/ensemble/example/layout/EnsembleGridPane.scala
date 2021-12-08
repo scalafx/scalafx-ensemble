@@ -34,17 +34,15 @@ import scalafx.scene.control.{Button, Label, Separator, TextField}
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout._
 
-import scala.language.implicitConversions
-
 /**
-  * An example of a GridPane layout. There is more than one approach to using a
-  * GridPane. First, the code can specify which rows and/or columns should
-  * contain the content. Second, the code can alter the constraints of the
-  * rows and/or columns themselves, either by specifying the preferred minimum
-  * or  maximum heights or widths, or by specifying the percentage of the
-  * GridPane that belongs to certain rows or columns.
-  *
-  * @see scalafx.scene.layout.GridPane
+ * An example of a GridPane layout. There is more than one approach to using a
+ * GridPane. First, the code can specify which rows and/or columns should
+ * contain the content. Second, the code can alter the constraints of the
+ * rows and/or columns themselves, either by specifying the preferred minimum
+ * or  maximum heights or widths, or by specifying the percentage of the
+ * GridPane that belongs to certain rows or columns.
+ *
+ * @see scalafx.scene.layout.GridPane
  * @resource /scalafx/ensemble/images/icon-48x48.png
  */
 class EnsembleGridPane extends EnsembleExample {
@@ -164,9 +162,9 @@ class EnsembleGridPane extends EnsembleExample {
       padding = Insets(18)
       gridLinesVisible = true
       children ++= Seq(grid3Caption)
-      val rowConstr50Perc = new RowConstraints {percentHeight = 50}
-      val colConstr25Perc = new ColumnConstraints {percentWidth = 25}
-      val colConstr50Perc = new ColumnConstraints {percentWidth = 50}
+      val rowConstr50Perc = new RowConstraints { percentHeight = 50 }
+      val colConstr25Perc = new ColumnConstraints { percentWidth = 25 }
+      val colConstr50Perc = new ColumnConstraints { percentWidth = 50 }
       // 2*50 percent
       rowConstraints ++= Seq(rowConstr50Perc, rowConstr50Perc)
       // 25 percent
@@ -187,7 +185,7 @@ class EnsembleGridPane extends EnsembleExample {
     val acctLabel = new Label("Member Number:")
     GridPane.setHalignment(acctLabel, HPos.Right)
     GridPane.setConstraints(acctLabel, 0, 1)
-    val textBox = new TextField {text = "Your number"}
+    val textBox = new TextField { text = "Your number" }
     GridPane.setMargin(textBox, Insets(10, 10, 10, 10))
     GridPane.setConstraints(textBox, 1, 1)
 
@@ -205,11 +203,11 @@ class EnsembleGridPane extends EnsembleExample {
       spacing = 10
       padding = Insets(20)
       children = List(
-        new VBox {children = List(grid1Caption, grid1)},
+        new VBox { children = List(grid1Caption, grid1) },
         new Separator(),
-        new VBox {children = List(grid2Caption, grid2)},
+        new VBox { children = List(grid2Caption, grid2) },
         new Separator(),
-        new VBox {children = List(grid3Caption, grid3)}
+        new VBox { children = List(grid3Caption, grid3) }
       )
     }
   }

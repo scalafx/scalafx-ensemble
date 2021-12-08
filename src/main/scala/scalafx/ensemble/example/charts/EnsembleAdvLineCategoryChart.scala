@@ -31,16 +31,15 @@ import scalafx.Includes._
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.{CategoryAxis, LineChart, NumberAxis, XYChart}
 
-import scala.language.implicitConversions
-
-/** A line chart demonstrating a CategoryAxis.
-  *
-  * @see scalafx.scene.chart.CategoryAxis
-  * @see scalafx.scene.chart.Chart
-  * @see scalafx.scene.chart.NumberAxis
-  * @see scalafx.scene.chart.LineChart
-  * @see scalafx.scene.chart.XYChart
-  */
+/**
+ * A line chart demonstrating a CategoryAxis.
+ *
+ * @see scalafx.scene.chart.CategoryAxis
+ * @see scalafx.scene.chart.Chart
+ * @see scalafx.scene.chart.NumberAxis
+ * @see scalafx.scene.chart.LineChart
+ * @see scalafx.scene.chart.XYChart
+ */
 class EnsembleAdvLineCategoryChart extends EnsembleExample {
   def getContent: LineChart[String, Number] = {
     // add starting data

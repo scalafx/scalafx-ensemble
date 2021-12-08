@@ -39,23 +39,22 @@ import scalafx.scene.layout.{Region, TilePane}
 import java.io.IOException
 import scala.collection.immutable
 import scala.collection.immutable.TreeMap
-import scala.language.implicitConversions
 
 /**
-  * Object to load examples as Map which in turn is used
-  * to create TreeItem in the UI
-  */
+ * Object to load examples as Map which in turn is used
+ * to create TreeItem in the UI
+ */
 object EnsembleTree {
 
   private val exampleListPath = ExampleInfo.examplesDir + "example.tree"
-  private val exampleListURL = getClass.getResource(exampleListPath)
+  private val exampleListURL  = getClass.getResource(exampleListPath)
 
   def create(): EnsembleTree = new EnsembleTree(createTree(), createThumbnails())
 
   /**
-    * build a map by iterating through the examples folder.
-    * This is used in UI
-    */
+   * build a map by iterating through the examples folder.
+   * This is used in UI
+   */
   private def createTree(): Map[String, List[TreeItem[String]]] = {
     val pairs = for ((dirName, examples) <- loadExampleNames()) yield {
       val leaves = for (leafName <- examples) yield {
@@ -75,7 +74,7 @@ object EnsembleTree {
     for (line <- lines.toArray) yield {
       val v = line.split("->")
       assert(v.length == 2)
-      val dirName = v.head.trim
+      val dirName  = v.head.trim
       val examples = v(1).split(",").map(_.trim())
       dirName -> examples
     }
@@ -87,7 +86,7 @@ object EnsembleTree {
       val thumbs = for (leafName <- examples) yield {
         val sampleName = ExampleInfo.formatAddSpaces(leafName)
         val img = new ImageView {
-          val filePath = ExampleInfo.thumbnailPath(leafName, groupName)
+          val filePath    = ExampleInfo.thumbnailPath(leafName, groupName)
           val inputStream = this.getClass.getResourceAsStream(filePath)
           if (inputStream == null) {
             throw new IOException("Unable to locate resource: " + filePath)
@@ -102,8 +101,7 @@ object EnsembleTree {
           styleClass += "sample-tile"
           onAction = () => {
             Ensemble.splitPane.items.remove(1)
-            Ensemble.splitPane.items.add(1,
-              PageDisplayer.choosePage(groupName + " > " + sampleName))
+            Ensemble.splitPane.items.add(1, PageDisplayer.choosePage(groupName + " > " + sampleName))
           }
         }
         EnsembleThumbNail(button)
@@ -117,26 +115,24 @@ object EnsembleTree {
 case class EnsembleThumbNail(button: Button)
 
 /**
-  * The class provide accessibility methods to access the
-  * underlying map
-  */
-class EnsembleTree(tree: Map[String, List[TreeItem[String]]],
-                   thumbnails: Map[String, List[EnsembleThumbNail]]) {
+ * The class provide accessibility methods to access the
+ * underlying map
+ */
+class EnsembleTree(tree: Map[String, List[TreeItem[String]]], thumbnails: Map[String, List[EnsembleThumbNail]]) {
 
   def getLeaves(keyName: String): List[TreeItem[String]] = tree(keyName)
 
   /**
-    * returns the entire tree
-    */
+   * returns the entire tree
+   */
   def getTree: List[TreeItem[String]] = tree.map {
     case (name, items) => new TreeItem[String](name) {
-      expanded = true
-      children = items
-    }
+        expanded = true
+        children = items
+      }
   }.toList
 
   def getThumbs(keyName: String): List[EnsembleThumbNail] = thumbnails(keyName)
-
 
   def getDashThumbsCtrl: immutable.Iterable[Region with AlignmentDelegate[_ <: layout.Region]] =
     thumbnails.flatMap {

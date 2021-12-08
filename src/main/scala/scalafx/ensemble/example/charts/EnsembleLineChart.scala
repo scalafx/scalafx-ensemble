@@ -31,18 +31,17 @@ import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.{LineChart, NumberAxis, XYChart}
 
-import scala.language.implicitConversions
-
-/** A chart in which lines connect a series of data points. Useful for viewing
-  * data trends over time.
-  *
-  * @see scalafx.scene.chart.LineChart
-  * @see scalafx.scene.chart.Chart
-  * @see scalafx.scene.chart.Axis
-  * @see scalafx.scene.chart.NumberAxis
-  * @related charts/AreaChart
-  * @related charts/ScatterChart
-  */
+/**
+ * A chart in which lines connect a series of data points. Useful for viewing
+ * data trends over time.
+ *
+ * @see scalafx.scene.chart.LineChart
+ * @see scalafx.scene.chart.Chart
+ * @see scalafx.scene.chart.Axis
+ * @see scalafx.scene.chart.NumberAxis
+ * @related charts/AreaChart
+ * @related charts/ScatterChart
+ */
 class EnsembleLineChart extends EnsembleExample {
 
   def getContent: LineChart[Number, Number] = {
@@ -60,7 +59,8 @@ class EnsembleLineChart extends EnsembleExample {
         (1.2, 1.4),
         (2.2, 1.9),
         (2.7, 2.3),
-        (2.9, 0.5)).map(toChartData)
+        (2.9, 0.5)
+      ).map(toChartData)
     }
 
     val series2 = new XYChart.Series[Number, Number] {
@@ -70,7 +70,8 @@ class EnsembleLineChart extends EnsembleExample {
         (0.8, 0.4),
         (1.4, 2.9),
         (2.1, 1.3),
-        (2.6, 0.9)).map(toChartData)
+        (2.6, 0.9)
+      ).map(toChartData)
     }
 
     new LineChart[Number, Number](xAxis, yAxis, ObservableBuffer(series1.delegate, series2.delegate))

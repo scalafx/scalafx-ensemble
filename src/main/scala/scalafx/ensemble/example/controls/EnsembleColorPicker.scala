@@ -35,12 +35,11 @@ import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.text.Font
 
-import scala.language.implicitConversions
-
-/** A sample that demonstrates the ColorPicker.
-  *
-  * @see scalafx.scene.control.ColorPicker
-  */
+/**
+ * A sample that demonstrates the ColorPicker.
+ *
+ * @see scalafx.scene.control.ColorPicker
+ */
 class EnsembleColorPicker extends EnsembleExample {
 
   // @stage-property height = 300

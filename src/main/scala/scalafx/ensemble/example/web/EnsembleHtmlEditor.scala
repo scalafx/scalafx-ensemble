@@ -34,8 +34,6 @@ import scalafx.scene.control.{Button, Label, ScrollPane}
 import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.web.HTMLEditor
 
-import scala.language.implicitConversions
-
 class EnsembleHtmlEditor extends EnsembleExample {
 
   def getContent: VBox = {

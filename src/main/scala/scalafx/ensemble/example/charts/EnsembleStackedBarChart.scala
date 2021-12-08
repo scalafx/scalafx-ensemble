@@ -32,15 +32,14 @@ import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.{CategoryAxis, NumberAxis, StackedBarChart, XYChart}
 
-import scala.language.implicitConversions
-
-/** A sample that displays data in a stacked bar chart.
-  *
-  * @see scalafx.scene.chart.StackedBarChart
-  * @see scalafx.scene.chart.CategoryAxisBuilder
-  * @see scalafx.scene.chart.NumberAxis
-  * @related charts/BarChart
-  */
+/**
+ * A sample that displays data in a stacked bar chart.
+ *
+ * @see scalafx.scene.chart.StackedBarChart
+ * @see scalafx.scene.chart.CategoryAxisBuilder
+ * @see scalafx.scene.chart.NumberAxis
+ * @related charts/BarChart
+ */
 class EnsembleStackedBarChart extends EnsembleExample {
 
   def getContent: StackedBarChart[String, Number] = {

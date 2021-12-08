@@ -33,11 +33,9 @@ import scalafx.scene.layout.HBox
 import scalafx.scene.paint.{Color, Paint}
 import scalafx.scene.shape.Polyline
 
-import scala.language.implicitConversions
-
 class EnsemblePolyline extends EnsembleExample {
   def getContent: HBox = {
-    //Set polyline fill color using literal
+    // Set polyline fill color using literal
     val polyObj = (poly: Polyline, color: Paint) => {
       poly.setFill(color)
       poly.setStroke(Color.Blue)

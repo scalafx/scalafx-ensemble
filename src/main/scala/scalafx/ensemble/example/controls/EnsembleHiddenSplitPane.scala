@@ -32,14 +32,12 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.SplitPane
 import scalafx.scene.layout.{Region, StackPane}
 
-import scala.language.implicitConversions
-
 /**
-  * A sample that demonstrates styling a hidden split pane with CSS.
-  *
-  * @see javafx.scene.control.SplitPane
-  * @resource /scalafx/ensemble/css/HiddenSplitPane.css
-  */
+ * A sample that demonstrates styling a hidden split pane with CSS.
+ *
+ * @see javafx.scene.control.SplitPane
+ * @resource /scalafx/ensemble/css/HiddenSplitPane.css
+ */
 class EnsembleHiddenSplitPane extends EnsembleExample {
 
   // @stage-property width = 600
@@ -47,7 +45,7 @@ class EnsembleHiddenSplitPane extends EnsembleExample {
 
   def getContent: StackPane = {
 
-    //Style Sheet loaded from external 
+    // Style Sheet loaded from external
     val hiddenSplitPaneCss = this.getClass.getResource("/scalafx/ensemble/css/HiddenSplitPane.css").toExternalForm
 
     // Region that will be used in the split pane

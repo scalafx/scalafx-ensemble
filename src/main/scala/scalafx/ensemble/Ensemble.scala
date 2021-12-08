@@ -38,8 +38,6 @@ import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout._
 import scalafx.scene.{Node, Scene}
 
-import scala.language.implicitConversions
-
 /** The main ScalaFX Ensemble application object. */
 object Ensemble extends JFXApp3 {
 
@@ -90,18 +88,19 @@ object Ensemble extends JFXApp3 {
 
     controlsView.selectionModel().selectionMode = SelectionMode.Single
     controlsView.selectionModel().selectedItem.onChange {
-      (_, _, newItem) => {
-        val pageCode = (newItem.isLeaf, Option(newItem.getParent)) match {
-          case (true, Some(parent)) => parent.getValue.toLowerCase + " > " + newItem.getValue
-          case (false, Some(_)) => "dashBoard - " + newItem.getValue
-          case (_, _) => "dashBoard"
+      (_, _, newItem) =>
+        {
+          val pageCode = (newItem.isLeaf, Option(newItem.getParent)) match {
+            case (true, Some(parent)) => parent.getValue.toLowerCase + " > " + newItem.getValue
+            case (false, Some(_))     => "dashBoard - " + newItem.getValue
+            case (_, _)               => "dashBoard"
+          }
+          centerPane = PageDisplayer.choosePage(pageCode)
+          splitPane.items.remove(1)
+          splitPane.items.add(1, centerPane)
+          // Update layout after updating content
+          splitPane.autosize()
         }
-        centerPane = PageDisplayer.choosePage(pageCode)
-        splitPane.items.remove(1)
-        splitPane.items.add(1, centerPane)
-        // Update layout after updating content
-        splitPane.autosize()
-      }
     }
 
     //
@@ -123,7 +122,8 @@ object Ensemble extends JFXApp3 {
               content = List(
                 new ImageView {
                   image = new Image(
-                    this.getClass.getResourceAsStream("/scalafx/ensemble/images/logo.png"))
+                    this.getClass.getResourceAsStream("/scalafx/ensemble/images/logo.png")
+                  )
                   margin = Insets(0, 0, 0, 10)
                 },
                 new Region {
@@ -133,7 +133,8 @@ object Ensemble extends JFXApp3 {
                   minWidth = 120
                   minHeight = 66
                   id = "newButton"
-                })
+                }
+              )
             }
           }
           center = new BorderPane {
@@ -146,19 +147,14 @@ object Ensemble extends JFXApp3 {
   }
 
   def setupUncaughtExceptionHandling(): Unit = {
-    Thread.setDefaultUncaughtExceptionHandler(
-      (t: Thread, e: Throwable) => {
-        showException(Title, s"Unhandled exception on thread ${t.getName}.", e, stage)
-      }
-    )
-
+    Thread.setDefaultUncaughtExceptionHandler((t: Thread, e: Throwable) => {
+      showException(Title, s"Unhandled exception on thread ${t.getName}.", e, stage)
+    })
 
     onFXAndWait {
-      Thread.currentThread().setUncaughtExceptionHandler(
-        (t: Thread, e: Throwable) => {
-          showException(Title, s"Unhandled exception on thread ${t.getName}.", e, stage)
-        }
-      )
+      Thread.currentThread().setUncaughtExceptionHandler((t: Thread, e: Throwable) => {
+        showException(Title, s"Unhandled exception on thread ${t.getName}.", e, stage)
+      })
     }
   }
 }

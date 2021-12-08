@@ -32,15 +32,14 @@ import scalafx.collections.ObservableBuffer
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.{BarChart, CategoryAxis, NumberAxis, XYChart}
 
-import scala.language.implicitConversions
-
-/** An advanced horizontal bar chart.
-  *
-  * @see scalafx.scene.chart.BarChart
-  * @see scalafx.scene.chart.Chart
-  * @see scalafx.scene.chart.NumberAxis
-  * @see scalafx.scene.chart.XYChart
-  */
+/**
+ * An advanced horizontal bar chart.
+ *
+ * @see scalafx.scene.chart.BarChart
+ * @see scalafx.scene.chart.Chart
+ * @see scalafx.scene.chart.NumberAxis
+ * @see scalafx.scene.chart.XYChart
+ */
 class EnsembleAdvHorizontalBarChart extends EnsembleExample {
   def getContent: BarChart[Number, String] = {
     // Category/x values
@@ -73,9 +72,9 @@ class EnsembleAdvHorizontalBarChart extends EnsembleExample {
       name = "Data Series 2"
       // Example of assigning data using a container
       data = ObservableBuffer(
-          XYChart.Data[Number, String](956, years(0)),
-          XYChart.Data[Number, String](1665, years(1)),
-          XYChart.Data[Number, String](2450, years(2))
+        XYChart.Data[Number, String](956, years(0)),
+        XYChart.Data[Number, String](1665, years(1)),
+        XYChart.Data[Number, String](2450, years(2))
       )
     }
 
@@ -90,7 +89,7 @@ class EnsembleAdvHorizontalBarChart extends EnsembleExample {
 
     // Assign data using a helper function
     def xyData(xs: Seq[Number]) = ObservableBuffer.from(xs zip years map (xy => XYChart.Data(xy._1, xy._2)))
-    val series4 = XYChart.Series("Data Series 4", xyData(Seq(786, 2100, 450)))
+    val series4                 = XYChart.Series("Data Series 4", xyData(Seq(786, 2100, 450)))
 
     // setup chart
     new BarChart(xAxis, yAxis) {
