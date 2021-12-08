@@ -2,19 +2,19 @@
 
 name := "ScalaFX Ensemble"
 
-version := "16.0.0-R25-SNAPSHOT"
+version := "17.0.1-R26-SNAPSHOT"
 
 organization := "org.scalafx"
 
-val scala2Version = "2.13.6"
-val scala3Version = "3.0.2"
+val scala2Version = "2.13.7"
+val scala3Version = "3.1.0"
 // To cross compile with Scala 2 and Scala 3
 crossScalaVersions := Seq(scala2Version, scala3Version)
 scalaVersion := scala2Version
 
 //@formatter:off
 libraryDependencies ++= Seq(
-  "org.scalafx"   %% "scalafx"   % "16.0.0-R25",
+  "org.scalafx"   %% "scalafx"   % "17.0.1-R26",
   "org.scalatest" %% "scalatest" % "3.2.10"
   )
 
@@ -27,7 +27,7 @@ libraryDependencies ++= {
     case _                            => throw new Exception("Unknown platform!")
   }
   Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-    .map(m => "org.openjfx" % s"javafx-$m" % "16" classifier osName)
+    .map(m => "org.openjfx" % s"javafx-$m" % "17.0.1" classifier osName)
 }
 //@formatter:on
 
