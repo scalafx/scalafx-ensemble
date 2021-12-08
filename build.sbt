@@ -31,7 +31,15 @@ libraryDependencies ++= {
 }
 //@formatter:on
 
-scalacOptions ++= Seq("-unchecked", "-deprecation", "-Xlint")
+scalacOptions ++= Seq("-unchecked", "-deprecation")
+scalacOptions ++= (
+  CrossVersion.partialVersion(scalaVersion.value) match {
+    case Some((3, _)) =>
+      Seq("-explain", "-explain-types")
+    case _ =>
+      Seq("-Xlint", "-explaintypes")
+  }
+  )
 
 // Sources should also be copied to output, so the sample code, for the viewer,
 // can be loaded from the same file that is used to execute the example
