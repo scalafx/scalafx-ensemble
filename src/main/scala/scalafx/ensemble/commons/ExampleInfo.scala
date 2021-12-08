@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2021, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -89,12 +89,12 @@ object ExampleInfo {
     // Append copyright, package, and required imports
     source = "" +
       "/*\n" +
-      " * Copyright (c) 2012-2020 ScalaFX Project\n" +
+      " * Copyright (c) 2012-2021 ScalaFX Project\n" +
       " * All right reserved.\n" +
       " */\n" +
       (if (originalPackageName.nonEmpty) "package " + originalPackageName + "\n" else "") +
       "\n" +
-      "import scalafx.application.JFXApp\n" +
+      "import scalafx.application.JFXApp3\n" +
       "import scalafx.scene.Scene\n" +
       source
 
@@ -102,20 +102,21 @@ object ExampleInfo {
     source = source.replaceAll("""import scalafx.ensemble.\S*\s*""", "")
 
     // Change `class ExampleSomething extends EnsembleExample {`
-    // to     `object SomethingSample extends JFXApp
+    // to     `object SomethingSample extends JFXApp3
     source = source.replaceFirst(
       """class\s*Ensemble(\S*)\s*extends\s*EnsembleExample\s*\{""",
-      """object $1Sample extends JFXApp {"""
+      """object $1Sample extends JFXApp3 {"""
     )
 
     // Replace `getContent` method with stage and scene creation
     val stageHeader = "" +
       "\n\n" +
-      "  stage = new JFXApp.PrimaryStage {\n" +
-      "    title = \"" + formatAddSpaces(extractSampleName(sourceRaw)) + " Example\"\n" +
+      "  override def start(): Unit = \n" +
+      "    stage = new JFXApp3.PrimaryStage {\n" +
+      "      title = \"" + formatAddSpaces(extractSampleName(sourceRaw)) + " Example\"\n" +
       (if (stageProperties.isEmpty) "" else stageProperties.mkString("    ", "\n    ", "\n")) +
-      "    scene = new Scene {\n" +
-      "      root ="
+      "      scene = new Scene {\n" +
+      "        root ="
 
     source = source.replaceFirst(""" *def *getContent:[ \S]* =""", stageHeader)
 
