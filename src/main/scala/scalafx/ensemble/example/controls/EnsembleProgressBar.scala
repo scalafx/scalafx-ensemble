@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -61,7 +61,8 @@ class EnsembleProgressBar extends EnsembleExample {
         new ProgressBar {
           maxWidth = 300
           progress = 1
-        })
+        }
+      )
     }
   }
 }

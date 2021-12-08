@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -43,19 +43,19 @@ class EnsembleProgressIndicator extends EnsembleExample {
     val p2 = new ProgressIndicator {
       prefWidth = 50
       prefHeight = 50
-      progress = 0.25F
+      progress = 0.25f
     }
     val p3 = new ProgressIndicator {
       prefWidth = 50
       prefHeight = 50
-      progress = 0.50F
+      progress = 0.50f
     }
     val p4 = new ProgressIndicator {
       prefWidth = 50
       prefHeight = 50
-      progress = 1.0F
+      progress = 1.0f
     }
-    //Add all progress indicators in grid pane
+    // Add all progress indicators in grid pane
     new GridPane() {
       hgap = 20
       vgap = 20

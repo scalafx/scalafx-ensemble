@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -60,6 +60,7 @@ class EnsembleImageCreation extends EnsembleExample {
         // image = new Image("/scalafx/ensemble/images/scala-logo.png")
         image = new Image("http://www.scala-lang.org/resources/img/scala-logo.png")
 
-      })
+      }
+    )
   }
 }

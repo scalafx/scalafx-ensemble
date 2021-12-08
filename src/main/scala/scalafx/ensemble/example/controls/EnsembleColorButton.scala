@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,12 +32,13 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.Button
 import scalafx.scene.layout.{Priority, VBox}
 
-/** Buttons with different background colors.
-  *
-  * @see scalafx.scene.control.Button
-  * @related controls/buttons/GraphicButton
-  * @related controls/buttons/HyperlinkSample
-  */
+/**
+ * Buttons with different background colors.
+ *
+ * @see scalafx.scene.control.Button
+ * @related controls/buttons/GraphicButton
+ * @related controls/buttons/HyperlinkSample
+ */
 class EnsembleColorButton extends EnsembleExample {
 
   def getContent: VBox = new VBox {
@@ -69,6 +70,7 @@ class EnsembleColorButton extends EnsembleExample {
         maxHeight = 150
         text = "Color Button 4"
         style = "-fx-base: Orange"
-      })
+      }
+    )
   }
 }

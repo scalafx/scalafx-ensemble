@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,11 +32,12 @@ import scala.io.Source
 /** Helper functions related to I/O. */
 object IOUtils {
 
-  /** Load a resource as a string.
-    *
-    * @param reference using class loader of the `reference` object to load the resource
-    * @param path to the resource, relative to the reference, or absolute of it starts with `/`
-    */
+  /**
+   * Load a resource as a string.
+   *
+   * @param reference using class loader of the `reference` object to load the resource
+   * @param path to the resource, relative to the reference, or absolute of it starts with `/`
+   */
   def loadResourceAsString(reference: Any, path: String): String = {
     val in = reference.getClass.getResourceAsStream(path)
     Source.fromInputStream(in).mkString

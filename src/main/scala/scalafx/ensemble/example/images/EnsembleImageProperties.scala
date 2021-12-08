@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,20 +32,22 @@ import scalafx.geometry.{Insets, Rectangle2D}
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.{HBox, Priority, VBox}
 
-/** A sample that demonstrates how to resize images and use the Viewport property.
-  *
-  * @related images/ImageCreation
-  * @see scalafx.scene.image.Image
-  * @see scalafx.scene.image.ImageView
-  * @resource /scalafx/ensemble/images/sanfran.jpg
-  */
+/**
+ * A sample that demonstrates how to resize images and use the Viewport property.
+ *
+ * @related images/ImageCreation
+ * @see scalafx.scene.image.Image
+ * @see scalafx.scene.image.ImageView
+ * @resource /scalafx/ensemble/images/sanfran.jpg
+ */
 class EnsembleImageProperties extends EnsembleExample {
 
   def getContent: VBox = {
     // We can set image properties directly during creation
     val url = this.getClass.getResource("/scalafx/ensemble/images/sanfran.jpg").toExternalForm
     val sample1 = new ImageView(
-      new Image(url, requestedWidth = 30, requestedHeight = 70, preserveRatio = false, smooth = true))
+      new Image(url, requestedWidth = 30, requestedHeight = 70, preserveRatio = false, smooth = true)
+    )
 
     val sample2 = new ImageView(new Image(url)) {
       // Image can be resized to preferred width
@@ -54,7 +56,7 @@ class EnsembleImageProperties extends EnsembleExample {
     }
 
     val sample3 = new ImageView(new Image(url)) {
-      //image can be resized to preferred height
+      // image can be resized to preferred height
       fitHeight = 20
       preserveRatio = true
     }

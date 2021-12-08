@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,7 +30,7 @@ package scalafx.ensemble.commons
 import scalafx.scene.Node
 
 /**
- * @author Jarek Sacha 
+ * @author Jarek Sacha
  */
 trait EnsembleExample {
   def getContent: Node

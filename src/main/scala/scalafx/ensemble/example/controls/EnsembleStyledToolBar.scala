@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -41,37 +41,40 @@ class EnsembleStyledToolBar extends EnsembleExample {
       content = List(
         new Button {
           text = "Button 1"
-        }, new Button {
+        },
+        new Button {
           text = "Button 2"
-        }, new Slider {
-
-        })
+        },
+        new Slider {}
+      )
     }
-    //ToolBar Blue
+    // ToolBar Blue
     val blueToolBar = new ToolBar {
       id = "blue"
       style = "-fx-base: dodgerblue"
       content = List(
         new Button {
           text = "Button 1"
-        }, new Button {
+        },
+        new Button {
           text = "Button 2"
-        }, new Slider {
-
-        })
+        },
+        new Slider {}
+      )
     }
-    //ToolBar Dark
+    // ToolBar Dark
     val darkToolBar = new ToolBar {
       id = "dark"
       style = "-fx-base: #333333"
       content = List(
         new Button {
           text = "Button 1"
-        }, new Button {
+        },
+        new Button {
           text = "Button 2"
-        }, new Slider {
-
-        })
+        },
+        new Slider {}
+      )
     }
 
     new VBox {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,13 +32,14 @@ import scalafx.geometry.Insets
 import scalafx.scene.control._
 import scalafx.scene.layout.StackPane
 
-/** An example of an accordion control. You can use accordion controls to define
-  * individual panes and  display them one at a time.
-  *
-  * @see scalafx.scene.control.Accordion
-  * @related controls/ToggleButton
-  * @related controls/ToolBar
-  */
+/**
+ * An example of an accordion control. You can use accordion controls to define
+ * individual panes and  display them one at a time.
+ *
+ * @see scalafx.scene.control.Accordion
+ * @related controls/ToggleButton
+ * @related controls/ToolBar
+ */
 class EnsembleAccordion extends EnsembleExample {
 
   // @stage-property resizable = false
@@ -60,12 +61,14 @@ class EnsembleAccordion extends EnsembleExample {
           content = new TextField {
             promptText = "Hi! Scalafx Ensemble!"
           }
-        }, new TitledPane {
+        },
+        new TitledPane {
           text = "Ensemble CheckBox 1"
           content = new CheckBox {
             text = "CheckBox 1"
           }
-        })
+        }
+      )
     }
   }
 }

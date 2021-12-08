@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,17 +33,16 @@ import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.{BarChart, CategoryAxis, NumberAxis, XYChart}
 
 /**
-  * A chart that displays rectangular bars with heights indicating data values
-  * for categories. Used for displaying information when at least one axis has
-  * discontinuous or discrete data.
-  *
-  * @see scalafx.scene.chart.BarChart
-  * @see scalafx.scene.chart.Chart
-  * @see scalafx.scene.chart.Axis
-  * @see scalafx.scene.chart.CategoryAxis
-  * @see scalafx.scene.chart.NumberAxis
-  *
-  */
+ * A chart that displays rectangular bars with heights indicating data values
+ * for categories. Used for displaying information when at least one axis has
+ * discontinuous or discrete data.
+ *
+ * @see scalafx.scene.chart.BarChart
+ * @see scalafx.scene.chart.Chart
+ * @see scalafx.scene.chart.Axis
+ * @see scalafx.scene.chart.CategoryAxis
+ * @see scalafx.scene.chart.NumberAxis
+ */
 class EnsembleBarChart extends EnsembleExample {
   def getContent: BarChart[String, Number] = {
     val years = ObservableBuffer("2007", "2008", "2009")

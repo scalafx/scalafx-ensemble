@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,10 +33,11 @@ import scalafx.scene.control.{ContentDisplay, Label}
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.VBox
 
-/** A simple implementation of the Label control, with an image to the left of the label.
-  *
-  * @resource /scalafx/ensemble/images/icon-48x48.png
-  */
+/**
+ * A simple implementation of the Label control, with an image to the left of the label.
+ *
+ * @resource /scalafx/ensemble/images/icon-48x48.png
+ */
 class EnsembleSimpleLabel extends EnsembleExample {
 
   def getContent: VBox = new VBox {

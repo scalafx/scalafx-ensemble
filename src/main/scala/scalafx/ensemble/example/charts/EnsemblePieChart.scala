@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,12 +30,13 @@ package scalafx.ensemble.example.charts
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.PieChart
 
-/** A circular chart divided into segments. The value of each segment represents
-  * a proportion of the total.
-  *
-  * @see scalafx.scene.chart.PieChart
-  * @see scalafx.scene.chart.Chart
-  */
+/**
+ * A circular chart divided into segments. The value of each segment represents
+ * a proportion of the total.
+ *
+ * @see scalafx.scene.chart.PieChart
+ * @see scalafx.scene.chart.Chart
+ */
 class EnsemblePieChart extends EnsembleExample {
 
   def getContent: PieChart = new PieChart {

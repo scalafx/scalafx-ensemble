@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -30,11 +30,12 @@ package scalafx.ensemble.example.charts
 import scalafx.ensemble.commons.EnsembleExample
 import scalafx.scene.chart.PieChart
 
-/** An advanced pie chart.
-  *
-  * @see scalafx.scene.chart.PieChart
-  * @see scalafx.scene.chart.Chart
-  */
+/**
+ * An advanced pie chart.
+ *
+ * @see scalafx.scene.chart.PieChart
+ * @see scalafx.scene.chart.Chart
+ */
 class EnsembleAdvancedPieChart extends EnsembleExample {
 
   def getContent: PieChart = {

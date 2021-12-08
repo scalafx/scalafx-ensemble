@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,12 +32,13 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.CheckBox
 import scalafx.scene.layout.{Priority, VBox}
 
-/** * An example of checkboxes in various states.
-  *
-  * @see scalafx.scene.control.CheckBox
-  * @related controls/buttons/GraphicButton
-  * @related controls/buttons/RadioButtons
-  */
+/**
+ * * An example of checkboxes in various states.
+ *
+ * @see scalafx.scene.control.CheckBox
+ * @related controls/buttons/GraphicButton
+ * @related controls/buttons/RadioButtons
+ */
 class EnsembleCheckBox extends EnsembleExample {
 
   def getContent: VBox = new VBox {
@@ -58,6 +59,7 @@ class EnsembleCheckBox extends EnsembleExample {
         text = "Disabled"
         selected = true
         disable = true
-      })
+      }
+    )
   }
 }

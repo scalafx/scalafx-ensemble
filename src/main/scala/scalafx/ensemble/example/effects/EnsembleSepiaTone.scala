@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,12 +33,13 @@ import scalafx.scene.effect.SepiaTone
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.StackPane
 
-/** A sample that demonstrates a sepia tone effect.
-  *
-  * @see scalafx.scene.effect.SepiaTone
-  * @see scalafx.scene.effect.Effect
-  * @resource /scalafx/ensemble/images/boat.jpg
-  */
+/**
+ * A sample that demonstrates a sepia tone effect.
+ *
+ * @see scalafx.scene.effect.SepiaTone
+ * @see scalafx.scene.effect.Effect
+ * @resource /scalafx/ensemble/images/boat.jpg
+ */
 class EnsembleSepiaTone extends EnsembleExample {
 
   def getContent: StackPane = {

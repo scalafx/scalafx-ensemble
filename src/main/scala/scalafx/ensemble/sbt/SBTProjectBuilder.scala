@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -38,7 +38,7 @@ object SBTProjectBuilder {
 
   private var _parentDir = new File(System.getProperty("user.home", ".")).getCanonicalFile
 
-  private val sourceSubDir = "src/main/scala/"
+  private val sourceSubDir   = "src/main/scala/"
   private val resourceSubDir = "src/main/resources/"
 
   /** Last used parent directory of a saved project or users home directory */
@@ -50,13 +50,14 @@ object SBTProjectBuilder {
     _parentDir = dir
   }
 
-  /** Create and save SBT project for a sample.
-    *
-    * @param projectDir directory where to save the project
-    * @param sampleInfo information about the sample code
-    * @throws java.nio.file.FileAlreadyExistsException - if `projectDir` exists but is not a directory
-    * @throws IOException                              - if an I/O error occurs
-    */
+  /**
+   * Create and save SBT project for a sample.
+   *
+   * @param projectDir directory where to save the project
+   * @param sampleInfo information about the sample code
+   * @throws java.nio.file.FileAlreadyExistsException - if `projectDir` exists but is not a directory
+   * @throws IOException                              - if an I/O error occurs
+   */
   def createSampleProject(projectDir: File, sampleInfo: ExampleInfo): Unit = {
 
     // extract project name
@@ -82,16 +83,22 @@ object SBTProjectBuilder {
     sampleInfo.resources.foreach(resource => copyResource(new File(projectDir, resourceSubDir), resource))
 
     // Copy project files
-    copyText(projectDir, "build.sbt",
-      filters = List("@name@" -> projectName, "@mainClass@" -> (sampleInfo.packageName + "." + sampleInfo.classSimpleName)))
+    copyText(
+      projectDir,
+      "build.sbt",
+      filters =
+        List("@name@" -> projectName, "@mainClass@" -> (sampleInfo.packageName + "." + sampleInfo.classSimpleName))
+    )
     copyText(projectDir, "project/build.properties")
     copyText(projectDir, "README.md")
   }
 
-  /** Copy text resource from the classpath relative to this object to a `projectDir`.
-    * Line ending will be changed to platform specific.
-    */
+  /**
+   * Copy text resource from the classpath relative to this object to a `projectDir`.
+   * Line ending will be changed to platform specific.
+   */
   private def copyText(projectDir: File, fileName: String, filters: List[(String, String)] = Nil): Unit = {
+
     /** Apply all filters in turn. */
     @scala.annotation.tailrec
     def filter(string: String, filters: List[(String, String)]): String = {
@@ -102,11 +109,11 @@ object SBTProjectBuilder {
     }
 
     try {
-      val is = this.getClass.getResourceAsStream(fileName)
+      val is         = this.getClass.getResourceAsStream(fileName)
       val contentRaw = Source.fromInputStream(is).getLines().mkString("\n")
       is.close()
       val content = filter(contentRaw, filters)
-      val path = new File(projectDir, fileName).toPath
+      val path    = new File(projectDir, fileName).toPath
       Files.createDirectories(path.getParent)
       Files.write(path, content.getBytes)
     } catch {
@@ -118,7 +125,7 @@ object SBTProjectBuilder {
   /** Copy a resource that may be an image or other binary file. */
   private def copyResource(projectDir: File, fileName: String): Unit = {
     try {
-      val is = this.getClass.getResourceAsStream(fileName)
+      val is   = this.getClass.getResourceAsStream(fileName)
       val dest = new File(projectDir, fileName).toPath
       Files.createDirectories(dest.getParent)
       Files.copy(is, dest, StandardCopyOption.REPLACE_EXISTING)

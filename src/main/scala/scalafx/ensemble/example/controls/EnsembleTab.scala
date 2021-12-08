@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,6 @@ import scalafx.scene.control.TabPane.TabClosingPolicy
 import scalafx.scene.control.{Tab, TabPane}
 import scalafx.scene.layout.{Priority, VBox}
 import scalafx.scene.text.{Font, Text}
-
 
 class EnsembleTab extends EnsembleExample {
 

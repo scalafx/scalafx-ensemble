@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -42,11 +42,19 @@ import scalafx.scene.layout.{Priority, VBox}
 class EnsembleComboBox extends EnsembleExample {
 
   val strings: ObservableBuffer[String] = ObservableBuffer(
-    "Option 1", "Option 2", "Option 3",
-    "Option 4", "Option 5", "Option 6",
+    "Option 1",
+    "Option 2",
+    "Option 3",
+    "Option 4",
+    "Option 5",
+    "Option 6",
     "Longer ComboBox item",
-    "Option 7", "Option 8", "Option 9",
-    "Option 10", "Option 12")
+    "Option 7",
+    "Option 8",
+    "Option 9",
+    "Option 10",
+    "Option 12"
+  )
 
   def getContent: VBox = {
     new VBox {
@@ -65,7 +73,8 @@ class EnsembleComboBox extends EnsembleExample {
           promptText = "Edit or Choose..."
           editable = true
           items = strings
-        })
+        }
+      )
     }
   }
 }

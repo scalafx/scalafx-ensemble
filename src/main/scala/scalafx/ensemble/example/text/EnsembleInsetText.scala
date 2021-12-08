@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -32,15 +32,15 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.Label
 import scalafx.scene.layout.VBox
 
-/** A sample that shows styling of text through CSS.
-  *
-  * @resource /scalafx/ensemble/css/InsetText.css
-  *
-  */
+/**
+ * A sample that shows styling of text through CSS.
+ *
+ * @resource /scalafx/ensemble/css/InsetText.css
+ */
 class EnsembleInsetText extends EnsembleExample {
 
   def getContent: VBox = {
-    //StyleSheets are added
+    // StyleSheets are added
     val insetTextCss = this.getClass.getResource("/scalafx/ensemble/css/InsetText.css").toExternalForm
     new VBox {
       padding = Insets(20)

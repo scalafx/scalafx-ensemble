@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,7 @@ class EnsembleRadioButton extends EnsembleExample {
     spacing = 10
     padding = Insets(20)
 
-    //Radio Button Toggle Group
+    // Radio Button Toggle Group
     val tog = new ToggleGroup()
 
     children = List(
@@ -62,6 +62,7 @@ class EnsembleRadioButton extends EnsembleExample {
         maxHeight = 50
         text = "Disabled!!"
         disable = true
-      })
+      }
+    )
   }
 }

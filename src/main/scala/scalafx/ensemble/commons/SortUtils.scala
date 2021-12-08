@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -27,10 +27,8 @@
 
 package scalafx.ensemble.commons
 
-
 import scalafx.ensemble.EnsembleThumbNail
 import scalafx.scene.control._
-
 
 /**
  * utility to sort the items
@@ -40,16 +38,12 @@ object SortUtils {
   def treeItemSort: (TreeItem[String], TreeItem[String]) => Boolean = (ti: TreeItem[String], t2: TreeItem[String]) =>
     compare(ti.value(), t2.value())
 
-  def thumbNailsSort: (EnsembleThumbNail, EnsembleThumbNail) => Boolean = (t1: EnsembleThumbNail, t2: EnsembleThumbNail) =>
-    compare(t1.button.text(), t2.button.text())
+  def thumbNailsSort: (EnsembleThumbNail, EnsembleThumbNail) => Boolean =
+    (t1: EnsembleThumbNail, t2: EnsembleThumbNail) =>
+      compare(t1.button.text(), t2.button.text())
 
   def sortKeys: (String, String) => Boolean = (x: String, y: String) => compare(x, y)
 
   private def compare = (x: String, y: String) =>
     x.compareToIgnoreCase(y) < 0
 }
-
-
-
-
-

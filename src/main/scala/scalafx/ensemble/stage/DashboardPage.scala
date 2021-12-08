@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -40,7 +40,7 @@ class DashboardPage(dashPart: String = "dashboard") extends DisplayablePage {
   def getPage: ScrollPane = {
     val thumbs = dashPart match {
       case "dashboard" => tree.getDashThumbsCtrl
-      case _ => tree.getDashThumb(dashPart)
+      case _           => tree.getDashThumb(dashPart)
     }
 
     new ScrollPane {
@@ -57,4 +57,3 @@ class DashboardPage(dashPart: String = "dashboard") extends DisplayablePage {
     }
   }
 }
-

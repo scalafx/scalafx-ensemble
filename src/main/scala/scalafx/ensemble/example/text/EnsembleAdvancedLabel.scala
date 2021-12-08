@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -72,7 +72,8 @@ class EnsembleAdvancedLabel extends EnsembleExample {
           text = "Image centered"
           graphic = new ImageView(icon)
           contentDisplay = ContentDisplay.Center
-        })
+        }
+      )
     }
   }
 }

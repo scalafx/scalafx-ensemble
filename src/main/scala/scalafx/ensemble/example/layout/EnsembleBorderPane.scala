@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -35,12 +35,13 @@ import scalafx.scene.layout.{AnchorPane, BorderPane, VBox}
 import scalafx.scene.paint.Color
 import scalafx.scene.shape.Rectangle
 
-/** An example of  a BorderPane layout, with placement of children in the top,
-  * left, center, right, and bottom positions.
-  *
-  * @see scalafx.scene.layout.BorderPane
-  * @resource /scalafx/ensemble/images/icon-48x48.png
-  */
+/**
+ * An example of  a BorderPane layout, with placement of children in the top,
+ * left, center, right, and bottom positions.
+ *
+ * @see scalafx.scene.layout.BorderPane
+ * @resource /scalafx/ensemble/images/icon-48x48.png
+ */
 class EnsembleBorderPane extends EnsembleExample {
 
   // @stage-property width = 440

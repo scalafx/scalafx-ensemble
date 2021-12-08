@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,15 +33,16 @@ import scalafx.scene.control.{Button, Label}
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.AnchorPane
 
-/** An example of an AnchorPane layout.
-  *
-  * @see scalafx.scene.layout.AnchorPane
-  * @resource /scalafx/ensemble/images/icon-48x48.png
-  */
+/**
+ * An example of an AnchorPane layout.
+ *
+ * @see scalafx.scene.layout.AnchorPane
+ * @resource /scalafx/ensemble/images/icon-48x48.png
+ */
 class EnsembleAnchorPane extends EnsembleExample {
 
   def getContent: AnchorPane = {
-    val label = Label("We are all in an AnchorPane.")
+    val label  = Label("We are all in an AnchorPane.")
     val button = new Button("Submit")
     val imageView = new ImageView {
       image = new Image(this.getClass.getResourceAsStream("/scalafx/ensemble/images/icon-48x48.png"))

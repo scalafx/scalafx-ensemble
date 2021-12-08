@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,20 +33,20 @@ import scalafx.scene.chart.{BubbleChart, NumberAxis, XYChart}
 
 import scala.math.random
 
-/** An advanced bubble chart.
-  *
-  * @see scalafx.scene.chart.BubbleChart
-  * @see scalafx.scene.chart.Chart
-  * @see scalafx.scene.chart.NumberAxis
-  * @see scalafx.scene.chart.ScatterChart
-  * @see scalafx.scene.chart.XYChart
-  */
+/**
+ * An advanced bubble chart.
+ *
+ * @see scalafx.scene.chart.BubbleChart
+ * @see scalafx.scene.chart.Chart
+ * @see scalafx.scene.chart.NumberAxis
+ * @see scalafx.scene.chart.ScatterChart
+ * @see scalafx.scene.chart.XYChart
+ */
 class EnsembleAdvancedBubbleChart extends EnsembleExample {
 
   def getContent: BubbleChart[Number, Number] = {
     // Generate some random data
-    def randomData = (1 to 20).map(
-      _ => XYChart.Data[Number, Number](random() * 100, random() * 100, random() * 10))
+    def randomData = (1 to 20).map(_ => XYChart.Data[Number, Number](random() * 100, random() * 100, random() * 10))
 
     val bcSeries1 = XYChart.Series("Data Series 1", ObservableBuffer.from(randomData))
     val bcSeries2 = XYChart.Series("Data Series 2", ObservableBuffer.from(randomData))

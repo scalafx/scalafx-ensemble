@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2020, ScalaFX Ensemble Project
+ * Copyright (c) 2012-2021, ScalaFX Project
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,15 +33,16 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.ChoiceBox
 import scalafx.scene.layout.VBox
 
-/** A sample that shows a choice box with several options. The ChoiceBox control
-  * displays a default or current selection, with an icon to click that expands
-  * the list for a selection.
-  *
-  * @see scalafx.scene.control.ChoiceBox
-  * @related controls/CheckBoxes
-  * @related controls/ToggleButton
-  * @related controls/ToolBar
-  */
+/**
+ * A sample that shows a choice box with several options. The ChoiceBox control
+ * displays a default or current selection, with an icon to click that expands
+ * the list for a selection.
+ *
+ * @see scalafx.scene.control.ChoiceBox
+ * @related controls/CheckBoxes
+ * @related controls/ToggleButton
+ * @related controls/ToolBar
+ */
 class EnsembleChoiceBox extends EnsembleExample {
 
   def getContent: VBox = new VBox {
