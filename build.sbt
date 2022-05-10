@@ -6,8 +6,8 @@ version := "17.0.1-R26-SNAPSHOT"
 
 organization := "org.scalafx"
 
-val scala2Version = "2.13.7"
-val scala3Version = "3.1.0"
+val scala2Version = "2.13.8"
+val scala3Version = "3.1.2"
 // To cross compile with Scala 2 and Scala 3
 crossScalaVersions := Seq(scala2Version, scala3Version)
 scalaVersion := scala2Version

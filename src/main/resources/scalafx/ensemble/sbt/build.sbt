@@ -2,7 +2,7 @@ name := "@name@"
 
 version := "1.19"
 
-scalaVersion := "2.13.7"
+scalaVersion := "2.13.8"
 
 libraryDependencies += "org.scalafx" %% "scalafx" % "17.0.1-R26"
 
