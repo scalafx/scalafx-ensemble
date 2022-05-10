@@ -2,7 +2,7 @@
 
 name := "ScalaFX Ensemble"
 
-version := "17.0.1-R26-SNAPSHOT"
+version := "18.0.1-R27-SNAPSHOT"
 
 organization := "org.scalafx"
 
@@ -14,8 +14,8 @@ scalaVersion := scala2Version
 
 //@formatter:off
 libraryDependencies ++= Seq(
-  "org.scalafx"   %% "scalafx"   % "17.0.1-R26",
-  "org.scalatest" %% "scalatest" % "3.2.10"
+  "org.scalafx"   %% "scalafx"   % "18.0.1-R27",
+  "org.scalatest" %% "scalatest" % "3.2.12"
   )
 
 // Add OS specific JavaFX dependencies
@@ -27,7 +27,7 @@ libraryDependencies ++= {
     case _                            => throw new Exception("Unknown platform!")
   }
   Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-    .map(m => "org.openjfx" % s"javafx-$m" % "17.0.1" classifier osName)
+    .map(m => "org.openjfx" % s"javafx-$m" % "18.0.1" classifier osName)
 }
 //@formatter:on
 
