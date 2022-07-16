@@ -2,34 +2,22 @@
 
 name := "ScalaFX Ensemble"
 
-version := "18.0.1-R27-SNAPSHOT"
+version := "18.0.1-R28-SNAPSHOT"
 
 organization := "org.scalafx"
 
 val scala2Version = "2.13.8"
-val scala3Version = "3.1.2"
+val scala3Version = "3.1.3"
 // To cross compile with Scala 2 and Scala 3
 crossScalaVersions := Seq(scala2Version, scala3Version)
 scalaVersion := scala2Version
 
-//@formatter:off
 libraryDependencies ++= Seq(
-  "org.scalafx"   %% "scalafx"   % "18.0.1-R27",
+  "org.scalafx" %% "scalafx" % "18.0.1-R28",
   "org.scalatest" %% "scalatest" % "3.2.12"
   )
 
-// Add OS specific JavaFX dependencies
-libraryDependencies ++= {
-  val osName = System.getProperty("os.name") match {
-    case n if n.startsWith("Linux")   => "linux"
-    case n if n.startsWith("Mac")     => "mac"
-    case n if n.startsWith("Windows") => "win"
-    case _                            => throw new Exception("Unknown platform!")
-  }
-  Seq("base", "controls", "fxml", "graphics", "media", "swing", "web")
-    .map(m => "org.openjfx" % s"javafx-$m" % "18.0.1" classifier osName)
-}
-//@formatter:on
+resolvers ++= Resolver.sonatypeOssRepos("snapshots")
 
 scalacOptions ++= Seq("-unchecked", "-deprecation")
 scalacOptions ++= (
