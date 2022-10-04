@@ -4,7 +4,7 @@ version := "1.20"
 
 scalaVersion := "3.2.0"
 
-libraryDependencies += "org.scalafx" %% "scalafx" % "18.0.1-R28"
+libraryDependencies += "org.scalafx" %% "scalafx" % "19.0.0-R30"
 
 Compile / mainClass := Some("@mainClass@")
 
