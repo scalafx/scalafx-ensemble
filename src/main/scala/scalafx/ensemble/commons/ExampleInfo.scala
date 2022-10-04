@@ -49,7 +49,7 @@ object ExampleInfo {
 
   private[commons] def extractStageProperties(sourceRaw: String): Seq[String] = {
     val pattern    = """@stage-property\s*(.*)""".r
-    val properties = for (pattern(property) <- pattern findAllIn sourceRaw) yield property.trim
+    val properties = for (case pattern(property) <- pattern findAllIn sourceRaw) yield property.trim
     properties.toSeq
   }
 
@@ -196,7 +196,7 @@ class ExampleInfo(exampleName: String, exampleGroupName: String) {
   /** Collection of resources used by this example */
   lazy val resources: Set[String] = {
     def extract(pattern: Regex): Seq[String] = {
-      val resources = for (pattern(resourcePath) <- pattern findAllIn sourceCode) yield resourcePath
+      val resources = for (case pattern(resourcePath) <- pattern findAllIn sourceCode) yield resourcePath
       resources.map(r => if (r.startsWith("/")) r else "/" + packagePath + "/" + r).toSeq
     }
 

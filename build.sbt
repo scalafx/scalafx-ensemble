@@ -6,15 +6,15 @@ version := "18.0.1-R28-SNAPSHOT"
 
 organization := "org.scalafx"
 
-val scala2Version = "2.13.8"
-val scala3Version = "3.1.3"
+val scala2Version = "2.13.9"
+val scala3Version = "3.2.0"
 // To cross compile with Scala 2 and Scala 3
 crossScalaVersions := Seq(scala2Version, scala3Version)
 scalaVersion := scala2Version
 
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "18.0.1-R28",
-  "org.scalatest" %% "scalatest" % "3.2.12"
+  "org.scalafx" %% "scalafx" % "19.0.0-R30",
+  "org.scalatest" %% "scalatest" % "3.2.14"
   )
 
 resolvers ++= Resolver.sonatypeOssRepos("snapshots")
@@ -23,7 +23,7 @@ scalacOptions ++= Seq("-unchecked", "-deprecation")
 scalacOptions ++= (
   CrossVersion.partialVersion(scalaVersion.value) match {
     case Some((3, _)) =>
-      Seq("-explain", "-explain-types")
+      Seq("-explain", "-explain-types", "-rewrite", "-source", "3.2-migration")
     case _ =>
       Seq("-Xlint", "-explaintypes")
   }
