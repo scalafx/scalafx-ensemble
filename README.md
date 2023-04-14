@@ -32,7 +32,7 @@ In the future, we will also provide an excitable version.
 
 To compile and run the project you only need to have:
 
-* [Java JDK] 11 or newer
+* [Java JDK] 17 or newer (JavaFX requires JVM 17+)
 * [SBT] 1 or newer
 * ScalaFX Ensemble source code. All missing dependencies, including a proper version of Scala and ScalaFX, will be
   downloaded by SBT.
@@ -120,7 +120,7 @@ To post questions or send feedback about ScalaFX Ensemble or ScalaFX in general,
 License
 -------
 
-Copyright (c) 2012-2020, ScalaFX Project
+Copyright (c) 2012-2023, ScalaFX Project
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

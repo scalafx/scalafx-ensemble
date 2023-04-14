@@ -1,10 +1,10 @@
 name := "@name@"
 
-version := "1.20"
+version := "1.21"
 
-scalaVersion := "3.2.0"
+scalaVersion := "3.2.2"
 
-libraryDependencies += "org.scalafx" %% "scalafx" % "19.0.0-R30"
+libraryDependencies += "org.scalafx" %% "scalafx" % "20.0.0-R31"
 
 Compile / mainClass := Some("@mainClass@")
 
