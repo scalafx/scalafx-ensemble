@@ -14,9 +14,9 @@ This example can be compiled and run using the [Simple Build Tool](http://www.sc
 Requirements
 ------------
 
-To compile and run the project you only need to have
-[Java 11](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
-(version 11 or newer) and [SBT](http://www.scala-sbt.org/) (v.1.3 or newer) installed.
+To compile and run the project, you only need to have
+[Java 17](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+(version 17 or newer) and [SBT](http://www.scala-sbt.org/) (v.1.9 or newer) installed.
 All missing dependencies, including proper version of Scala and ScalaFX, will be downloaded by SBT.
 
 
