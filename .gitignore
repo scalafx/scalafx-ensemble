@@ -19,3 +19,4 @@ bin
 *.install4j~
 .bsp
 /null/
+.DS_Store
