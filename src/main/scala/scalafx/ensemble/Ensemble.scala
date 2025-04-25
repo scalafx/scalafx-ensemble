@@ -28,14 +28,14 @@
 package scalafx.ensemble
 
 import org.scalafx.extras.{onFXAndWait, showException}
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.application.JFXApp3
 import scalafx.application.JFXApp3.PrimaryStage
 import scalafx.ensemble.commons.PageDisplayer
 import scalafx.geometry.Insets
-import scalafx.scene.control._
+import scalafx.scene.control.*
 import scalafx.scene.image.{Image, ImageView}
-import scalafx.scene.layout._
+import scalafx.scene.layout.*
 import scalafx.scene.{Node, Scene}
 
 /** The main ScalaFX Ensemble application object. */
@@ -43,7 +43,7 @@ object Ensemble extends JFXApp3 {
 
   private val Title = "ScalaFX Ensemble"
 
-  private var _centerPane: Node = scala.compiletime.uninitialized
+  private var _centerPane: Node = _
 
   def centerPane: Node = _centerPane
 
