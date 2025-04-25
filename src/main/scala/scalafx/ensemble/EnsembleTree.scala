@@ -28,11 +28,11 @@
 package scalafx.ensemble
 
 import javafx.scene.layout
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.delegate.AlignmentDelegate
 import scalafx.ensemble.commons.{ExampleInfo, PageDisplayer, SortUtils}
 import scalafx.geometry.{Insets, Orientation}
-import scalafx.scene.control._
+import scalafx.scene.control.*
 import scalafx.scene.image.{Image, ImageView}
 import scalafx.scene.layout.{Region, TilePane}
 
@@ -62,7 +62,7 @@ object EnsembleTree {
       }
       dirName -> leaves.toList.sortWith(SortUtils.treeItemSort)
     }
-    TreeMap(pairs.toIndexedSeq: _*)
+    TreeMap(pairs.toIndexedSeq*)
   }
 
   private def loadExampleNames(): Array[(String, Array[String])] = {
@@ -108,7 +108,7 @@ object EnsembleTree {
       }
       dirName.capitalize -> thumbs.toList.sortWith(SortUtils.thumbNailsSort)
     }
-    TreeMap(pairs.toIndexedSeq: _*)
+    TreeMap(pairs.toIndexedSeq*)
   }
 }
 
@@ -134,12 +134,12 @@ class EnsembleTree(tree: Map[String, List[TreeItem[String]]], thumbnails: Map[St
 
   def getThumbs(keyName: String): List[EnsembleThumbNail] = thumbnails(keyName)
 
-  def getDashThumbsCtrl: immutable.Iterable[Region with AlignmentDelegate[_ <: layout.Region]] =
+  def getDashThumbsCtrl: immutable.Iterable[Region & AlignmentDelegate[? <: layout.Region]] =
     thumbnails.flatMap {
       case (heading, ts) => Seq(createCategoryLabel(heading), createTiles(ts))
     }
 
-  def getDashThumb(ctrlGrpName: String): Seq[Region with AlignmentDelegate[_ <: layout.Region]] =
+  def getDashThumb(ctrlGrpName: String): Seq[Region & AlignmentDelegate[? <: layout.Region]] =
     Seq(
       createCategoryLabel(ctrlGrpName),
       createTiles(thumbnails(ctrlGrpName))
@@ -149,7 +149,7 @@ class EnsembleTree(tree: Map[String, List[TreeItem[String]]], thumbnails: Map[St
     new Label {
       text = value
       maxWidth = Double.MaxValue
-      minHeight = Region.USE_PREF_SIZE
+      minHeight = Region.UsePrefSize
       styleClass += "category-header"
     }
 

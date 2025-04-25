@@ -322,7 +322,7 @@ class EnsembleAdvCandleStickChart extends EnsembleExample {
      * @param itemIndex   The index of the data item in the series
      * @return New candle node to represent the give data item
      */
-    def apply(seriesIndex: Int, item: XYChart.Data[_, _], itemIndex: Int): Node = {
+    def apply(seriesIndex: Int, item: XYChart.Data[?, ?], itemIndex: Int): Node = {
       var candle = item.node()
       candle match {
         case c: Candle =>

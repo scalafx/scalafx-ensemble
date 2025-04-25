@@ -43,7 +43,7 @@ object Ensemble extends JFXApp3 {
 
   private val Title = "ScalaFX Ensemble"
 
-  private var _centerPane: Node = _
+  private var _centerPane: Node = scala.compiletime.uninitialized
 
   def centerPane: Node = _centerPane
 
