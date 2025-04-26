@@ -28,8 +28,8 @@
 package scalafx.ensemble.commons
 
 import org.scalafx.extras.showException
-import scalafx.Includes._
-import scalafx.ensemble.commons.IOUtils._
+import scalafx.Includes.*
+import scalafx.ensemble.commons.IOUtils.*
 import scalafx.ensemble.sbt.SBTProjectBuilder
 import scalafx.scene.Node
 import scalafx.scene.control.{Button, Label, ScrollPane, ToolBar}
@@ -197,7 +197,7 @@ object ContentFactory {
   }
 
   def isMac: Boolean = {
-    val os = System.getProperty("os.name").toLowerCase(new Locale(""))
+    val os = System.getProperty("os.name").toLowerCase(Locale.US)
     os.indexOf("mac") >= 0
   }
 
