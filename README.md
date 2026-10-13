@@ -87,13 +87,15 @@ Stand-Alone Application
 Installer for a stand-alone version of ScalaFX Ensemble Application are available for Windows, macOS, and Linux from
 the [Releases] page.
 
-![Install4J](https://www.ej-technologies.com/images/product_banners/install4j_medium.png)
+[![install4j multi-platform installer builder](https://www.ej-technologies.com/images/product_banners/install4j_medium.png)](https://www.ej-technologies.com/install4j)
 
-Installers are created using [Install4J] and the [sbt-install4j] plugin.
+Installers are created
+using [install4j, the multi-platform installer builder](https://www.ej-technologies.com/install4j) and
+the [sbt-install4j] plugin.
 
 Building Installers
 -------------------
-To build an installer you need to have [Install4J] installed. 
+To build an installer you need to have [install4j] installed.
 
 Use SBT task `install4j -m _os_`, for instance to create Windows installer:
 
@@ -147,7 +149,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 [Apache2]: https://www.apache.org/licenses/LICENSE-2.0.html
 [Eclipse]: http://www.eclipse.org/
-[Install4J]: https://www.ej-technologies.com/products/install4j/overview.html
+[install4j]: https://www.ej-technologies.com/install4j
 [IntelliJ IDEA]: http://www.jetbrains.com/idea/
 [Java JDK]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
 [JavaFX Ensemble]: http://www.oracle.com/technetwork/java/javafx/samples/index.html
