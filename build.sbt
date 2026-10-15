@@ -2,19 +2,19 @@
 
 name := "ScalaFX Ensemble"
 
-version := "24.0.0-R35"
+version := "26.0.0-R38"
 
 organization := "org.scalafx"
 
-val scala2Version = "2.13.16"
-val scala3Version = "3.6.4"
+val scala2Version = "2.13.18"
+val scala3Version = "3.10.0"
 // To cross compile with Scala 2 and Scala 3
 crossScalaVersions := Seq(scala3Version, scala2Version)
 scalaVersion       := scala3Version
 
 libraryDependencies ++= Seq(
-  "org.scalafx"   %% "scalafx"   % "24.0.0-R35",
-  "org.scalatest" %% "scalatest" % "3.2.19"
+  "org.scalafx" %% "scalafx" % "26.0.0-R38",
+  "org.scalatest" %% "scalatest" % "3.2.20"
 )
 
 resolvers ++= Resolver.sonatypeOssRepos("snapshots")
