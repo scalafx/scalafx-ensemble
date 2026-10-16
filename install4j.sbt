@@ -9,3 +9,5 @@ enablePlugins(SBTInstall4J)
 install4jProjectFile := "installer/ScalaFX_Ensemble.install4j"
 install4jRelease := version.value
 //install4jVerbose := true
+
+install4jDependedJarsDir := "target/install4j-lib"
