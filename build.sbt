@@ -18,7 +18,7 @@ libraryDependencies ++= Seq(
   "org.scalatest" %% "scalatest" % "3.2.20" % "test"
 )
 
-resolvers ++= Resolver.sonatypeOssRepos("snapshots")
+resolvers += Resolver.sonatypeCentralSnapshots
 
 scalacOptions ++= Seq("-unchecked", "-deprecation")
 scalacOptions ++= (
