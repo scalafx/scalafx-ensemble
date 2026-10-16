@@ -2,7 +2,7 @@
 
 name := "ScalaFX Ensemble"
 
-version := "26.0.0-R38"
+version := "27.0.0-R39"
 
 organization := "org.scalafx"
 
@@ -13,8 +13,9 @@ crossScalaVersions := Seq(scala3Version, scala2Version)
 scalaVersion       := scala3Version
 
 libraryDependencies ++= Seq(
-  "org.scalafx" %% "scalafx" % "26.0.0-R38",
-  "org.scalatest" %% "scalatest" % "3.2.20"
+  "org.scalafx" %% "scalafx" % "27.0.0-R39",
+  "org.scala-lang.modules" %% "scala-xml" % "2.5.0",
+  "org.scalatest" %% "scalatest" % "3.2.20" % "test"
 )
 
 resolvers ++= Resolver.sonatypeOssRepos("snapshots")
